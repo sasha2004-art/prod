@@ -2,145 +2,23 @@
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- Логотип во вкладке браузера -->
-    <link rel="icon" href="https://upload.wikimedia.org/wikipedia/commons/f/f5/Team_Spirit_new_em.svg" type="image/svg+xml">
-    <title>Team Spirit | DANO Project</title>
-    <style>
-        /* --- ШРИФТЫ --- */
-        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;900&family=Roboto+Mono:wght@300;500;700&display=swap');
-
-        /* --- VARIABLES --- */
-        :root {
-            --bg-dark: #080808;
-            --bg-card: #141414;
-            --text-main: #e0e0e0;
-            --text-muted: #888;
-            --accent: #ffffff; 
-            --border: #333;
-        }
-
-        /* --- RESET & BODY --- */
-        * { box-sizing: border-box; margin: 0; padding: 0; }
-        
-        body {
-            background-color: var(--bg-dark);
-            color: var(--text-main);
-            font-family: 'Montserrat', sans-serif;
-            overflow: hidden;
-            height: 100vh;
-            width: 100vw;
-            /* Гранж-сетка на фоне */
-            background-image: 
-                linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
-            background-size: 50px 50px;
-        }
-
-        /* --- ЛОГОТИПЫ --- */
-        .ts-logo-white {
-            /* ПРЕВРАЩАЕТ ЧЕРНЫЙ ЛОГОТИП В БЕЛЫЙ */
-            filter: brightness(0) invert(1);
-            transition: transform 0.3s;
-        }
-        
-        .logo-main {
-            width: 300px; /* Размер на титульном слайде */
-            margin-bottom: 40px;
-            /* Эффект свечения */
-            drop-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
-        }
-
-        .logo-watermark-img {
-            width: 40px; /* Размер в углу */
-            opacity: 0.8;
-        }
-        
-        .logo-end {
-            width: 150px;
-            opacity: 0.6;
-            margin-top: 30px;
-        }
-
-        /* --- LAYOUT --- */
-        .slide {
-            position: absolute;
-            top: 0; left: 0; width: 100%; height: 100%;
-            padding: 60px 80px;
-            display: flex;
-            flex-direction: column;
-            opacity: 0;
-            visibility: hidden;
-            transform: translateY(10px);
-            transition: all 0.4s ease;
-        }
-
-        .slide.active {
-            opacity: 1;
-            visibility: visible;
-            transform: translateY(0);
-            z-index: 2;
-        }
-
-        /* --- TYPOGRAPHY --- */
-        h1 { font-size: 4.5rem; line-height: 1; font-weight: 900; text-transform: uppercase; letter-spacing: -2px; margin-bottom: 20px; }
-        h2 { font-size: 2.5rem; font-weight: 800; text-transform: uppercase; margin-bottom: 40px; border-left: 8px solid var(--accent); padding-left: 20px; display: inline-block; }
-        h3 { font-family: 'Roboto Mono', monospace; font-size: 1.4rem; font-weight: 700; margin-bottom: 15px; color: var(--accent); }
-        p, li { font-family: 'Roboto Mono', monospace; font-size: 1rem; color: #ccc; line-height: 1.6; margin-bottom: 10px; }
-        ul { margin-left: 20px; margin-bottom: 20px; }
-
-        /* --- UTILS --- */
-        .flex-center { display: flex; justify-content: center; align-items: center; height: 100%; text-align: center; }
-        .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; height: 70%; align-content: center; }
-        .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
-        .grid-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
-
-        /* --- CARDS & GRAPHS --- */
-        .card {
-            background: var(--bg-card);
-            border: 1px solid var(--border);
-            padding: 25px;
-            position: relative;
-        }
-        .card::before { content: ''; position: absolute; top: 0; left: 0; width: 10px; height: 1px; background: var(--accent); }
-        .big-stat { font-size: 3.5rem; font-weight: 900; color: var(--accent); display: block; }
-        .stat-label { font-size: 0.9rem; text-transform: uppercase; letter-spacing: 1px; color: var(--text-muted); }
-        .tag { display: inline-block; padding: 5px 10px; border: 1px solid var(--accent); font-size: 0.8rem; font-family: 'Roboto Mono'; margin-right: 5px; margin-bottom: 5px; text-transform: uppercase; }
-        .graph-box { width: 100%; height: 250px; background: #111; border: 1px dashed #444; display: flex; align-items: center; justify-content: center; font-family: 'Roboto Mono'; color: #555; position: relative; }
-        .bar-chart { display: flex; align-items: flex-end; gap: 10px; height: 150px; }
-        .bar { width: 30px; background: var(--accent); opacity: 0.8; }
-
-        /* --- NAV & UI --- */
-        .slide-counter { position: absolute; bottom: 30px; left: 40px; font-family: 'Roboto Mono'; font-size: 1.2rem; font-weight: bold; }
-        .controls { position: absolute; bottom: 30px; right: 40px; display: flex; gap: 20px; }
-        .btn { background: transparent; border: none; color: var(--text-main); font-family: 'Montserrat'; font-weight: 900; font-size: 1.2rem; cursor: pointer; text-transform: uppercase; }
-        .btn:hover { color: var(--accent); text-decoration: underline; }
-        
-        /* Водяной знак с логотипом */
-        .watermark-container {
-            position: absolute;
-            top: 30px;
-            right: 40px;
-            display: flex;
-            align-items: center;
-            gap: 15px;
-            opacity: 0.5;
-            z-index: 10;
-        }
-        .watermark-text {
-            font-weight: 900;
-            border: 2px solid #fff;
-            padding: 5px 12px;
-        }
-
-    </style>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <!-- Иконка вкладки -->
+    <link rel="icon" href="images/Team_Spirit_new_em.svg" type="image/svg+xml">
+    <title>Team Spirit | DANO Solution</title>
+    
+    <!-- Подключаем наш внешний CSS -->
+    <link rel="stylesheet" href="style.css">
+    
+    <!-- Подключаем библиотеку для графиков -->
+    <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
 </head>
 <body>
 
-    <!-- ВОДЯНОЙ ЗНАК (ВИДЕН ВСЕГДА) -->
+    <!-- ВОДЯНОЙ ЗНАК -->
     <div class="watermark-container">
         <div class="watermark-text">TEAM SPIRIT</div>
-        <img src="https://upload.wikimedia.org/wikipedia/commons/f/f5/Team_Spirit_new_em.svg" alt="TS Logo" class="ts-logo-white logo-watermark-img">
+        <img src="images/Team_Spirit_new_em.svg" alt="TS Logo" class="ts-logo-white logo-watermark-img" style="filter: brightness(0) invert(1);">
     </div>
 
     <div class="slide-counter"><span id="currSlide">01</span> / <span id="totalSlide">21</span></div>
@@ -150,345 +28,428 @@
     <!-- 1. ТИТУЛЬНИК -->
     <div class="slide active flex-center">
         <div>
-            <!-- ГЛАВНЫЙ ЛОГОТИП -->
-            <img src="https://upload.wikimedia.org/wikipedia/commons/f/f5/Team_Spirit_new_em.svg" alt="TS Logo" class="ts-logo-white logo-main">
+            <!-- Главный логотип -->
+            <img src="images/Team_Spirit_new_em.svg" alt="TS Logo" style="filter: brightness(0) invert(1); width: 250px; margin-bottom: 40px; max-width: 70%;">
             
-            <p style="letter-spacing: 5px; color: var(--accent); margin-bottom: 10px;">DANO OLYMPIAD 202X</p>
-            <h1>АНАЛИЗ [КЕЙСА]</h1>
-            <div style="width: 100px; height: 5px; background: white; margin: 20px auto;"></div>
-            <p>Презентация решения</p>
+            <p style="letter-spacing: 4px; color: var(--accent); margin-bottom: 15px; font-weight: 700;">DANO OLYMPIAD 202X</p>
+            <h1>АНАЛИЗ [КЕЙС]</h1>
+            <div style="width: 80px; height: 6px; background: white; margin: 25px auto;"></div>
+            <p>Решение задачи оптимизации ...</p>
             <br>
-            <span class="tag">DATA SCIENCE</span>
-            <span class="tag">ANALYTICS</span>
-            <span class="tag">STRATEGY</span>
+            <div style="display: flex; justify-content: center; gap: 10px; flex-wrap: wrap;">
+                <span class="tag">#DATA_SCIENCE</span>
+                <span class="tag">#ANALYTICS</span>
+                <span class="tag">#TEAM_SPIRIT</span>
+            </div>
         </div>
     </div>
 
-    <!-- 2. ОГЛАВЛЕНИЕ -->
+    <!-- 2. AGENDA -->
     <div class="slide">
         <h2>02. AGENDA</h2>
         <div class="grid-2">
             <div>
-                <ul style="list-style: none; font-size: 1.5rem;">
-                    <li>01. <span style="color:white; font-weight:bold;">ПРОБЛЕМАТИКА</span> // Контекст</li>
-                    <li>02. <span style="color:white; font-weight:bold;">ДАННЫЕ</span> // EDA & Processing</li>
-                    <li>03. <span style="color:white; font-weight:bold;">МОДЕЛЬ</span> // Методология</li>
-                    <li>04. <span style="color:white; font-weight:bold;">РЕШЕНИЕ</span> // Бизнес-инсайты</li>
+                <ul style="list-style: none; padding: 0;">
+                    <li style="font-size: 1.2rem; margin-bottom: 20px;"><strong style="color:white;">01. PROBLEM</strong> <br> <span style="font-size:0.9rem; color:#666;">Бизнес-контекст и метрики</span></li>
+                    <li style="font-size: 1.2rem; margin-bottom: 20px;"><strong style="color:white;">02. DATA & FEATURES</strong> <br> <span style="font-size:0.9rem; color:#666;">EDA, Препроцессинг</span></li>
+                    <li style="font-size: 1.2rem; margin-bottom: 20px;"><strong style="color:white;">03. MODELING</strong> <br> <span style="font-size:0.9rem; color:#666;">ML, Валидация, Код</span></li>
+                    <li style="font-size: 1.2rem; margin-bottom: 20px;"><strong style="color:white;">04. BUSINESS VALUE</strong> <br> <span style="font-size:0.9rem; color:#666;">Деньги и внедрение</span></li>
                 </ul>
             </div>
             <div class="card flex-center">
-                <p>Мы прошли путь от сырых логов до готовой стратегии внедрения.</p>
+                <p style="font-size: 1.5rem; font-weight: 700;">"От сырых данных к реальной прибыли"</p>
             </div>
         </div>
     </div>
 
     <!-- 3. ПРОБЛЕМА -->
     <div class="slide">
-        <h2>03. ПРОБЛЕМА</h2>
-        <p style="font-size: 1.5rem; max-width: 800px; margin-bottom: 40px;">
-            Текущие процессы демонстрируют неэффективность в <span style="border-bottom: 2px solid white;">сегменте X</span>, что приводит к потерям.
+        <h2>03. ПРОБЛЕМАТИКА</h2>
+        <p style="font-size: 1.2rem; max-width: 800px; margin-bottom: 40px; color: white;">
+            Компания теряет <span style="border-bottom: 2px solid white;">$X млн</span> ежегодно из-за неэффективного таргетинга.
         </p>
         <div class="grid-3">
-            <div class="card"><h3>БОЛЬ 1</h3><p>Высокий отток клиентов</p></div>
-            <div class="card"><h3>БОЛЬ 2</h3><p>Сложность прогнозирования</p></div>
-            <div class="card"><h3>БОЛЬ 3</h3><p>Нехватка персонализации</p></div>
-        </div>
-    </div>
-
-    <!-- 4. АКТУАЛЬНОСТЬ -->
-    <div class="slide">
-        <h2>04. АКТУАЛЬНОСТЬ</h2>
-        <div class="grid-2">
-            <div>
-                <p>Почему это важно решать именно сейчас?</p>
-                <ul>
-                    <li>Рынок меняется с динамикой +20% в год</li>
-                    <li>Конкуренты уже внедряют ML-решения</li>
-                    <li>Потенциал роста не исчерпан</li>
-                </ul>
+            <div class="card">
+                <h3>БОЛЬ</h3>
+                <p>Низкая конверсия (2%) в текущих кампаниях.</p>
             </div>
-            <div style="display:grid; grid-template-rows: 1fr 1fr; gap: 20px;">
-                <div class="card"><span class="big-stat">40%</span><br><span class="stat-label">Потерь бюджета</span></div>
-                <div class="card"><span class="big-stat">x2</span><br><span class="stat-label">Рост стоимости лида</span></div>
+            <div class="card">
+                <h3>ПОСЛЕДСТВИЕ</h3>
+                <p>Выгорание аудитории спам-рассылками.</p>
+            </div>
+            <div class="card">
+                <h3>ЦЕЛЬ</h3>
+                <p>Увеличить Uplift на 5% с помощью ML.</p>
             </div>
         </div>
     </div>
 
-    <!-- 5. ГИПОТЕЗЫ -->
+    <!-- 4. ИЕРАРХИЯ МЕТРИК -->
     <div class="slide">
-        <h2>05. ГИПОТЕЗЫ</h2>
-        <div class="card" style="margin-bottom: 20px;">
-            <h3>H1: Основная гипотеза</h3>
-            <p>Если мы сегментируем пользователей по поведению, то конверсия вырастет на 5%.</p>
-        </div>
-        <div class="card" style="margin-bottom: 20px;">
-            <h3>H2: Второстепенная</h3>
-            <p>Сезонность влияет на спрос сильнее, чем цена.</p>
-        </div>
-        <div class="card">
-            <h3>H3: Техническая</h3>
-            <p>Модель градиентного бустинга покажет лучший скор.</p>
-        </div>
-    </div>
-
-    <!-- 6. ДАННЫЕ -->
-    <div class="slide">
-        <h2>06. ДАННЫЕ</h2>
-        <div class="grid-4">
-            <div class="card"><h3>DATASET A</h3><p>Клиентские транзакции</p><span class="tag">1.2GB</span></div>
-            <div class="card"><h3>DATASET B</h3><p>Логи приложения</p><span class="tag">500MB</span></div>
-            <div class="card"><h3>EXTERNAL</h3><p>Курсы валют / Погода</p><span class="tag">API</span></div>
-            <div class="card"><h3>TARGET</h3><p>Целевая переменная</p><span class="tag">Binary</span></div>
-        </div>
-    </div>
-
-    <!-- 7. PIPELINE -->
-    <div class="slide">
-        <h2>07. PIPELINE</h2>
-        <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 50px;">
-            <div class="card">RAW DATA</div>
-            <div style="font-size: 2rem;">→</div>
-            <div class="card">CLEANING<br><small>NaNs, Duplicates</small></div>
-            <div style="font-size: 2rem;">→</div>
-            <div class="card">FEATURE ENG.<br><small>One-Hot, Scaler</small></div>
-            <div style="font-size: 2rem;">→</div>
-            <div class="card" style="border-color: white;">MODEL READY</div>
-        </div>
-    </div>
-
-    <!-- 8. EDA: РАСПРЕДЕЛЕНИЕ -->
-    <div class="slide">
-        <h2>08. EDA: РАСПРЕДЕЛЕНИЕ</h2>
-        <div class="grid-2">
-            <div class="graph-box">
-                <div class="bar-chart">
-                    <div class="bar" style="height: 40px;"></div>
-                    <div class="bar" style="height: 80px;"></div>
-                    <div class="bar" style="height: 140px;"></div>
-                    <div class="bar" style="height: 100px;"></div>
-                    <div class="bar" style="height: 60px;"></div>
-                    <div class="bar" style="height: 20px;"></div>
-                </div>
-                <span style="position: absolute; bottom: 10px;">TARGET DISTRIBUTION</span>
-            </div>
-            <div>
-                <h3>Наблюдения</h3>
-                <p>1. Обнаружен дисбаланс классов (80/20).</p>
-                <p>2. Распределение возраста близко к нормальному.</p>
-                <p>3. Хвост распределения доходов требует логарифмирования.</p>
-            </div>
-        </div>
-    </div>
-
-    <!-- 9. КОРРЕЛЯЦИИ -->
-    <div class="slide">
-        <h2>09. КОРРЕЛЯЦИИ</h2>
-        <div class="grid-2">
-            <div>
-                <p>Мы построили матрицу корреляций (Pearson), чтобы исключить мультиколлинеарность.</p>
-                <br>
-                <ul>
-                    <li>Feature A и Feature B сильно коррелируют (0.9)</li>
-                    <li>Feature C имеет слабую связь с таргетом</li>
-                </ul>
-            </div>
-            <div class="graph-box" style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 2px; padding: 20px;">
-                <div style="background:#fff; opacity:1"></div> <div style="background:#fff; opacity:0.2"></div> <div style="background:#fff; opacity:0.1"></div> <div style="background:#fff; opacity:0.4"></div>
-                <div style="background:#fff; opacity:0.2"></div> <div style="background:#fff; opacity:1"></div> <div style="background:#fff; opacity:0.6"></div> <div style="background:#fff; opacity:0.3"></div>
-                <div style="background:#fff; opacity:0.1"></div> <div style="background:#fff; opacity:0.6"></div> <div style="background:#fff; opacity:1"></div> <div style="background:#fff; opacity:0.1"></div>
-                <div style="background:#fff; opacity:0.4"></div> <div style="background:#fff; opacity:0.3"></div> <div style="background:#fff; opacity:0.1"></div> <div style="background:#fff; opacity:1"></div>
-            </div>
-        </div>
-    </div>
-
-    <!-- 10. ИНСАЙТ №1 -->
-    <div class="slide">
-        <h2>10. ИНСАЙТ #1</h2>
-        <h1 style="font-size: 3rem; margin-bottom: 20px;">ПОЛЬЗОВАТЕЛИ С МОБАЙЛА ПЛАТЯТ ЧАЩЕ</h1>
-        <div style="width: 100%; height: 2px; background: #333; margin-bottom: 20px;"></div>
-        <div class="grid-2">
-            <div class="card"><span class="big-stat">65%</span><br>Mobile Conversion</div>
-            <div class="card"><span class="big-stat">35%</span><br>Desktop Conversion</div>
-        </div>
-    </div>
-
-    <!-- 11. ИНСАЙТ №2 -->
-    <div class="slide">
-        <h2>11. ИНСАЙТ #2</h2>
-        <p>Анализ временных рядов показал аномальный всплеск активности в выходные дни.</p>
-        <div class="graph-box">
-             <svg width="100%" height="100%" viewBox="0 0 500 150">
-                 <polyline fill="none" stroke="white" stroke-width="3" points="0,100 50,80 100,120 150,60 200,90 250,20 300,50 350,40 400,80 450,10 500,60"/>
-             </svg>
-        </div>
-        <p style="text-align: center; margin-top: 10px;">[График активности по дням недели]</p>
-    </div>
-
-    <!-- 12. МОДЕЛИРОВАНИЕ -->
-    <div class="slide">
-        <h2>12. МОДЕЛИРОВАНИЕ</h2>
-        <p>Мы протестировали 3 алгоритма. Победил CatBoost.</p>
-        <table style="width: 100%; margin-top: 20px; border-collapse: collapse; font-family: 'Roboto Mono'; text-align: left;">
-            <tr style="border-bottom: 1px solid white;">
-                <th style="padding: 10px;">Model</th><th>Accuracy</th><th>ROC-AUC</th><th>Time</th>
-            </tr>
-            <tr style="color: #888;"><td style="padding: 10px;">Logistic Regression</td><td>0.75</td><td>0.78</td><td>0.1s</td></tr>
-            <tr style="color: #888;"><td style="padding: 10px;">Random Forest</td><td>0.82</td><td>0.85</td><td>5.4s</td></tr>
-            <tr style="font-weight: bold; background: rgba(255,255,255,0.1);"><td style="padding: 10px;">CatBoost</td><td>0.89</td><td>0.92</td><td>3.2s</td></tr>
-        </table>
-    </div>
-
-    <!-- 13. FEATURE IMPORTANCE -->
-    <div class="slide">
-        <h2>13. FEATURE IMPORTANCE</h2>
-        <p>Топ-5 признаков, влияющих на предсказание модели.</p>
+        <h2>04. ИЕРАРХИЯ МЕТРИК</h2>
+        <p>Связываем техническое качество модели с деньгами бизнеса.</p>
         <br>
-        <div style="display: flex; flex-direction: column; gap: 10px;">
-            <div style="display: flex; align-items: center;">
-                <div style="width: 150px;">Total_Spend</div>
-                <div style="width: 60%; height: 10px; background: #333;"><div style="width: 90%; height: 100%; background: white;"></div></div>
+        <div style="display: flex; flex-direction: column; gap: 20px; align-items: center;">
+            <!-- Уровень 1 -->
+            <div class="card" style="width: 100%; max-width: 600px; text-align: center; border: 2px solid white;">
+                <span class="stat-label">GLOBAL GOAL</span>
+                <div class="big-stat" style="font-size: 2rem;">INCREMENTAL REVENUE</div>
             </div>
-            <div style="display: flex; align-items: center;">
-                <div style="width: 150px;">Last_Login</div>
-                <div style="width: 60%; height: 10px; background: #333;"><div style="width: 70%; height: 100%; background: white;"></div></div>
+            <div style="height: 30px; width: 2px; background: #333;"></div>
+            <!-- Уровень 2 -->
+            <div class="grid-2" style="width: 100%; max-width: 800px; gap: 20px;">
+                <div class="card" style="text-align: center;">
+                    <span class="stat-label">PROXY METRIC</span><br>
+                    <b style="color:white; font-size: 1.2rem;">Conversion Rate</b>
+                </div>
+                <div class="card" style="text-align: center;">
+                    <span class="stat-label">GUARDRAIL METRIC</span><br>
+                    <b style="color:white; font-size: 1.2rem;">Churn Rate</b>
+                </div>
             </div>
-            <div style="display: flex; align-items: center;">
-                <div style="width: 150px;">Age</div>
-                <div style="width: 60%; height: 10px; background: #333;"><div style="width: 40%; height: 100%; background: white;"></div></div>
+            <div style="height: 30px; width: 2px; background: #333;"></div>
+             <!-- Уровень 3 -->
+             <div class="card" style="width: 100%; max-width: 400px; text-align: center; border-style: dashed;">
+                <span class="stat-label">ML METRIC</span>
+                <div class="big-stat" style="font-size: 1.5rem;">ROC-AUC / GINI</div>
             </div>
         </div>
     </div>
 
-    <!-- 14. ВАЛИДАЦИЯ -->
+    <!-- 5. ДАННЫЕ И ПАЙПЛАЙН -->
     <div class="slide">
-        <h2>14. ВАЛИДАЦИЯ</h2>
+        <h2>05. ПАЙПЛАЙН ДАННЫХ</h2>
+        <div class="grid-4">
+            <div class="card">
+                <h3>INPUT</h3>
+                <p>Transactions.csv</p>
+                <span class="tag">1.5 GB</span>
+            </div>
+            <div class="card">
+                <h3>CLEANING</h3>
+                <p>Drop Duplicates</p>
+                <p>Fillna (Mean)</p>
+            </div>
+            <div class="card">
+                <h3>FEATURES</h3>
+                <p>Lag Features</p>
+                <p>One-Hot Enc</p>
+            </div>
+            <div class="card">
+                <h3>OUTPUT</h3>
+                <p>Train / Test</p>
+                <span class="tag">80/20</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- 6. LIVE DATA (ДИНАМИЧЕСКИЕ ГРАФИКИ) - ОБНОВЛЕНО -->
+    <div class="slide" id="chartSlide">
+        <h2>06. LIVE DATA</h2>
+        <p>Интерактивная визуализация ключевых метрик модели.</p>
+        
+        <!-- Сетка для графиков -->
+        <div style="display: grid; grid-template-rows: 1.2fr 1fr; gap: 20px; height: 100%;">
+            
+            <!-- 1. Верхний график: Большой Area Chart -->
+            <div class="card" style="padding: 10px;">
+                <div id="chart-area" style="width: 100%; height: 100%;"></div>
+            </div>
+
+            <!-- 2. Нижний ряд: Два графика -->
+            <div class="grid-2">
+                <div class="card" style="padding: 10px;">
+                    <div id="chart-bar" style="width: 100%; height: 100%;"></div>
+                </div>
+                <div class="card" style="padding: 10px;">
+                    <!-- Radial Bar для метрики качества -->
+                    <div id="chart-radial" style="width: 100%; height: 100%;"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 7. FEATURE ENGINEERING -->
+    <div class="slide">
+        <h2>07. FEATURE ENGINEERING</h2>
+        <p>Как мы улучшили пространство признаков.</p>
         <div class="grid-2">
-            <div class="card">
-                <h3>Cross-Validation</h3>
-                <p>Использовали K-Fold на 5 фолдов.</p>
-                <p>Std: 0.002 (стабильная)</p>
+            <div class="card" style="opacity: 0.7;">
+                <h3>RAW DATA (БЫЛО)</h3>
+                <ul>
+                    <li>Timestamp (2023-10-05 14:00)</li>
+                    <li>User_Region (Moscow)</li>
+                    <li>Item_List ([123, 456])</li>
+                </ul>
             </div>
-            <div class="card">
-                <h3>Hold-out</h3>
-                <p>Тест на отложенной выборке (20%) подтвердил качество.</p>
+            <div class="card" style="border-color: white;">
+                <h3>ENGINEERED (СТАЛО)</h3>
+                <ul>
+                    <li><strong style="color:white">Is_Weekend</strong> (0/1)</li>
+                    <li><strong style="color:white">Hour_Of_Day</strong> (14)</li>
+                    <li><strong style="color:white">Region_Avg_Spend</strong> (Target Enc)</li>
+                    <li><strong style="color:white">Items_Count</strong> (2)</li>
+                </ul>
             </div>
         </div>
     </div>
 
-    <!-- 15. РЕШЕНИЕ -->
+    <!-- 8. КОД МОДЕЛИ -->
     <div class="slide">
-        <h2>15. РЕШЕНИЕ</h2>
-        <h1>УМНАЯ СИСТЕМА РЕКОМЕНДАЦИЙ</h1>
-        <p>Мы предлагаем внедрить алгоритм, который ранжирует товары на основе предсказанной вероятности покупки.</p>
-        <div class="grid-3" style="margin-top: 30px;">
-            <div class="card" style="text-align: center;">Анализ</div>
-            <div class="card" style="text-align: center;">Скорринг</div>
-            <div class="card" style="text-align: center;">Пуш-уведомление</div>
+        <h2>08. МОДЕЛЬ (CODE)</h2>
+        <p>Используем CatBoostClassifier с кастомной метрикой.</p>
+        
+        <!-- Красивый блок с кодом -->
+        <div class="code-block">
+<span class="keyword">from</span> catboost <span class="keyword">import</span> CatBoostClassifier
+
+<span class="keyword">def</span> <span class="func">train_model</span>(X_train, y_train):
+    model = CatBoostClassifier(
+        iterations=<span class="string">1000</span>,
+        learning_rate=<span class="string">0.05</span>,
+        eval_metric=<span class="string">'AUC'</span>,
+        verbose=<span class="string">100</span>
+    )
+    
+    model.fit(X_train, y_train)
+    <span class="keyword">return</span> model
+
+<span class="comment"># Результат на валидации: AUC 0.895</span>
+        </div>
+        <div style="display: flex; gap: 20px;">
+            <span class="tag">PYTHON 3.9</span>
+            <span class="tag">CATBOOST</span>
+            <span class="tag">SKLEARN</span>
         </div>
     </div>
 
-    <!-- 16. ЭКОНОМИКА -->
+    <!-- 9. РЕЗУЛЬТАТЫ МОДЕЛИ -->
     <div class="slide">
-        <h2>16. ЭКОНОМИКА</h2>
+        <h2>09. РЕЗУЛЬТАТЫ</h2>
+        <div class="grid-3">
+            <div class="card">
+                <span class="stat-label">ROC-AUC</span>
+                <span class="big-stat">0.89</span>
+                <span style="color: #0f0;">+0.05 vs Baseline</span>
+            </div>
+            <div class="card">
+                <span class="stat-label">PRECISION @ K=5</span>
+                <span class="big-stat">0.72</span>
+                <p>Высокая точность в топе</p>
+            </div>
+            <div class="card">
+                <span class="stat-label">INFERENCE TIME</span>
+                <span class="big-stat">20ms</span>
+                <p>Подходит для Real-time</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- 10. АНАЛИЗ ОШИБОК -->
+    <div class="slide">
+        <h2>10. АНАЛИЗ ОШИБОК</h2>
         <div class="grid-2">
             <div>
-                <h3>РАСЧЕТ</h3>
-                <p>При охвате 100к пользователей и росте конверсии на 2%:</p>
+                <p>Мы проанализировали False Positives (где модель соврала).</p>
                 <br>
-                <p style="font-family: 'Roboto Mono';">100,000 * 0.02 * $50 (LTV) =</p>
+                <h3>Где ошибаемся?</h3>
+                <ul>
+                    <li>1. <strong>Новые пользователи:</strong> Не хватает истории действий (Cold Start).</li>
+                    <li>2. <strong>Аномальные чеки:</strong> Модель путает оптовиков с фродом.</li>
+                </ul>
+                <br>
+                <h3>Решение</h3>
+                <p>Добавить фичу `Days_Since_Registration` и отдельную ветку для новых юзеров.</p>
             </div>
             <div class="card flex-center">
-                <div>
-                    <span class="stat-label">ОЖИДАЕМАЯ ПРИБЫЛЬ</span><br>
-                    <span class="big-stat">$100,000</span><br>
-                    <span class="stat-label">В МЕСЯЦ</span>
+                <!-- Плейсхолдер для матрицы ошибок -->
+                <div style="text-align: center;">
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 2px; margin-bottom: 10px;">
+                        <div style="background: #222; padding: 20px;">TN</div>
+                        <div style="background: #444; padding: 20px; border: 1px solid red;">FP (Error)</div>
+                        <div style="background: #444; padding: 20px;">FN</div>
+                        <div style="background: #fff; color:black; padding: 20px;">TP</div>
+                    </div>
+                    <span class="stat-label">CONFUSION MATRIX</span>
                 </div>
             </div>
         </div>
     </div>
 
-    <!-- 17. ROADMAP -->
+    <!-- 11. БИЗНЕС-ЭФФЕКТ -->
     <div class="slide">
-        <h2>17. ROADMAP ВНЕДРЕНИЯ</h2>
-        <div style="display: flex; justify-content: space-between; margin-top: 40px; border-top: 2px solid #333; padding-top: 20px;">
-            <div style="width: 23%;"><h3>Q1</h3><p>Сбор требований и пилот на 5% аудитории</p></div>
-            <div style="width: 23%;"><h3>Q2</h3><p>A/B тестирование и дообучение модели</p></div>
-            <div style="width: 23%;"><h3>Q3</h3><p>Интеграция в продакшн (Backend)</p></div>
-            <div style="width: 23%;"><h3>Q4</h3><p>Масштабирование на все регионы</p></div>
+        <h2>11. ЭКОНОМИКА (IMPACT)</h2>
+        <p>Расчет потенциальной прибыли при внедрении на 100% базы.</p>
+        
+        <div style="margin: 40px 0; padding: 20px; border: 1px dashed white; text-align: center;">
+            <h3 style="color: white; font-size: 1.5rem;">Profit = (Users * Uplift * Margin) - Tech_Cost</h3>
         </div>
-    </div>
 
-    <!-- 18. РИСКИ -->
-    <div class="slide">
-        <h2>18. РИСКИ</h2>
-        <div class="grid-2">
-            <div class="card" style="border-left: 5px solid red;">
-                <h3>ТЕХНИЧЕСКИЕ</h3>
-                <p>Риск: Долгая обработка запроса.</p>
-                <p>Решение: Кэширование предиктов.</p>
+        <div class="grid-3">
+            <div class="card">
+                <span class="stat-label">USERS</span>
+                <div class="big-stat" style="color:white; font-size: 2rem;">500k</div>
             </div>
-            <div class="card" style="border-left: 5px solid yellow;">
-                <h3>БИЗНЕСОВЫЕ</h3>
-                <p>Риск: Негатив пользователей от навязчивости.</p>
-                <p>Решение: Лимит на уведомления.</p>
+            <div class="card">
+                <span class="stat-label">UPLIFT</span>
+                <div class="big-stat" style="color:white; font-size: 2rem;">+3%</div>
+            </div>
+            <div class="card" style="border-color: var(--accent);">
+                <span class="stat-label">TOTAL PROFIT</span>
+                <div class="big-stat">$150,000</div>
+                <span class="tag">MONTHLY</span>
             </div>
         </div>
     </div>
 
-    <!-- 19. NEXT STEPS -->
+    <!-- 12. КОМАНДА -->
     <div class="slide">
-        <h2>19. NEXT STEPS</h2>
-        <p>Куда двигаться дальше после хакатона?</p>
-        <ul>
-            <li>[ ] Добавить внешние данные (погода, праздники)</li>
-            <li>[ ] Протестировать Deep Learning (Neural Networks)</li>
-            <li>[ ] Создать дашборд для менеджеров</li>
-        </ul>
-    </div>
-
-    <!-- 20. КОМАНДА -->
-    <div class="slide">
-        <h2>20. КОМАНДА</h2>
+        <h2>12. КОМАНДА</h2>
         <div class="grid-4">
-            <div class="card">
-                <div style="height: 100px; background: #333; margin-bottom: 10px;"></div>
-                <h3>CAPTAIN</h3><p>Role: Lead</p>
+            <!-- Участник 1 -->
+            <div class="card" style="padding: 10px;">
+                <div class="team-photo-box" style="background-image: url('images/team_member_1.jpg');"></div>
+                <div style="padding: 10px;">
+                    <h3>CAPTAIN</h3>
+                    <p style="font-size: 0.9rem;">Strategy & Deck</p>
+                </div>
             </div>
-            <div class="card">
-                <div style="height: 100px; background: #333; margin-bottom: 10px;"></div>
-                <h3>ANALYST</h3><p>Role: EDA</p>
+            <!-- Участник 2 -->
+            <div class="card" style="padding: 10px;">
+                <div class="team-photo-box"></div>
+                <div style="padding: 10px;">
+                    <h3>ML ENG</h3>
+                    <p style="font-size: 0.9rem;">Pipeline & Code</p>
+                </div>
             </div>
-            <div class="card">
-                <div style="height: 100px; background: #333; margin-bottom: 10px;"></div>
-                <h3>ML ENG</h3><p>Role: Code</p>
+            <!-- Участник 3 -->
+            <div class="card" style="padding: 10px;">
+                <div class="team-photo-box"></div>
+                <div style="padding: 10px;">
+                    <h3>ANALYST</h3>
+                    <p style="font-size: 0.9rem;">EDA & Hypotheses</p>
+                </div>
             </div>
-            <div class="card">
-                <div style="height: 100px; background: #333; margin-bottom: 10px;"></div>
-                <h3>DESIGN</h3><p>Role: Slide</p>
+             <!-- Участник 4 -->
+             <div class="card" style="padding: 10px;">
+                <div class="team-photo-box"></div>
+                <div style="padding: 10px;">
+                    <h3>DESIGN</h3>
+                    <p style="font-size: 0.9rem;">Visuals</p>
+                </div>
             </div>
         </div>
     </div>
 
-    <!-- 21. ФИНАЛ -->
+    <!-- 13. ФИНАЛ -->
     <div class="slide flex-center">
         <div>
-            <h1>GG WP</h1>
-            <p>THANKS FOR WATCHING</p>
-            <br>
-            <div style="margin-top: 20px;">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/f/f5/Team_Spirit_new_em.svg" alt="TS Logo" class="ts-logo-white logo-end">
+            <h1 style="font-size: 4.5rem; letter-spacing: -2px;">GG WP</h1>
+            <p style="font-size: 1rem; font-weight: 700; margin-top: 10px;">THANKS FOR WATCHING</p>
+            <div style="margin-top: 40px;">
+                <img src="images/Team_Spirit_new_em.svg" alt="TS Logo" style="filter: brightness(0) invert(1); width: 150px; opacity: 0.6;">
             </div>
         </div>
     </div>
 
-    <!-- ================= УПРАВЛЕНИЕ ================= -->
-
+    <!-- ================= CONTROLS & JS ================= -->
     <div class="controls">
-        <button class="btn" onclick="prevSlide()"> < </button>
-        <button class="btn" onclick="nextSlide()"> > </button>
+        <div class="btn-group">
+            <button class="btn" onclick="prevSlide()"> &#8249; </button>
+            <button class="btn" onclick="nextSlide()"> &#8250; </button>
+        </div>
     </div>
 
     <script>
+        // ==========================================
+        // APEXCHARTS CONFIGURATION (TEAM SPIRIT STYLE)
+        // ==========================================
+
+        const commonOptions = {
+            chart: {
+                background: 'transparent',
+                toolbar: { show: false },
+                animations: { enabled: true, easing: 'easeinout', speed: 800 },
+                fontFamily: 'Inter, sans-serif',
+            },
+            theme: { mode: 'dark' },
+            colors: ['#ffffff', '#666666'],
+            grid: { borderColor: '#333', strokeDashArray: 4 },
+            dataLabels: { enabled: false },
+            stroke: { curve: 'smooth', width: 2 },
+        };
+
+        // 1. AREA CHART
+        const optionsArea = {
+            ...commonOptions,
+            series: [{ name: 'Model Uplift', data: [31, 40, 28, 51, 42, 109, 100] }, 
+                     { name: 'Baseline', data: [11, 32, 45, 32, 34, 52, 41] }],
+            chart: { type: 'area', height: '100%', parentHeightOffset: 0, background: 'transparent', toolbar: { show: false } },
+            fill: { type: 'gradient', gradient: { shadeIntensity: 1, opacityFrom: 0.7, opacityTo: 0.1, stops: [0, 90, 100] } },
+            xaxis: { categories: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'], axisBorder: { show: false }, axisTicks: { show: false } },
+            yaxis: { show: false }
+        };
+
+        // 2. BAR CHART
+        const optionsBar = {
+            ...commonOptions,
+            series: [{ name: 'Importance', data: [400, 430, 448, 470, 540] }],
+            chart: { type: 'bar', height: '100%', parentHeightOffset: 0, background: 'transparent', toolbar: { show: false } },
+            plotOptions: { bar: { borderRadius: 4, horizontal: true } },
+            xaxis: { categories: ['Age', 'Region', 'Last_Login', 'Total_Spend', 'Is_Weekend'], labels: { show: false }, axisBorder: { show: false }, axisTicks: { show: false } },
+        };
+
+        // 3. RADIAL BAR
+        const optionsRadial = {
+            ...commonOptions,
+            series: [89],
+            chart: { type: 'radialBar', height: '110%', background: 'transparent' },
+            plotOptions: {
+                radialBar: {
+                    startAngle: -135, endAngle: 135,
+                    hollow: { margin: 15, size: '60%', background: 'transparent' },
+                    track: { background: '#222', strokeWidth: '100%' },
+                    dataLabels: {
+                        show: true,
+                        name: { offsetY: -10, show: true, color: '#888', fontSize: '14px' },
+                        value: { offsetY: 5, color: '#fff', fontSize: '30px', fontWeight: '900', fontFamily: 'Monument Extended, sans-serif', show: true }
+                    }
+                }
+            },
+            labels: ['ROC-AUC'],
+            stroke: { lineCap: 'round' },
+            colors: ['#ffffff']
+        };
+
+        // Initial Render
+        let chartArea, chartBar, chartRadial;
+        
+        // Wait for DOM
+        document.addEventListener('DOMContentLoaded', () => {
+             chartArea = new ApexCharts(document.querySelector("#chart-area"), optionsArea);
+             chartBar = new ApexCharts(document.querySelector("#chart-bar"), optionsBar);
+             chartRadial = new ApexCharts(document.querySelector("#chart-radial"), optionsRadial);
+             
+             chartArea.render();
+             chartBar.render();
+             chartRadial.render();
+        });
+
+        function triggerChartAnimations(index) {
+            const slidesArr = Array.from(document.querySelectorAll('.slide'));
+            const chartSlideIndex = slidesArr.findIndex(s => s.id === 'chartSlide');
+
+            if (index === chartSlideIndex && chartArea) {
+                chartArea.updateOptions({ chart: { animations: { enabled: true } } });
+                chartBar.updateOptions({ chart: { animations: { enabled: true } } });
+                chartRadial.updateOptions({ chart: { animations: { enabled: true } } });
+            }
+        }
+
+        // ==========================================
+        // SLIDER LOGIC
+        // ==========================================
+
         let currentSlide = 0;
         const slides = document.querySelectorAll('.slide');
         const totalSlidesEl = document.getElementById('totalSlide');
@@ -502,9 +463,13 @@
         function showSlide(index) {
             slides.forEach((slide, i) => {
                 slide.classList.remove('active');
-                if (i === index) slide.classList.add('active');
+                if (i === index) {
+                    slide.classList.add('active');
+                    slide.scrollTop = 0;
+                }
             });
             updateCounter();
+            triggerChartAnimations(index); // Trigger charts
         }
 
         function nextSlide() {
@@ -521,6 +486,16 @@
             if (e.key === 'ArrowRight' || e.key === 'Space') nextSlide();
             if (e.key === 'ArrowLeft') prevSlide();
         });
+
+        // Swipe for mobile
+        let touchStartX = 0;
+        let touchEndX = 0;
+        document.addEventListener('touchstart', e => { touchStartX = e.changedTouches[0].screenX; }, false);
+        document.addEventListener('touchend', e => {
+            touchEndX = e.changedTouches[0].screenX;
+            if (touchEndX < touchStartX - 50) nextSlide();
+            if (touchEndX > touchStartX + 50) prevSlide();
+        }, false);
 
         // Init
         totalSlidesEl.innerText = slides.length;
