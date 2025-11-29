@@ -1,0 +1,190 @@
+/* ================= KNYAZEV / AGRO STYLE ================= */
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap');
+
+:root {
+    --base-green: #34d399; /* emerald-400 */
+    --dark-green: #059669; /* emerald-600 */
+    --text-primary: #1f2937; /* gray-800 */
+    --text-secondary: #4b5563; /* gray-600 */
+    --background: #ffffff;
+    --card-bg: #f9fafb;
+    --font-family: 'Inter', 'Myriad Set Pro', -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; outline: none; -webkit-tap-highlight-color: transparent; }
+
+body {
+    background-color: var(--background);
+    color: var(--text-primary);
+    font-family: var(--font-family);
+    overflow: hidden;
+    height: 100vh;
+    width: 100vw;
+}
+
+/* ================= SLIDE LAYOUT ================= */
+.slide {
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 40px 60px;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.6s ease-in-out, visibility 0.6s;
+    background-color: var(--background);
+    z-index: 1;
+}
+
+.slide.active {
+    opacity: 1;
+    visibility: visible;
+    z-index: 10;
+}
+
+.slide-content {
+    max-width: 1000px;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+/* ================= TYPOGRAPHY ================= */
+h1 {
+    font-size: clamp(2rem, 5vw, 4.5rem);
+    font-weight: 700;
+    margin: 0 0 20px 0;
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+    color: var(--text-primary);
+}
+
+h2 {
+    font-size: clamp(1.5rem, 4vw, 3rem);
+    font-weight: 600;
+    margin: 0 0 30px 0;
+    line-height: 1.2;
+    letter-spacing: -0.01em;
+    color: var(--text-primary);
+}
+
+h3 {
+    font-size: clamp(1.2rem, 2.5vw, 1.8rem);
+    font-weight: 500;
+    margin: 10px 0;
+    color: var(--text-secondary);
+}
+
+p, li {
+    font-size: clamp(1rem, 1.5vw, 1.3rem);
+    line-height: 1.6;
+    color: var(--text-secondary);
+}
+
+.green-text { color: var(--dark-green); }
+.gradient-text { 
+    background: linear-gradient(135deg, var(--dark-green), var(--base-green));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+/* ================= UI ELEMENTS ================= */
+.tag {
+    display: inline-block; padding: 6px 14px;
+    background: #ecfdf5; 
+    color: var(--dark-green);
+    font-size: 0.85rem; font-weight: 600;
+    border-radius: 20px;
+    margin: 5px;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+/* Cards (Shadow Style from example) */
+.card {
+    background: var(--background);
+    border-radius: 1rem;
+    box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1);
+    padding: 30px;
+    border: 1px solid #e5e7eb;
+    text-align: left;
+    height: 100%;
+    display: flex; 
+    flex-direction: column;
+    transition: transform 0.3s;
+}
+.card:hover { transform: translateY(-5px); }
+
+/* Grids */
+.grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; width: 100%; }
+.grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 25px; width: 100%; }
+.grid-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; width: 100%; }
+
+/* Code Block */
+.code-block {
+    background: #111827; /* Dark simplified */
+    color: #f9fafb;
+    padding: 25px;
+    border-radius: 12px;
+    font-family: 'Menlo', monospace;
+    font-size: 1rem;
+    text-align: left;
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.2);
+    width: 100%;
+    max-width: 800px;
+}
+.keyword { color: #c084fc; } .func { color: #60a5fa; } .string { color: #34d399; } .comment { color: #6b7280; }
+
+/* Lists */
+ul { list-style: none; padding: 0; text-align: left; }
+ul li { margin-bottom: 15px; display: flex; align-items: center; }
+ul li::before {
+    content: '•'; color: var(--dark-green); font-size: 1.5rem; margin-right: 15px;
+}
+
+/* ================= ANIMATIONS ================= */
+.fade-in-up { opacity: 0; transform: translateY(30px); }
+.fade-in-up.is-animating { animation: fadeInUp 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards; }
+.delay-1 { animation-delay: 0.1s; }
+.delay-2 { animation-delay: 0.2s; }
+.delay-3 { animation-delay: 0.3s; }
+
+@keyframes fadeInUp { to { opacity: 1; transform: translateY(0); } }
+
+/* ================= NAVIGATION ================= */
+.nav-arrow {
+    position: fixed; top: 50%; transform: translateY(-50%);
+    width: 60px; height: 60px; z-index: 50; cursor: pointer;
+    display: flex; align-items: center; justify-content: center;
+    opacity: 0; transition: opacity 0.3s; color: var(--text-primary);
+    background: rgba(0,0,0,0.05); border-radius: 50%;
+}
+body:hover .nav-arrow { opacity: 0.5; }
+.nav-arrow:hover { opacity: 1 !important; background: rgba(0,0,0,0.1); }
+#nav-prev { left: 20px; }
+#nav-next { right: 20px; }
+
+.footer-info {
+    position: fixed; bottom: 20px; left: 30px;
+    font-size: 0.9rem; font-weight: 600; color: #9ca3af;
+    z-index: 50;
+}
+.slide-counter { float: right; margin-left: 20px; color: var(--text-primary); }
+
+/* ================= CHARTS OVERRIDE ================= */
+.chart-container { width: 100%; height: 100%; min-height: 300px; }
+
+/* Mobile */
+@media (max-width: 768px) {
+    h1 { font-size: 2.5rem; } h2 { font-size: 1.8rem; }
+    .grid-2, .grid-3, .grid-4 { grid-template-columns: 1fr; }
+    .slide { padding: 20px; }
+}

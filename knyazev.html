@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Knyazev Style | Dano</title>
+    <link rel="stylesheet" href="style-knyazev.css">
+    <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+    <link rel="icon" href="images/Team_Spirit_new_em.svg" type="image/svg+xml">
+</head>
+<body>
+
+    <!-- Навигация -->
+    <div id="nav-prev" class="nav-arrow" onclick="prevSlide()">
+        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6"/></svg>
+    </div>
+    <div id="nav-next" class="nav-arrow" onclick="nextSlide()">
+        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>
+    </div>
+
+    <!-- Футер -->
+    <div class="footer-info">
+        TEAM SPIRIT / DANO
+        <span class="slide-counter"><span id="currSlide">1</span> / <span id="totalSlide">13</span></span>
+    </div>
+
+    <!-- === СЛАЙДЫ === -->
+
+    <!-- 1. ТИТУЛЬНИК -->
+    <div class="slide active">
+        <div class="slide-content">
+            <div class="logo fade-in-up" style="display: flex; align-items: center; gap: 15px; margin-bottom: 40px;">
+                <img src="images/Team_Spirit_new_em.svg" width="60" style="filter: brightness(0);">
+                <span style="font-weight: 700; font-size: 1.5rem;">Team Spirit</span>
+            </div>
+            <h1 class="fade-in-up delay-1">Dano <span class="green-text">Olympiad.</span></h1>
+            <p class="fade-in-up delay-2" style="max-width: 600px;">Глубокий анализ данных. Продвинутые модели. <br>От сырых данных к реальной прибыли.</p>
+            <div class="fade-in-up delay-3" style="margin-top: 40px;">
+                <span class="tag">#DataScience</span>
+                <span class="tag">#Analytics</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- 2. AGENDA -->
+    <div class="slide">
+        <div class="slide-content">
+            <h2 class="fade-in-up">Сегодняшняя повестка.</h2>
+            <div class="grid-2 fade-in-up delay-1" style="text-align: left;">
+                <div class="card">
+                    <h3 class="green-text">01. Problem</h3>
+                    <p>Бизнес-контекст, боли клиента и иерархия метрик.</p>
+                </div>
+                <div class="card">
+                    <h3 class="green-text">02. Data</h3>
+                    <p>EDA, очистка данных и Feature Engineering.</p>
+                </div>
+                <div class="card">
+                    <h3 class="green-text">03. Model</h3>
+                    <p>CatBoost, валидация и анализ ошибок.</p>
+                </div>
+                <div class="card">
+                    <h3 class="green-text">04. Profit</h3>
+                    <p>Экономический эффект и внедрение.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 3. ПРОБЛЕМАТИКА -->
+    <div class="slide">
+        <div class="slide-content">
+            <h2 class="fade-in-up">Вызов.</h2>
+            <h1 class="fade-in-up delay-1">Мы теряем <span class="green-text">$X Million</span></h1>
+            <p class="fade-in-up delay-2">Ежегодно из-за оттока и неэффективного таргетинга.</p>
+        </div>
+    </div>
+
+    <!-- 4. МЕТРИКИ -->
+    <div class="slide">
+        <div class="slide-content">
+            <h2 class="fade-in-up">Иерархия Метрик</h2>
+            <div class="grid-3 fade-in-up delay-1" style="align-items: stretch;">
+                <div class="card" style="opacity: 0.7;">
+                    <h3>Proxy</h3>
+                    <p style="font-size: 1.5rem; font-weight: 700; color: #1f2937;">Conversion</p>
+                </div>
+                <div class="card" style="border: 2px solid var(--dark-green);">
+                    <div class="tag">Goal</div>
+                    <h3>Revenue</h3>
+                    <p style="font-size: 2rem; font-weight: 700; color: var(--dark-green);">Максимизация прибыли</p>
+                </div>
+                <div class="card" style="opacity: 0.7;">
+                    <h3>Guardrail</h3>
+                    <p style="font-size: 1.5rem; font-weight: 700; color: #1f2937;">Churn Rate</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 5. ПАЙПЛАЙН -->
+    <div class="slide">
+        <div class="slide-content">
+            <h2 class="fade-in-up">Пайплайн Данных</h2>
+            <div style="display: flex; gap: 20px; align-items: center; justify-content: center; width: 100%; margin-top: 40px;" class="fade-in-up delay-1">
+                <div class="card" style="padding: 20px;">
+                    <h3>Input</h3>
+                    <p>Transactions.csv</p>
+                </div>
+                <div style="font-size: 2rem; color: #ccc;">&rarr;</div>
+                <div class="card" style="padding: 20px;">
+                    <h3>Process</h3>
+                    <p>Cleaning & FE</p>
+                </div>
+                <div style="font-size: 2rem; color: #ccc;">&rarr;</div>
+                <div class="card" style="padding: 20px; background: #ecfdf5; border-color: var(--base-green);">
+                    <h3 class="green-text">Model</h3>
+                    <p>CatBoost</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 6. LIVE DATA (ГРАФИКИ) -->
+    <div class="slide" id="chartSlide">
+        <div class="slide-content" style="max-width: 1200px;">
+            <h2 class="fade-in-up" style="margin-bottom: 20px;">Live Analytics</h2>
+            <div class="grid-2 fade-in-up delay-1" style="height: 500px; grid-template-columns: 2fr 1fr;">
+                <div class="card">
+                    <h3>Uplift vs Baseline</h3>
+                    <div id="chart-area" class="chart-container"></div>
+                </div>
+                <div class="card">
+                    <h3>Feature Importance</h3>
+                    <div id="chart-bar" class="chart-container"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 7. FEATURES -->
+    <div class="slide">
+        <div class="slide-content">
+            <h2 class="fade-in-up">Feature Engineering</h2>
+            <div class="grid-2 fade-in-up delay-1">
+                <div class="card" style="background: #f3f4f6;">
+                    <h3 style="color: #6b7280;">Legacy (Raw)</h3>
+                    <ul>
+                        <li>Timestamp</li>
+                        <li>User_ID only</li>
+                        <li>Category_ID</li>
+                    </ul>
+                </div>
+                <div class="card">
+                    <h3 class="green-text">Engineered (New)</h3>
+                    <ul>
+                        <li><span class="green-text">✓</span> Is_Weekend_Flag</li>
+                        <li><span class="green-text">✓</span> Avg_Check_30d</li>
+                        <li><span class="green-text">✓</span> User_LTV_Segment</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 8. CODE -->
+    <div class="slide">
+        <div class="slide-content">
+            <h2 class="fade-in-up">Implementation</h2>
+            <div class="code-block fade-in-up delay-1">
+<pre>
+<span class="keyword">def</span> <span class="func">train_catboost</span>(X, y):
+    model = <span class="func">CatBoostClassifier</span>(
+        iterations=<span class="string">1000</span>,
+        learning_rate=<span class="string">0.05</span>,
+        loss_function=<span class="string">'Logloss'</span>,
+        eval_metric=<span class="string">'AUC'</span>
+    )
+    
+    <span class="comment"># Fit with early stopping</span>
+    model.fit(X, y, verbose=<span class="string">100</span>)
+    <span class="keyword">return</span> model
+</pre>
+            </div>
+            <p class="fade-in-up delay-2">Оптимизировано для скорости и точности.</p>
+        </div>
+    </div>
+
+    <!-- 9. RESULTS -->
+    <div class="slide">
+        <div class="slide-content">
+            <h2 class="fade-in-up">Результаты</h2>
+            <div class="grid-3 fade-in-up delay-1">
+                <div class="card" style="align-items: center; justify-content: center;">
+                    <span class="gradient-text" style="font-size: 4rem; font-weight: 700;">0.89</span>
+                    <p>ROC-AUC</p>
+                </div>
+                <div class="card" style="align-items: center; justify-content: center;">
+                    <span class="green-text" style="font-size: 4rem; font-weight: 700;">+5%</span>
+                    <p>Uplift</p>
+                </div>
+                <div class="card" style="align-items: center; justify-content: center;">
+                    <span style="font-size: 4rem; font-weight: 700; color: #374151;">20ms</span>
+                    <p>Inference</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 10. ERROR ANALYSIS -->
+    <div class="slide">
+        <div class="slide-content">
+            <h2 class="fade-in-up">Анализ Ошибок</h2>
+            <div class="grid-2 fade-in-up delay-1">
+                <div class="card" style="border-left: 5px solid #ef4444;">
+                    <h3 style="color: #ef4444;">False Positives</h3>
+                    <p style="font-weight: 600; color: #111;">Cold Start Users</p>
+                    <p>Модель ошибается на пользователях без истории.</p>
+                </div>
+                <div class="card" style="border-left: 5px solid var(--dark-green);">
+                    <h3 class="green-text">Solution</h3>
+                    <p style="font-weight: 600; color: #111;">Heuristic Fallback</p>
+                    <p>Отдельная ветка логики для новых юзеров.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 11. ECONOMICS -->
+    <div class="slide">
+        <div class="slide-content">
+            <h3 class="fade-in-up">Business Impact</h3>
+            <h1 class="fade-in-up delay-1" style="font-size: 6rem; color: var(--text-primary);">$150,000</h1>
+            <p class="fade-in-up delay-2 green-text" style="font-size: 1.5rem; font-weight: 600;">Monthly Additional Profit</p>
+        </div>
+    </div>
+
+    <!-- 12. TEAM -->
+    <div class="slide">
+        <div class="slide-content">
+            <h2 class="fade-in-up">Команда</h2>
+            <div class="grid-4 fade-in-up delay-1">
+                <div class="card" style="align-items: center; text-align: center;">
+                    <div style="width: 80px; height: 80px; background: #ddd; border-radius: 50%; margin-bottom: 15px; background-image: url('images/team_member_1.jpg'); background-size: cover;"></div>
+                    <h3>Captain</h3>
+                    <p style="font-size: 0.9rem;">Strategy</p>
+                </div>
+                <div class="card" style="align-items: center; text-align: center;">
+                    <div style="width: 80px; height: 80px; background: #ddd; border-radius: 50%; margin-bottom: 15px;"></div>
+                    <h3>ML Eng</h3>
+                    <p style="font-size: 0.9rem;">Code</p>
+                </div>
+                <div class="card" style="align-items: center; text-align: center;">
+                    <div style="width: 80px; height: 80px; background: #ddd; border-radius: 50%; margin-bottom: 15px;"></div>
+                    <h3>Analyst</h3>
+                    <p style="font-size: 0.9rem;">Insights</p>
+                </div>
+                <div class="card" style="align-items: center; text-align: center;">
+                    <div style="width: 80px; height: 80px; background: #ddd; border-radius: 50%; margin-bottom: 15px;"></div>
+                    <h3>Design</h3>
+                    <p style="font-size: 0.9rem;">Deck</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 13. FINAL -->
+    <div class="slide">
+        <div class="slide-content">
+            <div class="logo fade-in-up">
+                 <img src="images/Team_Spirit_new_em.svg" width="80" style="filter: brightness(0);">
+            </div>
+            <h1 class="fade-in-up delay-1" style="margin-top: 20px;">Thank you.</h1>
+            <a href="index.html" class="fade-in-up delay-2" style="margin-top: 40px; color: var(--text-secondary); text-decoration: none; border-bottom: 1px solid #ccc;">Back to Menu</a>
+        </div>
+    </div>
+
+    <script>
+        // === LOGIC FROM VUE TO VANILLA JS ===
+        
+        // 1. CHART CONFIG (Light Theme)
+        const PRIMARY_COLOR = '#059669'; // Emerald 600
+        const TEXT_COLOR = '#6b7280'; // Gray 500
+
+        const commonOptions = {
+            chart: { 
+                background: 'transparent', 
+                toolbar: { show: false }, 
+                animations: { enabled: true, easing: 'easeinout', speed: 800 },
+                fontFamily: 'Inter, sans-serif'
+            },
+            theme: { mode: 'light' },
+            colors: [PRIMARY_COLOR, '#9ca3af'],
+            grid: { show: true, borderColor: '#e5e7eb', strokeDashArray: 4 },
+            dataLabels: { enabled: false },
+            tooltip: { theme: 'light' }
+        };
+
+        const areaOptions = {
+            ...commonOptions,
+            series: [
+                { name: 'Model Uplift', data: [31, 40, 28, 51, 42, 109, 100] },
+                { name: 'Baseline', data: [11, 32, 45, 32, 34, 52, 41] }
+            ],
+            chart: { type: 'area', height: '100%', toolbar: { show: false } },
+            stroke: { curve: 'smooth', width: 2 },
+            fill: { 
+                type: 'gradient', 
+                gradient: { 
+                    shadeIntensity: 1, 
+                    opacityFrom: 0.4, 
+                    opacityTo: 0.05, 
+                    stops: [0, 100],
+                    colorStops: [
+                        { offset: 0, color: PRIMARY_COLOR, opacity: 0.4 },
+                        { offset: 100, color: PRIMARY_COLOR, opacity: 0 }
+                    ]
+                } 
+            },
+            xaxis: { categories: ['Mon','Tue','Wed','Thu','Fri','Sat','Sun'], labels: { style: { colors: TEXT_COLOR } } },
+            yaxis: { show: false }
+        };
+
+        const barOptions = {
+            ...commonOptions,
+            series: [{ name: 'Importance', data: [400, 430, 448, 470, 540] }],
+            chart: { type: 'bar', height: '100%', toolbar: { show: false } },
+            plotOptions: { 
+                bar: { borderRadius: 4, horizontal: true, barHeight: '50%' } 
+            },
+            colors: [PRIMARY_COLOR],
+            xaxis: { 
+                categories: ['Age', 'Region', 'Last_Login', 'Total_Spend', 'Is_Weekend'], 
+                labels: { style: { colors: TEXT_COLOR } }
+            }
+        };
+
+        let ch1, ch2;
+
+        document.addEventListener('DOMContentLoaded', () => {
+            ch1 = new ApexCharts(document.querySelector("#chart-area"), areaOptions);
+            ch2 = new ApexCharts(document.querySelector("#chart-bar"), barOptions);
+            ch1.render(); ch2.render();
+            
+            // Initial animation trigger
+            showSlide(0);
+        });
+
+        // 2. SLIDER LOGIC & ANIMATIONS
+        let current = 0;
+        const slides = document.querySelectorAll('.slide');
+        const countEl = document.getElementById('currSlide');
+        
+        function showSlide(idx) {
+            slides.forEach((s, i) => {
+                s.classList.remove('active');
+                if(i === idx) {
+                    s.classList.add('active');
+                    
+                    // Trigger Reflow for Animations (Vue Logic adapted)
+                    const animated = s.querySelectorAll('.fade-in-up');
+                    animated.forEach(el => {
+                        el.classList.remove('is-animating');
+                        void el.offsetWidth; // Force Reflow
+                        el.classList.add('is-animating');
+                    });
+
+                    // Trigger Charts
+                    if(s.id === 'chartSlide') {
+                        ch1.updateOptions({ chart: { animations: { enabled: true } } });
+                        ch2.updateOptions({ chart: { animations: { enabled: true } } });
+                    }
+                }
+            });
+            countEl.innerText = idx + 1;
+        }
+
+        function nextSlide() { current = (current + 1) % slides.length; showSlide(current); }
+        function prevSlide() { current = (current - 1 + slides.length) % slides.length; showSlide(current); }
+        
+        // Inputs
+        document.addEventListener('keydown', (e) => {
+            if(e.key === 'ArrowRight' || e.key === 'Space') nextSlide();
+            if(e.key === 'ArrowLeft') prevSlide();
+        });
+
+        document.addEventListener('click', (e) => {
+            // Check if click is near edges for navigation (optional, mimics Vue logic)
+            if (e.clientX > window.innerWidth * 0.8) nextSlide();
+            if (e.clientX < window.innerWidth * 0.2) prevSlide();
+        });
+    </script>
+</body>
+</html>

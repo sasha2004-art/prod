@@ -1,0 +1,136 @@
+/* ================= JOBS KEYNOTE STYLE (2007) ================= */
+
+/* Импортируем похожий шрифт, если нет Myriad Pro */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap');
+
+:root {
+    /* Тот самый градиент Keynote */
+    --bg-center: #444444;
+    --bg-edge: #000000;
+    
+    /* Цвета текста */
+    --text-main: #ffffff;
+    --text-dim: #999999;
+    
+    /* Акцентный синий из Keynote */
+    --accent-blue: #6B94D6; 
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+    /* Радиальный градиент - эффект прожектора на черной стене */
+    background: radial-gradient(circle at 50% 30%, var(--bg-center) 0%, var(--bg-edge) 70%);
+    color: var(--text-main);
+    font-family: "Myriad Pro", "Segoe UI", "Inter", Helvetica, Arial, sans-serif;
+    height: 100vh;
+    overflow: hidden;
+    position: relative;
+    text-rendering: optimizeLegibility;
+}
+
+/* ================= UTILS & TYPOGRAPHY ================= */
+.flex-center { display: flex; justify-content: center; align-items: center; height: 100%; width: 100%; }
+
+/* Джобс любил огромные, тонкие шрифты */
+h1 { font-weight: 600; font-size: 5rem; letter-spacing: -1px; margin: 0; line-height: 1.1; }
+h2 { font-weight: 300; font-size: 4rem; letter-spacing: -1px; margin-bottom: 30px; }
+h3 { font-weight: 400; font-size: 2.5rem; margin-bottom: 10px; }
+p { font-weight: 300; font-size: 1.8rem; color: var(--text-dim); }
+
+.subtitle { font-size: 2.5rem; color: #888; font-weight: 300; margin-top: 10px; }
+.huge-text { font-size: 6rem; font-weight: 600; line-height: 1; }
+.med-text { font-size: 3.5rem; font-weight: 300; }
+.giant-number { font-size: 10rem; font-weight: 700; line-height: 1; letter-spacing: -5px; }
+
+/* ================= THE STAGE (LAYOUT) ================= */
+.slide {
+    position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+    opacity: 0; visibility: hidden;
+    transition: opacity 0.8s ease; /* Плавное затухание как в Keynote */
+    padding: 60px;
+}
+.slide.active { opacity: 1; visibility: visible; z-index: 10; }
+
+.stage-content { text-align: center; width: 100%; max-width: 1200px; }
+
+/* ================= KEYNOTE EFFECTS ================= */
+
+/* ЭФФЕКТ МОКРОГО ПОЛА (ОТРАЖЕНИЕ) */
+.reflection {
+    -webkit-box-reflect: below 0px linear-gradient(transparent 70%, rgba(255,255,255,0.1) 90%, rgba(255,255,255,0.3));
+}
+
+/* Линии разделители */
+.separator-line { width: 50%; height: 2px; background: #666; margin: 40px auto; }
+
+/* ================= SPECIFIC SLIDES ================= */
+
+/* Slide 2: Agenda Icons (iPod style circles) */
+.icons-row { display: flex; justify-content: center; gap: 80px; margin-top: 40px; }
+.icon-item { text-align: center; }
+.icon-circle {
+    width: 120px; height: 120px;
+    border: 4px solid #fff; border-radius: 50%;
+    display: flex; justify-content: center; align-items: center;
+    font-size: 4rem; font-weight: 600; margin: 0 auto 20px;
+    background: linear-gradient(to bottom, #444, #222); /* Легкий глянец */
+    box-shadow: 0 10px 20px rgba(0,0,0,0.5);
+}
+
+/* Slide 4: Hierarchy */
+.hierarchy-tree { display: flex; flex-direction: column; align-items: center; }
+.level-1 { border: 2px solid #fff; padding: 15px 40px; font-size: 2rem; border-radius: 10px; }
+.lines { display: flex; justify-content: space-between; width: 300px; height: 30px; border: 2px solid #fff; border-bottom: none; margin-top: 10px; }
+.level-2-row { display: flex; gap: 60px; margin-top: 10px; }
+.box { background: #333; padding: 15px 30px; font-size: 1.5rem; border-radius: 8px; border: 1px solid #555; }
+.line-down { width: 2px; height: 30px; background: #666; margin: 20px 0; }
+.level-3 { color: var(--accent-blue); font-weight: bold; font-size: 2rem; }
+
+/* Slide 5: Pipeline */
+.pipeline-row { display: flex; align-items: center; justify-content: center; gap: 30px; font-size: 2.5rem; font-weight: 300; }
+.p-step { border: 2px solid #666; padding: 20px 40px; border-radius: 15px; color: #aaa; }
+.p-step.highlight { border-color: var(--accent-blue); color: #fff; background: rgba(107, 148, 214, 0.1); box-shadow: 0 0 30px rgba(107, 148, 214, 0.2); }
+.p-arr { color: #444; }
+
+/* Slide 6: Charts */
+.slide-title { position: absolute; top: 60px; left: 0; width: 100%; text-align: center; }
+.charts-container {
+    display: flex; justify-content: center; align-items: flex-end; gap: 50px; height: 60%; margin-top: 100px;
+}
+.chart-box { width: 45%; height: 100%; }
+
+/* Slide 7: Lists */
+.grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 50px; width: 80%; margin: 0 auto; }
+.list-col ul { list-style: none; text-align: center; font-size: 2rem; line-height: 2; margin-top: 20px; }
+.opacity-50 { opacity: 0.3; }
+
+/* Slide 8: Code (Clean, no window) */
+.code-glass {
+    text-align: left; background: rgba(0,0,0,0.3); border: 1px solid #333;
+    padding: 30px; border-radius: 10px; font-family: "Monaco", monospace;
+    display: inline-block; font-size: 1.3rem;
+}
+.kwd { color: #cc7832; font-weight: bold; } .func { color: #ffc66d; } .str { color: #a5c261; } .num { color: #6897bb; }
+
+/* Slide 11: One More Thing */
+.one-more-thing { font-family: "Times New Roman", serif; font-style: italic; font-size: 3rem; margin-bottom: 20px; }
+.profit-reveal { font-size: 8rem; font-weight: 600; color: var(--accent-blue); text-shadow: 0 0 50px rgba(107, 148, 214, 0.5); }
+
+/* Slide 12: Team */
+.team-row { display: flex; justify-content: center; gap: 40px; margin-top: 50px; }
+.t-member { text-align: center; }
+.t-photo { width: 180px; height: 180px; background: #333; border-radius: 5px; margin-bottom: 15px; border: 4px solid #fff; box-shadow: 0 10px 30px rgba(0,0,0,0.5); }
+
+/* CONTROLS */
+.slide-counter { position: fixed; bottom: 20px; left: 20px; color: #444; font-size: 2rem; font-weight: bold; }
+.controls { position: fixed; bottom: 30px; right: 30px; display: flex; gap: 10px; z-index: 100; opacity: 0; transition: opacity 0.3s; }
+.controls:hover { opacity: 1; }
+.controls button { background: #333; border: none; color: #fff; width: 40px; height: 40px; border-radius: 50%; cursor: pointer; }
+
+/* Responsive */
+@media (max-width: 768px) {
+    h1 { font-size: 3rem; } h2 { font-size: 2.5rem; }
+    .giant-number { font-size: 6rem; }
+    .grid-2 { display: flex; flex-direction: column; }
+}

@@ -4,6 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Select Presentation Version</title>
+    <!-- Подключаем Inter для новой кнопки Modern -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;900&display=swap" rel="stylesheet">
+
     <style>
         @font-face { font-family: 'Monument Extended'; src: url('fonts/PPMonumentExtended-Black.otf') format('opentype'); font-weight: 900; }
         
@@ -11,17 +15,18 @@
             margin: 0; padding: 0;
             background-color: #050505; color: white;
             font-family: 'Monument Extended', Arial, sans-serif;
-            height: 100vh;
+            min-height: 100vh;
             display: flex; flex-direction: column; justify-content: center; align-items: center;
             background-image: radial-gradient(circle at center, #1a1a1a 0%, #000 100%);
         }
         h1 { margin-bottom: 50px; text-align: center; font-size: 2.5rem; }
-        .container { display: flex; gap: 30px; flex-wrap: wrap; justify-content: center; }
+        .container { display: flex; gap: 30px; flex-wrap: wrap; justify-content: center; padding: 20px; }
         .card {
             width: 250px; height: 350px;
             border: 1px solid #333; background: #111;
             display: flex; flex-direction: column; justify-content: center; align-items: center;
             text-decoration: none; transition: 0.3s; cursor: pointer;
+            border-radius: 12px; /* Чуть скруглим углы */
         }
         .card h2 { font-size: 1.8rem; margin: 0; }
         .card p { font-family: sans-serif; color: #666; font-size: 0.8rem; margin-top: 10px; text-transform: uppercase; }
@@ -34,67 +39,129 @@
         .card-classic:hover { border-color: #ffffff; box-shadow: 0 0 30px rgba(255, 255, 255, 0.2); transform: translateY(-10px); }
         .card-classic h2 { color: #ffffff; }
 
-        /* === ROFL / PIRATE STYLE === */
+        /* ROFL / PIRATE STYLE */
         .card-rofl { border-color: #333; }
         .card-rofl:hover { 
             border-color: #ff3c00; 
             box-shadow: 0 0 40px rgba(255, 60, 0, 0.3); 
-            transform: translateY(-10px) rotate(2deg); /* Чуть перекашиваем */
-            background: url('https://media1.tenor.com/m/m1m2yJjS95YAAAAC/shadow-fiend-dota.gif') center/cover; /* Можно вставить гифку SF */
+            transform: translateY(-10px) rotate(2deg);
         }
         .card-rofl h2 { color: #ff3c00; text-shadow: 2px 2px 0px #000; }
         .card-rofl:hover h2 { animation: shake 0.5s infinite; }
+
         /* CENTRAL STYLE (Light) */
         .card-central { 
-            background: #EBEBEB; /* Светлый фон */
-            border-color: #ccc; 
+            background: #EBEBEB; border-color: #ccc; 
         }
-        .card-central h2 { color: #1A1A1A; } /* Черный текст */
+        .card-central h2 { color: #1A1A1A; }
         .card-central p { color: #666; }
-        
         .card-central:hover {
             background: #fff;
-            border-color: #0141CD; /* Синий акцент */
+            border-color: #0141CD;
             box-shadow: 0 0 30px rgba(1, 65, 205, 0.2);
             transform: translateY(-10px);
         }
         .card-central:hover h2 { color: #0141CD; }
 
+        /* JOBS (2007) STYLE */
+        .card-apple {
+            background: radial-gradient(circle at center, #4b5d78 0%, #000000 100%);
+            border-color: #555;
+        }
+        .card-apple h2 { color: #fff; font-family: sans-serif; font-weight: 300; letter-spacing: -1px; }
+        .card-apple:hover {
+            box-shadow: 0 0 40px rgba(43, 144, 217, 0.4);
+            transform: translateY(-10px);
+            border-color: #2b90d9;
+        }
+
+        /* === NEW: MODERN APPLE (PRO) STYLE === */
+        .card-modern {
+            background: #000000;
+            border-color: #333;
+        }
+        .card-modern h2 {
+            font-family: 'Inter', sans-serif; /* Шрифт SF Pro style */
+            font-weight: 700;
+            letter-spacing: -1px;
+            color: #f5f5f7;
+        }
+        .card-modern:hover {
+            border-color: #2997ff; /* Apple Blue */
+            box-shadow: 0 0 50px rgba(41, 151, 255, 0.3);
+            transform: translateY(-10px) scale(1.02);
+            background: #111;
+        }
+        .card-modern:hover h2 {
+            background: linear-gradient(135deg, #2997ff 0%, #007aff 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .card-knyazev {
+            background: #ffffff;
+            border-color: #e5e7eb;
+        }
+        .card-knyazev h2 {
+            color: #1f2937;
+            font-family: 'Inter', sans-serif;
+            font-weight: 700;
+            letter-spacing: -1px;
+        }
+        .card-knyazev:hover {
+            border-color: #34d399; /* Green */
+            box-shadow: 0 0 40px rgba(52, 211, 153, 0.4);
+            transform: translateY(-10px);
+        }
+
         @keyframes shake {
             0% { transform: translate(1px, 1px) rotate(0deg); }
-            10% { transform: translate(-1px, -2px) rotate(-1deg); }
             20% { transform: translate(-3px, 0px) rotate(1deg); }
-            30% { transform: translate(3px, 2px) rotate(0deg); }
             40% { transform: translate(1px, -1px) rotate(1deg); }
-            50% { transform: translate(-1px, 2px) rotate(-1deg); }
             60% { transform: translate(-3px, 1px) rotate(0deg); }
-            70% { transform: translate(3px, 1px) rotate(-1deg); }
             80% { transform: translate(-1px, -1px) rotate(1deg); }
-            90% { transform: translate(1px, 2px) rotate(0deg); }
             100% { transform: translate(1px, -2px) rotate(-1deg); }
         }
     </style>
 </head>
 <body>
-    <h1>Choose Presentation Style</h1>
+    <h1>Choose Presentation Style</h1>        
     <div class="container">
+        
+        <!-- Новая кнопка Modern Apple -->
+        <a href="apple-modern.html" class="card card-modern">
+            <h2>PRO</h2>
+            <p>Modern Event Style</p>
+        </a>
+
+        <!-- Старая кнопка Apple (Jobs) -->
+        <a href="apple.html" class="card card-apple">
+            <h2>JOBS</h2>
+            <p>2007 Keynote Style</p>
+        </a>
+
         <a href="spirit.html" class="card card-spirit">
             <h2>TOXIC</h2>
             <p>Team Spirit Style</p>
         </a>
+        
         <a href="classic.html" class="card card-classic">
             <h2>CLASSIC</h2>
             <p>Monochrome Style</p>
         </a>
-        <!-- НОВАЯ КНОПКА -->
+        
         <a href="rofl.html" class="card card-rofl">
             <h2>PIRATE</h2>
             <p>Trash / Meme Style</p>
         </a>
+        
         <a href="central.html" class="card card-central">
             <h2>CENTRAL</h2>
-        <p>Academic / Light Style</p>
-</a>
+            <p>Academic / Light Style</p>
+        </a>
+        <a href="knyazev.html" class="card card-knyazev">
+            <h2>KNYAZEV</h2>
+            <p>Plotix Agro Style</p>
+        </a>
     </div>
 </body>
 </html>
