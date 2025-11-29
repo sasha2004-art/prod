@@ -3,25 +3,24 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <!-- Иконка -->
+    <!-- Иконка вкладки -->
     <link rel="icon" href="images/Team_Spirit_new_em.svg" type="image/svg+xml">
-    <title>Team Spirit | Classic Edition</title>
+    <title>Team Spirit | DANO Solution</title>
     
-    <!-- Подключаем CLASSIC CSS (Белый стиль) -->
+    <!-- Подключаем наш внешний CSS -->
     <link rel="stylesheet" href="style-classic.css">
     
-    <!-- Библиотека графиков -->
+    <!-- Подключаем библиотеку для графиков -->
     <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
 </head>
 <body>
 
-    <!-- ВОДЯНОЙ ЗНАК (Классический) -->
+    <!-- ВОДЯНОЙ ЗНАК -->
     <div class="watermark-container">
         <div class="watermark-text">TEAM SPIRIT</div>
         <img src="images/Team_Spirit_new_em.svg" alt="TS Logo" class="ts-logo-white logo-watermark-img" style="filter: brightness(0) invert(1);">
     </div>
 
-    <!-- СЧЕТЧИК СЛАЙДОВ -->
     <div class="slide-counter"><span id="currSlide">01</span> / <span id="totalSlide">21</span></div>
 
     <!-- ================= СЛАЙДЫ ================= -->
@@ -29,13 +28,13 @@
     <!-- 1. ТИТУЛЬНИК -->
     <div class="slide active flex-center">
         <div>
-            <!-- Логотип белый -->
+            <!-- Главный логотип -->
             <img src="images/Team_Spirit_new_em.svg" alt="TS Logo" style="filter: brightness(0) invert(1); width: 250px; margin-bottom: 40px; max-width: 70%;">
             
             <p style="letter-spacing: 4px; color: var(--accent); margin-bottom: 15px; font-weight: 700;">DANO OLYMPIAD 202X</p>
             <h1>АНАЛИЗ [КЕЙС]</h1>
-            <div style="width: 80px; height: 6px; background: var(--accent); margin: 25px auto;"></div>
-            <p>Classic Monochrome Edition</p>
+            <div style="width: 80px; height: 6px; background: white; margin: 25px auto;"></div>
+            <p>Решение задачи оптимизации ...</p>
             <br>
             <div style="display: flex; justify-content: center; gap: 10px; flex-wrap: wrap;">
                 <span class="tag">#DATA_SCIENCE</span>
@@ -51,14 +50,14 @@
         <div class="grid-2">
             <div>
                 <ul style="list-style: none; padding: 0;">
-                    <li style="font-size: 1.2rem; margin-bottom: 25px;"><strong style="color:white;">01. PROBLEM</strong> <br> <span style="font-size:0.9rem; color:#666;">Бизнес-контекст и метрики</span></li>
-                    <li style="font-size: 1.2rem; margin-bottom: 25px;"><strong style="color:white;">02. DATA & FEATURES</strong> <br> <span style="font-size:0.9rem; color:#666;">EDA, Препроцессинг</span></li>
-                    <li style="font-size: 1.2rem; margin-bottom: 25px;"><strong style="color:white;">03. MODELING</strong> <br> <span style="font-size:0.9rem; color:#666;">ML, Валидация, Код</span></li>
-                    <li style="font-size: 1.2rem; margin-bottom: 25px;"><strong style="color:white;">04. BUSINESS VALUE</strong> <br> <span style="font-size:0.9rem; color:#666;">Деньги и внедрение</span></li>
+                    <li style="font-size: 1.2rem; margin-bottom: 20px;"><strong style="color:white;">01. PROBLEM</strong> <br> <span style="font-size:0.9rem; color:#666;">Бизнес-контекст и метрики</span></li>
+                    <li style="font-size: 1.2rem; margin-bottom: 20px;"><strong style="color:white;">02. DATA & FEATURES</strong> <br> <span style="font-size:0.9rem; color:#666;">EDA, Препроцессинг</span></li>
+                    <li style="font-size: 1.2rem; margin-bottom: 20px;"><strong style="color:white;">03. MODELING</strong> <br> <span style="font-size:0.9rem; color:#666;">ML, Валидация, Код</span></li>
+                    <li style="font-size: 1.2rem; margin-bottom: 20px;"><strong style="color:white;">04. BUSINESS VALUE</strong> <br> <span style="font-size:0.9rem; color:#666;">Деньги и внедрение</span></li>
                 </ul>
             </div>
             <div class="card flex-center">
-                <p style="font-size: 1.5rem; font-weight: 700;">"От сырых данных к <span style="border-bottom: 2px solid white;">реальной прибыли</span>"</p>
+                <p style="font-size: 1.5rem; font-weight: 700;">"От сырых данных к реальной прибыли"</p>
             </div>
         </div>
     </div>
@@ -108,10 +107,16 @@
                     <b style="color:white; font-size: 1.2rem;">Churn Rate</b>
                 </div>
             </div>
+            <div style="height: 30px; width: 2px; background: #333;"></div>
+             <!-- Уровень 3 -->
+             <div class="card" style="width: 100%; max-width: 400px; text-align: center; border-style: dashed;">
+                <span class="stat-label">ML METRIC</span>
+                <div class="big-stat" style="font-size: 1.5rem;">ROC-AUC / GINI</div>
+            </div>
         </div>
     </div>
 
-    <!-- 5. ПАЙПЛАЙН -->
+    <!-- 5. ДАННЫЕ И ПАЙПЛАЙН -->
     <div class="slide">
         <h2>05. ПАЙПЛАЙН ДАННЫХ</h2>
         <div class="grid-4">
@@ -130,7 +135,7 @@
                 <p>Lag Features</p>
                 <p>One-Hot Enc</p>
             </div>
-            <div class="card" style="border-color: var(--accent);">
+            <div class="card">
                 <h3>OUTPUT</h3>
                 <p>Train / Test</p>
                 <span class="tag">80/20</span>
@@ -138,21 +143,26 @@
         </div>
     </div>
 
-    <!-- 6. LIVE DATA (ГРАФИКИ - БЕЛЫЕ) -->
+    <!-- 6. LIVE DATA (ДИНАМИЧЕСКИЕ ГРАФИКИ) - ОБНОВЛЕНО -->
     <div class="slide" id="chartSlide">
         <h2>06. LIVE DATA</h2>
         <p>Интерактивная визуализация ключевых метрик модели.</p>
         
+        <!-- Сетка для графиков -->
         <div style="display: grid; grid-template-rows: 1.2fr 1fr; gap: 20px; height: 100%;">
+            
+            <!-- 1. Верхний график: Большой Area Chart -->
             <div class="card" style="padding: 10px;">
                 <div id="chart-area" style="width: 100%; height: 100%;"></div>
             </div>
 
+            <!-- 2. Нижний ряд: Два графика -->
             <div class="grid-2">
                 <div class="card" style="padding: 10px;">
                     <div id="chart-bar" style="width: 100%; height: 100%;"></div>
                 </div>
                 <div class="card" style="padding: 10px;">
+                    <!-- Radial Bar для метрики качества -->
                     <div id="chart-radial" style="width: 100%; height: 100%;"></div>
                 </div>
             </div>
@@ -162,6 +172,7 @@
     <!-- 7. FEATURE ENGINEERING -->
     <div class="slide">
         <h2>07. FEATURE ENGINEERING</h2>
+        <p>Как мы улучшили пространство признаков.</p>
         <div class="grid-2">
             <div class="card" style="opacity: 0.7;">
                 <h3>RAW DATA (БЫЛО)</h3>
@@ -188,6 +199,7 @@
         <h2>08. МОДЕЛЬ (CODE)</h2>
         <p>Используем CatBoostClassifier с кастомной метрикой.</p>
         
+        <!-- Красивый блок с кодом -->
         <div class="code-block">
 <span class="keyword">from</span> catboost <span class="keyword">import</span> CatBoostClassifier
 
@@ -204,16 +216,21 @@
 
 <span class="comment"># Результат на валидации: AUC 0.895</span>
         </div>
+        <div style="display: flex; gap: 20px;">
+            <span class="tag">PYTHON 3.9</span>
+            <span class="tag">CATBOOST</span>
+            <span class="tag">SKLEARN</span>
+        </div>
     </div>
 
-    <!-- 9. РЕЗУЛЬТАТЫ -->
+    <!-- 9. РЕЗУЛЬТАТЫ МОДЕЛИ -->
     <div class="slide">
         <h2>09. РЕЗУЛЬТАТЫ</h2>
         <div class="grid-3">
             <div class="card">
                 <span class="stat-label">ROC-AUC</span>
                 <span class="big-stat">0.89</span>
-                <span style="color: #fff; border-bottom: 1px solid #fff;">+0.05 vs Baseline</span>
+                <span style="color: #0f0;">+0.05 vs Baseline</span>
             </div>
             <div class="card">
                 <span class="stat-label">PRECISION @ K=5</span>
@@ -240,13 +257,17 @@
                     <li>1. <strong>Новые пользователи:</strong> Не хватает истории действий (Cold Start).</li>
                     <li>2. <strong>Аномальные чеки:</strong> Модель путает оптовиков с фродом.</li>
                 </ul>
+                <br>
+                <h3>Решение</h3>
+                <p>Добавить фичу `Days_Since_Registration` и отдельную ветку для новых юзеров.</p>
             </div>
             <div class="card flex-center">
+                <!-- Плейсхолдер для матрицы ошибок -->
                 <div style="text-align: center;">
                     <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 2px; margin-bottom: 10px;">
                         <div style="background: #222; padding: 20px;">TN</div>
-                        <div style="background: #555; padding: 20px; border: 1px solid white;">FP (Error)</div>
-                        <div style="background: #555; padding: 20px;">FN</div>
+                        <div style="background: #444; padding: 20px; border: 1px solid red;">FP (Error)</div>
+                        <div style="background: #444; padding: 20px;">FN</div>
                         <div style="background: #fff; color:black; padding: 20px;">TP</div>
                     </div>
                     <span class="stat-label">CONFUSION MATRIX</span>
@@ -258,21 +279,25 @@
     <!-- 11. БИЗНЕС-ЭФФЕКТ -->
     <div class="slide">
         <h2>11. ЭКОНОМИКА (IMPACT)</h2>
+        <p>Расчет потенциальной прибыли при внедрении на 100% базы.</p>
+        
         <div style="margin: 40px 0; padding: 20px; border: 1px dashed white; text-align: center;">
             <h3 style="color: white; font-size: 1.5rem;">Profit = (Users * Uplift * Margin) - Tech_Cost</h3>
         </div>
+
         <div class="grid-3">
             <div class="card">
                 <span class="stat-label">USERS</span>
-                <div class="big-stat" style="font-size: 2rem;">500k</div>
+                <div class="big-stat" style="color:white; font-size: 2rem;">500k</div>
             </div>
             <div class="card">
                 <span class="stat-label">UPLIFT</span>
-                <div class="big-stat" style="font-size: 2rem;">+3%</div>
+                <div class="big-stat" style="color:white; font-size: 2rem;">+3%</div>
             </div>
-            <div class="card" style="border: 2px solid white;">
+            <div class="card" style="border-color: var(--accent);">
                 <span class="stat-label">TOTAL PROFIT</span>
                 <div class="big-stat">$150,000</div>
+                <span class="tag">MONTHLY</span>
             </div>
         </div>
     </div>
@@ -281,28 +306,31 @@
     <div class="slide">
         <h2>12. КОМАНДА</h2>
         <div class="grid-4">
+            <!-- Участник 1 -->
             <div class="card" style="padding: 10px;">
-                <!-- Черно-белые фото по умолчанию -->
                 <div class="team-photo-box" style="background-image: url('images/team_member_1.jpg');"></div>
                 <div style="padding: 10px;">
                     <h3>CAPTAIN</h3>
-                    <p style="font-size: 0.9rem;">Strategy</p>
+                    <p style="font-size: 0.9rem;">Strategy & Deck</p>
                 </div>
             </div>
+            <!-- Участник 2 -->
             <div class="card" style="padding: 10px;">
                 <div class="team-photo-box"></div>
                 <div style="padding: 10px;">
                     <h3>ML ENG</h3>
-                    <p style="font-size: 0.9rem;">Code</p>
+                    <p style="font-size: 0.9rem;">Pipeline & Code</p>
                 </div>
             </div>
+            <!-- Участник 3 -->
             <div class="card" style="padding: 10px;">
                 <div class="team-photo-box"></div>
                 <div style="padding: 10px;">
                     <h3>ANALYST</h3>
-                    <p style="font-size: 0.9rem;">EDA</p>
+                    <p style="font-size: 0.9rem;">EDA & Hypotheses</p>
                 </div>
             </div>
+             <!-- Участник 4 -->
              <div class="card" style="padding: 10px;">
                 <div class="team-photo-box"></div>
                 <div style="padding: 10px;">
@@ -317,9 +345,9 @@
     <div class="slide flex-center">
         <div>
             <h1 style="font-size: 4.5rem; letter-spacing: -2px;">GG WP</h1>
-            <p style="font-size: 1rem; font-weight: 700; margin-top: 10px;">THANKS FOR WATCHING</p>
+            <p style="font-size: 1rem; font-weight: 700; margin-top: 10px; color: var(--accent); letter-spacing: 2px;">THANKS FOR WATCHING</p>
             <div style="margin-top: 40px;">
-                <img src="images/Team_Spirit_new_em.svg" alt="TS Logo" style="filter: brightness(0) invert(1); width: 150px; opacity: 0.8;">
+                <img src="images/Team_Spirit_new_em.svg" alt="TS Logo" style="filter: brightness(0) invert(1); width: 150px; opacity: 0.6;">
             </div>
             <div style="margin-top: 30px;">
                 <a href="index.html" style="color: #666; text-decoration: none; border-bottom: 1px solid #666; font-size: 0.8rem; text-transform: uppercase;">Back to Menu</a>
@@ -337,11 +365,8 @@
 
     <script>
         // ==========================================
-        // APEXCHARTS CONFIGURATION (CLASSIC MONOCHROME)
+        // APEXCHARTS CONFIGURATION (TEAM SPIRIT STYLE)
         // ==========================================
-        
-        // БЕЛЫЙ ЦВЕТ для графиков
-        const ACCENT_COLOR = '#ffffff'; 
 
         const commonOptions = {
             chart: {
@@ -351,7 +376,7 @@
                 fontFamily: 'Inter, sans-serif',
             },
             theme: { mode: 'dark' },
-            colors: [ACCENT_COLOR, '#666666'], // Белый (данные) и Серый (фон/сравнение)
+            colors: ['#ffffff', '#666666'],
             grid: { borderColor: '#333', strokeDashArray: 4 },
             dataLabels: { enabled: false },
             stroke: { curve: 'smooth', width: 2 },
@@ -363,7 +388,7 @@
             series: [{ name: 'Model Uplift', data: [31, 40, 28, 51, 42, 109, 100] }, 
                      { name: 'Baseline', data: [11, 32, 45, 32, 34, 52, 41] }],
             chart: { type: 'area', height: '100%', parentHeightOffset: 0, background: 'transparent', toolbar: { show: false } },
-            fill: { type: 'gradient', gradient: { shadeIntensity: 1, opacityFrom: 0.7, opacityTo: 0.1, stops: [0, 90, 100], colorStops: [{ offset: 0, color: ACCENT_COLOR, opacity: 0.7 }, { offset: 100, color: ACCENT_COLOR, opacity: 0 }] } },
+            fill: { type: 'gradient', gradient: { shadeIntensity: 1, opacityFrom: 0.7, opacityTo: 0.1, stops: [0, 90, 100] } },
             xaxis: { categories: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'], axisBorder: { show: false }, axisTicks: { show: false } },
             yaxis: { show: false }
         };
@@ -390,29 +415,48 @@
                     dataLabels: {
                         show: true,
                         name: { offsetY: -10, show: true, color: '#888', fontSize: '14px' },
-                        value: { offsetY: 5, color: ACCENT_COLOR, fontSize: '30px', fontWeight: '900', fontFamily: 'Monument Extended, sans-serif', show: true }
+                        value: { offsetY: 5, color: '#fff', fontSize: '30px', fontWeight: '900', fontFamily: 'Monument Extended, sans-serif', show: true }
                     }
                 }
             },
             labels: ['ROC-AUC'],
             stroke: { lineCap: 'round' },
-            colors: [ACCENT_COLOR]
+            colors: ['#ffffff']
         };
 
+        // Initial Render
         let chartArea, chartBar, chartRadial;
+        
+        // Wait for DOM
         document.addEventListener('DOMContentLoaded', () => {
              chartArea = new ApexCharts(document.querySelector("#chart-area"), optionsArea);
              chartBar = new ApexCharts(document.querySelector("#chart-bar"), optionsBar);
              chartRadial = new ApexCharts(document.querySelector("#chart-radial"), optionsRadial);
-             chartArea.render(); chartBar.render(); chartRadial.render();
+             
+             chartArea.render();
+             chartBar.render();
+             chartRadial.render();
         });
 
-        // СЛАЙДЕР
+        function triggerChartAnimations(index) {
+            const slidesArr = Array.from(document.querySelectorAll('.slide'));
+            const chartSlideIndex = slidesArr.findIndex(s => s.id === 'chartSlide');
+
+            if (index === chartSlideIndex && chartArea) {
+                chartArea.updateOptions({ chart: { animations: { enabled: true } } });
+                chartBar.updateOptions({ chart: { animations: { enabled: true } } });
+                chartRadial.updateOptions({ chart: { animations: { enabled: true } } });
+            }
+        }
+
+        // ==========================================
+        // SLIDER LOGIC
+        // ==========================================
+
         let currentSlide = 0;
         const slides = document.querySelectorAll('.slide');
         const totalSlidesEl = document.getElementById('totalSlide');
         const currSlideEl = document.getElementById('currSlide');
-        totalSlidesEl.innerText = slides.length;
 
         function updateCounter() {
             let num = currentSlide + 1;
@@ -428,30 +472,37 @@
                 }
             });
             updateCounter();
-            
-            // Анимация графиков при переходе на слайд
-            if (slides[index].id === 'chartSlide' && chartArea) {
-                chartArea.updateOptions({ chart: { animations: { enabled: true } } });
-                chartBar.updateOptions({ chart: { animations: { enabled: true } } });
-                chartRadial.updateOptions({ chart: { animations: { enabled: true } } });
-            }
+            triggerChartAnimations(index); // Trigger charts
         }
 
-        function nextSlide() { currentSlide = (currentSlide + 1) % slides.length; showSlide(currentSlide); }
-        function prevSlide() { currentSlide = (currentSlide - 1 + slides.length) % slides.length; showSlide(currentSlide); }
+        function nextSlide() {
+            currentSlide = (currentSlide + 1) % slides.length;
+            showSlide(currentSlide);
+        }
+
+        function prevSlide() {
+            currentSlide = (currentSlide - 1 + slides.length) % slides.length;
+            showSlide(currentSlide);
+        }
 
         document.addEventListener('keydown', (e) => {
             if (e.key === 'ArrowRight' || e.key === 'Space') nextSlide();
             if (e.key === 'ArrowLeft') prevSlide();
         });
-        
-        // Touch events
+
+        // Swipe for mobile
         let touchStartX = 0;
+        let touchEndX = 0;
         document.addEventListener('touchstart', e => { touchStartX = e.changedTouches[0].screenX; }, false);
         document.addEventListener('touchend', e => {
-            if (e.changedTouches[0].screenX < touchStartX - 50) nextSlide();
-            if (e.changedTouches[0].screenX > touchStartX + 50) prevSlide();
+            touchEndX = e.changedTouches[0].screenX;
+            if (touchEndX < touchStartX - 50) nextSlide();
+            if (touchEndX > touchStartX + 50) prevSlide();
         }, false);
+
+        // Init
+        totalSlidesEl.innerText = slides.length;
+        updateCounter();
     </script>
 </body>
 </html>
