@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <link rel="icon" href="images/Team_Spirit_new_em.svg" type="image/svg+xml">
+    <title>Team Spirit | Toxic Style</title>
+    
+    <!-- Подключаем ЗЕЛЕНЫЙ CSS -->
+    <link rel="stylesheet" href="style-spirit.css">
+    
+    <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+</head>
+<body>
+
+    <div class="watermark-container">
+        <div class="watermark-text">TEAM SPIRIT</div>
+        <img src="images/Team_Spirit_new_em.svg" alt="TS Logo" class="ts-logo-white logo-watermark-img" style="filter: brightness(0) invert(1);">
+    </div>
+
+    <div class="slide-counter">
+        <span id="currSlide" style="color: var(--accent);">01</span> / <span id="totalSlide">21</span>
+    </div>
+
+    <!-- СЛАЙДЫ -->
+    <!-- 1. ТИТУЛЬНИК -->
+    <div class="slide active flex-center">
+        <div>
+            <img src="images/Team_Spirit_new_em.svg" alt="TS Logo" style="filter: brightness(0) invert(1); width: 250px; margin-bottom: 40px; max-width: 70%; drop-shadow: 0 0 15px rgba(198, 255, 0, 0.2);">
+            <p style="letter-spacing: 4px; color: var(--accent); margin-bottom: 15px; font-weight: 700; text-shadow: 0 0 10px rgba(198, 255, 0, 0.4);">DANO OLYMPIAD 202X</p>
+            <h1>АНАЛИЗ [КЕЙС]</h1>
+            <div style="width: 80px; height: 6px; background: var(--accent); margin: 25px auto; box-shadow: 0 0 10px var(--accent);"></div>
+            <p>Решение задачи оптимизации ...</p>
+            <br>
+            <div style="display: flex; justify-content: center; gap: 10px; flex-wrap: wrap;">
+                <span class="tag">#DATA_SCIENCE</span>
+                <span class="tag">#ANALYTICS</span>
+                <span class="tag">#TEAM_SPIRIT</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- 2. AGENDA -->
+    <div class="slide">
+        <h2>02. AGENDA</h2>
+        <div class="grid-2">
+            <div>
+                <ul style="list-style: none; padding: 0;">
+                    <li style="font-size: 1.2rem; margin-bottom: 25px;"><strong style="color: var(--accent);">01. PROBLEM</strong> <br> <span style="font-size:0.9rem; color:#888;">Бизнес-контекст и метрики</span></li>
+                    <li style="font-size: 1.2rem; margin-bottom: 25px;"><strong style="color: var(--accent);">02. DATA & FEATURES</strong> <br> <span style="font-size:0.9rem; color:#888;">EDA, Препроцессинг</span></li>
+                    <li style="font-size: 1.2rem; margin-bottom: 25px;"><strong style="color: var(--accent);">03. MODELING</strong> <br> <span style="font-size:0.9rem; color:#888;">ML, Валидация, Код</span></li>
+                    <li style="font-size: 1.2rem; margin-bottom: 25px;"><strong style="color: var(--accent);">04. BUSINESS VALUE</strong> <br> <span style="font-size:0.9rem; color:#888;">Деньги и внедрение</span></li>
+                </ul>
+            </div>
+            <div class="card flex-center">
+                <p style="font-size: 1.5rem; font-weight: 700; color: #fff;">"От сырых данных к <span style="color: var(--accent);">реальной прибыли</span>"</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- 6. LIVE DATA (ГРАФИКИ) -->
+    <div class="slide" id="chartSlide">
+        <h2>06. LIVE DATA</h2>
+        <p>Интерактивная визуализация ключевых метрик модели.</p>
+        <div style="display: grid; grid-template-rows: 1.2fr 1fr; gap: 20px; height: 100%;">
+            <div class="card" style="padding: 10px;"><div id="chart-area" style="width: 100%; height: 100%;"></div></div>
+            <div class="grid-2">
+                <div class="card" style="padding: 10px;"><div id="chart-bar" style="width: 100%; height: 100%;"></div></div>
+                <div class="card" style="padding: 10px;"><div id="chart-radial" style="width: 100%; height: 100%;"></div></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 13. ФИНАЛ -->
+    <div class="slide flex-center">
+        <div>
+            <h1 style="font-size: 4.5rem; letter-spacing: -2px;">GG WP</h1>
+            <p style="font-size: 1rem; font-weight: 700; margin-top: 10px; color: var(--accent); letter-spacing: 2px;">THANKS FOR WATCHING</p>
+            <div style="margin-top: 20px;">
+                <a href="index.html" style="color: #666; text-decoration: none; border-bottom: 1px solid #666;">Back to Menu</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="controls">
+        <div class="btn-group">
+            <button class="btn" onclick="prevSlide()"> &#8249; </button>
+            <button class="btn" onclick="nextSlide()"> &#8250; </button>
+        </div>
+    </div>
+
+    <script>
+        // === НАСТРОЙКА ЦВЕТА ДЛЯ SPIRIT ===
+        const ACCENT_COLOR = '#C6FF00'; 
+
+        const commonOptions = {
+            chart: { background: 'transparent', toolbar: { show: false }, animations: { enabled: true, easing: 'easeinout', speed: 800 }, fontFamily: 'Inter, sans-serif', },
+            theme: { mode: 'dark' },
+            colors: [ACCENT_COLOR, '#444444'],
+            grid: { borderColor: '#333', strokeDashArray: 4 },
+            dataLabels: { enabled: false },
+            stroke: { curve: 'smooth', width: 3 },
+        };
+
+        const optionsArea = {
+            ...commonOptions,
+            series: [{ name: 'Model Uplift', data: [31, 40, 28, 51, 42, 109, 100] }, { name: 'Baseline', data: [11, 32, 45, 32, 34, 52, 41] }],
+            chart: { type: 'area', height: '100%', parentHeightOffset: 0, background: 'transparent', toolbar: { show: false } },
+            fill: { type: 'gradient', gradient: { shadeIntensity: 1, opacityFrom: 0.4, opacityTo: 0.05, stops: [0, 90, 100], colorStops: [{ offset: 0, color: ACCENT_COLOR, opacity: 0.4 }, { offset: 100, color: ACCENT_COLOR, opacity: 0 }] } },
+            xaxis: { categories: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'], axisBorder: { show: false }, axisTicks: { show: false } }, yaxis: { show: false }
+        };
+
+        const optionsBar = {
+            ...commonOptions,
+            series: [{ name: 'Importance', data: [400, 430, 448, 470, 540] }],
+            chart: { type: 'bar', height: '100%', parentHeightOffset: 0, background: 'transparent', toolbar: { show: false } },
+            plotOptions: { bar: { borderRadius: 2, horizontal: true, barHeight: '50%' } },
+            xaxis: { categories: ['Age', 'Region', 'Last_Login', 'Total_Spend', 'Is_Weekend'], labels: { show: false }, axisBorder: { show: false }, axisTicks: { show: false } },
+        };
+
+        const optionsRadial = {
+            ...commonOptions,
+            series: [89],
+            chart: { type: 'radialBar', height: '110%', background: 'transparent' },
+            plotOptions: { radialBar: { startAngle: -135, endAngle: 135, hollow: { margin: 15, size: '60%', background: 'transparent' }, track: { background: '#222', strokeWidth: '100%' }, dataLabels: { show: true, name: { offsetY: -10, show: true, color: '#888', fontSize: '14px' }, value: { offsetY: 5, color: ACCENT_COLOR, fontSize: '30px', fontWeight: '900', fontFamily: 'Monument Extended, sans-serif', show: true } } } },
+            labels: ['ROC-AUC'], stroke: { lineCap: 'round' }, fill: { type: 'solid', colors: [ACCENT_COLOR] }
+        };
+
+        let chartArea, chartBar, chartRadial;
+        document.addEventListener('DOMContentLoaded', () => {
+             chartArea = new ApexCharts(document.querySelector("#chart-area"), optionsArea);
+             chartBar = new ApexCharts(document.querySelector("#chart-bar"), optionsBar);
+             chartRadial = new ApexCharts(document.querySelector("#chart-radial"), optionsRadial);
+             chartArea.render(); chartBar.render(); chartRadial.render();
+        });
+
+        // Слайдер (сокращено, так как логика одинаковая)
+        let currentSlide = 0;
+        const slides = document.querySelectorAll('.slide');
+        const currSlideEl = document.getElementById('currSlide');
+        document.getElementById('totalSlide').innerText = slides.length;
+
+        function showSlide(index) {
+            slides.forEach((slide, i) => { slide.classList.remove('active'); if (i === index) { slide.classList.add('active'); slide.scrollTop = 0; } });
+            currSlideEl.innerText = (index + 1).toString().padStart(2, '0');
+            if(slides[index].id === 'chartSlide' && chartArea) {
+                chartArea.updateOptions({ chart: { animations: { enabled: true } } });
+                chartBar.updateOptions({ chart: { animations: { enabled: true } } });
+                chartRadial.updateOptions({ chart: { animations: { enabled: true } } });
+            }
+        }
+        function nextSlide() { currentSlide = (currentSlide + 1) % slides.length; showSlide(currentSlide); }
+        function prevSlide() { currentSlide = (currentSlide - 1 + slides.length) % slides.length; showSlide(currentSlide); }
+        document.addEventListener('keydown', (e) => { if (e.key === 'ArrowRight' || e.key === 'Space') nextSlide(); if (e.key === 'ArrowLeft') prevSlide(); });
+        let touchStartX = 0;
+        document.addEventListener('touchstart', e => { touchStartX = e.changedTouches[0].screenX; }, false);
+        document.addEventListener('touchend', e => { if (e.changedTouches[0].screenX < touchStartX - 50) nextSlide(); if (e.changedTouches[0].screenX > touchStartX + 50) prevSlide(); }, false);
+    </script>
+</body>
+</html>

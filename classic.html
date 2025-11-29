@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <link rel="icon" href="images/Team_Spirit_new_em.svg" type="image/svg+xml">
+    <title>Team Spirit | Classic Style</title>
+    
+    <!-- Подключаем БЕЛЫЙ CSS -->
+    <link rel="stylesheet" href="style-classic.css">
+    
+    <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+</head>
+<body>
+    <!-- (Здесь весь тот же HTML с Водяным знаком, слайдами и т.д., как в spirit.html) -->
+    <!-- ПРОСТО СКОПИРУЙ ВЕСЬ BODY ИЗ spirit.html СЮДА -->
+    <!-- НО ВНИЗУ В SCRIPT ИЗМЕНИ ЦВЕТ -->
+    
+    <div class="watermark-container">
+        <!-- ... тот же контент ... -->
+        <div class="watermark-text">TEAM SPIRIT</div>
+        <img src="images/Team_Spirit_new_em.svg" alt="TS Logo" class="ts-logo-white logo-watermark-img" style="filter: brightness(0) invert(1);">
+    </div>
+    
+    <div class="slide-counter"><span id="currSlide">01</span> / <span id="totalSlide">21</span></div>
+    
+    <!-- ... ВСТАВЬ СЮДА ВСЕ СЛАЙДЫ ИЗ spirit.html ... -->
+    <!-- (Для экономии места я их не дублирую, они идентичны по структуре) -->
+    <!-- ЕДИНСТВЕННОЕ: Кнопка "Back to Menu" на последнем слайде тоже пригодится -->
+    
+    <div class="slide active flex-center">
+         <!-- Пример слайда 1, чтобы файл не был пустым -->
+         <div>
+            <img src="images/Team_Spirit_new_em.svg" alt="TS Logo" style="filter: brightness(0) invert(1); width: 250px; margin-bottom: 40px;">
+            <p style="letter-spacing: 4px; color: var(--accent); margin-bottom: 15px; font-weight: 700;">DANO OLYMPIAD 202X</p>
+            <h1>АНАЛИЗ [КЕЙС]</h1>
+            <div style="width: 80px; height: 6px; background: var(--accent); margin: 25px auto;"></div>
+            <p>Classic Monochrome Edition</p>
+         </div>
+    </div>
+    <!-- ... остальные слайды ... -->
+
+    <div class="controls">
+        <div class="btn-group">
+            <button class="btn" onclick="prevSlide()"> &#8249; </button>
+            <button class="btn" onclick="nextSlide()"> &#8250; </button>
+        </div>
+    </div>
+
+    <script>
+        // === НАСТРОЙКА ЦВЕТА ДЛЯ CLASSIC ===
+        const ACCENT_COLOR = '#ffffff'; // БЕЛЫЙ ЦВЕТ
+
+        const commonOptions = {
+            chart: { background: 'transparent', toolbar: { show: false }, animations: { enabled: true, easing: 'easeinout', speed: 800 }, fontFamily: 'Inter, sans-serif', },
+            theme: { mode: 'dark' },
+            colors: [ACCENT_COLOR, '#666666'], // Белый и Серый
+            grid: { borderColor: '#333', strokeDashArray: 4 },
+            dataLabels: { enabled: false },
+            stroke: { curve: 'smooth', width: 2 }, // Чуть тоньше для классики
+        };
+        
+        // ... (Остальной JS код такой же, как в spirit.html) ...
+        // Копируй функции optionsArea, optionsBar, optionsRadial и слайдер из spirit.html
+        
+        const optionsArea = {
+            ...commonOptions,
+            series: [{ name: 'Model Uplift', data: [31, 40, 28, 51, 42, 109, 100] }, { name: 'Baseline', data: [11, 32, 45, 32, 34, 52, 41] }],
+            chart: { type: 'area', height: '100%', parentHeightOffset: 0, background: 'transparent', toolbar: { show: false } },
+            fill: { type: 'gradient', gradient: { shadeIntensity: 1, opacityFrom: 0.7, opacityTo: 0.1, stops: [0, 90, 100], colorStops: [{ offset: 0, color: ACCENT_COLOR, opacity: 0.7 }, { offset: 100, color: ACCENT_COLOR, opacity: 0 }] } },
+            xaxis: { categories: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'], axisBorder: { show: false }, axisTicks: { show: false } }, yaxis: { show: false }
+        };
+
+        const optionsBar = {
+            ...commonOptions,
+            series: [{ name: 'Importance', data: [400, 430, 448, 470, 540] }],
+            chart: { type: 'bar', height: '100%', parentHeightOffset: 0, background: 'transparent', toolbar: { show: false } },
+            plotOptions: { bar: { borderRadius: 4, horizontal: true } },
+            xaxis: { categories: ['Age', 'Region', 'Last_Login', 'Total_Spend', 'Is_Weekend'], labels: { show: false }, axisBorder: { show: false }, axisTicks: { show: false } },
+        };
+
+        const optionsRadial = {
+            ...commonOptions,
+            series: [89],
+            chart: { type: 'radialBar', height: '110%', background: 'transparent' },
+            plotOptions: { radialBar: { startAngle: -135, endAngle: 135, hollow: { margin: 15, size: '60%', background: 'transparent' }, track: { background: '#222', strokeWidth: '100%' }, dataLabels: { show: true, name: { offsetY: -10, show: true, color: '#888', fontSize: '14px' }, value: { offsetY: 5, color: ACCENT_COLOR, fontSize: '30px', fontWeight: '900', fontFamily: 'Monument Extended, sans-serif', show: true } } } },
+            labels: ['ROC-AUC'], stroke: { lineCap: 'round' }, fill: { type: 'solid', colors: [ACCENT_COLOR] }
+        };
+
+        let chartArea, chartBar, chartRadial;
+        document.addEventListener('DOMContentLoaded', () => {
+             chartArea = new ApexCharts(document.querySelector("#chart-area"), optionsArea);
+             chartBar = new ApexCharts(document.querySelector("#chart-bar"), optionsBar);
+             chartRadial = new ApexCharts(document.querySelector("#chart-radial"), optionsRadial);
+             chartArea.render(); chartBar.render(); chartRadial.render();
+        });
+
+        let currentSlide = 0;
+        const slides = document.querySelectorAll('.slide');
+        const currSlideEl = document.getElementById('currSlide');
+        document.getElementById('totalSlide').innerText = slides.length;
+
+        function showSlide(index) {
+            slides.forEach((slide, i) => { slide.classList.remove('active'); if (i === index) { slide.classList.add('active'); slide.scrollTop = 0; } });
+            currSlideEl.innerText = (index + 1).toString().padStart(2, '0');
+            if(slides[index].id === 'chartSlide' && chartArea) {
+                chartArea.updateOptions({ chart: { animations: { enabled: true } } });
+                chartBar.updateOptions({ chart: { animations: { enabled: true } } });
+                chartRadial.updateOptions({ chart: { animations: { enabled: true } } });
+            }
+        }
+        function nextSlide() { currentSlide = (currentSlide + 1) % slides.length; showSlide(currentSlide); }
+        function prevSlide() { currentSlide = (currentSlide - 1 + slides.length) % slides.length; showSlide(currentSlide); }
+        document.addEventListener('keydown', (e) => { if (e.key === 'ArrowRight' || e.key === 'Space') nextSlide(); if (e.key === 'ArrowLeft') prevSlide(); });
+        let touchStartX = 0;
+        document.addEventListener('touchstart', e => { touchStartX = e.changedTouches[0].screenX; }, false);
+        document.addEventListener('touchend', e => { if (e.changedTouches[0].screenX < touchStartX - 50) nextSlide(); if (e.changedTouches[0].screenX > touchStartX + 50) prevSlide(); }, false);
+    </script>
+</body>
+</html>
