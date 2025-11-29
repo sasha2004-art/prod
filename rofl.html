@@ -3,27 +3,33 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <link rel="icon" href="images/Team_Spirit_new_em.svg" type="image/svg+xml">
     <title>Team Spirit | Pirate Edition</title>
     
-    <!-- Подключаем ROFL CSS (Красный стиль) -->
+    <!-- Подключаем ваш CSS -->
     <link rel="stylesheet" href="style-rofl.css">
+    
+    <!-- Библиотека для графиков -->
     <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+    
+    <!-- Иконка (опционально) -->
+    <link rel="icon" href="images/Team_Spirit_new_em.svg" type="image/svg+xml">
 </head>
 <body>
 
-    <!-- ВОДЯНОЙ ЗНАК (По просьбе) -->
+    <!-- === ВОДЯНОЙ ЗНАК (FIXED) === -->
     <div class="watermark-container">
         <div class="watermark-text" style="color:red; border-color:red;">SEREGA PIRAT</div>
+        <!-- Замените src на ваше фото или локальный файл -->
         <img src="images/ab67616d00001e0290d227750619710fa3fb7241.jpg" class="rofl-logo" alt="Pirat" style="border-radius: 50%;">
     </div>
 
-    <div class="slide-counter"><span id="currSlide">01</span> / <span id="totalSlide">21</span></div>
+    <!-- === СЧЕТЧИК СЛАЙДОВ === -->
+    <div class="slide-counter"><span id="currSlide">01</span> / <span id="totalSlide">10</span></div>
 
-    <!-- 1. ТИТУЛЬНИК (Фон: Анти-Маг) -->
+    <!-- === СЛАЙД 1: ТИТУЛЬНИК (Фон: Анти-Маг) === -->
+    <!-- Здесь герой встроен в фон, поэтому hero-decor не нужен -->
     <div class="slide active flex-center" style="background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.9)), url('images/Cosmetic_icon_Legacy_of_the_Awakened.webp'); background-size: cover; background-position: center;">
-        <div>
-            <!-- Логотип Spirit -->
+        <div style="position: relative; z-index: 2;">
             <img src="images/Team_Spirit_new_em.svg" alt="TS Logo" style="filter: brightness(0) invert(1) drop-shadow(0 0 10px red); width: 250px; margin-bottom: 40px; max-width: 70%;">
             
             <p style="letter-spacing: 4px; color: var(--accent); margin-bottom: 15px; font-weight: 700; text-shadow: 2px 2px 0 #000;">DANO OLYMPIAD 202X</p>
@@ -39,116 +45,142 @@
         </div>
     </div>
 
-    <!-- 2. AGENDA -->
+    <!-- === СЛАЙД 2: AGENDA (Hero: Invoker) === -->
     <div class="slide">
-        <h2>02. AGENDA</h2>
-        <div class="grid-2">
-            <div>
-                <ul style="list-style: none; padding: 0;">
-                    <li style="font-size: 1.2rem; margin-bottom: 20px;"><strong style="color:var(--accent);">01. PROBLEM</strong> <br> <span style="font-size:0.9rem; color:#ccc;">Бизнес-контекст и метрики</span></li>
-                    <li style="font-size: 1.2rem; margin-bottom: 20px;"><strong style="color:var(--accent);">02. DATA & FEATURES</strong> <br> <span style="font-size:0.9rem; color:#ccc;">EDA, Препроцессинг</span></li>
-                    <li style="font-size: 1.2rem; margin-bottom: 20px;"><strong style="color:var(--accent);">03. MODELING</strong> <br> <span style="font-size:0.9rem; color:#ccc;">ML, Валидация, Код</span></li>
-                    <li style="font-size: 1.2rem; margin-bottom: 20px;"><strong style="color:var(--accent);">04. BUSINESS VALUE</strong> <br> <span style="font-size:0.9rem; color:#ccc;">Деньги и внедрение</span></li>
-                </ul>
-            </div>
-            <div class="card flex-center" style="border-color: var(--accent);">
-                <p style="font-size: 1.5rem; font-weight: 700; color: #fff;">"От сырых данных к <span style="color: var(--accent);">реальной прибыли</span>"</p>
-            </div>
-        </div>
-    </div>
-
-    <!-- 3. ПРОБЛЕМА -->
-    <div class="slide">
-        <h2>03. ПРОБЛЕМАТИКА</h2>
-        <p style="font-size: 1.2rem; max-width: 800px; margin-bottom: 40px; color: white;">
-            Компания теряет <span style="border-bottom: 3px solid var(--accent);">$X млн</span> ежегодно из-за неэффективного таргетинга.
-        </p>
-        <div class="grid-3">
-            <div class="card">
-                <h3>БОЛЬ</h3>
-                <p>Низкая конверсия (2%) в текущих кампаниях.</p>
-            </div>
-            <div class="card">
-                <h3>ПОСЛЕДСТВИЕ</h3>
-                <p>Выгорание аудитории спам-рассылками.</p>
-            </div>
-            <div class="card">
-                <h3>ЦЕЛЬ</h3>
-                <p>Увеличить Uplift на 5% с помощью ML.</p>
-            </div>
-        </div>
-    </div>
-
-    <!-- 4. ИЕРАРХИЯ МЕТРИК -->
-    <div class="slide">
-        <h2>04. ИЕРАРХИЯ МЕТРИК</h2>
-        <p>Связываем техническое качество модели с деньгами бизнеса.</p>
-        <br>
-        <div style="display: flex; flex-direction: column; gap: 20px; align-items: center;">
-            <div class="card" style="width: 100%; max-width: 600px; text-align: center; border: 2px solid var(--accent);">
-                <span class="stat-label">GLOBAL GOAL</span>
-                <div class="big-stat" style="font-size: 2rem;">INCREMENTAL REVENUE</div>
-            </div>
-            <div style="height: 30px; width: 2px; background: #500;"></div>
-            <div class="grid-2" style="width: 100%; max-width: 800px; gap: 20px;">
-                <div class="card" style="text-align: center;">
-                    <span class="stat-label">PROXY METRIC</span><br>
-                    <b style="color:white; font-size: 1.2rem;">Conversion Rate</b>
-                </div>
-                <div class="card" style="text-align: center;">
-                    <span class="stat-label">GUARDRAIL METRIC</span><br>
-                    <b style="color:white; font-size: 1.2rem;">Churn Rate</b>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- 5. ПАЙПЛАЙН -->
-    <div class="slide">
-        <h2>05. ПАЙПЛАЙН ДАННЫХ</h2>
-        <div class="grid-4">
-            <div class="card">
-                <h3>INPUT</h3>
-                <p>Transactions.csv</p>
-                <span class="tag">1.5 GB</span>
-            </div>
-            <div class="card">
-                <h3>CLEANING</h3>
-                <p>Drop Duplicates</p>
-                <p>Fillna (Mean)</p>
-            </div>
-            <div class="card">
-                <h3>FEATURES</h3>
-                <p>Lag Features</p>
-                <p>One-Hot Enc</p>
-            </div>
-            <div class="card" style="border-color: var(--accent);">
-                <h3>OUTPUT</h3>
-                <p>Train / Test</p>
-                <span class="tag">80/20</span>
-            </div>
-        </div>
-    </div>
-
-    <!-- 6. LIVE DATA (ГРАФИКИ - КРАСНЫЕ) -->
-    <div class="slide" id="chartSlide">
-        <h2>06. LIVE DATA</h2>
-        <p>Интерактивная визуализация ключевых метрик модели.</p>
-        <div style="display: grid; grid-template-rows: 1.2fr 1fr; gap: 20px; height: 100%;">
-            <div class="card" style="padding: 10px;"><div id="chart-area" style="width: 100%; height: 100%;"></div></div>
-            <div class="grid-2">
-                <div class="card" style="padding: 10px;"><div id="chart-bar" style="width: 100%; height: 100%;"></div></div>
-                <div class="card" style="padding: 10px;"><div id="chart-radial" style="width: 100%; height: 100%;"></div></div>
-            </div>
-        </div>
-    </div>
-
-    <!-- 8. КОД МОДЕЛИ (ОРИГИНАЛЬНЫЙ ТЕКСТ) -->
-    <div class="slide">
-        <h2>08. МОДЕЛЬ (CODE)</h2>
-        <p>Используем CatBoostClassifier с кастомной метрикой.</p>
+        <!-- Герой -->
+        <img src="images/268-2686311_invoker-guide-header-invoker-dota-2-png.png" class="hero-decor" alt="Invoker">
         
-        <div class="code-block">
+        <div style="position: relative; z-index: 1;">
+            <h2>02. AGENDA</h2>
+            <div class="grid-2">
+                <div>
+                    <ul style="list-style: none; padding: 0;">
+                        <li style="font-size: 1.2rem; margin-bottom: 25px;"><strong style="color:var(--accent);">01. PROBLEM</strong> <br> <span style="font-size:0.9rem; color:#ccc;">Бизнес-контекст и метрики</span></li>
+                        <li style="font-size: 1.2rem; margin-bottom: 25px;"><strong style="color:var(--accent);">02. DATA & FEATURES</strong> <br> <span style="font-size:0.9rem; color:#ccc;">EDA, Препроцессинг</span></li>
+                        <li style="font-size: 1.2rem; margin-bottom: 25px;"><strong style="color:var(--accent);">03. MODELING</strong> <br> <span style="font-size:0.9rem; color:#ccc;">ML, Валидация, Код</span></li>
+                        <li style="font-size: 1.2rem; margin-bottom: 25px;"><strong style="color:var(--accent);">04. BUSINESS VALUE</strong> <br> <span style="font-size:0.9rem; color:#ccc;">Деньги и внедрение</span></li>
+                    </ul>
+                </div>
+                <div class="card flex-center" style="border-color: var(--accent); background: rgba(0,0,0,0.7);">
+                    <p style="font-size: 1.5rem; font-weight: 700; color: #fff;">"От сырых данных к <span style="color: var(--accent);">реальной прибыли</span>"</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- === СЛАЙД 3: ПРОБЛЕМА (Hero: Shadow Fiend) === -->
+    <div class="slide">
+        <img src="images/sf.png" class="hero-decor" alt="SF">
+
+        <div style="position: relative; z-index: 1;">
+            <h2>03. ПРОБЛЕМАТИКА</h2>
+            <p style="font-size: 1.2rem; max-width: 800px; margin-bottom: 40px; color: white;">
+                Компания теряет <span style="border-bottom: 3px solid var(--accent);">$X млн</span> ежегодно из-за неэффективного таргетинга.
+            </p>
+            <div class="grid-3">
+                <div class="card">
+                    <h3>БОЛЬ</h3>
+                    <p>Низкая конверсия (2%) в текущих кампаниях.</p>
+                </div>
+                <div class="card">
+                    <h3>ПОСЛЕДСТВИЕ</h3>
+                    <p>Выгорание аудитории спам-рассылками.</p>
+                </div>
+                <div class="card">
+                    <h3>ЦЕЛЬ</h3>
+                    <p>Увеличить Uplift на 5% с помощью ML.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- === СЛАЙД 4: МЕТРИКИ (Hero: Bounty Hunter) === -->
+    <div class="slide">
+        <img src="images/Bounty_Hunter.png" 
+             style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0.15; z-index: 0; pointer-events: none;" 
+             alt="BH">
+
+        <div style="position: relative; z-index: 1;">
+            <h2>04. ИЕРАРХИЯ МЕТРИК</h2>
+            <p>Связываем техническое качество модели с деньгами бизнеса.</p>
+            <br>
+            <div style="display: flex; flex-direction: column; gap: 20px; align-items: center;">
+                <div class="card" style="width: 100%; max-width: 600px; text-align: center; border: 2px solid var(--accent); background: rgba(0,0,0,0.8);">
+                    <span class="stat-label">GLOBAL GOAL</span>
+                    <div class="big-stat" style="font-size: 2rem;">INCREMENTAL REVENUE</div>
+                </div>
+                <div style="height: 30px; width: 2px; background: #500;"></div>
+                <div class="grid-2" style="width: 100%; max-width: 800px; gap: 20px;">
+                    <div class="card" style="text-align: center; background: rgba(0,0,0,0.8);">
+                        <span class="stat-label">PROXY METRIC</span><br>
+                        <b style="color:white; font-size: 1.2rem;">Conversion Rate</b>
+                    </div>
+                    <div class="card" style="text-align: center; background: rgba(0,0,0,0.8);">
+                        <span class="stat-label">GUARDRAIL METRIC</span><br>
+                        <b style="color:white; font-size: 1.2rem;">Churn Rate</b>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- === СЛАЙД 5: ПАЙПЛАЙН (Hero: Tinker) === -->
+    <div class="slide">
+        <img src="images/tinker.png" class="hero-decor" alt="Tinker">
+
+        <div style="position: relative; z-index: 1;">
+            <h2>05. ПАЙПЛАЙН ДАННЫХ</h2>
+            <div class="grid-4">
+                <div class="card">
+                    <h3>INPUT</h3>
+                    <p>Transactions.csv</p>
+                    <span class="tag">1.5 GB</span>
+                </div>
+                <div class="card">
+                    <h3>CLEANING</h3>
+                    <p>Drop Duplicates</p>
+                    <p>Fillna (Mean)</p>
+                </div>
+                <div class="card">
+                    <h3>FEATURES</h3>
+                    <p>Lag Features</p>
+                    <p>One-Hot Enc</p>
+                </div>
+                <div class="card" style="border-color: var(--accent);">
+                    <h3>OUTPUT</h3>
+                    <p>Train / Test</p>
+                    <span class="tag">80/20</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- === СЛАЙД 6: ГРАФИКИ (Hero: Faceless Void) === -->
+    <div class="slide" id="chartSlide">
+        <!-- <img src="https://static.wikia.nocookie.net/dota2_gamepedia/images/9/93/Faceless_Void_model.png" class="hero-decor" style="opacity: 0.3;" alt="Void"> -->
+
+        <div style="position: relative; z-index: 1; height: 90%;">
+            <h2>06. LIVE DATA</h2>
+            <p>Интерактивная визуализация ключевых метрик модели.</p>
+            <div style="display: grid; grid-template-rows: 1.2fr 1fr; gap: 20px; height: 80%;">
+                <div class="card" style="padding: 10px; background: rgba(0,0,0,0.6);"><div id="chart-area" style="width: 100%; height: 100%;"></div></div>
+                <div class="grid-2">
+                    <div class="card" style="padding: 10px; background: rgba(0,0,0,0.6);"><div id="chart-bar" style="width: 100%; height: 100%;"></div></div>
+                    <div class="card" style="padding: 10px; background: rgba(0,0,0,0.6);"><div id="chart-radial" style="width: 100%; height: 100%;"></div></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- === СЛАЙД 7: КОД (Hero: Rubick) === -->
+    <div class="slide">
+        <!-- <img src="https://static.wikia.nocookie.net/dota2_gamepedia/images/3/3f/Rubick_model.png" class="hero-decor" alt="Rubick"> -->
+
+        <div style="position: relative; z-index: 1;">
+            <h2>08. МОДЕЛЬ (CODE)</h2>
+            <p>Используем CatBoostClassifier с кастомной метрикой.</p>
+            
+            <div class="code-block" style="background: rgba(5,5,5,0.9);">
 <span class="keyword">from</span> catboost <span class="keyword">import</span> CatBoostClassifier
 
 <span class="keyword">def</span> <span class="func">train_model</span>(X_train, y_train):
@@ -164,95 +196,110 @@
     <span class="keyword">return</span> model
 
 <span class="comment"># Результат на валидации: AUC 0.895</span>
-        </div>
-        <div style="display: flex; gap: 20px;">
-            <span class="tag">PYTHON 3.9</span>
-            <span class="tag">CATBOOST</span>
-            <span class="tag">SKLEARN</span>
+            </div>
+            <div style="display: flex; gap: 20px;">
+                <span class="tag">PYTHON 3.9</span>
+                <span class="tag">CATBOOST</span>
+                <span class="tag">SKLEARN</span>
+            </div>
         </div>
     </div>
 
-    <!-- 10. АНАЛИЗ ОШИБОК -->
+    <!-- === СЛАЙД 8: ОШИБКИ (Hero: Ogre Magi) === -->
     <div class="slide">
-        <h2>10. АНАЛИЗ ОШИБОК</h2>
-        <div class="grid-2">
-            <div>
-                <p>Мы проанализировали False Positives (где модель соврала).</p>
-                <br>
-                <h3>Где ошибаемся?</h3>
-                <ul>
-                    <li>1. <strong>Новые пользователи:</strong> Не хватает истории действий (Cold Start).</li>
-                    <li>2. <strong>Аномальные чеки:</strong> Модель путает оптовиков с фродом.</li>
-                </ul>
-                <br>
-                <h3>Решение</h3>
-                <p>Добавить фичу `Days_Since_Registration` и отдельную ветку для новых юзеров.</p>
-            </div>
-            <div class="card flex-center">
-                <div style="text-align: center;">
-                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 2px; margin-bottom: 10px;">
-                        <div style="background: #222; padding: 20px;">TN</div>
-                        <div style="background: #500; padding: 20px; border: 1px solid red; color: #fff;">FP (Error)</div>
-                        <div style="background: #500; padding: 20px;">FN</div>
-                        <div style="background: #fff; color:black; padding: 20px; font-weight: bold;">TP</div>
+        <!-- <img src="https://static.wikia.nocookie.net/dota2_gamepedia/images/e/e0/Ogre_Magi_model.png" class="hero-decor" style="right: -60px;" alt="Ogre"> -->
+
+        <div style="position: relative; z-index: 1;">
+            <h2>10. АНАЛИЗ ОШИБОК</h2>
+            <div class="grid-2">
+                <div>
+                    <p>Мы проанализировали False Positives (где модель соврала).</p>
+                    <br>
+                    <h3>Где ошибаемся?</h3>
+                    <ul style="background: rgba(0,0,0,0.6); padding: 15px; border-radius: 5px;">
+                        <li>1. <strong>Новые пользователи:</strong> Не хватает истории действий (Cold Start).</li>
+                        <li>2. <strong>Аномальные чеки:</strong> Модель путает оптовиков с фродом.</li>
+                    </ul>
+                    <br>
+                    <h3>Решение</h3>
+                    <p>Добавить фичу `Days_Since_Registration` и отдельную ветку для новых юзеров.</p>
+                </div>
+                <div class="card flex-center" style="background: rgba(0,0,0,0.8);">
+                    <div style="text-align: center;">
+                        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 2px; margin-bottom: 10px;">
+                            <div style="background: #222; padding: 20px;">TN</div>
+                            <div style="background: #500; padding: 20px; border: 1px solid red; color: #fff;">FP (Error)</div>
+                            <div style="background: #500; padding: 20px;">FN</div>
+                            <div style="background: #fff; color:black; padding: 20px; font-weight: bold;">TP</div>
+                        </div>
+                        <span class="stat-label">CONFUSION MATRIX</span>
                     </div>
-                    <span class="stat-label">CONFUSION MATRIX</span>
                 </div>
             </div>
         </div>
     </div>
 
-    <!-- 12. КОМАНДА (Смешные картинки, но серьезные роли) -->
+    <!-- === СЛАЙД 9: КОМАНДА (Hero: Spirit Breaker) === -->
     <div class="slide">
-        <h2>12. КОМАНДА</h2>
-        <div class="grid-4">
-            <!-- 1. CAPTAIN (СЕРЕГА ПИРАТ) -->
-            <div class="card" style="padding: 10px;">
-                <div class="team-photo-box" style="background-image: url('images/ab67616d00001e0290d227750619710fa3fb7241.jpg');"></div>
-                <div style="padding: 10px;">
-                    <h3>CAPTAIN</h3>
-                    <p style="font-size: 0.9rem;">Strategy & Deck</p>
+        <!-- <img src="https://static.wikia.nocookie.net/dota2_gamepedia/images/d/df/Spirit_Breaker_model.png" class="hero-decor" alt="Bara"> -->
+
+        <div style="position: relative; z-index: 1;">
+            <h2>12. КОМАНДА</h2>
+            <div class="grid-4">
+                <!-- 1. CAPTAIN (СЕРЕГА ПИРАТ) -->
+                <div class="card" style="padding: 10px; background: rgba(10,0,0,0.8);">
+                    <div class="team-photo-box" style="background-image: url('images/ab67616d00001e0290d227750619710fa3fb7241.jpg');"></div>
+                    <div style="padding: 10px;">
+                        <h3>CAPTAIN</h3>
+                        <p style="font-size: 0.9rem;">Strategy & Deck</p>
+                    </div>
                 </div>
-            </div>
-            <!-- 2. ML ENG (Анти-Маг) -->
-            <div class="card" style="padding: 10px;">
-                <div class="team-photo-box" style="background-image: url('images/Cosmetic_icon_Legacy_of_the_Awakened.webp');"></div>
-                <div style="padding: 10px;">
-                    <h3>ML ENG</h3>
-                    <p style="font-size: 0.9rem;">Pipeline & Code</p>
+                <!-- 2. ML ENG (Анти-Маг) -->
+                <div class="card" style="padding: 10px; background: rgba(10,0,0,0.8);">
+                    <div class="team-photo-box" style="background-image: url('images/Cosmetic_icon_Legacy_of_the_Awakened.webp');"></div>
+                    <div style="padding: 10px;">
+                        <h3>ML ENG</h3>
+                        <p style="font-size: 0.9rem;">Pipeline & Code</p>
+                    </div>
                 </div>
-            </div>
-            <!-- 3. ANALYST (Pudge) -->
-            <div class="card" style="padding: 10px;">
-                <div class="team-photo-box" style="background-image: url('images/db112ad479a169c8f5f1465418636ee5.1000x1000x1.png');"></div>
-                <div style="padding: 10px;">
-                    <h3>ANALYST</h3>
-                    <p style="font-size: 0.9rem;">EDA & Hypotheses</p>
+                <!-- 3. ANALYST (Pudge) -->
+                <div class="card" style="padding: 10px; background: rgba(10,0,0,0.8);">
+                    <div class="team-photo-box" style="background-image: url('images/db112ad479a169c8f5f1465418636ee5.1000x1000x1.png');"></div>
+                    <div style="padding: 10px;">
+                        <h3>ANALYST</h3>
+                        <p style="font-size: 0.9rem;">EDA & Hypotheses</p>
+                    </div>
                 </div>
-            </div>
-             <!-- 4. DESIGN (Смешное фото) -->
-             <div class="card" style="padding: 10px;">
-                <div class="team-photo-box" style="background-image: url('images/images.jpg');"></div>
-                <div style="padding: 10px;">
-                    <h3>DESIGN</h3>
-                    <p style="font-size: 0.9rem;">Visuals</p>
+                 <!-- 4. DESIGN (Смешное фото) -->
+                 <div class="card" style="padding: 10px; background: rgba(10,0,0,0.8);">
+                    <div class="team-photo-box" style="background-image: url('images/images.jpg');"></div>
+                    <div style="padding: 10px;">
+                        <h3>DESIGN</h3>
+                        <p style="font-size: 0.9rem;">Visuals</p>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
 
-    <!-- 13. ФИНАЛ (Фон: Pudge) -->
-    <div class="slide flex-center" style="background: linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.8)), url('images/db112ad479a169c8f5f1465418636ee5.1000x1000x1.png'); background-size: cover; background-position: center;">
-        <div style="background: rgba(0,0,0,0.8); padding: 40px; border: 2px solid var(--accent);">
+    <!-- === СЛАЙД 10: ФИНАЛ (Фон: Pudge) === -->
+        <div class="slide flex-center">
+        <!-- Pudge растянут на весь фон -->
+        <img src="images/pudge.png" 
+             style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0.2; z-index: 0; pointer-events: none;" 
+             alt="Pudge">
+
+        <!-- Контент с z-index, чтобы быть поверх картинки -->
+        <div style="position: relative; z-index: 1; background: rgba(0,0,0,0.8); padding: 40px; border: 2px solid var(--accent);">
             <h1 style="font-size: 4.5rem; letter-spacing: -2px; color: #fff;">GG WP</h1>
             <p style="font-size: 1rem; font-weight: 700; margin-top: 10px; color: var(--accent); letter-spacing: 2px;">THANKS FOR WATCHING</p>
             <div style="margin-top: 20px;">
-                <a href="index.html" style="color: #fff; border: 1px solid #fff; padding: 10px 20px; text-decoration: none; text-transform: uppercase;">Back to Menu</a>
+                <button onclick="currentSlide=0; showSlide(0);" style="background: transparent; color: #fff; border: 1px solid #fff; padding: 10px 20px; text-transform: uppercase; cursor: pointer;">Replay</button>
             </div>
         </div>
     </div>
 
-    <!-- CONTROLS -->
+    <!-- === КНОПКИ УПРАВЛЕНИЯ === -->
     <div class="controls">
         <div class="btn-group">
             <button class="btn" onclick="prevSlide()"> < </button>
@@ -260,18 +307,17 @@
         </div>
     </div>
 
+    <!-- === СКРИПТЫ === -->
     <script>
-        // === PIRATE STYLE CHARTS (RED/ORANGE) ===
-        // Цвета сохранили рофельные (Красный), но данные серьезные? 
-        // В оригинале у нас графики рандомные, оставим их как есть, только цвет красный.
-        
         const ACCENT_COLOR = '#ff2a00'; 
 
+        // Настройки графиков (Темная тема + Красный акцент)
         const commonOptions = {
             chart: { background: 'transparent', toolbar: { show: false }, animations: { enabled: true, easing: 'bounce', speed: 1000 }, fontFamily: 'Inter, sans-serif', },
             theme: { mode: 'dark' },
             colors: [ACCENT_COLOR, '#333333'],
             stroke: { curve: 'stepline', width: 3 }, 
+            grid: { borderColor: '#333' }
         };
 
         const optionsArea = {
@@ -295,11 +341,13 @@
             ...commonOptions,
             series: [89],
             chart: { type: 'radialBar', height: '110%', background: 'transparent' },
-            plotOptions: { radialBar: { startAngle: -90, endAngle: 90, hollow: { margin: 15, size: '50%', background: 'transparent' }, track: { background: '#222', strokeWidth: '100%' }, dataLabels: { show: true, name: { offsetY: -20, show: true, color: '#888', fontSize: '14px', label: 'ROC-AUC' }, value: { offsetY: -10, color: ACCENT_COLOR, fontSize: '30px', fontWeight: '900', fontFamily: 'Monument Extended, sans-serif', show: true } } } },
+            plotOptions: { radialBar: { startAngle: -90, endAngle: 90, hollow: { margin: 15, size: '50%', background: 'transparent' }, track: { background: '#222', strokeWidth: '100%' }, dataLabels: { show: true, name: { offsetY: -20, show: true, color: '#888', fontSize: '14px', label: 'ROC-AUC' }, value: { offsetY: -10, color: ACCENT_COLOR, fontSize: '30px', fontWeight: '900', fontFamily: 'monospace', show: true } } } },
             stroke: { lineCap: 'butt' }, fill: { type: 'solid', colors: [ACCENT_COLOR] }
         };
 
         let chartArea, chartBar, chartRadial;
+        
+        // Инициализация графиков
         document.addEventListener('DOMContentLoaded', () => {
              chartArea = new ApexCharts(document.querySelector("#chart-area"), optionsArea);
              chartBar = new ApexCharts(document.querySelector("#chart-bar"), optionsBar);
@@ -307,27 +355,47 @@
              chartArea.render(); chartBar.render(); chartRadial.render();
         });
 
-        // Слайдер
+        // Логика слайдера
         let currentSlide = 0;
         const slides = document.querySelectorAll('.slide');
         const currSlideEl = document.getElementById('currSlide');
         document.getElementById('totalSlide').innerText = slides.length;
 
         function showSlide(index) {
-            slides.forEach((slide, i) => { slide.classList.remove('active'); if (i === index) { slide.classList.add('active'); slide.scrollTop = 0; } });
+            slides.forEach((slide, i) => { 
+                slide.classList.remove('active'); 
+                if (i === index) { 
+                    slide.classList.add('active'); 
+                    slide.scrollTop = 0; 
+                } 
+            });
             currSlideEl.innerText = (index + 1).toString().padStart(2, '0');
+            
+            // Если перешли на слайд с графиками, перезапускаем анимацию
             if(slides[index].id === 'chartSlide' && chartArea) {
+                // Маленький хак для триггера анимации
                 chartArea.updateOptions({ chart: { animations: { enabled: true } } });
                 chartBar.updateOptions({ chart: { animations: { enabled: true } } });
                 chartRadial.updateOptions({ chart: { animations: { enabled: true } } });
             }
         }
+
         function nextSlide() { currentSlide = (currentSlide + 1) % slides.length; showSlide(currentSlide); }
         function prevSlide() { currentSlide = (currentSlide - 1 + slides.length) % slides.length; showSlide(currentSlide); }
-        document.addEventListener('keydown', (e) => { if (e.key === 'ArrowRight' || e.key === 'Space') nextSlide(); if (e.key === 'ArrowLeft') prevSlide(); });
+
+        // Клавиатура
+        document.addEventListener('keydown', (e) => { 
+            if (e.key === 'ArrowRight' || e.key === 'Space') nextSlide(); 
+            if (e.key === 'ArrowLeft') prevSlide(); 
+        });
+
+        // Свайпы (Touch)
         let touchStartX = 0;
         document.addEventListener('touchstart', e => { touchStartX = e.changedTouches[0].screenX; }, false);
-        document.addEventListener('touchend', e => { if (e.changedTouches[0].screenX < touchStartX - 50) nextSlide(); if (e.changedTouches[0].screenX > touchStartX + 50) prevSlide(); }, false);
+        document.addEventListener('touchend', e => { 
+            if (e.changedTouches[0].screenX < touchStartX - 50) nextSlide(); 
+            if (e.changedTouches[0].screenX > touchStartX + 50) prevSlide(); 
+        }, false);
     </script>
 </body>
 </html>

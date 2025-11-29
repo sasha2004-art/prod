@@ -116,3 +116,37 @@ ul { margin-left: 20px; margin-bottom: 20px; }
     h1 { font-size: 2.2rem; } h2 { font-size: 1.5rem; }
     .grid-2, .grid-3, .grid-4 { display: flex; flex-direction: column; gap: 20px; }
 }
+
+/* --- ГЕРОИ ДОТЫ НА ФОНЕ --- */
+.hero-decor {
+    position: absolute;
+    bottom: 0;
+    right: 0; /* Герой стоит справа */
+    height: 85%; /* Высота героя */
+    max-height: 600px;
+    z-index: -1; /* Чтобы текст был ПОВЕРХ картинки */
+    opacity: 0.6; /* Немного прозрачный, чтобы не мешать читать */
+    pointer-events: none;
+    filter: drop-shadow(0 0 20px rgba(255, 42, 0, 0.4)) contrast(1.1); /* Красное свечение */
+    mask-image: linear-gradient(to bottom, black 70%, transparent 100%); /* Плавное исчезновение ног */
+    transition: all 0.5s ease;
+}
+
+/* Для мобилок делаем их меньше и прозрачнее */
+@media (max-width: 768px) {
+    .hero-decor {
+        height: 50%;
+        opacity: 0.2;
+        right: -50px;
+    }
+}
+
+/* Анимация появления героя */
+.slide.active .hero-decor {
+    animation: slideInHero 1s ease-out forwards;
+}
+
+@keyframes slideInHero {
+    from { transform: translateX(100px); opacity: 0; }
+    to { transform: translateX(0); opacity: 0.6; }
+}
