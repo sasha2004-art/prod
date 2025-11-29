@@ -18,10 +18,14 @@
     <!-- ВОДЯНОЙ ЗНАК -->
     <div class="watermark-container">
         <div class="watermark-text">TEAM SPIRIT</div>
+        <!-- Логотип оставляем белым для контраста, либо можно покрасить фильтром -->
         <img src="images/Team_Spirit_new_em.svg" alt="TS Logo" class="ts-logo-white logo-watermark-img" style="filter: brightness(0) invert(1);">
     </div>
 
-    <div class="slide-counter"><span id="currSlide">01</span> / <span id="totalSlide">21</span></div>
+    <!-- СЧЕТЧИК СЛАЙДОВ -->
+    <div class="slide-counter">
+        <span id="currSlide" style="color: var(--accent);">01</span> / <span id="totalSlide">21</span>
+    </div>
 
     <!-- ================= СЛАЙДЫ ================= -->
 
@@ -29,11 +33,11 @@
     <div class="slide active flex-center">
         <div>
             <!-- Главный логотип -->
-            <img src="images/Team_Spirit_new_em.svg" alt="TS Logo" style="filter: brightness(0) invert(1); width: 250px; margin-bottom: 40px; max-width: 70%;">
+            <img src="images/Team_Spirit_new_em.svg" alt="TS Logo" style="filter: brightness(0) invert(1); width: 250px; margin-bottom: 40px; max-width: 70%; drop-shadow: 0 0 15px rgba(198, 255, 0, 0.2);">
             
-            <p style="letter-spacing: 4px; color: var(--accent); margin-bottom: 15px; font-weight: 700;">DANO OLYMPIAD 202X</p>
+            <p style="letter-spacing: 4px; color: var(--accent); margin-bottom: 15px; font-weight: 700; text-shadow: 0 0 10px rgba(198, 255, 0, 0.4);">DANO OLYMPIAD 202X</p>
             <h1>АНАЛИЗ [КЕЙС]</h1>
-            <div style="width: 80px; height: 6px; background: white; margin: 25px auto;"></div>
+            <div style="width: 80px; height: 6px; background: var(--accent); margin: 25px auto; box-shadow: 0 0 10px var(--accent);"></div>
             <p>Решение задачи оптимизации ...</p>
             <br>
             <div style="display: flex; justify-content: center; gap: 10px; flex-wrap: wrap;">
@@ -50,14 +54,28 @@
         <div class="grid-2">
             <div>
                 <ul style="list-style: none; padding: 0;">
-                    <li style="font-size: 1.2rem; margin-bottom: 20px;"><strong style="color:white;">01. PROBLEM</strong> <br> <span style="font-size:0.9rem; color:#666;">Бизнес-контекст и метрики</span></li>
-                    <li style="font-size: 1.2rem; margin-bottom: 20px;"><strong style="color:white;">02. DATA & FEATURES</strong> <br> <span style="font-size:0.9rem; color:#666;">EDA, Препроцессинг</span></li>
-                    <li style="font-size: 1.2rem; margin-bottom: 20px;"><strong style="color:white;">03. MODELING</strong> <br> <span style="font-size:0.9rem; color:#666;">ML, Валидация, Код</span></li>
-                    <li style="font-size: 1.2rem; margin-bottom: 20px;"><strong style="color:white;">04. BUSINESS VALUE</strong> <br> <span style="font-size:0.9rem; color:#666;">Деньги и внедрение</span></li>
+                    <li style="font-size: 1.2rem; margin-bottom: 25px;">
+                        <strong style="color: var(--accent);">01. PROBLEM</strong> <br> 
+                        <span style="font-size:0.9rem; color:#888;">Бизнес-контекст и метрики</span>
+                    </li>
+                    <li style="font-size: 1.2rem; margin-bottom: 25px;">
+                        <strong style="color: var(--accent);">02. DATA & FEATURES</strong> <br> 
+                        <span style="font-size:0.9rem; color:#888;">EDA, Препроцессинг</span>
+                    </li>
+                    <li style="font-size: 1.2rem; margin-bottom: 25px;">
+                        <strong style="color: var(--accent);">03. MODELING</strong> <br> 
+                        <span style="font-size:0.9rem; color:#888;">ML, Валидация, Код</span>
+                    </li>
+                    <li style="font-size: 1.2rem; margin-bottom: 25px;">
+                        <strong style="color: var(--accent);">04. BUSINESS VALUE</strong> <br> 
+                        <span style="font-size:0.9rem; color:#888;">Деньги и внедрение</span>
+                    </li>
                 </ul>
             </div>
             <div class="card flex-center">
-                <p style="font-size: 1.5rem; font-weight: 700;">"От сырых данных к реальной прибыли"</p>
+                <p style="font-size: 1.5rem; font-weight: 700; color: #fff;">
+                    "От сырых данных к <span style="color: var(--accent);">реальной прибыли</span>"
+                </p>
             </div>
         </div>
     </div>
@@ -65,8 +83,8 @@
     <!-- 3. ПРОБЛЕМА -->
     <div class="slide">
         <h2>03. ПРОБЛЕМАТИКА</h2>
-        <p style="font-size: 1.2rem; max-width: 800px; margin-bottom: 40px; color: white;">
-            Компания теряет <span style="border-bottom: 2px solid white;">$X млн</span> ежегодно из-за неэффективного таргетинга.
+        <p style="font-size: 1.2rem; max-width: 800px; margin-bottom: 40px; color: #ccc;">
+            Компания теряет <span style="border-bottom: 2px solid var(--accent); color: white; font-weight: 700;">$X млн</span> ежегодно из-за неэффективного таргетинга.
         </p>
         <div class="grid-3">
             <div class="card">
@@ -79,7 +97,7 @@
             </div>
             <div class="card">
                 <h3>ЦЕЛЬ</h3>
-                <p>Увеличить Uplift на 5% с помощью ML.</p>
+                <p>Увеличить Uplift на <span style="color: var(--accent); font-weight: bold;">5%</span> с помощью ML.</p>
             </div>
         </div>
     </div>
@@ -91,7 +109,7 @@
         <br>
         <div style="display: flex; flex-direction: column; gap: 20px; align-items: center;">
             <!-- Уровень 1 -->
-            <div class="card" style="width: 100%; max-width: 600px; text-align: center; border: 2px solid white;">
+            <div class="card" style="width: 100%; max-width: 600px; text-align: center; border: 1px solid var(--accent); box-shadow: 0 0 15px rgba(198, 255, 0, 0.1);">
                 <span class="stat-label">GLOBAL GOAL</span>
                 <div class="big-stat" style="font-size: 2rem;">INCREMENTAL REVENUE</div>
             </div>
@@ -109,14 +127,14 @@
             </div>
             <div style="height: 30px; width: 2px; background: #333;"></div>
              <!-- Уровень 3 -->
-             <div class="card" style="width: 100%; max-width: 400px; text-align: center; border-style: dashed;">
+             <div class="card" style="width: 100%; max-width: 400px; text-align: center; border-style: dashed; border-color: #555;">
                 <span class="stat-label">ML METRIC</span>
-                <div class="big-stat" style="font-size: 1.5rem;">ROC-AUC / GINI</div>
+                <div class="big-stat" style="font-size: 1.5rem; color: #fff;">ROC-AUC / GINI</div>
             </div>
         </div>
     </div>
 
-    <!-- 5. ДАННЫЕ И ПАЙПЛАЙН -->
+    <!-- 5. ПАЙПЛАЙН ДАННЫХ -->
     <div class="slide">
         <h2>05. ПАЙПЛАЙН ДАННЫХ</h2>
         <div class="grid-4">
@@ -135,7 +153,7 @@
                 <p>Lag Features</p>
                 <p>One-Hot Enc</p>
             </div>
-            <div class="card">
+            <div class="card" style="border-color: var(--accent);">
                 <h3>OUTPUT</h3>
                 <p>Train / Test</p>
                 <span class="tag">80/20</span>
@@ -143,26 +161,22 @@
         </div>
     </div>
 
-    <!-- 6. LIVE DATA (ДИНАМИЧЕСКИЕ ГРАФИКИ) - ОБНОВЛЕНО -->
+    <!-- 6. LIVE DATA (ГРАФИКИ) -->
     <div class="slide" id="chartSlide">
         <h2>06. LIVE DATA</h2>
         <p>Интерактивная визуализация ключевых метрик модели.</p>
         
-        <!-- Сетка для графиков -->
         <div style="display: grid; grid-template-rows: 1.2fr 1fr; gap: 20px; height: 100%;">
-            
-            <!-- 1. Верхний график: Большой Area Chart -->
+            <!-- 1. Верхний график -->
             <div class="card" style="padding: 10px;">
                 <div id="chart-area" style="width: 100%; height: 100%;"></div>
             </div>
-
-            <!-- 2. Нижний ряд: Два графика -->
+            <!-- 2. Нижний ряд -->
             <div class="grid-2">
                 <div class="card" style="padding: 10px;">
                     <div id="chart-bar" style="width: 100%; height: 100%;"></div>
                 </div>
                 <div class="card" style="padding: 10px;">
-                    <!-- Radial Bar для метрики качества -->
                     <div id="chart-radial" style="width: 100%; height: 100%;"></div>
                 </div>
             </div>
@@ -172,17 +186,16 @@
     <!-- 7. FEATURE ENGINEERING -->
     <div class="slide">
         <h2>07. FEATURE ENGINEERING</h2>
-        <p>Как мы улучшили пространство признаков.</p>
         <div class="grid-2">
-            <div class="card" style="opacity: 0.7;">
-                <h3>RAW DATA (БЫЛО)</h3>
-                <ul>
+            <div class="card" style="opacity: 0.6; border: 1px dashed #444;">
+                <h3 style="color: #888;">RAW DATA (БЫЛО)</h3>
+                <ul style="color: #666;">
                     <li>Timestamp (2023-10-05 14:00)</li>
                     <li>User_Region (Moscow)</li>
                     <li>Item_List ([123, 456])</li>
                 </ul>
             </div>
-            <div class="card" style="border-color: white;">
+            <div class="card" style="border: 1px solid var(--accent); box-shadow: 0 0 15px rgba(198, 255, 0, 0.15);">
                 <h3>ENGINEERED (СТАЛО)</h3>
                 <ul>
                     <li><strong style="color:white">Is_Weekend</strong> (0/1)</li>
@@ -199,7 +212,6 @@
         <h2>08. МОДЕЛЬ (CODE)</h2>
         <p>Используем CatBoostClassifier с кастомной метрикой.</p>
         
-        <!-- Красивый блок с кодом -->
         <div class="code-block">
 <span class="keyword">from</span> catboost <span class="keyword">import</span> CatBoostClassifier
 
@@ -223,14 +235,14 @@
         </div>
     </div>
 
-    <!-- 9. РЕЗУЛЬТАТЫ МОДЕЛИ -->
+    <!-- 9. РЕЗУЛЬТАТЫ -->
     <div class="slide">
         <h2>09. РЕЗУЛЬТАТЫ</h2>
         <div class="grid-3">
             <div class="card">
                 <span class="stat-label">ROC-AUC</span>
                 <span class="big-stat">0.89</span>
-                <span style="color: #0f0;">+0.05 vs Baseline</span>
+                <span style="color: var(--accent); font-weight: bold;">+0.05 vs Baseline</span>
             </div>
             <div class="card">
                 <span class="stat-label">PRECISION @ K=5</span>
@@ -239,7 +251,7 @@
             </div>
             <div class="card">
                 <span class="stat-label">INFERENCE TIME</span>
-                <span class="big-stat">20ms</span>
+                <span class="big-stat" style="color: #fff;">20ms</span>
                 <p>Подходит для Real-time</p>
             </div>
         </div>
@@ -250,25 +262,22 @@
         <h2>10. АНАЛИЗ ОШИБОК</h2>
         <div class="grid-2">
             <div>
-                <p>Мы проанализировали False Positives (где модель соврала).</p>
-                <br>
                 <h3>Где ошибаемся?</h3>
-                <ul>
+                <ul style="margin-top: 20px;">
                     <li>1. <strong>Новые пользователи:</strong> Не хватает истории действий (Cold Start).</li>
                     <li>2. <strong>Аномальные чеки:</strong> Модель путает оптовиков с фродом.</li>
                 </ul>
                 <br>
                 <h3>Решение</h3>
-                <p>Добавить фичу `Days_Since_Registration` и отдельную ветку для новых юзеров.</p>
+                <p>Добавить фичу <span class="tag">Days_Since_Reg</span> и ветку для новых юзеров.</p>
             </div>
             <div class="card flex-center">
-                <!-- Плейсхолдер для матрицы ошибок -->
                 <div style="text-align: center;">
                     <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 2px; margin-bottom: 10px;">
-                        <div style="background: #222; padding: 20px;">TN</div>
-                        <div style="background: #444; padding: 20px; border: 1px solid red;">FP (Error)</div>
-                        <div style="background: #444; padding: 20px;">FN</div>
-                        <div style="background: #fff; color:black; padding: 20px;">TP</div>
+                        <div style="background: #222; padding: 20px; color: #555;">TN</div>
+                        <div style="background: #333; padding: 20px; border: 1px solid var(--accent); color: var(--accent);">FP (Error)</div>
+                        <div style="background: #333; padding: 20px;">FN</div>
+                        <div style="background: #fff; color:black; padding: 20px; font-weight: bold;">TP</div>
                     </div>
                     <span class="stat-label">CONFUSION MATRIX</span>
                 </div>
@@ -276,13 +285,13 @@
         </div>
     </div>
 
-    <!-- 11. БИЗНЕС-ЭФФЕКТ -->
+    <!-- 11. ЭКОНОМИКА -->
     <div class="slide">
         <h2>11. ЭКОНОМИКА (IMPACT)</h2>
         <p>Расчет потенциальной прибыли при внедрении на 100% базы.</p>
         
-        <div style="margin: 40px 0; padding: 20px; border: 1px dashed white; text-align: center;">
-            <h3 style="color: white; font-size: 1.5rem;">Profit = (Users * Uplift * Margin) - Tech_Cost</h3>
+        <div style="margin: 40px 0; padding: 20px; border: 1px dashed var(--accent); text-align: center; background: rgba(198,255,0,0.05);">
+            <h3 style="color: #fff; font-size: 1.5rem;">Profit = (Users * Uplift * Margin) - Tech_Cost</h3>
         </div>
 
         <div class="grid-3">
@@ -294,7 +303,7 @@
                 <span class="stat-label">UPLIFT</span>
                 <div class="big-stat" style="color:white; font-size: 2rem;">+3%</div>
             </div>
-            <div class="card" style="border-color: var(--accent);">
+            <div class="card" style="border: 2px solid var(--accent); box-shadow: 0 0 20px rgba(198, 255, 0, 0.2);">
                 <span class="stat-label">TOTAL PROFIT</span>
                 <div class="big-stat">$150,000</div>
                 <span class="tag">MONTHLY</span>
@@ -345,7 +354,7 @@
     <div class="slide flex-center">
         <div>
             <h1 style="font-size: 4.5rem; letter-spacing: -2px;">GG WP</h1>
-            <p style="font-size: 1rem; font-weight: 700; margin-top: 10px;">THANKS FOR WATCHING</p>
+            <p style="font-size: 1rem; font-weight: 700; margin-top: 10px; color: var(--accent); letter-spacing: 2px;">THANKS FOR WATCHING</p>
             <div style="margin-top: 40px;">
                 <img src="images/Team_Spirit_new_em.svg" alt="TS Logo" style="filter: brightness(0) invert(1); width: 150px; opacity: 0.6;">
             </div>
@@ -362,8 +371,11 @@
 
     <script>
         // ==========================================
-        // APEXCHARTS CONFIGURATION (TEAM SPIRIT STYLE)
+        // APEXCHARTS CONFIGURATION (TOXIC LIME THEME)
         // ==========================================
+
+        const ACCENT_COLOR = '#C6FF00'; // Наш новый цвет
+        const TEXT_COLOR = '#ffffff';
 
         const commonOptions = {
             chart: {
@@ -373,10 +385,10 @@
                 fontFamily: 'Inter, sans-serif',
             },
             theme: { mode: 'dark' },
-            colors: ['#ffffff', '#666666'],
+            colors: [ACCENT_COLOR, '#444444'], // Зеленый для данных, серый для фона
             grid: { borderColor: '#333', strokeDashArray: 4 },
             dataLabels: { enabled: false },
-            stroke: { curve: 'smooth', width: 2 },
+            stroke: { curve: 'smooth', width: 3 },
         };
 
         // 1. AREA CHART
@@ -385,7 +397,19 @@
             series: [{ name: 'Model Uplift', data: [31, 40, 28, 51, 42, 109, 100] }, 
                      { name: 'Baseline', data: [11, 32, 45, 32, 34, 52, 41] }],
             chart: { type: 'area', height: '100%', parentHeightOffset: 0, background: 'transparent', toolbar: { show: false } },
-            fill: { type: 'gradient', gradient: { shadeIntensity: 1, opacityFrom: 0.7, opacityTo: 0.1, stops: [0, 90, 100] } },
+            fill: { 
+                type: 'gradient', 
+                gradient: { 
+                    shadeIntensity: 1, 
+                    opacityFrom: 0.4, 
+                    opacityTo: 0.05, 
+                    stops: [0, 90, 100],
+                    colorStops: [
+                        { offset: 0, color: ACCENT_COLOR, opacity: 0.4 },
+                        { offset: 100, color: ACCENT_COLOR, opacity: 0 }
+                    ]
+                } 
+            },
             xaxis: { categories: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'], axisBorder: { show: false }, axisTicks: { show: false } },
             yaxis: { show: false }
         };
@@ -395,7 +419,7 @@
             ...commonOptions,
             series: [{ name: 'Importance', data: [400, 430, 448, 470, 540] }],
             chart: { type: 'bar', height: '100%', parentHeightOffset: 0, background: 'transparent', toolbar: { show: false } },
-            plotOptions: { bar: { borderRadius: 4, horizontal: true } },
+            plotOptions: { bar: { borderRadius: 2, horizontal: true, barHeight: '50%' } },
             xaxis: { categories: ['Age', 'Region', 'Last_Login', 'Total_Spend', 'Is_Weekend'], labels: { show: false }, axisBorder: { show: false }, axisTicks: { show: false } },
         };
 
@@ -412,19 +436,25 @@
                     dataLabels: {
                         show: true,
                         name: { offsetY: -10, show: true, color: '#888', fontSize: '14px' },
-                        value: { offsetY: 5, color: '#fff', fontSize: '30px', fontWeight: '900', fontFamily: 'Monument Extended, sans-serif', show: true }
+                        value: { 
+                            offsetY: 5, 
+                            color: ACCENT_COLOR, // Зеленая цифра
+                            fontSize: '30px', 
+                            fontWeight: '900', 
+                            fontFamily: 'Monument Extended, sans-serif', 
+                            show: true 
+                        }
                     }
                 }
             },
             labels: ['ROC-AUC'],
             stroke: { lineCap: 'round' },
-            colors: ['#ffffff']
+            fill: { type: 'solid', colors: [ACCENT_COLOR] }
         };
 
         // Initial Render
         let chartArea, chartBar, chartRadial;
         
-        // Wait for DOM
         document.addEventListener('DOMContentLoaded', () => {
              chartArea = new ApexCharts(document.querySelector("#chart-area"), optionsArea);
              chartBar = new ApexCharts(document.querySelector("#chart-bar"), optionsBar);
@@ -469,7 +499,7 @@
                 }
             });
             updateCounter();
-            triggerChartAnimations(index); // Trigger charts
+            triggerChartAnimations(index);
         }
 
         function nextSlide() {
@@ -487,7 +517,6 @@
             if (e.key === 'ArrowLeft') prevSlide();
         });
 
-        // Swipe for mobile
         let touchStartX = 0;
         let touchEndX = 0;
         document.addEventListener('touchstart', e => { touchStartX = e.changedTouches[0].screenX; }, false);
@@ -497,7 +526,6 @@
             if (touchEndX > touchStartX + 50) prevSlide();
         }, false);
 
-        // Init
         totalSlidesEl.innerText = slides.length;
         updateCounter();
     </script>

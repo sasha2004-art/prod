@@ -1,32 +1,23 @@
 /* ================= FONTS SETUP ================= */
-/* Подключаем конкретные файлы, которые лежат у тебя в папке fonts */
-
-/* 1. Monument Extended Black (Для заголовков H1, H2) */
+/* Убедись, что шрифты лежат в папке fonts/ */
 @font-face {
     font-family: 'Monument Extended';
     src: url('fonts/PPMonumentExtended-Black.otf') format('opentype');
     font-weight: 900;
     font-style: normal;
 }
-
-/* 2. Monument Extended Regular (Для кнопок и акцентов) */
 @font-face {
     font-family: 'Monument Extended';
     src: url('fonts/PPMonumentExtended-Regular.otf') format('opentype');
     font-weight: 400;
     font-style: normal;
 }
-
-/* 3. Inter Regular (Основной текст) */
 @font-face {
     font-family: 'Inter';
-    /* Используем версию 18pt как базовую для экрана */
     src: url('fonts/Inter_18pt-Regular.ttf') format('truetype');
     font-weight: 400;
     font-style: normal;
 }
-
-/* 4. Inter Bold (Жирный текст) */
 @font-face {
     font-family: 'Inter';
     src: url('fonts/Inter_18pt-Bold.ttf') format('truetype');
@@ -40,16 +31,24 @@
     --bg-card: #141414;
     --text-main: #e0e0e0;
     --text-muted: #888;
-    --accent: #ffffff; 
+    
+    /* === КИСЛОТНЫЙ ЗЕЛЕНЫЙ TEAM SPIRIT === */
+    --accent: #C6FF00; 
+    
     --border: #333;
     
-    /* Ссылаемся на названия, которые задали выше */
     --font-head: 'Monument Extended', sans-serif;
     --font-body: 'Inter', sans-serif;
 }
 
 /* ================= RESET & BASE ================= */
 * { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
+
+/* Цвет выделения текста */
+::selection {
+    background: var(--accent);
+    color: #000;
+}
 
 body {
     background-color: var(--bg-dark);
@@ -74,6 +73,8 @@ h1 {
     font-weight: 900; 
     text-transform: uppercase; 
     margin-bottom: 20px; 
+    /* Небольшое зеленое свечение */
+    text-shadow: 0 0 25px rgba(198, 255, 0, 0.25);
 }
 
 h2 { 
@@ -85,6 +86,7 @@ h2 {
     border-left: 6px solid var(--accent); 
     padding-left: 20px; 
     display: inline-block; 
+    box-shadow: -15px 0 20px -10px rgba(198, 255, 0, 0.2);
 }
 
 h3 { 
@@ -142,50 +144,43 @@ ul { margin-left: 20px; margin-bottom: 20px; }
     padding: 25px;
     position: relative;
     height: 100%;
-    transition: border-color 0.3s;
+    transition: all 0.3s ease;
 }
-.card:hover { border-color: #555; }
-.card::before { content: ''; position: absolute; top: 0; left: 0; width: 10px; height: 1px; background: var(--accent); }
+.card:hover { 
+    border-color: #555; 
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.5);
+}
+.card::before { 
+    content: ''; position: absolute; top: 0; left: 0; width: 15px; height: 2px; 
+    background: var(--accent); 
+    box-shadow: 0 0 10px var(--accent);
+}
 
-.big-stat { font-family: var(--font-head); font-size: 3rem; font-weight: 900; color: var(--accent); display: block; line-height: 1; margin-bottom: 10px; }
+.big-stat { 
+    font-family: var(--font-head); 
+    font-size: 3rem; 
+    font-weight: 900; 
+    color: var(--accent); 
+    display: block; 
+    line-height: 1; 
+    margin-bottom: 10px; 
+    text-shadow: 0 0 15px rgba(198, 255, 0, 0.2);
+}
 .stat-label { font-size: 0.8rem; text-transform: uppercase; letter-spacing: 1px; color: var(--text-muted); font-weight: 700; }
-.tag { display: inline-block; padding: 5px 10px; border: 1px solid var(--accent); font-size: 0.75rem; font-weight: 700; margin-right: 5px; margin-bottom: 5px; text-transform: uppercase; color: var(--accent); }
 
-/* --- IMAGES & PLACEHOLDERS --- */
-.img-placeholder {
-    width: 100%;
-    height: 200px;
-    background: #111;
-    border: 1px dashed #444;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: #555;
-    font-family: var(--font-head);
-    font-size: 0.8rem;
-    text-transform: uppercase;
-    margin-bottom: 15px;
-    overflow: hidden;
+.tag { 
+    display: inline-block; 
+    padding: 5px 10px; 
+    border: 1px solid var(--accent); 
+    font-size: 0.75rem; 
+    font-weight: 700; 
+    margin-right: 5px; 
+    margin-bottom: 5px; 
+    text-transform: uppercase; 
+    color: var(--accent); 
+    background: rgba(198, 255, 0, 0.05);
 }
-
-.img-placeholder img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover; 
-}
-
-.team-photo-box {
-    width: 100%;
-    aspect-ratio: 1 / 1;
-    background: #222;
-    margin-bottom: 15px;
-    background-size: cover;
-    background-position: center;
-    border: 1px solid #444;
-    filter: grayscale(100%); 
-    transition: filter 0.3s;
-}
-.team-photo-box:hover { filter: grayscale(0%); }
 
 /* --- CODE BLOCK STYLE --- */
 .code-block {
@@ -199,34 +194,51 @@ ul { margin-left: 20px; margin-bottom: 20px; }
     overflow-x: auto;
     white-space: pre;
     margin: 20px 0;
+    box-shadow: 0 0 20px rgba(0,0,0,0.3);
 }
-.keyword { color: #ff00ff; } 
-.string { color: #00ff00; } 
-.func { color: #00ffff; } 
-.comment { color: #666; font-style: italic; }
+.keyword { color: var(--accent); text-shadow: 0 0 5px rgba(198, 255, 0, 0.4); } 
+.string { color: #fff; } 
+.func { color: #fff; text-decoration: underline var(--accent); } 
+.comment { color: #555; font-style: italic; }
 
 /* --- NAVIGATION --- */
-.slide-counter { position: fixed; bottom: 30px; left: 40px; font-weight: 900; font-size: 1.2rem; z-index: 20; background: rgba(0,0,0,0.8); padding: 5px 10px; }
+.slide-counter { 
+    position: fixed; bottom: 30px; left: 40px; 
+    font-weight: 900; font-size: 1.2rem; z-index: 20; 
+    background: rgba(0,0,0,0.8); padding: 5px 15px; 
+    border-left: 2px solid var(--accent);
+}
 .controls { position: fixed; bottom: 0; left: 0; width: 100%; height: 80px; display: flex; justify-content: flex-end; align-items: center; padding-right: 40px; z-index: 20; pointer-events: none; }
-.btn-group { pointer-events: auto; display: flex; gap: 20px; background: rgba(20, 20, 20, 0.9); padding: 10px 20px; border-radius: 30px; border: 1px solid #333; }
-.btn { background: transparent; border: none; color: var(--text-main); font-family: var(--font-head); font-weight: 900; font-size: 1.5rem; cursor: pointer; padding: 0 10px; }
-.btn:hover { color: var(--accent); }
+.btn-group { pointer-events: auto; display: flex; gap: 20px; background: rgba(20, 20, 20, 0.95); padding: 10px 20px; border-radius: 30px; border: 1px solid #333; }
+.btn { background: transparent; border: none; color: var(--text-main); font-family: var(--font-head); font-weight: 900; font-size: 1.5rem; cursor: pointer; padding: 0 10px; transition: 0.3s; }
+.btn:hover { color: var(--accent); text-shadow: 0 0 10px var(--accent); }
 
 /* --- WATERMARK --- */
-.watermark-container { position: fixed; top: 30px; right: 40px; display: flex; align-items: center; gap: 15px; opacity: 0.6; z-index: 10; }
+.watermark-container { position: fixed; top: 30px; right: 40px; display: flex; align-items: center; gap: 15px; opacity: 0.8; z-index: 10; }
 .watermark-text { font-family: var(--font-head); font-weight: 900; border: 2px solid #fff; padding: 5px 12px; font-size: 0.9rem; }
 .logo-watermark-img { width: 40px; }
+
+/* --- IMAGES PLACEHOLDERS --- */
+.team-photo-box {
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    background: #222;
+    margin-bottom: 15px;
+    background-size: cover;
+    background-position: center;
+    border: 1px solid #444;
+    filter: grayscale(100%); 
+    transition: filter 0.3s, border-color 0.3s;
+}
+.team-photo-box:hover { filter: grayscale(0%); border-color: var(--accent); }
 
 /* ================= MOBILE ADAPTATION ================= */
 @media (max-width: 768px) {
     body { background-size: 25px 25px; }
     .slide { padding: 30px 20px 100px 20px; }
-    
     h1 { font-size: 2.2rem; }
     h2 { font-size: 1.5rem; border-left-width: 4px; margin-bottom: 20px; }
-    
     .grid-2, .grid-3, .grid-4 { display: flex; flex-direction: column; gap: 20px; }
-    
     .watermark-text { display: none; }
     .controls { justify-content: center; padding-right: 0; padding-bottom: 20px; }
 }
