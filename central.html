@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Central University | Case Solution</title>
+    
+    <!-- Подключаем стили -->
+    <link rel="stylesheet" href="style-central.css">
+    
+    <!-- Шрифт Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Графики -->
+    <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+</head>
+<body>
+
+    <!-- ЛОГОТИП ЦУ (Оригинал по ссылке) -->
+    <div class="header-bar">
+        <div class="logo-area">
+            <img src="https://cu.ru/assets/kit/favicon/safari-pinned-tab.svg" alt="CU Logo" class="cu-logo-img">
+            <span class="cu-logo-text">центральный<br>университет</span>
+        </div>
+        <div class="header-info">DANO OLYMPIAD 202X</div>
+    </div>
+
+    <!-- СЧЕТЧИК СЛАЙДОВ -->
+    <div class="slide-counter">
+        <span id="currSlide">01</span> / <span id="totalSlide">13</span>
+    </div>
+
+    <!-- ================= СЛАЙДЫ (КОНТЕНТ 1 в 1 из Classic) ================= -->
+
+    <!-- 1. ТИТУЛЬНИК -->
+    <div class="slide active">
+        <div class="content-wrapper">
+            <div class="title-block">
+                <div class="tag-row">
+                    <span class="cu-tag">#DATA_SCIENCE</span>
+                    <span class="cu-tag">#ANALYTICS</span>
+                    <span class="cu-tag">#TEAM_SPIRIT</span>
+                </div>
+                <h1>АНАЛИЗ [КЕЙС]</h1>
+                <div class="separator"></div>
+                <p class="subtitle">Решение задачи оптимизации ...</p>
+            </div>
+            <!-- Декор: 3D Куб на CSS (Символ ЦУ/Геометрии) -->
+            <div class="cube-container">
+                <div class="cube">
+                    <div class="face front"></div>
+                    <div class="face back"></div>
+                    <div class="face right"></div>
+                    <div class="face left"></div>
+                    <div class="face top"></div>
+                    <div class="face bottom"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 2. AGENDA -->
+    <div class="slide">
+        <h2>02. AGENDA</h2>
+        <div class="grid-2">
+            <div class="list-container">
+                <div class="list-item">
+                    <div class="item-num">01</div>
+                    <div class="item-text">
+                        <strong>PROBLEM</strong><br>
+                        <span>Бизнес-контекст и метрики</span>
+                    </div>
+                </div>
+                <div class="list-item">
+                    <div class="item-num">02</div>
+                    <div class="item-text">
+                        <strong>DATA & FEATURES</strong><br>
+                        <span>EDA, Препроцессинг</span>
+                    </div>
+                </div>
+                <div class="list-item">
+                    <div class="item-num">03</div>
+                    <div class="item-text">
+                        <strong>MODELING</strong><br>
+                        <span>ML, Валидация, Код</span>
+                    </div>
+                </div>
+                <div class="list-item">
+                    <div class="item-num">04</div>
+                    <div class="item-text">
+                        <strong>BUSINESS VALUE</strong><br>
+                        <span>Деньги и внедрение</span>
+                    </div>
+                </div>
+            </div>
+            <div class="card flex-center highlight-card">
+                <p class="quote">"От сырых данных к <span class="highlight-text">реальной прибыли</span>"</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- 3. ПРОБЛЕМАТИКА -->
+    <div class="slide">
+        <h2>03. ПРОБЛЕМАТИКА</h2>
+        <p class="lead">Компания теряет <span class="highlight-text">$X млн</span> ежегодно из-за неэффективного таргетинга.</p>
+        <div class="grid-3">
+            <div class="card">
+                <h3>БОЛЬ</h3>
+                <p>Низкая конверсия (2%) в текущих кампаниях.</p>
+            </div>
+            <div class="card">
+                <h3>ПОСЛЕДСТВИЕ</h3>
+                <p>Выгорание аудитории спам-рассылками.</p>
+            </div>
+            <div class="card blue-border">
+                <h3>ЦЕЛЬ</h3>
+                <p>Увеличить Uplift на <strong>5%</strong> с помощью ML.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- 4. ИЕРАРХИЯ МЕТРИК -->
+    <div class="slide">
+        <h2>04. ИЕРАРХИЯ МЕТРИК</h2>
+        <p>Связываем техническое качество модели с деньгами бизнеса.</p>
+        <div class="metrics-tree">
+            <!-- Уровень 1 -->
+            <div class="metric-card main">
+                <span class="label">GLOBAL GOAL</span>
+                <div class="value">INCREMENTAL REVENUE</div>
+            </div>
+            <div class="connector"></div>
+            <!-- Уровень 2 -->
+            <div class="grid-2" style="width: 100%; gap: 20px;">
+                <div class="metric-card">
+                    <span class="label">PROXY METRIC</span>
+                    <div class="value-small">Conversion Rate</div>
+                </div>
+                <div class="metric-card">
+                    <span class="label">GUARDRAIL METRIC</span>
+                    <div class="value-small">Churn Rate</div>
+                </div>
+            </div>
+            <div class="connector"></div>
+            <!-- Уровень 3 -->
+            <div class="metric-card dashed">
+                <span class="label">ML METRIC</span>
+                <div class="value-small">ROC-AUC / GINI</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 5. ПАЙПЛАЙН -->
+    <div class="slide">
+        <h2>05. ПАЙПЛАЙН ДАННЫХ</h2>
+        <div class="pipeline-row">
+            <div class="p-step">
+                <h3>INPUT</h3>
+                <p>Transactions.csv</p>
+                <span class="badge">1.5 GB</span>
+            </div>
+            <div class="arrow">→</div>
+            <div class="p-step">
+                <h3>CLEANING</h3>
+                <p>Drop Duplicates</p>
+                <p>Fillna (Mean)</p>
+            </div>
+            <div class="arrow">→</div>
+            <div class="p-step">
+                <h3>FEATURES</h3>
+                <p>Lag Features</p>
+                <p>One-Hot Enc</p>
+            </div>
+            <div class="arrow">→</div>
+            <div class="p-step highlight">
+                <h3>OUTPUT</h3>
+                <p>Train / Test</p>
+                <span class="badge blue">80/20</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- 6. LIVE DATA (ГРАФИКИ) -->
+    <div class="slide" id="chartSlide">
+        <h2>06. LIVE DATA</h2>
+        <p>Интерактивная визуализация ключевых метрик модели.</p>
+        <div class="charts-layout">
+            <div class="chart-container main-chart">
+                <div id="chart-area"></div>
+            </div>
+            <div class="chart-container side-chart-top">
+                <div id="chart-bar"></div>
+            </div>
+            <div class="chart-container side-chart-bottom flex-center">
+                <div id="chart-radial"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 7. FEATURE ENGINEERING -->
+    <div class="slide">
+        <h2>07. FEATURE ENGINEERING</h2>
+        <p>Как мы улучшили пространство признаков.</p>
+        <div class="grid-2">
+            <div class="card grey-bg">
+                <h3>RAW DATA (БЫЛО)</h3>
+                <ul>
+                    <li>Timestamp (2023-10-05 14:00)</li>
+                    <li>User_Region (Moscow)</li>
+                    <li>Item_List ([123, 456])</li>
+                </ul>
+            </div>
+            <div class="card blue-border">
+                <h3>ENGINEERED (СТАЛО)</h3>
+                <ul>
+                    <li><strong>Is_Weekend</strong> (0/1)</li>
+                    <li><strong>Hour_Of_Day</strong> (14)</li>
+                    <li><strong>Region_Avg_Spend</strong> (Target Enc)</li>
+                    <li><strong>Items_Count</strong> (2)</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- 8. КОД -->
+    <div class="slide">
+        <h2>08. МОДЕЛЬ (CODE)</h2>
+        <p>Используем CatBoostClassifier с кастомной метрикой.</p>
+        <div class="code-block">
+            <div class="code-header">train.py</div>
+<pre>
+<span class="kwd">from</span> catboost <span class="kwd">import</span> CatBoostClassifier
+
+<span class="kwd">def</span> <span class="func">train_model</span>(X_train, y_train):
+    model = CatBoostClassifier(
+        iterations=<span class="num">1000</span>,
+        learning_rate=<span class="num">0.05</span>,
+        eval_metric=<span class="str">'AUC'</span>,
+        verbose=<span class="num">100</span>
+    )
+    
+    model.fit(X_train, y_train)
+    <span class="kwd">return</span> model
+
+<span class="cmt"># Результат на валидации: AUC 0.895</span>
+</pre>
+        </div>
+        <div class="tags-row">
+            <span class="badge">PYTHON 3.9</span>
+            <span class="badge">CATBOOST</span>
+            <span class="badge">SKLEARN</span>
+        </div>
+    </div>
+
+    <!-- 9. РЕЗУЛЬТАТЫ -->
+    <div class="slide">
+        <h2>09. РЕЗУЛЬТАТЫ</h2>
+        <div class="grid-3">
+            <div class="card text-center">
+                <span class="label">ROC-AUC</span>
+                <div class="big-number">0.89</div>
+                <div class="positive-change">+0.05 vs Baseline</div>
+            </div>
+            <div class="card text-center">
+                <span class="label">PRECISION @ K=5</span>
+                <div class="big-number">0.72</div>
+                <p>Высокая точность в топе</p>
+            </div>
+            <div class="card text-center">
+                <span class="label">INFERENCE TIME</span>
+                <div class="big-number">20ms</div>
+                <p>Подходит для Real-time</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- 10. АНАЛИЗ ОШИБОК -->
+    <div class="slide">
+        <h2>10. АНАЛИЗ ОШИБОК</h2>
+        <div class="grid-2">
+            <div>
+                <p>Мы проанализировали False Positives (где модель соврала).</p>
+                <br>
+                <h3>Где ошибаемся?</h3>
+                <ul class="styled-list">
+                    <li><strong>Новые пользователи:</strong> Не хватает истории действий (Cold Start).</li>
+                    <li><strong>Аномальные чеки:</strong> Модель путает оптовиков с фродом.</li>
+                </ul>
+                <br>
+                <h3>Решение</h3>
+                <p>Добавить фичу `Days_Since_Registration` и отдельную ветку для новых юзеров.</p>
+            </div>
+            <div class="card flex-center">
+                <table class="confusion-matrix">
+                    <tr><td></td><td>Pred 0</td><td>Pred 1</td></tr>
+                    <tr><td>True 0</td><td class="tn">TN</td><td class="fp">FP (Error)</td></tr>
+                    <tr><td>True 1</td><td class="fn">FN</td><td class="tp">TP</td></tr>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <!-- 11. ЭКОНОМИКА -->
+    <div class="slide">
+        <h2>11. ЭКОНОМИКА (IMPACT)</h2>
+        <p>Расчет потенциальной прибыли при внедрении на 100% базы.</p>
+        
+        <div class="formula-box">
+            Profit = (Users * Uplift * Margin) - Tech_Cost
+        </div>
+
+        <div class="grid-3">
+            <div class="stat-item">
+                <div class="label">USERS</div>
+                <div class="val">500k</div>
+            </div>
+            <div class="stat-item">
+                <div class="label">UPLIFT</div>
+                <div class="val blue">+3%</div>
+            </div>
+            <div class="stat-item highlight">
+                <div class="label white">TOTAL PROFIT</div>
+                <div class="val white">$150,000</div>
+                <span class="badge white">MONTHLY</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- 12. КОМАНДА -->
+    <div class="slide">
+        <h2>12. КОМАНДА</h2>
+        <div class="grid-4">
+            <div class="team-card">
+                <div class="avatar" style="background-image: url('images/team_member_1.jpg');"></div>
+                <h3>CAPTAIN</h3>
+                <p>Strategy & Deck</p>
+            </div>
+            <div class="team-card">
+                <div class="avatar"></div>
+                <h3>ML ENG</h3>
+                <p>Pipeline & Code</p>
+            </div>
+            <div class="team-card">
+                <div class="avatar"></div>
+                <h3>ANALYST</h3>
+                <p>EDA & Hypotheses</p>
+            </div>
+            <div class="team-card">
+                <div class="avatar"></div>
+                <h3>DESIGN</h3>
+                <p>Visuals</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- 13. ФИНАЛ -->
+    <div class="slide flex-center">
+        <div class="text-center">
+            <h1 style="font-size: 5rem; margin-bottom: 20px;">GG WP</h1>
+            <p style="font-size: 1.5rem; color: #666; font-weight: 700;">THANKS FOR WATCHING</p>
+            
+            <div style="margin-top: 60px;">
+                <img src="https://cu.ru/assets/kit/favicon/safari-pinned-tab.svg" width="60" alt="CU Logo">
+            </div>
+            
+            <div style="margin-top: 40px;">
+                <a href="index.html" class="back-link">Back to Menu</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- CONTROLS -->
+    <div class="controls">
+        <button onclick="prevSlide()">←</button>
+        <button onclick="nextSlide()">→</button>
+    </div>
+
+    <script>
+        // ДАННЫЕ ИЗ CLASSIC.HTML
+        // Цвета ЦУ: Синий (#0141CD), Черный (#000000), Светло-серый
+        const COLOR_ACCENT = '#0141CD';
+        const COLOR_BASE = '#999999';
+
+        const commonOptions = {
+            chart: { background: 'transparent', toolbar: { show: false }, animations: { enabled: true }, fontFamily: 'Inter, sans-serif' },
+            colors: [COLOR_ACCENT, COLOR_BASE],
+            grid: { borderColor: '#E5E5E5' },
+            dataLabels: { enabled: false }
+        };
+
+        const areaOptions = {
+            ...commonOptions,
+            series: [{ name: 'Model Uplift', data: [31, 40, 28, 51, 42, 109, 100] }, 
+                     { name: 'Baseline', data: [11, 32, 45, 32, 34, 52, 41] }],
+            chart: { type: 'area', height: '100%', toolbar: { show: false } },
+            fill: { type: 'gradient', gradient: { shadeIntensity: 1, opacityFrom: 0.5, opacityTo: 0.1 } },
+            stroke: { curve: 'smooth', width: 2 },
+            xaxis: { categories: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'] }
+        };
+
+        const barOptions = {
+            ...commonOptions,
+            series: [{ name: 'Importance', data: [400, 430, 448, 470, 540] }],
+            chart: { type: 'bar', height: '100%', toolbar: { show: false } },
+            plotOptions: { bar: { borderRadius: 4, horizontal: true, barHeight: '50%' } },
+            xaxis: { categories: ['Age', 'Region', 'Last_Login', 'Total_Spend', 'Is_Weekend'] },
+            colors: [COLOR_ACCENT]
+        };
+
+        const radialOptions = {
+            ...commonOptions,
+            series: [89],
+            chart: { type: 'radialBar', height: '100%' },
+            plotOptions: {
+                radialBar: {
+                    hollow: { size: '60%' },
+                    dataLabels: {
+                        name: { show: true, fontSize: '14px', color: '#666', offsetY: -10 },
+                        value: { show: true, fontSize: '30px', color: COLOR_ACCENT, fontWeight: '700', offsetY: 10 }
+                    }
+                }
+            },
+            labels: ['ROC-AUC'],
+            colors: [COLOR_ACCENT]
+        };
+
+        let ch1, ch2, ch3;
+        
+        document.addEventListener('DOMContentLoaded', () => {
+             ch1 = new ApexCharts(document.querySelector("#chart-area"), areaOptions);
+             ch2 = new ApexCharts(document.querySelector("#chart-bar"), barOptions);
+             ch3 = new ApexCharts(document.querySelector("#chart-radial"), radialOptions);
+             ch1.render(); ch2.render(); ch3.render();
+        });
+
+        // SLIDER
+        let current = 0;
+        const slides = document.querySelectorAll('.slide');
+        const countEl = document.getElementById('currSlide');
+        
+        function showSlide(idx) {
+            slides.forEach((s, i) => {
+                s.classList.remove('active');
+                if(i === idx) {
+                    s.classList.add('active');
+                    if(s.id === 'chartSlide') {
+                        ch1.updateOptions({ chart: { animations: { enabled: true } } });
+                        ch2.updateOptions({ chart: { animations: { enabled: true } } });
+                        ch3.updateOptions({ chart: { animations: { enabled: true } } });
+                    }
+                }
+            });
+            countEl.innerText = (idx + 1).toString().padStart(2, '0');
+        }
+
+        function nextSlide() { current = (current + 1) % slides.length; showSlide(current); }
+        function prevSlide() { current = (current - 1 + slides.length) % slides.length; showSlide(current); }
+        
+        document.addEventListener('keydown', (e) => {
+            if(e.key === 'ArrowRight') nextSlide();
+            if(e.key === 'ArrowLeft') prevSlide();
+        });
+    </script>
+</body>
+</html>

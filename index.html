@@ -44,6 +44,21 @@
         }
         .card-rofl h2 { color: #ff3c00; text-shadow: 2px 2px 0px #000; }
         .card-rofl:hover h2 { animation: shake 0.5s infinite; }
+        /* CENTRAL STYLE (Light) */
+        .card-central { 
+            background: #EBEBEB; /* Светлый фон */
+            border-color: #ccc; 
+        }
+        .card-central h2 { color: #1A1A1A; } /* Черный текст */
+        .card-central p { color: #666; }
+        
+        .card-central:hover {
+            background: #fff;
+            border-color: #0141CD; /* Синий акцент */
+            box-shadow: 0 0 30px rgba(1, 65, 205, 0.2);
+            transform: translateY(-10px);
+        }
+        .card-central:hover h2 { color: #0141CD; }
 
         @keyframes shake {
             0% { transform: translate(1px, 1px) rotate(0deg); }
@@ -76,6 +91,10 @@
             <h2>PIRATE</h2>
             <p>Trash / Meme Style</p>
         </a>
+        <a href="central.html" class="card card-central">
+            <h2>CENTRAL</h2>
+        <p>Academic / Light Style</p>
+</a>
     </div>
 </body>
 </html>
