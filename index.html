@@ -5,125 +5,77 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Select Presentation Version</title>
     <style>
-        /* Подключаем шрифт, если он есть в папке fonts, иначе fallback */
-        @font-face {
-            font-family: 'Monument Extended';
-            src: url('fonts/PPMonumentExtended-Black.otf') format('opentype');
-            font-weight: 900;
-        }
+        @font-face { font-family: 'Monument Extended'; src: url('fonts/PPMonumentExtended-Black.otf') format('opentype'); font-weight: 900; }
         
         body {
-            margin: 0;
-            padding: 0;
-            background-color: #050505;
-            color: white;
+            margin: 0; padding: 0;
+            background-color: #050505; color: white;
             font-family: 'Monument Extended', Arial, sans-serif;
             height: 100vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            /* Радиальный градиент фона */
+            display: flex; flex-direction: column; justify-content: center; align-items: center;
             background-image: radial-gradient(circle at center, #1a1a1a 0%, #000 100%);
-            overflow: hidden;
         }
-
-        h1 {
-            font-size: clamp(1.5rem, 5vw, 2.5rem);
-            margin-bottom: 50px;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            text-align: center;
-            text-shadow: 0 0 20px rgba(255,255,255,0.1);
-        }
-
-        .container {
-            display: flex;
-            gap: 40px;
-            flex-wrap: wrap;
-            justify-content: center;
-            padding: 20px;
-        }
-
+        h1 { margin-bottom: 50px; text-align: center; font-size: 2.5rem; }
+        .container { display: flex; gap: 30px; flex-wrap: wrap; justify-content: center; }
         .card {
-            width: 280px;
-            height: 380px;
-            border: 1px solid #333;
-            background: #111;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            text-decoration: none;
-            transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
-            cursor: pointer;
-            position: relative;
+            width: 250px; height: 350px;
+            border: 1px solid #333; background: #111;
+            display: flex; flex-direction: column; justify-content: center; align-items: center;
+            text-decoration: none; transition: 0.3s; cursor: pointer;
         }
+        .card h2 { font-size: 1.8rem; margin: 0; }
+        .card p { font-family: sans-serif; color: #666; font-size: 0.8rem; margin-top: 10px; text-transform: uppercase; }
 
-        .card h2 {
-            font-size: 2rem;
-            margin: 0;
-            z-index: 2;
-        }
-
-        .card p {
-            font-family: 'Inter', sans-serif; 
-            color: #666; 
-            margin-top: 15px; 
-            font-size: 0.9rem; 
-            text-transform: uppercase; 
-            letter-spacing: 1px;
-            z-index: 2;
-            transition: color 0.3s;
-        }
-
-        /* --- СТИЛЬ SPIRIT (ЗЕЛЕНЫЙ) --- */
-        .card-spirit { border-color: #333; }
+        /* SPIRIT */
+        .card-spirit:hover { border-color: #C6FF00; box-shadow: 0 0 30px rgba(198, 255, 0, 0.2); transform: translateY(-10px); }
         .card-spirit h2 { color: #C6FF00; }
-        
-        .card-spirit:hover {
-            border-color: #C6FF00;
-            box-shadow: 0 0 40px rgba(198, 255, 0, 0.15);
-            transform: translateY(-10px);
-            background: #161616;
-        }
-        .card-spirit:hover p { color: #fff; }
 
-        /* --- СТИЛЬ CLASSIC (БЕЛЫЙ) --- */
-        .card-classic { border-color: #333; }
+        /* CLASSIC */
+        .card-classic:hover { border-color: #ffffff; box-shadow: 0 0 30px rgba(255, 255, 255, 0.2); transform: translateY(-10px); }
         .card-classic h2 { color: #ffffff; }
 
-        .card-classic:hover {
-            border-color: #ffffff;
-            box-shadow: 0 0 40px rgba(255, 255, 255, 0.15);
-            transform: translateY(-10px);
-            background: #161616;
+        /* === ROFL / PIRATE STYLE === */
+        .card-rofl { border-color: #333; }
+        .card-rofl:hover { 
+            border-color: #ff3c00; 
+            box-shadow: 0 0 40px rgba(255, 60, 0, 0.3); 
+            transform: translateY(-10px) rotate(2deg); /* Чуть перекашиваем */
+            background: url('https://media1.tenor.com/m/m1m2yJjS95YAAAAC/shadow-fiend-dota.gif') center/cover; /* Можно вставить гифку SF */
         }
-        .card-classic:hover p { color: #fff; }
+        .card-rofl h2 { color: #ff3c00; text-shadow: 2px 2px 0px #000; }
+        .card-rofl:hover h2 { animation: shake 0.5s infinite; }
 
-        @media (max-width: 600px) {
-            .container { flex-direction: column; gap: 20px; }
-            .card { width: 100%; height: 200px; }
+        @keyframes shake {
+            0% { transform: translate(1px, 1px) rotate(0deg); }
+            10% { transform: translate(-1px, -2px) rotate(-1deg); }
+            20% { transform: translate(-3px, 0px) rotate(1deg); }
+            30% { transform: translate(3px, 2px) rotate(0deg); }
+            40% { transform: translate(1px, -1px) rotate(1deg); }
+            50% { transform: translate(-1px, 2px) rotate(-1deg); }
+            60% { transform: translate(-3px, 1px) rotate(0deg); }
+            70% { transform: translate(3px, 1px) rotate(-1deg); }
+            80% { transform: translate(-1px, -1px) rotate(1deg); }
+            90% { transform: translate(1px, 2px) rotate(0deg); }
+            100% { transform: translate(1px, -2px) rotate(-1deg); }
         }
     </style>
 </head>
 <body>
-
     <h1>Choose Presentation Style</h1>
-
     <div class="container">
-        <!-- Ссылка на Зеленую версию -->
         <a href="spirit.html" class="card card-spirit">
             <h2>TOXIC</h2>
-            <p>Team Spirit Green</p>
+            <p>Team Spirit Style</p>
         </a>
-
-        <!-- Ссылка на Белую версию -->
         <a href="classic.html" class="card card-classic">
             <h2>CLASSIC</h2>
-            <p>Monochrome White</p>
+            <p>Monochrome Style</p>
+        </a>
+        <!-- НОВАЯ КНОПКА -->
+        <a href="rofl.html" class="card card-rofl">
+            <h2>PIRATE</h2>
+            <p>Trash / Meme Style</p>
         </a>
     </div>
-
 </body>
 </html>

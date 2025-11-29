@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <link rel="icon" href="images/Team_Spirit_new_em.svg" type="image/svg+xml">
+    <title>Team Spirit | Pirate Edition</title>
+    
+    <!-- Подключаем ROFL CSS (Красный стиль) -->
+    <link rel="stylesheet" href="style-rofl.css">
+    <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+</head>
+<body>
+
+    <!-- ВОДЯНОЙ ЗНАК (По просьбе) -->
+    <div class="watermark-container">
+        <div class="watermark-text" style="color:red; border-color:red;">SEREGA PIRAT</div>
+        <img src="images/ab67616d00001e0290d227750619710fa3fb7241.jpg" class="rofl-logo" alt="Pirat" style="border-radius: 50%;">
+    </div>
+
+    <div class="slide-counter"><span id="currSlide">01</span> / <span id="totalSlide">21</span></div>
+
+    <!-- 1. ТИТУЛЬНИК (Фон: Анти-Маг) -->
+    <div class="slide active flex-center" style="background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.9)), url('images/Cosmetic_icon_Legacy_of_the_Awakened.webp'); background-size: cover; background-position: center;">
+        <div>
+            <!-- Логотип Spirit -->
+            <img src="images/Team_Spirit_new_em.svg" alt="TS Logo" style="filter: brightness(0) invert(1) drop-shadow(0 0 10px red); width: 250px; margin-bottom: 40px; max-width: 70%;">
+            
+            <p style="letter-spacing: 4px; color: var(--accent); margin-bottom: 15px; font-weight: 700; text-shadow: 2px 2px 0 #000;">DANO OLYMPIAD 202X</p>
+            <h1 style="text-shadow: 4px 4px 0px #000;">АНАЛИЗ [КЕЙС]</h1>
+            <div style="width: 80px; height: 6px; background: var(--accent); margin: 25px auto; transform: skewX(-20deg);"></div>
+            <p style="font-weight: bold; text-shadow: 1px 1px 0 #000;">Решение задачи оптимизации ...</p>
+            <br>
+            <div style="display: flex; justify-content: center; gap: 10px; flex-wrap: wrap;">
+                <span class="tag">#DATA_SCIENCE</span>
+                <span class="tag">#ANALYTICS</span>
+                <span class="tag">#TEAM_SPIRIT</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- 2. AGENDA -->
+    <div class="slide">
+        <h2>02. AGENDA</h2>
+        <div class="grid-2">
+            <div>
+                <ul style="list-style: none; padding: 0;">
+                    <li style="font-size: 1.2rem; margin-bottom: 20px;"><strong style="color:var(--accent);">01. PROBLEM</strong> <br> <span style="font-size:0.9rem; color:#ccc;">Бизнес-контекст и метрики</span></li>
+                    <li style="font-size: 1.2rem; margin-bottom: 20px;"><strong style="color:var(--accent);">02. DATA & FEATURES</strong> <br> <span style="font-size:0.9rem; color:#ccc;">EDA, Препроцессинг</span></li>
+                    <li style="font-size: 1.2rem; margin-bottom: 20px;"><strong style="color:var(--accent);">03. MODELING</strong> <br> <span style="font-size:0.9rem; color:#ccc;">ML, Валидация, Код</span></li>
+                    <li style="font-size: 1.2rem; margin-bottom: 20px;"><strong style="color:var(--accent);">04. BUSINESS VALUE</strong> <br> <span style="font-size:0.9rem; color:#ccc;">Деньги и внедрение</span></li>
+                </ul>
+            </div>
+            <div class="card flex-center" style="border-color: var(--accent);">
+                <p style="font-size: 1.5rem; font-weight: 700; color: #fff;">"От сырых данных к <span style="color: var(--accent);">реальной прибыли</span>"</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- 3. ПРОБЛЕМА -->
+    <div class="slide">
+        <h2>03. ПРОБЛЕМАТИКА</h2>
+        <p style="font-size: 1.2rem; max-width: 800px; margin-bottom: 40px; color: white;">
+            Компания теряет <span style="border-bottom: 3px solid var(--accent);">$X млн</span> ежегодно из-за неэффективного таргетинга.
+        </p>
+        <div class="grid-3">
+            <div class="card">
+                <h3>БОЛЬ</h3>
+                <p>Низкая конверсия (2%) в текущих кампаниях.</p>
+            </div>
+            <div class="card">
+                <h3>ПОСЛЕДСТВИЕ</h3>
+                <p>Выгорание аудитории спам-рассылками.</p>
+            </div>
+            <div class="card">
+                <h3>ЦЕЛЬ</h3>
+                <p>Увеличить Uplift на 5% с помощью ML.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- 4. ИЕРАРХИЯ МЕТРИК -->
+    <div class="slide">
+        <h2>04. ИЕРАРХИЯ МЕТРИК</h2>
+        <p>Связываем техническое качество модели с деньгами бизнеса.</p>
+        <br>
+        <div style="display: flex; flex-direction: column; gap: 20px; align-items: center;">
+            <div class="card" style="width: 100%; max-width: 600px; text-align: center; border: 2px solid var(--accent);">
+                <span class="stat-label">GLOBAL GOAL</span>
+                <div class="big-stat" style="font-size: 2rem;">INCREMENTAL REVENUE</div>
+            </div>
+            <div style="height: 30px; width: 2px; background: #500;"></div>
+            <div class="grid-2" style="width: 100%; max-width: 800px; gap: 20px;">
+                <div class="card" style="text-align: center;">
+                    <span class="stat-label">PROXY METRIC</span><br>
+                    <b style="color:white; font-size: 1.2rem;">Conversion Rate</b>
+                </div>
+                <div class="card" style="text-align: center;">
+                    <span class="stat-label">GUARDRAIL METRIC</span><br>
+                    <b style="color:white; font-size: 1.2rem;">Churn Rate</b>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 5. ПАЙПЛАЙН -->
+    <div class="slide">
+        <h2>05. ПАЙПЛАЙН ДАННЫХ</h2>
+        <div class="grid-4">
+            <div class="card">
+                <h3>INPUT</h3>
+                <p>Transactions.csv</p>
+                <span class="tag">1.5 GB</span>
+            </div>
+            <div class="card">
+                <h3>CLEANING</h3>
+                <p>Drop Duplicates</p>
+                <p>Fillna (Mean)</p>
+            </div>
+            <div class="card">
+                <h3>FEATURES</h3>
+                <p>Lag Features</p>
+                <p>One-Hot Enc</p>
+            </div>
+            <div class="card" style="border-color: var(--accent);">
+                <h3>OUTPUT</h3>
+                <p>Train / Test</p>
+                <span class="tag">80/20</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- 6. LIVE DATA (ГРАФИКИ - КРАСНЫЕ) -->
+    <div class="slide" id="chartSlide">
+        <h2>06. LIVE DATA</h2>
+        <p>Интерактивная визуализация ключевых метрик модели.</p>
+        <div style="display: grid; grid-template-rows: 1.2fr 1fr; gap: 20px; height: 100%;">
+            <div class="card" style="padding: 10px;"><div id="chart-area" style="width: 100%; height: 100%;"></div></div>
+            <div class="grid-2">
+                <div class="card" style="padding: 10px;"><div id="chart-bar" style="width: 100%; height: 100%;"></div></div>
+                <div class="card" style="padding: 10px;"><div id="chart-radial" style="width: 100%; height: 100%;"></div></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 8. КОД МОДЕЛИ (ОРИГИНАЛЬНЫЙ ТЕКСТ) -->
+    <div class="slide">
+        <h2>08. МОДЕЛЬ (CODE)</h2>
+        <p>Используем CatBoostClassifier с кастомной метрикой.</p>
+        
+        <div class="code-block">
+<span class="keyword">from</span> catboost <span class="keyword">import</span> CatBoostClassifier
+
+<span class="keyword">def</span> <span class="func">train_model</span>(X_train, y_train):
+    model = CatBoostClassifier(
+        iterations=<span class="string">1000</span>,
+        learning_rate=<span class="string">0.05</span>,
+        eval_metric=<span class="string">'AUC'</span>,
+        verbose=<span class="string">100</span>,
+        task_type=<span class="string">'GPU'</span>
+    )
+    
+    model.fit(X_train, y_train)
+    <span class="keyword">return</span> model
+
+<span class="comment"># Результат на валидации: AUC 0.895</span>
+        </div>
+        <div style="display: flex; gap: 20px;">
+            <span class="tag">PYTHON 3.9</span>
+            <span class="tag">CATBOOST</span>
+            <span class="tag">SKLEARN</span>
+        </div>
+    </div>
+
+    <!-- 10. АНАЛИЗ ОШИБОК -->
+    <div class="slide">
+        <h2>10. АНАЛИЗ ОШИБОК</h2>
+        <div class="grid-2">
+            <div>
+                <p>Мы проанализировали False Positives (где модель соврала).</p>
+                <br>
+                <h3>Где ошибаемся?</h3>
+                <ul>
+                    <li>1. <strong>Новые пользователи:</strong> Не хватает истории действий (Cold Start).</li>
+                    <li>2. <strong>Аномальные чеки:</strong> Модель путает оптовиков с фродом.</li>
+                </ul>
+                <br>
+                <h3>Решение</h3>
+                <p>Добавить фичу `Days_Since_Registration` и отдельную ветку для новых юзеров.</p>
+            </div>
+            <div class="card flex-center">
+                <div style="text-align: center;">
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 2px; margin-bottom: 10px;">
+                        <div style="background: #222; padding: 20px;">TN</div>
+                        <div style="background: #500; padding: 20px; border: 1px solid red; color: #fff;">FP (Error)</div>
+                        <div style="background: #500; padding: 20px;">FN</div>
+                        <div style="background: #fff; color:black; padding: 20px; font-weight: bold;">TP</div>
+                    </div>
+                    <span class="stat-label">CONFUSION MATRIX</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 12. КОМАНДА (Смешные картинки, но серьезные роли) -->
+    <div class="slide">
+        <h2>12. КОМАНДА</h2>
+        <div class="grid-4">
+            <!-- 1. CAPTAIN (СЕРЕГА ПИРАТ) -->
+            <div class="card" style="padding: 10px;">
+                <div class="team-photo-box" style="background-image: url('images/ab67616d00001e0290d227750619710fa3fb7241.jpg');"></div>
+                <div style="padding: 10px;">
+                    <h3>CAPTAIN</h3>
+                    <p style="font-size: 0.9rem;">Strategy & Deck</p>
+                </div>
+            </div>
+            <!-- 2. ML ENG (Анти-Маг) -->
+            <div class="card" style="padding: 10px;">
+                <div class="team-photo-box" style="background-image: url('images/Cosmetic_icon_Legacy_of_the_Awakened.webp');"></div>
+                <div style="padding: 10px;">
+                    <h3>ML ENG</h3>
+                    <p style="font-size: 0.9rem;">Pipeline & Code</p>
+                </div>
+            </div>
+            <!-- 3. ANALYST (Pudge) -->
+            <div class="card" style="padding: 10px;">
+                <div class="team-photo-box" style="background-image: url('images/db112ad479a169c8f5f1465418636ee5.1000x1000x1.png');"></div>
+                <div style="padding: 10px;">
+                    <h3>ANALYST</h3>
+                    <p style="font-size: 0.9rem;">EDA & Hypotheses</p>
+                </div>
+            </div>
+             <!-- 4. DESIGN (Смешное фото) -->
+             <div class="card" style="padding: 10px;">
+                <div class="team-photo-box" style="background-image: url('images/images.jpg');"></div>
+                <div style="padding: 10px;">
+                    <h3>DESIGN</h3>
+                    <p style="font-size: 0.9rem;">Visuals</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 13. ФИНАЛ (Фон: Pudge) -->
+    <div class="slide flex-center" style="background: linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.8)), url('images/db112ad479a169c8f5f1465418636ee5.1000x1000x1.png'); background-size: cover; background-position: center;">
+        <div style="background: rgba(0,0,0,0.8); padding: 40px; border: 2px solid var(--accent);">
+            <h1 style="font-size: 4.5rem; letter-spacing: -2px; color: #fff;">GG WP</h1>
+            <p style="font-size: 1rem; font-weight: 700; margin-top: 10px; color: var(--accent); letter-spacing: 2px;">THANKS FOR WATCHING</p>
+            <div style="margin-top: 20px;">
+                <a href="index.html" style="color: #fff; border: 1px solid #fff; padding: 10px 20px; text-decoration: none; text-transform: uppercase;">Back to Menu</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- CONTROLS -->
+    <div class="controls">
+        <div class="btn-group">
+            <button class="btn" onclick="prevSlide()"> < </button>
+            <button class="btn" onclick="nextSlide()"> > </button>
+        </div>
+    </div>
+
+    <script>
+        // === PIRATE STYLE CHARTS (RED/ORANGE) ===
+        // Цвета сохранили рофельные (Красный), но данные серьезные? 
+        // В оригинале у нас графики рандомные, оставим их как есть, только цвет красный.
+        
+        const ACCENT_COLOR = '#ff2a00'; 
+
+        const commonOptions = {
+            chart: { background: 'transparent', toolbar: { show: false }, animations: { enabled: true, easing: 'bounce', speed: 1000 }, fontFamily: 'Inter, sans-serif', },
+            theme: { mode: 'dark' },
+            colors: [ACCENT_COLOR, '#333333'],
+            stroke: { curve: 'stepline', width: 3 }, 
+        };
+
+        const optionsArea = {
+            ...commonOptions,
+            series: [{ name: 'Model Uplift', data: [31, 40, 28, 51, 42, 109, 100] }, { name: 'Baseline', data: [11, 32, 45, 32, 34, 52, 41] }],
+            chart: { type: 'area', height: '100%', parentHeightOffset: 0, background: 'transparent', toolbar: { show: false } },
+            fill: { type: 'gradient', gradient: { shadeIntensity: 1, opacityFrom: 0.8, opacityTo: 0.2, stops: [0, 100], colorStops: [{ offset: 0, color: '#ff0000', opacity: 0.6 }, { offset: 100, color: '#000000', opacity: 0 }] } },
+            xaxis: { categories: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'], axisBorder: { show: false }, axisTicks: { show: false } }, yaxis: { show: false }
+        };
+
+        const optionsBar = {
+            ...commonOptions,
+            series: [{ name: 'Importance', data: [400, 430, 448, 470, 540] }],
+            chart: { type: 'bar', height: '100%', parentHeightOffset: 0, background: 'transparent', toolbar: { show: false } },
+            plotOptions: { bar: { borderRadius: 0, horizontal: true, barHeight: '70%' } },
+            xaxis: { categories: ['Age', 'Region', 'Last_Login', 'Total_Spend', 'Is_Weekend'], labels: { show: false }, axisBorder: { show: false }, axisTicks: { show: false } },
+            colors: ['#ff0000']
+        };
+
+        const optionsRadial = {
+            ...commonOptions,
+            series: [89],
+            chart: { type: 'radialBar', height: '110%', background: 'transparent' },
+            plotOptions: { radialBar: { startAngle: -90, endAngle: 90, hollow: { margin: 15, size: '50%', background: 'transparent' }, track: { background: '#222', strokeWidth: '100%' }, dataLabels: { show: true, name: { offsetY: -20, show: true, color: '#888', fontSize: '14px', label: 'ROC-AUC' }, value: { offsetY: -10, color: ACCENT_COLOR, fontSize: '30px', fontWeight: '900', fontFamily: 'Monument Extended, sans-serif', show: true } } } },
+            stroke: { lineCap: 'butt' }, fill: { type: 'solid', colors: [ACCENT_COLOR] }
+        };
+
+        let chartArea, chartBar, chartRadial;
+        document.addEventListener('DOMContentLoaded', () => {
+             chartArea = new ApexCharts(document.querySelector("#chart-area"), optionsArea);
+             chartBar = new ApexCharts(document.querySelector("#chart-bar"), optionsBar);
+             chartRadial = new ApexCharts(document.querySelector("#chart-radial"), optionsRadial);
+             chartArea.render(); chartBar.render(); chartRadial.render();
+        });
+
+        // Слайдер
+        let currentSlide = 0;
+        const slides = document.querySelectorAll('.slide');
+        const currSlideEl = document.getElementById('currSlide');
+        document.getElementById('totalSlide').innerText = slides.length;
+
+        function showSlide(index) {
+            slides.forEach((slide, i) => { slide.classList.remove('active'); if (i === index) { slide.classList.add('active'); slide.scrollTop = 0; } });
+            currSlideEl.innerText = (index + 1).toString().padStart(2, '0');
+            if(slides[index].id === 'chartSlide' && chartArea) {
+                chartArea.updateOptions({ chart: { animations: { enabled: true } } });
+                chartBar.updateOptions({ chart: { animations: { enabled: true } } });
+                chartRadial.updateOptions({ chart: { animations: { enabled: true } } });
+            }
+        }
+        function nextSlide() { currentSlide = (currentSlide + 1) % slides.length; showSlide(currentSlide); }
+        function prevSlide() { currentSlide = (currentSlide - 1 + slides.length) % slides.length; showSlide(currentSlide); }
+        document.addEventListener('keydown', (e) => { if (e.key === 'ArrowRight' || e.key === 'Space') nextSlide(); if (e.key === 'ArrowLeft') prevSlide(); });
+        let touchStartX = 0;
+        document.addEventListener('touchstart', e => { touchStartX = e.changedTouches[0].screenX; }, false);
+        document.addEventListener('touchend', e => { if (e.changedTouches[0].screenX < touchStartX - 50) nextSlide(); if (e.changedTouches[0].screenX > touchStartX + 50) prevSlide(); }, false);
+    </script>
+</body>
+</html>
