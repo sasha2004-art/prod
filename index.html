@@ -2,166 +2,558 @@
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Select Presentation Version</title>
-    <!-- Подключаем Inter для новой кнопки Modern -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;900&display=swap" rel="stylesheet">
-
-    <style>
-        @font-face { font-family: 'Monument Extended'; src: url('fonts/PPMonumentExtended-Black.otf') format('opentype'); font-weight: 900; }
-        
-        body {
-            margin: 0; padding: 0;
-            background-color: #050505; color: white;
-            font-family: 'Monument Extended', Arial, sans-serif;
-            min-height: 100vh;
-            display: flex; flex-direction: column; justify-content: center; align-items: center;
-            background-image: radial-gradient(circle at center, #1a1a1a 0%, #000 100%);
-        }
-        h1 { margin-bottom: 50px; text-align: center; font-size: 2.5rem; }
-        .container { display: flex; gap: 30px; flex-wrap: wrap; justify-content: center; padding: 20px; }
-        .card {
-            width: 250px; height: 350px;
-            border: 1px solid #333; background: #111;
-            display: flex; flex-direction: column; justify-content: center; align-items: center;
-            text-decoration: none; transition: 0.3s; cursor: pointer;
-            border-radius: 12px; /* Чуть скруглим углы */
-        }
-        .card h2 { font-size: 1.8rem; margin: 0; }
-        .card p { font-family: sans-serif; color: #666; font-size: 0.8rem; margin-top: 10px; text-transform: uppercase; }
-
-        /* SPIRIT */
-        .card-spirit:hover { border-color: #C6FF00; box-shadow: 0 0 30px rgba(198, 255, 0, 0.2); transform: translateY(-10px); }
-        .card-spirit h2 { color: #C6FF00; }
-
-        /* CLASSIC */
-        .card-classic:hover { border-color: #ffffff; box-shadow: 0 0 30px rgba(255, 255, 255, 0.2); transform: translateY(-10px); }
-        .card-classic h2 { color: #ffffff; }
-
-        /* ROFL / PIRATE STYLE */
-        .card-rofl { border-color: #333; }
-        .card-rofl:hover { 
-            border-color: #ff3c00; 
-            box-shadow: 0 0 40px rgba(255, 60, 0, 0.3); 
-            transform: translateY(-10px) rotate(2deg);
-        }
-        .card-rofl h2 { color: #ff3c00; text-shadow: 2px 2px 0px #000; }
-        .card-rofl:hover h2 { animation: shake 0.5s infinite; }
-
-        /* CENTRAL STYLE (Light) */
-        .card-central { 
-            background: #EBEBEB; border-color: #ccc; 
-        }
-        .card-central h2 { color: #1A1A1A; }
-        .card-central p { color: #666; }
-        .card-central:hover {
-            background: #fff;
-            border-color: #0141CD;
-            box-shadow: 0 0 30px rgba(1, 65, 205, 0.2);
-            transform: translateY(-10px);
-        }
-        .card-central:hover h2 { color: #0141CD; }
-
-        /* JOBS (2007) STYLE */
-        .card-apple {
-            background: radial-gradient(circle at center, #4b5d78 0%, #000000 100%);
-            border-color: #555;
-        }
-        .card-apple h2 { color: #fff; font-family: sans-serif; font-weight: 300; letter-spacing: -1px; }
-        .card-apple:hover {
-            box-shadow: 0 0 40px rgba(43, 144, 217, 0.4);
-            transform: translateY(-10px);
-            border-color: #2b90d9;
-        }
-
-        /* === NEW: MODERN APPLE (PRO) STYLE === */
-        .card-modern {
-            background: #000000;
-            border-color: #333;
-        }
-        .card-modern h2 {
-            font-family: 'Inter', sans-serif; /* Шрифт SF Pro style */
-            font-weight: 700;
-            letter-spacing: -1px;
-            color: #f5f5f7;
-        }
-        .card-modern:hover {
-            border-color: #2997ff; /* Apple Blue */
-            box-shadow: 0 0 50px rgba(41, 151, 255, 0.3);
-            transform: translateY(-10px) scale(1.02);
-            background: #111;
-        }
-        .card-modern:hover h2 {
-            background: linear-gradient(135deg, #2997ff 0%, #007aff 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-        .card-knyazev {
-            background: #ffffff;
-            border-color: #e5e7eb;
-        }
-        .card-knyazev h2 {
-            color: #1f2937;
-            font-family: 'Inter', sans-serif;
-            font-weight: 700;
-            letter-spacing: -1px;
-        }
-        .card-knyazev:hover {
-            border-color: #34d399; /* Green */
-            box-shadow: 0 0 40px rgba(52, 211, 153, 0.4);
-            transform: translateY(-10px);
-        }
-
-        @keyframes shake {
-            0% { transform: translate(1px, 1px) rotate(0deg); }
-            20% { transform: translate(-3px, 0px) rotate(1deg); }
-            40% { transform: translate(1px, -1px) rotate(1deg); }
-            60% { transform: translate(-3px, 1px) rotate(0deg); }
-            80% { transform: translate(-1px, -1px) rotate(1deg); }
-            100% { transform: translate(1px, -2px) rotate(-1deg); }
-        }
-    </style>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <!-- Иконка вкладки -->
+    <link rel="icon" href="images/Team_Spirit_new_em.svg" type="image/svg+xml">
+    <title>Team Spirit | DANO Solution</title>
+    
+    <!-- Подключаем CSS стиля Toxic -->
+    <link rel="stylesheet" href="style-spirit.css">
+    
+    <!-- Подключаем библиотеку для графиков -->
+    <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
 </head>
 <body>
-    <h1>Choose Presentation Style</h1>        
-    <div class="container">
-        
-        <!-- Новая кнопка Modern Apple -->
-        <a href="apple-modern.html" class="card card-modern">
-            <h2>PRO</h2>
-            <p>Modern Event Style</p>
-        </a>
 
-        <!-- Старая кнопка Apple (Jobs) -->
-        <a href="apple.html" class="card card-apple">
-            <h2>JOBS</h2>
-            <p>2007 Keynote Style</p>
-        </a>
-
-        <a href="spirit.html" class="card card-spirit">
-            <h2>TOXIC</h2>
-            <p>Team Spirit Style</p>
-        </a>
-        
-        <a href="classic.html" class="card card-classic">
-            <h2>CLASSIC</h2>
-            <p>Monochrome Style</p>
-        </a>
-        
-        <a href="rofl.html" class="card card-rofl">
-            <h2>PIRATE</h2>
-            <p>Trash / Meme Style</p>
-        </a>
-        
-        <a href="central.html" class="card card-central">
-            <h2>CENTRAL</h2>
-            <p>Academic / Light Style</p>
-        </a>
-        <a href="knyazev.html" class="card card-knyazev">
-            <h2>KNYAZEV</h2>
-            <p>Plotix Agro Style</p>
-        </a>
+    <!-- ВОДЯНОЙ ЗНАК -->
+    <div class="watermark-container">
+        <div class="watermark-text">TEAM SPIRIT</div>
+        <!-- Логотип белый (инверсия) -->
+        <img src="images/Team_Spirit_new_em.svg" alt="TS Logo" class="logo-watermark-img" style="filter: brightness(0) invert(1);">
     </div>
+
+    <!-- СЧЕТЧИК СЛАЙДОВ -->
+    <div class="slide-counter">
+        <span id="currSlide" style="color: var(--accent);">01</span> / <span id="totalSlide">13</span>
+    </div>
+
+    <!-- ================= СЛАЙДЫ ================= -->
+
+    <!-- 1. ТИТУЛЬНИК -->
+    <div class="slide active flex-center">
+        <div>
+            <!-- Главный логотип -->
+            <div style="display: flex; justify-content: center; align-items: center; gap: 30px; margin-bottom: 40px;">
+                <img src="images/Team_Spirit_new_em.svg" alt="TS Logo" style="filter: brightness(0) invert(1); width: 180px; drop-shadow: 0 0 15px rgba(198, 255, 0, 0.2);">
+                <span style="font-size: 3rem; font-weight: 900; color: var(--accent); text-shadow: 0 0 10px var(--accent);">X</span>
+                <img src="images/X5_Tech.svg" alt="X5 Tech Logo" style="filter: brightness(0) invert(1); width: 250px; drop-shadow: 0 0 15px rgba(198, 255, 0, 0.2);">
+            </div>
+            
+            <p style="letter-spacing: 4px; color: var(--accent); margin-bottom: 15px; font-weight: 700; text-shadow: 0 0 10px rgba(198, 255, 0, 0.4);">DANO OLYMPIAD 202X</p>
+            <h1>КЕЙС X5 TECH</h1>
+            <div style="width: 80px; height: 6px; background: var(--accent); margin: 25px auto; box-shadow: 0 0 10px var(--accent);"></div>
+            <p>Команда: Тим Спирит (филиал Таганрог)</p>
+            <br>
+            <div style="display: flex; justify-content: center; gap: 10px; flex-wrap: wrap;">
+                <span class="tag">#DATA_SCIENCE</span>
+                <span class="tag">#ANALYTICS</span>
+                <span class="tag">#TEAM_SPIRIT</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- 2. AGENDA -->
+    <div class="slide">
+        <h2>02. AGENDA</h2>
+        <div class="grid-2">
+            <div>
+                <ul style="list-style: none; padding: 0;">
+                    <li style="font-size: 1.2rem; margin-bottom: 25px;">
+                        <strong style="color: var(--accent);">01. PROBLEM</strong> <br> 
+                        <span style="font-size:0.9rem; color:#888;">Бизнес-контекст и метрики</span>
+                    </li>
+                    <li style="font-size: 1.2rem; margin-bottom: 25px;">
+                        <strong style="color: var(--accent);">02. DATA & FEATURES</strong> <br> 
+                        <span style="font-size:0.9rem; color:#888;">EDA, Препроцессинг</span>
+                    </li>
+                    <li style="font-size: 1.2rem; margin-bottom: 25px;">
+                        <strong style="color: var(--accent);">03. MODELING</strong> <br> 
+                        <span style="font-size:0.9rem; color:#888;">ML, Валидация, Код</span>
+                    </li>
+                    <li style="font-size: 1.2rem; margin-bottom: 25px;">
+                        <strong style="color: var(--accent);">04. BUSINESS VALUE</strong> <br> 
+                        <span style="font-size:0.9rem; color:#888;">Деньги и внедрение</span>
+                    </li>
+                </ul>
+            </div>
+            <div class="card flex-center">
+                <p style="font-size: 1.5rem; font-weight: 700; color: #fff;">
+                    "От сырых данных к <span style="color: var(--accent);">реальной прибыли</span>"
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- 3. ПРОБЛЕМА -->
+    <div class="slide">
+        <h2>03. ПРОБЛЕМАТИКА</h2>
+        <p style="font-size: 1.2rem; max-width: 800px; margin-bottom: 40px; color: #ccc;">
+            Компания теряет <span style="border-bottom: 2px solid var(--accent); color: white; font-weight: 700;">$X млн</span> ежегодно из-за неэффективного таргетинга.
+        </p>
+        <div class="grid-3">
+            <div class="card">
+                <h3>БОЛЬ</h3>
+                <p>Низкая конверсия (2%) в текущих кампаниях.</p>
+            </div>
+            <div class="card">
+                <h3>ПОСЛЕДСТВИЕ</h3>
+                <p>Выгорание аудитории спам-рассылками.</p>
+            </div>
+            <div class="card">
+                <h3>ЦЕЛЬ</h3>
+                <p>Увеличить Uplift на <span style="color: var(--accent); font-weight: bold;">5%</span> с помощью ML.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- 4. ИЕРАРХИЯ МЕТРИК -->
+    <div class="slide">
+        <h2>04. ИЕРАРХИЯ МЕТРИК</h2>
+        <p>Связываем техническое качество модели с деньгами бизнеса.</p>
+        <br>
+        <div style="display: flex; flex-direction: column; gap: 20px; align-items: center;">
+            <!-- Уровень 1 -->
+            <div class="card" style="width: 100%; max-width: 600px; text-align: center; border: 1px solid var(--accent); box-shadow: 0 0 15px rgba(198, 255, 0, 0.1);">
+                <span class="stat-label">GLOBAL GOAL</span>
+                <div class="big-stat" style="font-size: 2rem;">INCREMENTAL REVENUE</div>
+            </div>
+            <div style="height: 30px; width: 2px; background: #333;"></div>
+            <!-- Уровень 2 -->
+            <div class="grid-2" style="width: 100%; max-width: 800px; gap: 20px;">
+                <div class="card" style="text-align: center;">
+                    <span class="stat-label">PROXY METRIC</span><br>
+                    <b style="color:white; font-size: 1.2rem;">Conversion Rate</b>
+                </div>
+                <div class="card" style="text-align: center;">
+                    <span class="stat-label">GUARDRAIL METRIC</span><br>
+                    <b style="color:white; font-size: 1.2rem;">Churn Rate</b>
+                </div>
+            </div>
+            <div style="height: 30px; width: 2px; background: #333;"></div>
+             <!-- Уровень 3 -->
+             <div class="card" style="width: 100%; max-width: 400px; text-align: center; border-style: dashed; border-color: #555;">
+                <span class="stat-label">ML METRIC</span>
+                <div class="big-stat" style="font-size: 1.5rem; color: #fff;">ROC-AUC / GINI</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 5. ПАЙПЛАЙН ДАННЫХ -->
+    <div class="slide">
+        <h2>05. ПАЙПЛАЙН ДАННЫХ</h2>
+        <div class="grid-4">
+            <div class="card">
+                <h3>INPUT</h3>
+                <p>Transactions.csv</p>
+                <span class="tag">1.5 GB</span>
+            </div>
+            <div class="card">
+                <h3>CLEANING</h3>
+                <p>Drop Duplicates</p>
+                <p>Fillna (Mean)</p>
+            </div>
+            <div class="card">
+                <h3>FEATURES</h3>
+                <p>Lag Features</p>
+                <p>One-Hot Enc</p>
+            </div>
+            <div class="card" style="border-color: var(--accent);">
+                <h3>OUTPUT</h3>
+                <p>Train / Test</p>
+                <span class="tag">80/20</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- 6. LIVE DATA (ГРАФИКИ) -->
+    <div class="slide" id="chartSlide">
+        <h2>06. LIVE DATA</h2>
+        <p>Интерактивная визуализация ключевых метрик модели.</p>
+        
+        <div style="display: grid; grid-template-rows: 1.2fr 1fr; gap: 20px; height: 100%;">
+            <!-- 1. Верхний график -->
+            <div class="card" style="padding: 10px;">
+                <div id="chart-area" style="width: 100%; height: 100%;"></div>
+            </div>
+            <!-- 2. Нижний ряд -->
+            <div class="grid-2">
+                <div class="card" style="padding: 10px;">
+                    <div id="chart-bar" style="width: 100%; height: 100%;"></div>
+                </div>
+                <div class="card" style="padding: 10px;">
+                    <div id="chart-radial" style="width: 100%; height: 100%;"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 7. FEATURE ENGINEERING -->
+    <div class="slide">
+        <h2>07. FEATURE ENGINEERING</h2>
+        <div class="grid-2">
+            <div class="card" style="opacity: 0.6; border: 1px dashed #444;">
+                <h3 style="color: #888;">RAW DATA (БЫЛО)</h3>
+                <ul style="color: #666;">
+                    <li>Timestamp (2023-10-05 14:00)</li>
+                    <li>User_Region (Moscow)</li>
+                    <li>Item_List ([123, 456])</li>
+                </ul>
+            </div>
+            <div class="card" style="border: 1px solid var(--accent); box-shadow: 0 0 15px rgba(198, 255, 0, 0.15);">
+                <h3>ENGINEERED (СТАЛО)</h3>
+                <ul>
+                    <li><strong style="color:white">Is_Weekend</strong> (0/1)</li>
+                    <li><strong style="color:white">Hour_Of_Day</strong> (14)</li>
+                    <li><strong style="color:white">Region_Avg_Spend</strong> (Target Enc)</li>
+                    <li><strong style="color:white">Items_Count</strong> (2)</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- 8. КОД МОДЕЛИ -->
+    <div class="slide">
+        <h2>08. МОДЕЛЬ (CODE)</h2>
+        <p>Используем CatBoostClassifier с кастомной метрикой.</p>
+        
+        <div class="code-block">
+<span class="keyword">from</span> catboost <span class="keyword">import</span> CatBoostClassifier
+
+<span class="keyword">def</span> <span class="func">train_model</span>(X_train, y_train):
+    model = CatBoostClassifier(
+        iterations=<span class="string">1000</span>,
+        learning_rate=<span class="string">0.05</span>,
+        eval_metric=<span class="string">'AUC'</span>,
+        verbose=<span class="string">100</span>
+    )
+    
+    model.fit(X_train, y_train)
+    <span class="keyword">return</span> model
+
+<span class="comment"># Результат на валидации: AUC 0.895</span>
+        </div>
+        <div style="display: flex; gap: 20px;">
+            <span class="tag">PYTHON 3.9</span>
+            <span class="tag">CATBOOST</span>
+            <span class="tag">SKLEARN</span>
+        </div>
+    </div>
+
+    <!-- 9. РЕЗУЛЬТАТЫ -->
+    <div class="slide">
+        <h2>09. РЕЗУЛЬТАТЫ</h2>
+        <div class="grid-3">
+            <div class="card">
+                <span class="stat-label">ROC-AUC</span>
+                <span class="big-stat">0.89</span>
+                <span style="color: var(--accent); font-weight: bold;">+0.05 vs Baseline</span>
+            </div>
+            <div class="card">
+                <span class="stat-label">PRECISION @ K=5</span>
+                <span class="big-stat">0.72</span>
+                <p>Высокая точность в топе</p>
+            </div>
+            <div class="card">
+                <span class="stat-label">INFERENCE TIME</span>
+                <span class="big-stat" style="color: #fff;">20ms</span>
+                <p>Подходит для Real-time</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- 10. АНАЛИЗ ОШИБОК -->
+    <div class="slide">
+        <h2>10. АНАЛИЗ ОШИБОК</h2>
+        <div class="grid-2">
+            <div>
+                <h3>Где ошибаемся?</h3>
+                <ul style="margin-top: 20px;">
+                    <li>1. <strong>Новые пользователи:</strong> Не хватает истории действий (Cold Start).</li>
+                    <li>2. <strong>Аномальные чеки:</strong> Модель путает оптовиков с фродом.</li>
+                </ul>
+                <br>
+                <h3>Решение</h3>
+                <p>Добавить фичу <span class="tag">Days_Since_Reg</span> и ветку для новых юзеров.</p>
+            </div>
+            <div class="card flex-center">
+                <div style="text-align: center;">
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 2px; margin-bottom: 10px;">
+                        <div style="background: #222; padding: 20px; color: #555;">TN</div>
+                        <div style="background: #333; padding: 20px; border: 1px solid var(--accent); color: var(--accent);">FP (Error)</div>
+                        <div style="background: #333; padding: 20px;">FN</div>
+                        <div style="background: #fff; color:black; padding: 20px; font-weight: bold;">TP</div>
+                    </div>
+                    <span class="stat-label">CONFUSION MATRIX</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 11. ЭКОНОМИКА -->
+    <div class="slide">
+        <h2>11. ЭКОНОМИКА (IMPACT)</h2>
+        <p>Расчет потенциальной прибыли при внедрении на 100% базы.</p>
+        
+        <div style="margin: 40px 0; padding: 20px; border: 1px dashed var(--accent); text-align: center; background: rgba(198,255,0,0.05);">
+            <h3 style="color: #fff; font-size: 1.5rem;">Profit = (Users * Uplift * Margin) - Tech_Cost</h3>
+        </div>
+
+        <div class="grid-3">
+            <div class="card">
+                <span class="stat-label">USERS</span>
+                <div class="big-stat" style="color:white; font-size: 2rem;">500k</div>
+            </div>
+            <div class="card">
+                <span class="stat-label">UPLIFT</span>
+                <div class="big-stat" style="color:white; font-size: 2rem;">+3%</div>
+            </div>
+            <div class="card" style="border: 2px solid var(--accent); box-shadow: 0 0 20px rgba(198, 255, 0, 0.2);">
+                <span class="stat-label">TOTAL PROFIT</span>
+                <div class="big-stat">$150,000</div>
+                <span class="tag">MONTHLY</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- 12. КОМАНДА -->
+    <div class="slide">
+        <h2>12. КОМАНДА</h2>
+        
+        <!-- Изменили стиль контейнера: теперь это Flexbox, чтобы вместить 5 человек и центрировать их -->
+        <div style="display: flex; justify-content: center; gap: 15px; flex-wrap: wrap; width: 100%;">
+            
+            <!-- Участник 1 -->
+            <div class="card" style="padding: 10px; flex: 1 1 18%; min-width: 150px;">
+                <div class="team-photo-box" style="background-image: url('images/team_member_1.jpg');"></div>
+                <div style="padding: 10px;">
+                    <h3>CAPTAIN</h3>
+                    <p style="font-size: 0.8rem;">Strategy</p>
+                </div>
+            </div>
+
+            <!-- Участник 2 -->
+            <div class="card" style="padding: 10px; flex: 1 1 18%; min-width: 150px;">
+                <div class="team-photo-box"></div> <!-- Вставьте фото в style="..." -->
+                <div style="padding: 10px;">
+                    <h3>ML ENG</h3>
+                    <p style="font-size: 0.8rem;">Pipeline</p>
+                </div>
+            </div>
+
+            <!-- Участник 3 -->
+            <div class="card" style="padding: 10px; flex: 1 1 18%; min-width: 150px;">
+                <div class="team-photo-box"></div>
+                <div style="padding: 10px;">
+                    <h3>ANALYST</h3>
+                    <p style="font-size: 0.8rem;">EDA & Hypo</p>
+                </div>
+            </div>
+
+             <!-- Участник 4 -->
+             <div class="card" style="padding: 10px; flex: 1 1 18%; min-width: 150px;">
+                <div class="team-photo-box"></div>
+                <div style="padding: 10px;">
+                    <h3>DESIGN</h3>
+                    <p style="font-size: 0.8rem;">Visuals</p>
+                </div>
+            </div>
+
+            <!-- Участник 5 -->
+            <div class="card" style="padding: 10px; flex: 1 1 18%; min-width: 150px;">
+                <div class="team-photo-box"></div>
+                <div style="padding: 10px;">
+                    <h3>SUPPORT</h3>
+                    <p style="font-size: 0.8rem;">Research</p>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- 13. ФИНАЛ -->
+    <div class="slide flex-center">
+            <img src="images/pudge.png" 
+             style="position: absolute; top: 0; left: 30%; width: 70%; height: 100%; object-fit: cover; opacity: 0.25; z-index: 0; pointer-events: none;" 
+             alt="Pudge">
+
+        <!-- Контент (с z-index, чтобы быть поверх Пуджа) -->
+        <div style="position: relative; z-index: 1;">
+            <h1 style="font-size: 4.5rem; letter-spacing: -2px;">GG WP</h1>
+            <p style="font-size: 1rem; font-weight: 700; margin-top: 10px; color: var(--accent); letter-spacing: 2px;">THANKS FOR WATCHING</p>
+            <div style="margin-top: 40px;">
+                <img src="images/Team_Spirit_new_em.svg" alt="TS Logo" style="filter: brightness(0) invert(1); width: 150px; opacity: 0.6;">
+            </div>
+        </div>
+    </div>
+
+
+    <!-- ================= CONTROLS & JS ================= -->
+    <div class="controls">
+        <div class="btn-group">
+            <button class="btn" onclick="prevSlide()"> &#8249; </button>
+            <button class="btn" onclick="nextSlide()"> &#8250; </button>
+        </div>
+    </div>
+
+    <script>
+        // ==========================================
+        // APEXCHARTS CONFIGURATION (TOXIC LIME THEME)
+        // ==========================================
+
+        const ACCENT_COLOR = '#C6FF00'; // Наш новый цвет
+        const TEXT_COLOR = '#ffffff';
+
+        const commonOptions = {
+            chart: {
+                background: 'transparent',
+                toolbar: { show: false },
+                animations: { enabled: true, easing: 'easeinout', speed: 800 },
+                fontFamily: 'Inter, sans-serif',
+            },
+            theme: { mode: 'dark' },
+            colors: [ACCENT_COLOR, '#444444'], // Зеленый для данных, серый для фона
+            grid: { borderColor: '#333', strokeDashArray: 4 },
+            dataLabels: { enabled: false },
+            stroke: { curve: 'smooth', width: 3 },
+        };
+
+        // 1. AREA CHART
+        const optionsArea = {
+            ...commonOptions,
+            series: [{ name: 'Model Uplift', data: [31, 40, 28, 51, 42, 109, 100] }, 
+                     { name: 'Baseline', data: [11, 32, 45, 32, 34, 52, 41] }],
+            chart: { type: 'area', height: '100%', parentHeightOffset: 0, background: 'transparent', toolbar: { show: false } },
+            fill: { 
+                type: 'gradient', 
+                gradient: { 
+                    shadeIntensity: 1, 
+                    opacityFrom: 0.4, 
+                    opacityTo: 0.05, 
+                    stops: [0, 90, 100],
+                    colorStops: [
+                        { offset: 0, color: ACCENT_COLOR, opacity: 0.4 },
+                        { offset: 100, color: ACCENT_COLOR, opacity: 0 }
+                    ]
+                } 
+            },
+            xaxis: { categories: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'], axisBorder: { show: false }, axisTicks: { show: false } },
+            yaxis: { show: false }
+        };
+
+        // 2. BAR CHART
+        const optionsBar = {
+            ...commonOptions,
+            series: [{ name: 'Importance', data: [400, 430, 448, 470, 540] }],
+            chart: { type: 'bar', height: '100%', parentHeightOffset: 0, background: 'transparent', toolbar: { show: false } },
+            plotOptions: { bar: { borderRadius: 2, horizontal: true, barHeight: '50%' } },
+            xaxis: { categories: ['Age', 'Region', 'Last_Login', 'Total_Spend', 'Is_Weekend'], labels: { show: false }, axisBorder: { show: false }, axisTicks: { show: false } },
+        };
+
+        // 3. RADIAL BAR
+        const optionsRadial = {
+            ...commonOptions,
+            series: [89],
+            chart: { type: 'radialBar', height: '110%', background: 'transparent' },
+            plotOptions: {
+                radialBar: {
+                    startAngle: -135, endAngle: 135,
+                    hollow: { margin: 15, size: '60%', background: 'transparent' },
+                    track: { background: '#222', strokeWidth: '100%' },
+                    dataLabels: {
+                        show: true,
+                        name: { offsetY: -10, show: true, color: '#888', fontSize: '14px' },
+                        value: { 
+                            offsetY: 5, 
+                            color: ACCENT_COLOR, // Зеленая цифра
+                            fontSize: '30px', 
+                            fontWeight: '900', 
+                            fontFamily: 'Monument Extended, sans-serif', 
+                            show: true 
+                        }
+                    }
+                }
+            },
+            labels: ['ROC-AUC'],
+            stroke: { lineCap: 'round' },
+            fill: { type: 'solid', colors: [ACCENT_COLOR] }
+        };
+
+        // Initial Render
+        let chartArea, chartBar, chartRadial;
+        
+        document.addEventListener('DOMContentLoaded', () => {
+             chartArea = new ApexCharts(document.querySelector("#chart-area"), optionsArea);
+             chartBar = new ApexCharts(document.querySelector("#chart-bar"), optionsBar);
+             chartRadial = new ApexCharts(document.querySelector("#chart-radial"), optionsRadial);
+             
+             chartArea.render();
+             chartBar.render();
+             chartRadial.render();
+        });
+
+        function triggerChartAnimations(index) {
+            const slidesArr = Array.from(document.querySelectorAll('.slide'));
+            const chartSlideIndex = slidesArr.findIndex(s => s.id === 'chartSlide');
+
+            if (index === chartSlideIndex && chartArea) {
+                chartArea.updateOptions({ chart: { animations: { enabled: true } } });
+                chartBar.updateOptions({ chart: { animations: { enabled: true } } });
+                chartRadial.updateOptions({ chart: { animations: { enabled: true } } });
+            }
+        }
+
+        // ==========================================
+        // SLIDER LOGIC
+        // ==========================================
+
+        let currentSlide = 0;
+        const slides = document.querySelectorAll('.slide');
+        const totalSlidesEl = document.getElementById('totalSlide');
+        const currSlideEl = document.getElementById('currSlide');
+
+        function updateCounter() {
+            let num = currentSlide + 1;
+            currSlideEl.innerText = num < 10 ? '0' + num : num;
+        }
+
+        function showSlide(index) {
+            slides.forEach((slide, i) => {
+                slide.classList.remove('active');
+                if (i === index) {
+                    slide.classList.add('active');
+                    slide.scrollTop = 0;
+                }
+            });
+            updateCounter();
+            triggerChartAnimations(index);
+        }
+
+        function nextSlide() {
+            currentSlide = (currentSlide + 1) % slides.length;
+            showSlide(currentSlide);
+        }
+
+        function prevSlide() {
+            currentSlide = (currentSlide - 1 + slides.length) % slides.length;
+            showSlide(currentSlide);
+        }
+
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'ArrowRight' || e.key === 'Space') nextSlide();
+            if (e.key === 'ArrowLeft') prevSlide();
+        });
+
+        let touchStartX = 0;
+        let touchEndX = 0;
+        document.addEventListener('touchstart', e => { touchStartX = e.changedTouches[0].screenX; }, false);
+        document.addEventListener('touchend', e => {
+            touchEndX = e.changedTouches[0].screenX;
+            if (touchEndX < touchStartX - 50) nextSlide();
+            if (touchEndX > touchStartX + 50) prevSlide();
+        }, false);
+
+        totalSlidesEl.innerText = slides.length;
+        updateCounter();
+    </script>
 </body>
 </html>
