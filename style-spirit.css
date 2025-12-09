@@ -243,3 +243,47 @@ ul { margin-left: 20px; margin-bottom: 20px; }
     .watermark-text { display: none; }
     .controls { justify-content: center; padding-right: 0; padding-bottom: 20px; }
 }
+
+/* ================= PRINT SETTINGS ================= */
+@media print {
+    body, html {
+        height: auto !important;
+        overflow: visible !important;
+        background: #080808 !important; 
+        -webkit-print-color-adjust: exact; 
+        print-color-adjust: exact;
+    }
+
+    .slide {
+        position: relative !important;
+        opacity: 1 !important;
+        visibility: visible !important;
+        transform: none !important;
+        display: block !important;
+        height: 100vh !important;
+        width: 100vw !important;
+        page-break-after: always; 
+        break-after: page;
+        overflow: hidden !important;
+        top: 0 !important;
+        left: 0 !important;
+        margin: 0 !important;
+        padding-top: 40px !important; 
+    }
+    
+    .controls, 
+    .slide-counter, 
+    .watermark-container { 
+        display: none !important; 
+    }
+
+    * {
+        text-shadow: none !important;
+        box-shadow: none !important;
+    }
+    
+    .apexcharts-canvas {
+        width: 100% !important;
+        height: 100% !important;
+    }
+}

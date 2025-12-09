@@ -24,12 +24,12 @@
 
     <!-- СЧЕТЧИК СЛАЙДОВ -->
     <div class="slide-counter">
-        <span id="currSlide" style="color: var(--accent);">01</span> / <span id="totalSlide">13</span>
+        <span id="currSlide" style="color: var(--accent);">01</span> / <span id="totalSlide">18</span>
     </div>
 
     <!-- ================= СЛАЙДЫ ================= -->
 
-    <!-- 1. ТИТУЛЬНИК -->
+    <!-- 01. ТИТУЛЬНИК -->
     <div class="slide active flex-center">
         <div>
             <!-- Главный логотип -->
@@ -52,7 +52,7 @@
         </div>
     </div>
 
-    <!-- 2. AGENDA -->
+    <!-- 02. AGENDA -->
     <div class="slide">
         <h2>02. AGENDA</h2>
         <div class="grid-2">
@@ -84,9 +84,96 @@
         </div>
     </div>
 
-    <!-- 3. ПРОБЛЕМА -->
+    <!-- 03. DATA PREPROCESSING -->
     <div class="slide">
-        <h2>03. ПРОБЛЕМАТИКА</h2>
+        <h2>03. DATA PREPROCESSING</h2>
+        <p>Воронка фильтрации данных: от сырых логов до чистого датасета.</p>
+        
+        <div style="display: flex; flex-direction: column; gap: 20px; align-items: center; margin-top: 30px; max-width: 800px; margin-left: auto; margin-right: auto;">
+            
+            <!-- Этап 1: Сырые данные -->
+            <div class="card" style="width: 100%; display: flex; justify-content: space-between; align-items: center; border-left: 5px solid #fff;">
+                <div style="text-align: left;">
+                    <h3 style="margin: 0; color: #fff;">RAW DATASET</h3>
+                    <span style="color: #888; font-size: 0.9rem;">Исходные выгрузки (CSV)</span>
+                </div>
+                <div class="big-stat" style="font-size: 2rem; margin: 0; color: #fff;">500,000</div>
+            </div>
+
+            <!-- Стрелка вниз -->
+            <div style="color: var(--accent); font-size: 1.5rem;">▼</div>
+
+            <!-- Этап 2: Фильтрация (удаленное) -->
+            <div class="card" style="width: 90%; display: flex; justify-content: space-between; align-items: center; border-left: 5px solid #555; opacity: 0.7;">
+                <div style="text-align: left;">
+                    <h3 style="margin: 0; color: #ccc;">CLEANING</h3>
+                    <span style="color: #888; font-size: 0.9rem;">Удаление дублей, выбросов, Null</span>
+                </div>
+                <div style="text-align: right;">
+                    <span style="font-size: 1.5rem; font-weight: 900; color: #ff5555;">-45,200</span>
+                    <br><span style="font-size: 0.8rem; color: #888;">REMOVED</span>
+                </div>
+            </div>
+
+            <!-- Стрелка вниз -->
+            <div style="color: var(--accent); font-size: 1.5rem;">▼</div>
+
+            <!-- Этап 3: Итог -->
+            <div class="card" style="width: 100%; display: flex; justify-content: space-between; align-items: center; border: 2px solid var(--accent); background: rgba(198, 255, 0, 0.05);">
+                <div style="text-align: left;">
+                    <h3 style="margin: 0;">FINAL DATASET</h3>
+                    <span style="color: #ccc; font-size: 0.9rem;">Готовы к моделированию</span>
+                </div>
+                <div class="big-stat" style="font-size: 2.5rem; margin: 0;">454,800</div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- 04. МЕХАНИЗМ (HYPOTHESIS) -->
+    <div class="slide">
+        <h2>04. МЕХАНИЗМ (HYPOTHESIS)</h2>
+        <p>Логическая цепочка возникновения проблемы.</p>
+
+        <!-- Горизонтальная схема -->
+        <div style="display: flex; gap: 15px; justify-content: center; align-items: stretch; margin-top: 50px; flex-wrap: wrap;">
+            
+            <!-- Блок 1 -->
+            <div class="card" style="flex: 1; min-width: 200px; padding: 20px;">
+                <h3 style="font-size: 1rem;">TRIGGER</h3>
+                <p style="font-size: 0.9rem;">Пользователь видит рекламу "легких денег"</p>
+            </div>
+
+            <!-- Стрелка -->
+            <div class="flex-center" style="color: var(--accent); font-size: 2rem; font-weight: 900;">&rarr;</div>
+
+            <!-- Блок 2 -->
+            <div class="card" style="flex: 1; min-width: 200px; padding: 20px;">
+                <h3 style="font-size: 1rem;">ACTION</h3>
+                <p style="font-size: 0.9rem;">Совершает импульсивную сделку в приложении</p>
+            </div>
+
+            <!-- Стрелка -->
+            <div class="flex-center" style="color: var(--accent); font-size: 2rem; font-weight: 900;">&rarr;</div>
+
+            <!-- Блок 3 -->
+            <div class="card" style="flex: 1; min-width: 200px; padding: 20px; border-color: #ff5555;">
+                <h3 style="font-size: 1rem; color: #ff5555;">RESULT</h3>
+                <p style="font-size: 0.9rem;">Получает убыток и уходит (Churn)</p>
+            </div>
+
+        </div>
+
+        <!-- Текст гипотезы -->
+        <div style="margin-top: 40px; padding: 20px; background: rgba(255,255,255,0.05); border-left: 4px solid var(--accent); text-align: left;">
+            <strong style="color: var(--accent);">ГИПОТЕЗА H1:</strong>
+            <span style="color: #fff;">Группы пользователей с высокой импульсивностью имеют Retention на 15% ниже среднего.</span>
+        </div>
+    </div>
+
+    <!-- 05. ПРОБЛЕМАТИКА -->
+    <div class="slide">
+        <h2>05. ПРОБЛЕМАТИКА</h2>
         <p style="font-size: 1.2rem; max-width: 800px; margin-bottom: 40px; color: #ccc;">
             Компания теряет <span style="border-bottom: 2px solid var(--accent); color: white; font-weight: 700;">$X млн</span> ежегодно из-за неэффективного таргетинга.
         </p>
@@ -106,9 +193,9 @@
         </div>
     </div>
 
-    <!-- 4. ИЕРАРХИЯ МЕТРИК -->
+    <!-- 06. ИЕРАРХИЯ МЕТРИК -->
     <div class="slide">
-        <h2>04. ИЕРАРХИЯ МЕТРИК</h2>
+        <h2>06. ИЕРАРХИЯ МЕТРИК</h2>
         <p>Связываем техническое качество модели с деньгами бизнеса.</p>
         <br>
         <div style="display: flex; flex-direction: column; gap: 20px; align-items: center;">
@@ -138,9 +225,9 @@
         </div>
     </div>
 
-    <!-- 5. ПАЙПЛАЙН ДАННЫХ -->
+    <!-- 07. ПАЙПЛАЙН ДАННЫХ -->
     <div class="slide">
-        <h2>05. ПАЙПЛАЙН ДАННЫХ</h2>
+        <h2>07. ПАЙПЛАЙН ДАННЫХ</h2>
         <div class="grid-4">
             <div class="card">
                 <h3>INPUT</h3>
@@ -165,9 +252,9 @@
         </div>
     </div>
 
-    <!-- 6. LIVE DATA (ГРАФИКИ) -->
+    <!-- 08. LIVE DATA -->
     <div class="slide" id="chartSlide">
-        <h2>06. LIVE DATA</h2>
+        <h2>08. LIVE DATA</h2>
         <p>Интерактивная визуализация ключевых метрик модели.</p>
         
         <div style="display: grid; grid-template-rows: 1.2fr 1fr; gap: 20px; height: 100%;">
@@ -187,9 +274,43 @@
         </div>
     </div>
 
-    <!-- 7. FEATURE ENGINEERING -->
+    <!-- 09. STATISTICAL VALIDATION -->
     <div class="slide">
-        <h2>07. FEATURE ENGINEERING</h2>
+        <h2>09. STATISTICAL VALIDATION</h2>
+        <div class="grid-2">
+            
+            <!-- Левая колонка: Описание теста -->
+            <div>
+                <h3>ВЫБОР КРИТЕРИЯ</h3>
+                <p style="margin-bottom: 20px;">Распределение данных не является нормальным, поэтому используем непараметрический тест.</p>
+                
+                <div class="card" style="text-align: left; border: 1px dashed #555;">
+                    <span class="tag">METHOD</span>
+                    <strong style="color: #fff; font-size: 1.2rem;">Mann-Whitney U Test</strong>
+                    <br><br>
+                    <span style="color: #888;">H0: Медианы групп равны</span><br>
+                    <span style="color: var(--accent);">H1: Медианы групп различаются</span>
+                </div>
+            </div>
+
+            <!-- Правая колонка: Результаты -->
+            <div style="display: flex; flex-direction: column; gap: 20px;">
+                <div class="card flex-center" style="flex-direction: column; border-color: var(--accent);">
+                    <span class="stat-label">P-VALUE RESULT</span>
+                    <span class="big-stat" style="font-size: 3.5rem;">&lt; 0.001</span>
+                </div>
+                
+                <div class="card" style="background: rgba(198, 255, 0, 0.1); border: none;">
+                    <h3 style="margin: 0; color: var(--accent);">ГИПОТЕЗА ПОДТВЕРЖДЕНА</h3>
+                    <p style="margin: 0; font-size: 0.9rem;">Статистически значимые различия обнаружены.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 10. FEATURE ENGINEERING -->
+    <div class="slide">
+        <h2>10. FEATURE ENGINEERING</h2>
         <div class="grid-2">
             <div class="card" style="opacity: 0.6; border: 1px dashed #444;">
                 <h3 style="color: #888;">RAW DATA (БЫЛО)</h3>
@@ -218,9 +339,9 @@
         </div>
     </div>
 
-    <!-- 8. КОД МОДЕЛИ -->
+    <!-- 11. МОДЕЛЬ (CODE) -->
     <div class="slide">
-        <h2>08. МОДЕЛЬ (CODE)</h2>
+        <h2>11. МОДЕЛЬ (CODE)</h2>
         <p>Используем CatBoostClassifier с кастомной метрикой.</p>
         
         <div class="code-block">
@@ -246,9 +367,57 @@
         </div>
     </div>
 
-    <!-- 9. РЕЗУЛЬТАТЫ -->
+    <!-- 12. ROBUSTNESS CHECK -->
     <div class="slide">
-        <h2>09. РЕЗУЛЬТАТЫ</h2>
+        <h2>12. ROBUSTNESS CHECK</h2>
+        <p>Проверка устойчивости выводов на различных подгруппах выборки.</p>
+
+        <div class="grid-2" style="margin-top: 30px;">
+            
+            <!-- Группа 1 -->
+            <div class="card">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+                    <h3>COHORT: GENDER</h3>
+                    <span class="tag">PASSED</span>
+                </div>
+                <!-- Строка таблицы -->
+                <div style="display: flex; justify-content: space-between; border-bottom: 1px solid #333; padding: 10px 0;">
+                    <span style="color: #ccc;">Men</span>
+                    <span style="color: var(--accent); font-weight: bold;">Signifficant (p < 0.05)</span>
+                </div>
+                <div style="display: flex; justify-content: space-between; padding: 10px 0;">
+                    <span style="color: #ccc;">Women</span>
+                    <span style="color: var(--accent); font-weight: bold;">Signifficant (p < 0.05)</span>
+                </div>
+            </div>
+
+            <!-- Группа 2 -->
+            <div class="card">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+                    <h3>COHORT: REGION</h3>
+                    <span class="tag">PASSED</span>
+                </div>
+                <!-- Строка таблицы -->
+                <div style="display: flex; justify-content: space-between; border-bottom: 1px solid #333; padding: 10px 0;">
+                    <span style="color: #ccc;">Moscow</span>
+                    <span style="color: var(--accent); font-weight: bold;">Signifficant (p < 0.01)</span>
+                </div>
+                <div style="display: flex; justify-content: space-between; padding: 10px 0;">
+                    <span style="color: #ccc;">Regions</span>
+                    <span style="color: var(--accent); font-weight: bold;">Signifficant (p < 0.05)</span>
+                </div>
+            </div>
+
+        </div>
+        
+        <div style="text-align: center; margin-top: 30px;">
+            <p style="color: #888;">Вывод: Эффект наблюдается во всех ключевых сегментах аудитории.</p>
+        </div>
+    </div>
+
+    <!-- 13. РЕЗУЛЬТАТЫ -->
+    <div class="slide">
+        <h2>13. РЕЗУЛЬТАТЫ</h2>
         <div class="grid-3">
             <div class="card">
                 <span class="stat-label">ROC-AUC</span>
@@ -268,9 +437,9 @@
         </div>
     </div>
 
-    <!-- 10. АНАЛИЗ ОШИБОК -->
+    <!-- 14. АНАЛИЗ ОШИБОК -->
     <div class="slide">
-        <h2>10. АНАЛИЗ ОШИБОК</h2>
+        <h2>14. АНАЛИЗ ОШИБОК</h2>
         <div class="grid-2">
             <div>
                 <h3>Где ошибаемся?</h3>
@@ -296,9 +465,9 @@
         </div>
     </div>
 
-    <!-- 11. ЭКОНОМИКА -->
+    <!-- 15. ЭКОНОМИКА -->
     <div class="slide">
-        <h2>11. ЭКОНОМИКА (IMPACT)</h2>
+        <h2>15. ЭКОНОМИКА (IMPACT)</h2>
         <p>Расчет потенциальной прибыли при внедрении на 100% базы.</p>
         
         <div style="margin: 40px 0; padding: 20px; border: 1px dashed var(--accent); text-align: center; background: rgba(198,255,0,0.05);">
@@ -322,9 +491,52 @@
         </div>
     </div>
 
-    <!-- 12. КОМАНДА -->
+    <!-- 16. POLICY IMPLICATION -->
     <div class="slide">
-        <h2>12. КОМАНДА</h2>
+        <h2>16. POLICY IMPLICATION</h2>
+        <p>Практические рекомендации по внедрению решения.</p>
+
+        <div class="grid-3" style="margin-top: 30px;">
+            
+            <!-- Карточка 1 -->
+            <div class="card">
+                <h3 style="color: #fff;">PRODUCT</h3>
+                <div style="width: 40px; height: 3px; background: var(--accent); margin: 10px 0 20px 0;"></div>
+                <ul style="padding-left: 15px;">
+                    <li>Внедрить поп-ап предупреждения о рисках.</li>
+                    <li>Изменить сортировку ленты новостей.</li>
+                </ul>
+            </div>
+
+            <!-- Карточка 2 -->
+            <div class="card">
+                <h3 style="color: #fff;">MARKETING</h3>
+                <div style="width: 40px; height: 3px; background: var(--accent); margin: 10px 0 20px 0;"></div>
+                <ul style="padding-left: 15px;">
+                    <li>Персонализировать Push-уведомления.</li>
+                    <li>Исключить сегмент "Risk" из рассылок.</li>
+                </ul>
+            </div>
+
+            <!-- Карточка 3 -->
+            <div class="card" style="border: 1px dashed var(--accent);">
+                <h3 style="color: var(--accent);">EXPECTED IMPACT</h3>
+                <div style="margin-top: 20px;">
+                    <span class="stat-label">CHURN RATE</span>
+                    <span class="big-stat" style="font-size: 2rem;">-2.5%</span>
+                </div>
+                <div style="margin-top: 15px;">
+                    <span class="stat-label">REVENUE</span>
+                    <span class="big-stat" style="font-size: 2rem;">+$100k</span>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- 17. КОМАНДА -->
+    <div class="slide">
+        <h2>17. КОМАНДА</h2>
         
         <!-- Изменили стиль контейнера: теперь это Flexbox, чтобы вместить 5 человек и центрировать их -->
         <div style="display: flex; justify-content: center; gap: 15px; flex-wrap: wrap; width: 100%;">

@@ -3,21 +3,14 @@ import os
 # Имя выходного файла
 OUTPUT_FILE = 'project_code_dump.txt'
 
-# Папки и файлы, которые мы ИГНОРИРУЕМ (не читаем их содержимое)
-# Шрифты и картинки нельзя читать как текст, это сломает кодировку
-IGNORE_EXTENSIONS = {
-    # Шрифты
-    '.ttf', '.otf', '.woff', '.woff2', '.eot',
-    # Картинки
-    '.png', '.jpg', '.jpeg', '.webp', '.gif', '.svg', '.ico',
-    # Архивы и бинарники
-    '.zip', '.rar', '.exe', '.pyc',
-    # Данные (обычно CSV слишком большие и не являются кодом, но можно убрать из списка)
-    '.csv' 
+# Список файлов, которые НУЖНО включить (только они попадут в отчет)
+TARGET_FILES = {
+    'index.html', 
+    'style-spirit.css'
 }
 
-# Папки, которые можно вообще не открывать (опционально)
-IGNORE_DIRS = {'.git', '__pycache__', '.idea', '.vscode'}
+# Папки, которые можно вообще не открывать (для ускорения)
+IGNORE_DIRS = {'.git', '__pycache__', '.idea', '.vscode', 'node_modules'}
 
 def generate_tree(startpath):
     """Генерирует структуру дерева папок в виде строки"""
@@ -35,9 +28,8 @@ def generate_tree(startpath):
             tree_str += f"{indent[:-4]}├── {os.path.basename(root)}/\n"
             
         for i, f in enumerate(files):
-            # Визуальное оформление последнего элемента
+            # Визуальное оформление
             connector = '└── ' if i == len(files) - 1 and not dirs else '├── '
-            # Если мы внутри папки, отступ меняется
             if root != startpath:
                  tree_str += f"{indent}{connector}{f}\n"
             else:
@@ -45,16 +37,11 @@ def generate_tree(startpath):
                  
     return tree_str
 
-def is_text_file(filename):
-    """Проверяет, является ли файл текстовым (по расширению)"""
-    _, ext = os.path.splitext(filename)
-    return ext.lower() not in IGNORE_EXTENSIONS
-
 def main():
     current_dir = os.getcwd()
     
     with open(OUTPUT_FILE, 'w', encoding='utf-8') as outfile:
-        # 1. Записываем дерево проекта
+        # 1. Записываем дерево проекта (для контекста, где лежат файлы)
         outfile.write("="*50 + "\n")
         outfile.write("PROJECT TREE STRUCTURE\n")
         outfile.write("="*50 + "\n\n")
@@ -63,19 +50,18 @@ def main():
         outfile.write("FILE CONTENTS\n")
         outfile.write("="*50 + "\n\n")
 
-        # 2. Проходим по файлам и записываем содержимое
+        # 2. Проходим по файлам и записываем содержимое ТОЛЬКО целевых файлов
+        found_files_count = 0
+        
         for root, dirs, files in os.walk(current_dir):
-            # Убираем ненужные папки
+            # Убираем ненужные папки из обхода
             dirs[:] = [d for d in dirs if d not in IGNORE_DIRS]
 
             for file in files:
-                file_path = os.path.join(root, file)
-                
-                # Не читаем сам файл дампа, чтобы не зациклиться
-                if file == OUTPUT_FILE or file == os.path.basename(__file__):
-                    continue
-
-                if is_text_file(file):
+                # ПРОВЕРКА: Если имя файла в нашем списке целевых файлов
+                if file in TARGET_FILES:
+                    file_path = os.path.join(root, file)
+                    
                     try:
                         with open(file_path, 'r', encoding='utf-8') as f:
                             content = f.read()
@@ -87,15 +73,19 @@ def main():
                         outfile.write(f"\n{'='*20} END OF FILE: {relative_path} {'='*20}\n\n")
                         
                         print(f"[+] Записан: {relative_path}")
+                        found_files_count += 1
                         
                     except UnicodeDecodeError:
-                        print(f"[-] Ошибка кодировки (пропущен): {file}")
+                        print(f"[-] Ошибка кодировки: {file}")
                     except Exception as e:
                         print(f"[-] Ошибка чтения {file}: {e}")
                 else:
-                    print(f"[.] Пропущен (бинарный/игнорируемый): {file}")
+                    # Можно раскомментировать, если нужно видеть, что пропускается
+                    # print(f"[.] Пропущен: {file}")
+                    pass
 
-    print(f"\nГотово! Всё сохранено в файл: {OUTPUT_FILE}")
+    print(f"\nГотово! Обработано файлов: {found_files_count}.")
+    print(f"Всё сохранено в файл: {OUTPUT_FILE}")
 
 if __name__ == "__main__":
     main()
