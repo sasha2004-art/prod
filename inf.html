@@ -1,0 +1,894 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <link rel="icon" href="images/Team_Spirit_new_em.svg" type="image/svg+xml">
+    <title>EGE Informatics | Ultimate Guide</title>
+    <link rel="stylesheet" href="style-spirit.css">
+    <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+    <style>
+        /* Дополнительные стили для визуализаций */
+        .viz-container {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid #333;
+            border-radius: 8px;
+            padding: 15px;
+            margin: 10px 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 120px;
+        }
+        .viz-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.8rem;
+            color: #ccc;
+        }
+        .viz-table th, .viz-table td {
+            border: 1px solid #444;
+            padding: 5px;
+            text-align: center;
+        }
+        .viz-table th { background: rgba(198, 255, 0, 0.1); color: var(--accent); }
+        
+        .node { fill: #141414; stroke: var(--accent); stroke-width: 2px; }
+        .link { stroke: #555; stroke-width: 2px; }
+        .text-node { fill: #fff; font-size: 12px; font-family: var(--font-body); text-anchor: middle; dominant-baseline: middle; }
+        
+        .tree-node { fill: #141414; stroke: #fff; stroke-width: 1px; }
+        .tree-link { stroke: #555; stroke-width: 1px; }
+        
+        .grid-cell {
+            width: 30px; height: 30px;
+            border: 1px solid #333;
+            display: flex; justify-content: center; align-items: center;
+            font-size: 0.7rem;
+        }
+        .wall-right { border-right: 2px solid var(--accent); }
+        .wall-bottom { border-bottom: 2px solid var(--accent); }
+        
+        .task-type-badge {
+            background: #222; color: #aaa; padding: 2px 6px; border-radius: 4px; font-size: 0.7rem; margin-right: 5px; border: 1px solid #444;
+        }
+        .method-badge {
+            background: rgba(198, 255, 0, 0.2); color: var(--accent); padding: 2px 6px; border-radius: 4px; font-size: 0.7rem; margin-bottom: 5px; display: inline-block;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="watermark-container">
+        <div class="watermark-text">EGE 2025 ULTIMATE</div>
+        <img src="images/Team_Spirit_new_em.svg" alt="TS Logo" class="logo-watermark-img" style="filter: brightness(0) invert(1);">
+    </div>
+
+    <div class="slide-counter">
+        <span id="currSlide" style="color: var(--accent);">01</span> / <span id="totalSlide">29</span>
+    </div>
+
+    <!-- 01. TITLE -->
+    <div class="slide active flex-center">
+        <div>
+            <div style="display: flex; justify-content: center; align-items: center; gap: 30px; margin-bottom: 40px;">
+                <img src="images/Team_Spirit_new_em.svg" alt="TS Logo" style="filter: brightness(0) invert(1); width: 150px; drop-shadow: 0 0 15px rgba(198, 255, 0, 0.2);">
+            </div>
+            <p style="letter-spacing: 4px; color: var(--accent); margin-bottom: 15px; font-weight: 700;">ULTIMATE GUIDE</p>
+            <h1>ЕГЭ ИНФОРМАТИКА 2025</h1>
+            <div style="width: 80px; height: 6px; background: var(--accent); margin: 25px auto;"></div>
+            <p>Все типы заданий + Визуализация + 2 Способа решения</p>
+        </div>
+    </div>
+
+    <!-- TASK 1 -->
+    <div class="slide">
+        <h2>№1. ГРАФЫ И ТАБЛИЦЫ</h2>
+        <div class="grid-2">
+            <div>
+                <p><span class="task-type-badge">ТИП 1</span> Однозначное соотнесение</p>
+                <p><span class="task-type-badge">ТИП 2</span> Неоднозначное (симметрия)</p>
+                <div class="viz-container">
+                    <svg width="200" height="150">
+                        <line x1="50" y1="50" x2="150" y2="50" class="link" />
+                        <line x1="50" y1="50" x2="100" y2="120" class="link" />
+                        <line x1="150" y1="50" x2="100" y2="120" class="link" />
+                        <circle cx="50" cy="50" r="15" class="node" />
+                        <text x="50" y="50" class="text-node">А</text>
+                        <circle cx="150" cy="50" r="15" class="node" />
+                        <text x="150" y="50" class="text-node">Б</text>
+                        <circle cx="100" cy="120" r="15" class="node" />
+                        <text x="100" y="120" class="text-node">В</text>
+                    </svg>
+                </div>
+            </div>
+            <div>
+                <div class="card">
+                    <span class="method-badge">СПОСОБ 1: СТЕПЕНИ ВЕРШИН</span>
+                    <p style="font-size: 0.8rem;">Считаем количество дорог у каждого пункта в таблице и графе. Ищем уникальные (например, только один пункт имеет 5 дорог).</p>
+                </div>
+                <div class="card" style="margin-top: 10px;">
+                    <span class="method-badge">СПОСОБ 2: СОСЕДИ</span>
+                    <p style="font-size: 0.8rem;">Если степени одинаковые, смотрим на соседей. "Пункт А связан с пунктами, у которых степени 2 и 3".</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- TASK 2 -->
+    <div class="slide">
+        <h2>№2. ТАБЛИЦЫ ИСТИННОСТИ</h2>
+        <div class="grid-2">
+            <div>
+                <p><span class="task-type-badge">ТИП 1</span> Заполнение пропусков</p>
+                <div class="viz-container">
+                    <table class="viz-table">
+                        <tr><th>x</th><th>y</th><th>z</th><th>F</th></tr>
+                        <tr><td>0</td><td>?</td><td>1</td><td>1</td></tr>
+                        <tr><td>?</td><td>1</td><td>0</td><td>1</td></tr>
+                    </table>
+                </div>
+                <div class="card">
+                    <span class="method-badge">СПОСОБ 2: АНАЛИТИКА</span>
+                    <p style="font-size: 0.8rem;">Анализируем функцию. Если F=1 и операция AND, то все скобки должны быть 1. Если OR, то хотя бы одна.</p>
+                </div>
+            </div>
+            <div class="card">
+                <span class="method-badge">СПОСОБ 1: PYTHON</span>
+                <div class="code-block">
+print('x y z')
+for x in 0,1:
+    for y in 0,1:
+        for z in 0,1:
+            if (not x or y) and (y == z):
+                print(x, y, z)
+                </div>
+                <p style="font-size: 0.8rem;">Генерируем полную таблицу и сопоставляем строки.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- TASK 3 -->
+    <div class="slide">
+        <h2>№3. БАЗЫ ДАННЫХ</h2>
+        <div class="grid-2">
+            <div>
+                <p><span class="task-type-badge">ТИП 1</span> Родственные связи</p>
+                <p><span class="task-type-badge">ТИП 2</span> Магазины и Товары</p>
+                <div class="viz-container">
+                    <div style="display: flex; gap: 10px; align-items: center;">
+                        <table class="viz-table" style="width: auto;">
+                            <tr><td>ID</td><td>Name</td></tr>
+                            <tr><td>1</td><td>Milk</td></tr>
+                        </table>
+                        <span>&harr;</span>
+                        <table class="viz-table" style="width: auto;">
+                            <tr><td>ID_Tov</td><td>Count</td></tr>
+                            <tr><td>1</td><td>50</td></tr>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <div>
+                <div class="card">
+                    <span class="method-badge">СПОСОБ 1: EXCEL ВПР</span>
+                    <p style="font-size: 0.8rem;"><code>=ВПР(A2; 'Товары'!$A:$B; 2; 0)</code><br>Подтягиваем данные в одну таблицу и фильтруем.</p>
+                </div>
+                <div class="card" style="margin-top: 10px;">
+                    <span class="method-badge">СПОСОБ 2: СВОДНЫЕ ТАБЛИЦЫ</span>
+                    <p style="font-size: 0.8rem;">Вставка -> Сводная таблица. Добавляем в модель данных, создаем связи по ID и выводим итоги.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- TASK 4 -->
+    <div class="slide">
+        <h2>№4. УСЛОВИЕ ФАНО</h2>
+        <div class="grid-2">
+            <div>
+                <p><span class="task-type-badge">ТИП 1</span> Прямое условие</p>
+                <div class="viz-container">
+                    <svg width="200" height="100">
+                        <circle cx="100" cy="10" r="3" fill="#fff"/>
+                        <line x1="100" y1="10" x2="60" y2="50" stroke="#555"/>
+                        <line x1="100" y1="10" x2="140" y2="50" stroke="#555"/>
+                        <text x="70" y="30" fill="#aaa" font-size="10">0</text>
+                        <text x="130" y="30" fill="#aaa" font-size="10">1</text>
+                        <circle cx="60" cy="50" r="3" fill="var(--accent)"/>
+                        <text x="40" y="55" fill="var(--accent)" font-size="10">A(0)</text>
+                    </svg>
+                </div>
+            </div>
+            <div>
+                <div class="card">
+                    <span class="method-badge">СПОСОБ 1: ДЕРЕВО</span>
+                    <p style="font-size: 0.8rem;">Рисуем бинарное дерево. Закрашиваем занятые ветки. Свободные узлы используем для новых кодов.</p>
+                </div>
+                <div class="card" style="margin-top: 10px;">
+                    <span class="method-badge">СПОСОБ 2: ПЕРЕБОР</span>
+                    <p style="font-size: 0.8rem;">Выписываем все возможные коды длины 1, 2, 3... Проверяем каждый на условие Фано (не является началом другого).</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- TASK 5 -->
+    <div class="slide">
+        <h2>№5. АЛГОРИТМЫ</h2>
+        <div class="grid-2">
+            <div>
+                <p><span class="task-type-badge">ТИП 1</span> Двоичная обработка</p>
+                <div class="viz-container">
+                    <div style="display: flex; align-items: center; gap: 5px; color: #fff; font-size: 0.8rem;">
+                        N &rarr; <span style="color: var(--accent);">BIN</span> &rarr; +bits &rarr; R
+                    </div>
+                </div>
+                <div class="card">
+                    <span class="method-badge">СПОСОБ 2: АНАЛИТИКА</span>
+                    <p style="font-size: 0.8rem;">Понимаем, что приписывание '0' справа - это умножение на 2. '1' - умножение на 2 и +1. Оцениваем диапазон R.</p>
+                </div>
+            </div>
+            <div class="card">
+                <span class="method-badge">СПОСОБ 1: PYTHON</span>
+                <div class="code-block">
+for N in range(1, 1000):
+    b = bin(N)[2:]
+    if N % 2 == 0: b += '01'
+    else: b = '1' + b + '1'
+    R = int(b, 2)
+    if R > 100:
+        print(N); break
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- TASK 6 -->
+    <div class="slide">
+        <h2>№6. ЧЕРЕПАХА</h2>
+        <div class="grid-2">
+            <div>
+                <p><span class="task-type-badge">ТИП 1</span> Точки внутри</p>
+                <div class="viz-container">
+                    <svg width="100" height="100">
+                        <rect x="20" y="20" width="60" height="60" fill="none" stroke="var(--accent)" stroke-width="2"/>
+                        <circle cx="30" cy="30" r="1" fill="#fff"/>
+                        <circle cx="40" cy="30" r="1" fill="#fff"/>
+                    </svg>
+                </div>
+                <div class="card">
+                    <span class="method-badge">СПОСОБ 2: ФОРМУЛА ПИКА</span>
+                    <p style="font-size: 0.8rem;">S = В + Г/2 - 1. Считаем площадь геометрически, выражаем В (внутренние точки).</p>
+                </div>
+            </div>
+            <div class="card">
+                <span class="method-badge">СПОСОБ 1: PYTHON TURTLE</span>
+                <div class="code-block">
+from turtle import *
+tracer(0); m = 20
+for i in range(4): forward(10*m); right(90)
+up()
+for x in range(20):
+    for y in range(20):
+        goto(x*m, -y*m); dot(3, 'red')
+update()
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- TASK 7 -->
+    <div class="slide">
+        <h2>№7. КОДИРОВАНИЕ</h2>
+        <div class="grid-2">
+            <div>
+                <p><span class="task-type-badge">ТИП 1</span> Изображения</p>
+                <p><span class="task-type-badge">ТИП 2</span> Звук</p>
+                <div class="viz-container">
+                    <div style="text-align: center;">
+                        <div style="font-size: 1.5rem; color: var(--accent);">I = K &times; i</div>
+                    </div>
+                </div>
+            </div>
+            <div>
+                <div class="card">
+                    <span class="method-badge">СПОСОБ 1: ФОРМУЛЫ</span>
+                    <p style="font-size: 0.8rem;"><b>Изображение:</b> V = X * Y * i (бит).<br><b>Звук:</b> V = f * i * t * k (каналы).</p>
+                </div>
+                <div class="card" style="margin-top: 10px;">
+                    <span class="method-badge">СПОСОБ 2: ПРОПОРЦИИ</span>
+                    <p style="font-size: 0.8rem;">Если разрешение увеличилось в 2 раза, объем вырос в 4 раза. Если цветов стало в 2 раза больше, глубина (i) увеличилась на 1 бит.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- TASK 8 -->
+    <div class="slide">
+        <h2>№8. КОМБИНАТОРИКА</h2>
+        <div class="grid-2">
+            <div>
+                <p><span class="task-type-badge">ТИП 1</span> Слова</p>
+                <div class="viz-container">
+                    <div style="display: flex; gap: 5px;">
+                        <div style="border-bottom: 2px solid #fff; width: 20px; text-align: center;">A</div>
+                        <div style="border-bottom: 2px solid #fff; width: 20px; text-align: center;">B</div>
+                        <div style="border-bottom: 2px solid #fff; width: 20px; text-align: center;">C</div>
+                    </div>
+                </div>
+                <div class="card">
+                    <span class="method-badge">СПОСОБ 2: МАТЕМАТИКА</span>
+                    <p style="font-size: 0.8rem;">Если 5 букв и 3 позиции: 5 * 5 * 5 = 125. Если буква 'А' только одна: ставим её на 1-е место (1 вар), остальные 4*4. Суммируем варианты.</p>
+                </div>
+            </div>
+            <div class="card">
+                <span class="method-badge">СПОСОБ 1: PYTHON ITERTOOLS</span>
+                <div class="code-block">
+from itertools import product
+k = 0
+for x in product('ABC', repeat=5):
+    s = ''.join(x)
+    if s.count('A') == 1:
+        k += 1
+print(k)
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- TASK 9 -->
+    <div class="slide">
+        <h2>№9. ЭЛЕКТРОННЫЕ ТАБЛИЦЫ</h2>
+        <div class="grid-2">
+            <div>
+                <p><span class="task-type-badge">ТИП 1</span> Свойства чисел</p>
+                <div class="viz-container">
+                    <table class="viz-table">
+                        <tr><td>10</td><td>20</td><td>25</td></tr>
+                    </table>
+                </div>
+                <div class="card">
+                    <span class="method-badge">СПОСОБ 2: EXCEL</span>
+                    <p style="font-size: 0.8rem;">Формулы: <code>=СЧЁТЕСЛИ</code>, <code>=МАКС</code>, <code>=ЕСЛИ</code>. Фильтрация строк по столбцу с результатом.</p>
+                </div>
+            </div>
+            <div class="card">
+                <span class="method-badge">СПОСОБ 1: PYTHON</span>
+                <div class="code-block">
+count = 0
+for line in open('9.txt'):
+    nums = sorted(map(int, line.split()))
+    if nums[2] < nums[0] + nums[1]: 
+        count += 1
+                </div>
+                <p style="font-size: 0.8rem;">Чтение файла как CSV/TXT и обработка списков.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- TASK 10 -->
+    <div class="slide">
+        <h2>№10. ПОИСК В ТЕКСТЕ</h2>
+        <div class="grid-2">
+            <div>
+                <p><span class="task-type-badge">ТИП 1</span> Слово целиком</p>
+                <div class="viz-container">
+                    <div style="background: #fff; color: #000; padding: 5px; font-family: serif;">
+                        ...<span style="background: yellow;">долг</span>...
+                    </div>
+                </div>
+            </div>
+            <div>
+                <div class="card">
+                    <span class="method-badge">СПОСОБ 1: WORD/PDF</span>
+                    <p style="font-size: 0.8rem;">Ctrl+F (или Расширенный поиск). Опции: "Только слово целиком", "Учитывать регистр".</p>
+                </div>
+                <div class="card" style="margin-top: 10px;">
+                    <span class="method-badge">СПОСОБ 2: PYTHON</span>
+                    <p style="font-size: 0.8rem;"><code>text.count(' долг ')</code>. Но сложно учесть знаки препинания. Лучше использовать Word.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- TASK 11 -->
+    <div class="slide">
+        <h2>№11. КОЛИЧЕСТВО ИНФОРМАЦИИ</h2>
+        <div class="grid-2">
+            <div>
+                <p><span class="task-type-badge">ТИП 1</span> Пароли</p>
+                <div class="viz-container">
+                    <div style="font-size: 0.8rem;">ID (bits) &rarr; Bytes &rarr; * Users</div>
+                </div>
+            </div>
+            <div class="card">
+                <span class="method-badge">АЛГОРИТМ</span>
+                <p style="font-size: 0.8rem;">1. N символов -> i бит (2^i >= N).<br>2. Весь пароль: K * i бит.<br>3. Перевод в байты: делим на 8, округляем ВВЕРХ.<br>4. Умножаем на кол-во пользователей.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- TASK 12 -->
+    <div class="slide">
+        <h2>№12. ИСПОЛНИТЕЛЬ</h2>
+        <div class="grid-2">
+            <div>
+                <p><span class="task-type-badge">ТИП 1</span> Редактор строк</p>
+                <div class="viz-container">
+                    <div style="font-family: monospace;">88 -> 22</div>
+                </div>
+                <div class="card">
+                    <span class="method-badge">СПОСОБ 2: АНАЛИТИКА</span>
+                    <p style="font-size: 0.8rem;">Находим цикл замены. Например, каждые 3 восьмерки превращаются в одну двойку. Делим общее кол-во на длину цикла.</p>
+                </div>
+            </div>
+            <div class="card">
+                <span class="method-badge">СПОСОБ 1: PYTHON</span>
+                <div class="code-block">
+s = '>' + '1'*10 + '2'*20
+while '>1' in s or '>2' in s:
+    if '>1' in s: s = s.replace('>1', '22>', 1)
+    if '>2' in s: s = s.replace('>2', '2>', 1)
+print(s)
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- TASK 13 -->
+    <div class="slide">
+        <h2>№13. IP-АДРЕСА</h2>
+        <div class="grid-2">
+            <div>
+                <p><span class="task-type-badge">ТИП 1</span> Маски и Сети</p>
+                <div class="viz-container">
+                    <div style="font-family: monospace; font-size: 0.7rem;">
+                        IP: 11000000...<br>
+                        MS: 11111111...
+                    </div>
+                </div>
+                <div class="card">
+                    <span class="method-badge">СПОСОБ 2: РУЧНОЙ</span>
+                    <p style="font-size: 0.8rem;">Переводим байты в двоичную систему. Применяем поразрядную конъюнкцию (AND) для получения адреса сети.</p>
+                </div>
+            </div>
+            <div class="card">
+                <span class="method-badge">СПОСОБ 1: PYTHON</span>
+                <div class="code-block">
+import ipaddress
+net = ipaddress.ip_network('192.168.1.0/255.255.255.0')
+for ip in net:
+    if bin(int(ip)).count('1') % 2 == 0:
+        pass
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- TASK 14 -->
+    <div class="slide">
+        <h2>№14. СИСТЕМЫ СЧИСЛЕНИЯ</h2>
+        <div class="grid-2">
+            <div>
+                <p><span class="task-type-badge">ТИП 1</span> Выражения</p>
+                <div class="viz-container">
+                    <div style="font-size: 1.2rem;">4<sup>20</sup> + 2<sup>30</sup></div>
+                </div>
+                <div class="card">
+                    <span class="method-badge">СПОСОБ 2: АНАЛИТИКА</span>
+                    <p style="font-size: 0.8rem;">Приведение к основанию степени. 4^20 = (2^2)^20 = 2^40. Единица и 40 нулей в двоичной системе.</p>
+                </div>
+            </div>
+            <div class="card">
+                <span class="method-badge">СПОСОБ 1: PYTHON</span>
+                <div class="code-block">
+# Перебор цифры x
+for x in range(15):
+    val = int(f'123{x}5', 15) + int(f'1{x}7', 15)
+    if val % 14 == 0:
+        print(val // 14)
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- TASK 15 -->
+    <div class="slide">
+        <h2>№15. ЛОГИКА</h2>
+        <div class="grid-2">
+            <div>
+                <p><span class="task-type-badge">ТИП 1</span> Делители / Отрезки</p>
+                <div class="viz-container">
+                    <svg width="200" height="50">
+                        <line x1="10" y1="25" x2="190" y2="25" stroke="#555"/>
+                        <rect x="50" y="20" width="40" height="10" fill="var(--accent)" opacity="0.5"/>
+                    </svg>
+                </div>
+                <div class="card">
+                    <span class="method-badge">СПОСОБ 2: АНАЛИТИКА</span>
+                    <p style="font-size: 0.8rem;">Упрощение логического выражения. Рисование числовой прямой и наложение отрезков.</p>
+                </div>
+            </div>
+            <div class="card">
+                <span class="method-badge">СПОСОБ 1: PYTHON ШАБЛОН</span>
+                <div class="code-block">
+for A in range(1, 1000):
+    ok = True
+    for x in range(1, 1000):
+        if not ( ... ):
+            ok = False; break
+    if ok: print(A)
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- TASK 16 -->
+    <div class="slide">
+        <h2>№16. РЕКУРСИЯ</h2>
+        <div class="grid-2">
+            <div>
+                <p><span class="task-type-badge">ТИП 1</span> Вычисление F(n)</p>
+                <div class="viz-container">
+                    <svg width="100" height="60">
+                        <circle cx="50" cy="10" r="5" class="tree-node"/>
+                        <line x1="50" y1="15" x2="30" y2="40" class="tree-link"/>
+                        <line x1="50" y1="15" x2="70" y2="40" class="tree-link"/>
+                    </svg>
+                </div>
+                <div class="card">
+                    <span class="method-badge">СПОСОБ 2: DP (СПИСКИ)</span>
+                    <p style="font-size: 0.8rem;">Заполняем массив значений от 1 до N последовательно, без рекурсии. Избегает переполнения стека.</p>
+                </div>
+            </div>
+            <div class="card">
+                <span class="method-badge">СПОСОБ 1: CACHE</span>
+                <div class="code-block">
+from functools import lru_cache
+import sys
+sys.setrecursionlimit(3000)
+
+@lru_cache(None)
+def F(n):
+    if n == 1: return 1
+    return F(n-1) * n
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- TASK 17 -->
+    <div class="slide">
+        <h2>№17. ПОСЛЕДОВАТЕЛЬНОСТИ</h2>
+        <div class="grid-2">
+            <div>
+                <p><span class="task-type-badge">ТИП 1</span> Обработка файла</p>
+                <div class="viz-container">
+                    <div style="display: flex; gap: 5px;">
+                        <div style="border: 1px solid var(--accent); padding: 5px;">a[i]</div>
+                        <div style="border: 1px solid var(--accent); padding: 5px;">a[i+1]</div>
+                    </div>
+                </div>
+                <div class="card">
+                    <span class="method-badge">СПОСОБ 2: EXCEL</span>
+                    <p style="font-size: 0.8rem;">Копируем данные в столбец A. В столбце B пишем формулу проверки условия для пары (A1 и A2). Фильтруем и считаем.</p>
+                </div>
+            </div>
+            <div class="card">
+                <span class="method-badge">СПОСОБ 1: PYTHON</span>
+                <div class="code-block">
+data = [int(x) for x in open('17.txt')]
+ans = []
+for i in range(len(data)-1):
+    x, y = data[i], data[i+1]
+    if (x % 3 == 0) or (y % 3 == 0):
+        ans.append(x + y)
+print(len(ans), max(ans))
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- TASK 18 -->
+    <div class="slide">
+        <h2>№18. РОБОТ</h2>
+        <div class="grid-2">
+            <div>
+                <p><span class="task-type-badge">ТИП 1</span> Сбор монет</p>
+                <div class="viz-container">
+                    <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 2px;">
+                        <div class="grid-cell">S</div>
+                        <div class="grid-cell wall-right">10</div>
+                        <div class="grid-cell">5</div>
+                        <div class="grid-cell">E</div>
+                    </div>
+                </div>
+                <div class="card">
+                    <span class="method-badge">СПОСОБ 2: PYTHON</span>
+                    <p style="font-size: 0.8rem;">Считываем CSV в двумерный массив. Заполняем таблицу динамики кодом (dp[i][j] = max(...) + val).</p>
+                </div>
+            </div>
+            <div class="card">
+                <span class="method-badge">СПОСОБ 1: EXCEL</span>
+                <p>Копируем таблицу. Удаляем данные, оставляем стены. Пишем формулу <code>=МАКС(Сверху; Слева) + Ячейка</code>. Протягиваем, учитывая стены.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- TASK 19-21 -->
+    <div class="slide">
+        <h2>№19-21. ТЕОРИЯ ИГР</h2>
+        <div class="grid-2">
+            <div>
+                <p><span class="task-type-badge">ТИП 1</span> 1 или 2 кучи</p>
+                <div class="viz-container">
+                    <svg width="100" height="60">
+                        <circle cx="50" cy="10" r="5" class="tree-node"/>
+                        <line x1="50" y1="15" x2="30" y2="40" class="tree-link"/>
+                        <line x1="50" y1="15" x2="70" y2="40" class="tree-link"/>
+                    </svg>
+                </div>
+                <div class="card">
+                    <span class="method-badge">СПОСОБ 2: EXCEL</span>
+                    <p style="font-size: 0.8rem;">Табличный метод. Расписываем выигрышные/проигрышные позиции, окрашиваем ячейки в зависимости от возможности попасть в проигрышную позицию соперника.</p>
+                </div>
+            </div>
+            <div class="card">
+                <span class="method-badge">СПОСОБ 1: PYTHON РЕКУРСИЯ</span>
+                <div class="code-block">
+def game(heap, moves):
+    if heap >= 29: return moves % 2 == 0
+    if moves == 0: return 0
+    h = [game(heap+1, moves-1), game(heap*2, moves-1)]
+    return any(h) if (moves-1)%2==0 else all(h)
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- TASK 22 -->
+    <div class="slide">
+        <h2>№22. ПРОЦЕССЫ</h2>
+        <div class="grid-2">
+            <div>
+                <p><span class="task-type-badge">ТИП 1</span> Параллельные процессы</p>
+                <div class="viz-container">
+                    <svg width="150" height="50">
+                        <rect x="10" y="10" width="30" height="10" fill="#555"/>
+                        <rect x="50" y="30" width="50" height="10" fill="var(--accent)"/>
+                    </svg>
+                </div>
+            </div>
+            <div>
+                <div class="card">
+                    <span class="method-badge">СПОСОБ 1: EXCEL</span>
+                    <p style="font-size: 0.8rem;">Время старта = МАКС(время окончания всех предков). Время окончания = Старт + Длительность.</p>
+                </div>
+                <div class="card" style="margin-top: 10px;">
+                    <span class="method-badge">СПОСОБ 2: ДИАГРАММА ГАНТА</span>
+                    <p style="font-size: 0.8rem;">Визуальное построение отрезков времени для каждого процесса, чтобы найти общее время выполнения.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- TASK 23 -->
+    <div class="slide">
+        <h2>№23. ДИНАМИКА</h2>
+        <div class="grid-2">
+            <div>
+                <p><span class="task-type-badge">ТИП 1</span> Траектории</p>
+                <div class="viz-container">
+                    <div style="display: flex; align-items: center; gap: 5px;">
+                        1 &rarr; <span style="color: var(--accent);">10</span> &rarr; 20
+                    </div>
+                </div>
+                <div class="card">
+                    <span class="method-badge">СПОСОБ 2: EXCEL</span>
+                    <p style="font-size: 0.8rem;">Столбец чисел от Старта до Финиша. Формула: сумма значений из ячеек, откуда можно прийти в текущую.</p>
+                </div>
+            </div>
+            <div class="card">
+                <span class="method-badge">СПОСОБ 1: PYTHON</span>
+                <div class="code-block">
+def f(x, end):
+    if x > end or x == avoid: return 0
+    if x == end: return 1
+    return f(x+1, end) + f(x*2, end)
+print(f(1, 10) * f(10, 20))
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- TASK 24 -->
+    <div class="slide">
+        <h2>№24. СТРОКИ</h2>
+        <div class="grid-2">
+            <div>
+                <p><span class="task-type-badge">ТИП 1</span> Подстроки</p>
+                <div class="viz-container">
+                    <div style="font-family: monospace;">A<span style="color: var(--accent);">BBB</span>A</div>
+                </div>
+                <div class="card">
+                    <span class="method-badge">СПОСОБ 2: ЗАМЕНЫ</span>
+                    <p style="font-size: 0.8rem;">Заменяем искомые подстроки на пробелы или спецсимволы, затем делаем split и ищем макс длину.</p>
+                </div>
+            </div>
+            <div class="card">
+                <span class="method-badge">СПОСОБ 1: ПРОХОД (O(N))</span>
+                <div class="code-block">
+cur = 0; mx = 0
+for c in s:
+    if c == 'A': cur += 1
+    else: mx = max(mx, cur); cur = 0
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- TASK 25 -->
+    <div class="slide">
+        <h2>№25. МАСКИ</h2>
+        <div class="grid-2">
+            <div>
+                <p><span class="task-type-badge">ТИП 1</span> Делители и Маски</p>
+                <div class="viz-container">
+                    <div style="font-family: monospace;">12<span style="color: var(--accent);">?</span>45<span style="color: var(--accent);">*</span></div>
+                </div>
+                <div class="card">
+                    <span class="method-badge">СПОСОБ 2: СТРОКИ</span>
+                    <p style="font-size: 0.8rem;">Перебор чисел, перевод в строку, проверка символов по индексам (если нет fnmatch).</p>
+                </div>
+            </div>
+            <div class="card">
+                <span class="method-badge">СПОСОБ 1: FNMATCH</span>
+                <div class="code-block">
+from fnmatch import fnmatch
+for x in range(0, 10**9, 2023):
+    if fnmatch(str(x), '12?45*'):
+        print(x)
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- TASK 26 -->
+    <div class="slide">
+        <h2>№26. СОРТИРОВКА</h2>
+        <div class="grid-2">
+            <div>
+                <p><span class="task-type-badge">ТИП 1</span> Жадные алгоритмы</p>
+                <div class="viz-container">
+                    <div style="display: flex; align-items: flex-end; gap: 2px; height: 30px;">
+                        <div style="width: 5px; height: 20%; background: #555;"></div>
+                        <div style="width: 5px; height: 40%; background: #555;"></div>
+                        <div style="width: 5px; height: 60%; background: var(--accent);"></div>
+                    </div>
+                </div>
+                <div class="card">
+                    <span class="method-badge">СПОСОБ 2: EXCEL</span>
+                    <p style="font-size: 0.8rem;">Сортировка данных. Накопительная сумма (текущий + предыдущий). Смотрим, где сумма превысит лимит.</p>
+                </div>
+            </div>
+            <div class="card">
+                <span class="method-badge">СПОСОБ 1: PYTHON</span>
+                <div class="code-block">
+data = sorted([int(x) for x in open('26.txt')])
+s = 0; count = 0
+for x in data:
+    if s + x <= M:
+        s += x; count += 1
+print(count)
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- TASK 27 -->
+    <div class="slide">
+        <h2>№27. АНАЛИЗ ДАННЫХ</h2>
+        <div class="grid-2">
+            <div>
+                <p><span class="task-type-badge">ТИП A</span> Перебор</p>
+                <p><span class="task-type-badge">ТИП B</span> Эффективный</p>
+                <div class="viz-container">
+                    <div style="font-size: 0.8rem;">Stream &rarr; Pref Sums</div>
+                </div>
+                <div class="card">
+                    <span class="method-badge">СПОСОБ 2: ПЕРЕБОР (Файл А)</span>
+                    <p style="font-size: 0.8rem;">Двойной цикл for i in range(n): for j in range(i+1, n). Работает только для малых данных.</p>
+                </div>
+            </div>
+            <div class="card">
+                <span class="method-badge">СПОСОБ 1: ОСТАТКИ (Файл B)</span>
+                <p style="font-size: 0.8rem;">Храним минимальные префиксные суммы для каждого остатка от деления. O(N).</p>
+                <div class="code-block">
+m = [10**20]*k
+s = 0; mn = 10**20
+for x in data:
+    s += x
+    rem = s % k
+    mn = min(mn, s - m[rem])
+    m[rem] = min(m[rem], s)
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- FINAL -->
+    <div class="slide flex-center">
+        <div style="position: relative; z-index: 1;">
+            <h1 style="font-size: 4.5rem;">GG, WP</h1>
+            <p style="color: var(--accent);">Проебал</p>
+            <div style="margin-top: 40px;">
+                <img src="images/Team_Spirit_new_em.svg" alt="TS Logo" style="filter: brightness(0) invert(1); width: 150px; opacity: 0.6;">
+            </div>
+        </div>
+    </div>
+
+    <!-- CONTROLS -->
+    <div class="controls">
+        <div class="btn-group">
+            <button class="btn" onclick="prevSlide()"> &#8249; </button>
+            <button class="btn" onclick="nextSlide()"> &#8250; </button>
+        </div>
+    </div>
+
+    <script>
+        let currentSlide = 0;
+        const slides = document.querySelectorAll('.slide');
+        const totalSlidesEl = document.getElementById('totalSlide');
+        const currSlideEl = document.getElementById('currSlide');
+        const slideCounter = document.querySelector('.slide-counter');
+
+        function updateCounter() {
+            let num = currentSlide + 1;
+            currSlideEl.innerText = num < 10 ? '0' + num : num;
+        }
+
+        function showSlide(index) {
+            if (index === 0) slideCounter.style.display = 'none';
+            else slideCounter.style.display = '';
+
+            slides.forEach((slide, i) => {
+                slide.classList.remove('active');
+                if (i === index) {
+                    slide.classList.add('active');
+                    slide.scrollTop = 0;
+                }
+            });
+            updateCounter();
+        }
+
+        function nextSlide() {
+            currentSlide = (currentSlide + 1) % slides.length;
+            showSlide(currentSlide);
+        }
+
+        function prevSlide() {
+            currentSlide = (currentSlide - 1 + slides.length) % slides.length;
+            showSlide(currentSlide);
+        }
+
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'ArrowRight' || e.key === 'Space') nextSlide();
+            if (e.key === 'ArrowLeft') prevSlide();
+        });
+
+        let touchStartX = 0;
+        let touchEndX = 0;
+        document.addEventListener('touchstart', e => { touchStartX = e.changedTouches[0].screenX; }, false);
+        document.addEventListener('touchend', e => {
+            touchEndX = e.changedTouches[0].screenX;
+            if (touchEndX < touchStartX - 50) nextSlide();
+            if (touchEndX > touchStartX + 50) prevSlide();
+        }, false);
+
+        totalSlidesEl.innerText = slides.length;
+        showSlide(currentSlide);
+    </script>
+    
+</body>
+</html>
