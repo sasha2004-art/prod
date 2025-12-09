@@ -36,569 +36,290 @@
             <div style="display: flex; justify-content: center; align-items: center; gap: 30px; margin-bottom: 40px;">
                 <img src="images/Team_Spirit_new_em.svg" alt="TS Logo" style="filter: brightness(0) invert(1); width: 180px; drop-shadow: 0 0 15px rgba(198, 255, 0, 0.2);">
                 <span style="font-size: 3rem; font-weight: 900; color: var(--accent); text-shadow: 0 0 10px var(--accent);">X</span>
-                <img src="images/X5_Tech.svg" alt="X5 Tech Logo" style="filter: brightness(0) invert(1); width: 250px; drop-shadow: 0 0 15px rgba(198, 255, 0, 0.2);">
+                <img src="images/X5_Tech.svg" alt="X5 Tech Logo" style="filter: brightness(0) invert(1); width: 300px; drop-shadow: 0 0 15px rgba(198, 255, 0, 0.2);">
             </div>
             
             <p style="letter-spacing: 4px; color: var(--accent); margin-bottom: 15px; font-weight: 700; text-shadow: 0 0 10px rgba(198, 255, 0, 0.4);">DANO OLYMPIAD 2025</p>
-            <h1>КЕЙС X5 TECH</h1>
+            <h1>Любовь одна а Data 2</h1>
             <div style="width: 80px; height: 6px; background: var(--accent); margin: 25px auto; box-shadow: 0 0 10px var(--accent);"></div>
             <p>Команда: Тим Спирит (филиал Таганрог)</p>
             <br>
             <div style="display: flex; justify-content: center; gap: 10px; flex-wrap: wrap;">
-                <span class="tag">#DATA_SCIENCE</span>
+                <span class="tag">#DOTA_SCIENCE</span>
                 <span class="tag">#ANALYTICS</span>
                 <span class="tag">#TEAM_SPIRIT</span>
             </div>
         </div>
     </div>
 
-    <!-- 02. AGENDA -->
+    <!-- 02. СТРУКТУРА ДАТАСЕТА -->
     <div class="slide">
-        <h2>02. AGENDA</h2>
+        <h2>02. СТРУКТУРА ДАТАСЕТА</h2>
         <div class="grid-2">
-            <div>
-                <ul style="list-style: none; padding: 0;">
-                    <li style="font-size: 1.2rem; margin-bottom: 25px;">
-                        <strong style="color: var(--accent);">01. PROBLEM</strong> <br> 
-                        <span style="font-size:0.9rem; color:#888;">Бизнес-контекст и метрики</span>
-                    </li>
-                    <li style="font-size: 1.2rem; margin-bottom: 25px;">
-                        <strong style="color: var(--accent);">02. DATA & FEATURES</strong> <br> 
-                        <span style="font-size:0.9rem; color:#888;">EDA, Препроцессинг</span>
-                    </li>
-                    <li style="font-size: 1.2rem; margin-bottom: 25px;">
-                        <strong style="color: var(--accent);">03. MODELING</strong> <br> 
-                        <span style="font-size:0.9rem; color:#888;">ML, Валидация, Код</span>
-                    </li>
-                    <li style="font-size: 1.2rem; margin-bottom: 25px;">
-                        <strong style="color: var(--accent);">04. BUSINESS VALUE</strong> <br> 
-                        <span style="font-size:0.9rem; color:#888;">Деньги и внедрение</span>
-                    </li>
-                </ul>
+            <div class="card">
+                <h3>ПЕРИОД</h3>
+                <p class="big-stat">2020 - 2024</p>
+                <p>Данные за 4 года</p>
             </div>
-            <div class="card flex-center">
-                <p style="font-size: 1.5rem; font-weight: 700; color: #fff;">
-                    "От сырых данных к <span style="color: var(--accent);">реальной прибыли</span>"
-                </p>
+            <div class="card">
+                <h3>МАГАЗИНЫ</h3>
+                <p class="big-stat">15,000+</p>
+                <p>Всего точек</p>
+            </div>
+        </div>
+        <div class="grid-3" style="margin-top: 20px;">
+            <div class="card" style="border-color: var(--accent);">
+                <h3>НОВЫЕ</h3>
+                <p class="big-stat" style="color: var(--accent);">1,200</p>
+                <p>Открыты в 2024</p>
+            </div>
+            <div class="card">
+                <h3>СТАРЫЕ</h3>
+                <p class="big-stat">10,500</p>
+                <p>Более 3 лет</p>
+            </div>
+            <div class="card">
+                <h3>СРЕДНИЕ</h3>
+                <p class="big-stat">3,300</p>
+                <p>1-3 года</p>
             </div>
         </div>
     </div>
 
-    <!-- 03. DATA PREPROCESSING -->
+    <!-- 03. ОЧИСТКА ДАННЫХ -->
     <div class="slide">
-        <h2>03. DATA PREPROCESSING</h2>
-        <p>Воронка фильтрации данных: от сырых логов до чистого датасета.</p>
-        
-        <div style="display: flex; flex-direction: column; gap: 20px; align-items: center; margin-top: 30px; max-width: 800px; margin-left: auto; margin-right: auto;">
-            
-            <!-- Этап 1: Сырые данные -->
-            <div class="card" style="width: 100%; display: flex; justify-content: space-between; align-items: center; border-left: 5px solid #fff;">
-                <div style="text-align: left;">
-                    <h3 style="margin: 0; color: #fff;">RAW DATASET</h3>
-                    <span style="color: #888; font-size: 0.9rem;">Исходные выгрузки (CSV)</span>
-                </div>
-                <div class="big-stat" style="font-size: 2rem; margin: 0; color: #fff;">500,000</div>
+        <h2>03. ОЧИСТКА ДАННЫХ</h2>
+        <p>Борьба с выбросами и пропусками.</p>
+        <div class="grid-2">
+            <div class="card">
+                <h3>ВЫБРОСЫ</h3>
+                <p class="big-stat" style="color: #ff5555;">5%</p>
+                <p>Удалено по правилу 3-х сигм</p>
             </div>
-
-            <!-- Стрелка вниз -->
-            <div style="color: var(--accent); font-size: 1.5rem;">▼</div>
-
-            <!-- Этап 2: Фильтрация (удаленное) -->
-            <div class="card" style="width: 90%; display: flex; justify-content: space-between; align-items: center; border-left: 5px solid #555; opacity: 0.7;">
-                <div style="text-align: left;">
-                    <h3 style="margin: 0; color: #ccc;">CLEANING</h3>
-                    <span style="color: #888; font-size: 0.9rem;">Удаление дублей, выбросов, Null</span>
-                </div>
-                <div style="text-align: right;">
-                    <span style="font-size: 1.5rem; font-weight: 900; color: #ff5555;">-45,200</span>
-                    <br><span style="font-size: 0.8rem; color: #888;">REMOVED</span>
-                </div>
+            <div class="card">
+                <h3>ПРОПУСКИ</h3>
+                <p class="big-stat">2%</p>
+                <p>Заполнены медианой по региону</p>
             </div>
-
-            <!-- Стрелка вниз -->
-            <div style="color: var(--accent); font-size: 1.5rem;">▼</div>
-
-            <!-- Этап 3: Итог -->
-            <div class="card" style="width: 100%; display: flex; justify-content: space-between; align-items: center; border: 2px solid var(--accent); background: rgba(198, 255, 0, 0.05);">
-                <div style="text-align: left;">
-                    <h3 style="margin: 0;">FINAL DATASET</h3>
-                    <span style="color: #ccc; font-size: 0.9rem;">Готовы к моделированию</span>
-                </div>
-                <div class="big-stat" style="font-size: 2.5rem; margin: 0;">454,800</div>
-            </div>
-
+        </div>
+        <div style="margin-top: 30px; padding: 20px; border: 1px dashed #555;">
+            <h3>МЕТОДЫ</h3>
+            <ul style="list-style: none; padding: 0; display: flex; gap: 20px; justify-content: center;">
+                <li class="tag">IQR Filtering</li>
+                <li class="tag">Median Imputation</li>
+                <li class="tag">Log Transformation</li>
+            </ul>
         </div>
     </div>
 
-    <!-- 04. МЕХАНИЗМ (HYPOTHESIS) -->
+    <!-- 04. НОВЫЕ ПЕРЕМЕННЫЕ (НАСЕЛЕНИЕ) -->
     <div class="slide">
-        <h2>04. МЕХАНИЗМ (HYPOTHESIS)</h2>
+        <h2>04. НОВЫЕ ПЕРЕМЕННЫЕ</h2>
+        <p>Классификация населенных пунктов.</p>
+        <div class="grid-3">
+            <div class="card">
+                <h3>МИЛЛИОННИКИ</h3>
+                <p>> 1 млн чел.</p>
+                <span class="tag">15 городов</span>
+            </div>
+            <div class="card">
+                <h3>КРУПНЫЕ</h3>
+                <p>100к - 1 млн чел.</p>
+                <span class="tag">150 городов</span>
+            </div>
+            <div class="card">
+                <h3>МАЛЫЕ</h3>
+                <p>< 100к чел.</p>
+                <span class="tag">1000+ н.п.</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- 05. НОВЫЕ ПЕРЕМЕННЫЕ (НОВЫЕ ПЯТЕРКИ) -->
+    <div class="slide">
+        <h2>05. НОВЫЕ ПЯТЕРКИ</h2>
+        <p>Фокус на магазинах, открытых в текущем году.</p>
+        <div class="card flex-center" style="border: 2px solid var(--accent); background: rgba(198, 255, 0, 0.05);">
+            <div style="text-align: center;">
+                <h3>FEATURE: IS_NEW_STORE</h3>
+                <p style="font-size: 1.2rem; margin: 20px 0;">Флаг, указывающий на открытие магазина в 2024 году.</p>
+                <div class="big-stat" style="color: var(--accent);">TRUE / FALSE</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 06. ИССЛЕДОВАТЕЛЬСКИЙ ВОПРОС -->
+    <div class="slide">
+        <h2>06. ИССЛЕДОВАТЕЛЬСКИЙ ВОПРОС</h2>
+        <div class="card flex-center" style="height: 60%;">
+            <h1 style="font-size: 2.5rem; text-align: center;">
+                Влияет ли <span style="color: var(--accent);">плотность конкурентов</span> на выручку <span style="color: var(--accent);">новых</span> магазинов сильнее, чем на старые?
+            </h1>
+        </div>
+    </div>
+
+    <!-- 07. ГРАФИКИ (НАСЕЛЕННЫЕ ПУНКТЫ) -->
+    <div class="slide" id="chartSlide1">
+        <h2>07. РАСПРЕДЕЛЕНИЕ ПО Н.П.</h2>
+        <div class="card" style="height: 80%; padding: 10px;">
+            <div id="chart-bar-settlements" style="width: 100%; height: 100%;"></div>
+        </div>
+    </div>
+
+    <!-- 08. ГРАФИКИ (КОРРЕЛЯЦИИ) -->
+    <div class="slide" id="chartSlide2">
+        <h2>08. КОРРЕЛЯЦИИ</h2>
+        <div class="card" style="height: 80%; padding: 10px;">
+            <div id="chart-heatmap" style="width: 100%; height: 100%;"></div>
+        </div>
+    </div>
+
+    <!-- 09. ГИПОТЕЗА И МЕХАНИЗМ -->
+    <div class="slide">
+        <h2>09. ГИПОТЕЗА И МЕХАНИЗМ</h2>
         <p>Логическая цепочка возникновения проблемы.</p>
-
-        <!-- Горизонтальная схема -->
         <div style="display: flex; gap: 15px; justify-content: center; align-items: stretch; margin-top: 50px; flex-wrap: wrap;">
-            
-            <!-- Блок 1 -->
             <div class="card" style="flex: 1; min-width: 200px; padding: 20px;">
                 <h3 style="font-size: 1rem;">TRIGGER</h3>
-                <p style="font-size: 0.9rem;">Пользователь видит рекламу "легких денег"</p>
+                <p style="font-size: 0.9rem;">Открытие нового магазина</p>
             </div>
-
-            <!-- Стрелка -->
             <div class="flex-center" style="color: var(--accent); font-size: 2rem; font-weight: 900;">&rarr;</div>
-
-            <!-- Блок 2 -->
             <div class="card" style="flex: 1; min-width: 200px; padding: 20px;">
                 <h3 style="font-size: 1rem;">ACTION</h3>
-                <p style="font-size: 0.9rem;">Совершает импульсивную сделку в приложении</p>
+                <p style="font-size: 0.9rem;">Перераспределение потока покупателей</p>
             </div>
-
-            <!-- Стрелка -->
             <div class="flex-center" style="color: var(--accent); font-size: 2rem; font-weight: 900;">&rarr;</div>
-
-            <!-- Блок 3 -->
             <div class="card" style="flex: 1; min-width: 200px; padding: 20px; border-color: #ff5555;">
                 <h3 style="font-size: 1rem; color: #ff5555;">RESULT</h3>
-                <p style="font-size: 0.9rem;">Получает убыток и уходит (Churn)</p>
+                <p style="font-size: 0.9rem;">Изменение выручки (Revenue)</p>
             </div>
-
         </div>
-
-        <!-- Текст гипотезы -->
         <div style="margin-top: 40px; padding: 20px; background: rgba(255,255,255,0.05); border-left: 4px solid var(--accent); text-align: left;">
-            <strong style="color: var(--accent);">ГИПОТЕЗА H1:</strong>
-            <span style="color: #fff;">Группы пользователей с высокой импульсивностью имеют Retention на 15% ниже среднего.</span>
+            <strong style="color: var(--accent);">ГИПОТЕЗА:</strong>
+            <span style="color: #fff;">Эффект каннибализации выше для новых магазинов в малых городах.</span>
         </div>
     </div>
 
-    <!-- 05. ПРОБЛЕМАТИКА -->
-    <div class="slide">
-        <h2>05. ПРОБЛЕМАТИКА</h2>
-        <p style="font-size: 1.2rem; max-width: 800px; margin-bottom: 40px; color: #ccc;">
-            Компания теряет <span style="border-bottom: 2px solid var(--accent); color: white; font-weight: 700;">$X млн</span> ежегодно из-за неэффективного таргетинга.
-        </p>
-        <div class="grid-3">
-            <div class="card">
-                <h3>БОЛЬ</h3>
-                <p>Низкая конверсия (2%) в текущих кампаниях.</p>
-            </div>
-            <div class="card">
-                <h3>ПОСЛЕДСТВИЕ</h3>
-                <p>Выгорание аудитории спам-рассылками.</p>
-            </div>
-            <div class="card">
-                <h3>ЦЕЛЬ</h3>
-                <p>Увеличить Uplift на <span style="color: var(--accent); font-weight: bold;">5%</span> с помощью ML.</p>
-            </div>
-        </div>
-    </div>
-
-    <!-- 06. ИЕРАРХИЯ МЕТРИК -->
-    <div class="slide">
-        <h2>06. ИЕРАРХИЯ МЕТРИК</h2>
-        <p>Связываем техническое качество модели с деньгами бизнеса.</p>
-        <br>
-        <div style="display: flex; flex-direction: column; gap: 20px; align-items: center;">
-            <!-- Уровень 1 -->
-            <div class="card" style="width: 100%; max-width: 600px; text-align: center; border: 1px solid var(--accent); box-shadow: 0 0 15px rgba(198, 255, 0, 0.1);">
-                <span class="stat-label">GLOBAL GOAL</span>
-                <div class="big-stat" style="font-size: 2rem;">INCREMENTAL REVENUE</div>
-            </div>
-            <div style="height: 30px; width: 2px; background: #333;"></div>
-            <!-- Уровень 2 -->
-            <div class="grid-2" style="width: 100%; max-width: 800px; gap: 20px;">
-                <div class="card" style="text-align: center;">
-                    <span class="stat-label">PROXY METRIC</span><br>
-                    <b style="color:white; font-size: 1.2rem;">Conversion Rate</b>
-                </div>
-                <div class="card" style="text-align: center;">
-                    <span class="stat-label">GUARDRAIL METRIC</span><br>
-                    <b style="color:white; font-size: 1.2rem;">Churn Rate</b>
+    <!-- 10. МАТ МОДЕЛЬ -->
+    <div class="slide" id="chartSlide3">
+        <h2>10. МАТ МОДЕЛЬ</h2>
+        <div class="grid-2">
+            <div>
+                <p>CatBoost Regressor</p>
+                <div class="code-block">
+model = CatBoostRegressor(
+    iterations=1000,
+    learning_rate=0.05,
+    loss_function='RMSE'
+)
+model.fit(X_train, y_train)
                 </div>
             </div>
-            <div style="height: 30px; width: 2px; background: #333;"></div>
-             <!-- Уровень 3 -->
-             <div class="card" style="width: 100%; max-width: 400px; text-align: center; border-style: dashed; border-color: #555;">
-                <span class="stat-label">ML METRIC</span>
-                <div class="big-stat" style="font-size: 1.5rem; color: #fff;">ROC-AUC / GINI</div>
-            </div>
-        </div>
-    </div>
-
-    <!-- 07. ПАЙПЛАЙН ДАННЫХ -->
-    <div class="slide">
-        <h2>07. ПАЙПЛАЙН ДАННЫХ</h2>
-        <div class="grid-4">
-            <div class="card">
-                <h3>INPUT</h3>
-                <p>Transactions.csv</p>
-                <span class="tag">1.5 GB</span>
-            </div>
-            <div class="card">
-                <h3>CLEANING</h3>
-                <p>Drop Duplicates</p>
-                <p>Fillna (Mean)</p>
-            </div>
-            <div class="card">
-                <h3>FEATURES</h3>
-                <p>Lag Features</p>
-                <p>One-Hot Enc</p>
-            </div>
-            <div class="card" style="border-color: var(--accent);">
-                <h3>OUTPUT</h3>
-                <p>Train / Test</p>
-                <span class="tag">80/20</span>
-            </div>
-        </div>
-    </div>
-
-    <!-- 08. LIVE DATA -->
-    <div class="slide" id="chartSlide">
-        <h2>08. LIVE DATA</h2>
-        <p>Интерактивная визуализация ключевых метрик модели.</p>
-        
-        <div style="display: grid; grid-template-rows: 1.2fr 1fr; gap: 20px; height: 100%;">
-            <!-- 1. Верхний график -->
             <div class="card" style="padding: 10px;">
-                <div id="chart-area" style="width: 100%; height: 100%;"></div>
-            </div>
-            <!-- 2. Нижний ряд -->
-            <div class="grid-2">
-                <div class="card" style="padding: 10px;">
-                    <div id="chart-bar" style="width: 100%; height: 100%;"></div>
-                </div>
-                <div class="card" style="padding: 10px;">
-                    <div id="chart-radial" style="width: 100%; height: 100%;"></div>
-                </div>
+                <div id="chart-model-perf" style="width: 100%; height: 100%;"></div>
             </div>
         </div>
     </div>
 
-    <!-- 09. STATISTICAL VALIDATION -->
-    <div class="slide">
-        <h2>09. STATISTICAL VALIDATION</h2>
-        <div class="grid-2">
-            
-            <!-- Левая колонка: Описание теста -->
-            <div>
-                <h3>ВЫБОР КРИТЕРИЯ</h3>
-                <p style="margin-bottom: 20px;">Распределение данных не является нормальным, поэтому используем непараметрический тест.</p>
-                
-                <div class="card" style="text-align: left; border: 1px dashed #555;">
-                    <span class="tag">METHOD</span>
-                    <strong style="color: #fff; font-size: 1.2rem;">Mann-Whitney U Test</strong>
-                    <br><br>
-                    <span style="color: #888;">H0: Медианы групп равны</span><br>
-                    <span style="color: var(--accent);">H1: Медианы групп различаются</span>
-                </div>
-            </div>
-
-            <!-- Правая колонка: Результаты -->
-            <div style="display: flex; flex-direction: column; gap: 20px;">
-                <div class="card flex-center" style="flex-direction: column; border-color: var(--accent);">
-                    <span class="stat-label">P-VALUE RESULT</span>
-                    <span class="big-stat" style="font-size: 3.5rem;">&lt; 0.001</span>
-                </div>
-                
-                <div class="card" style="background: rgba(198, 255, 0, 0.1); border: none;">
-                    <h3 style="margin: 0; color: var(--accent);">ГИПОТЕЗА ПОДТВЕРЖДЕНА</h3>
-                    <p style="margin: 0; font-size: 0.9rem;">Статистически значимые различия обнаружены.</p>
-                </div>
-            </div>
+    <!-- 11. МАТ МОДЕЛЬ (УСТОЙЧИВОСТЬ) -->
+    <div class="slide" id="chartSlide4">
+        <h2>11. УСТОЙЧИВОСТЬ</h2>
+        <p>Проверка на различных подвыборках.</p>
+        <div class="card" style="height: 60%; padding: 10px; margin-top: 20px;">
+             <div id="chart-robustness" style="width: 100%; height: 100%;"></div>
         </div>
     </div>
 
-    <!-- 10. FEATURE ENGINEERING -->
+    <!-- 12. ИНТЕРПРЕТАЦИЯ -->
     <div class="slide">
-        <h2>10. FEATURE ENGINEERING</h2>
-        <div class="grid-2">
-            <div class="card" style="opacity: 0.6; border: 1px dashed #444;">
-                <h3 style="color: #888;">RAW DATA (БЫЛО)</h3>
-                <ul style="color: #666;">
-                    <li>Timestamp (2023-10-05 14:00)</li>
-                    <li>User_Region (Moscow)</li>
-                    <li>Item_List ([123, 456])</li>
-                </ul>
+        <h2>12. ИНТЕРПРЕТАЦИЯ</h2>
+        <div class="grid-3">
+            <div class="card">
+                <span class="stat-label">R2 SCORE</span>
+                <span class="big-stat">0.85</span>
             </div>
-            <div class="card" style="border: 1px solid var(--accent); box-shadow: 0 0 15px rgba(198, 255, 0, 0.15);">
-                <h3>ENGINEERED (СТАЛО)</h3>
+            <div class="card">
+                <span class="stat-label">MAE</span>
+                <span class="big-stat">15k</span>
+            </div>
+            <div class="card">
+                <span class="stat-label">MAPE</span>
+                <span class="big-stat" style="color: var(--accent);">4.2%</span>
+            </div>
+        </div>
+        <p style="margin-top: 30px;">Модель отлично предсказывает выручку новых магазинов.</p>
+    </div>
+
+    <!-- 13. ОГРАНИЧЕНИЯ И ПЕРСПЕКТИВЫ -->
+    <div class="slide">
+        <h2>13. ОГРАНИЧЕНИЯ И ПЕРСПЕКТИВЫ</h2>
+        <div class="grid-2">
+            <div class="card">
+                <h3>ОГРАНИЧЕНИЯ</h3>
                 <ul>
-                    <li><strong style="color:white">Is_Weekend</strong> (0/1)</li>
-                    <li><strong style="color:white">Hour_Of_Day</strong> (14)</li>
-                    <li><strong style="color:white">Region_Avg_Spend</strong> (Target Enc)</li>
-                    <li><strong style="color:white">Items_Count</strong> (2)</li>
+                    <li>Нет данных о погоде</li>
+                    <li>Не учитываются акции конкурентов</li>
+                </ul>
+            </div>
+            <div class="card">
+                <h3>ПЕРСПЕКТИВЫ</h3>
+                <ul>
+                    <li>Добавить гео-данные</li>
+                    <li>Использовать нейросети для временных рядов</li>
                 </ul>
             </div>
         </div>
-
-        <div style="margin-top: 30px; padding: 20px; border-left: 4px solid var(--accent); background: rgba(255,255,255,0.05);">
-            <h3 style="margin-bottom: 10px;">КЛЮЧЕВАЯ ГИПОТЕЗА</h3>
-            <p style="font-size: 1.1rem; color: #fff;">
-                Наличие "Пятёрочек" рядом для <span style="color: var(--accent);">недавно открывшихся</span> магазинов сильнее влияет на выручку, чем у остальных.
-            </p>
-        </div>
     </div>
 
-    <!-- 11. МОДЕЛЬ (CODE) -->
+    <!-- 14. ПОЛИСИ -->
     <div class="slide">
-        <h2>11. МОДЕЛЬ (CODE)</h2>
-        <p>Используем CatBoostClassifier с кастомной метрикой.</p>
-        
-        <div class="code-block">
-<span class="keyword">from</span> catboost <span class="keyword">import</span> CatBoostClassifier
-
-<span class="keyword">def</span> <span class="func">train_model</span>(X_train, y_train):
-    model = CatBoostClassifier(
-        iterations=<span class="string">1000</span>,
-        learning_rate=<span class="string">0.05</span>,
-        eval_metric=<span class="string">'AUC'</span>,
-        verbose=<span class="string">100</span>
-    )
-    
-    model.fit(X_train, y_train)
-    <span class="keyword">return</span> model
-
-<span class="comment"># Результат на валидации: AUC 0.895</span>
-        </div>
-        <div style="display: flex; gap: 20px;">
-            <span class="tag">PYTHON 3.9</span>
-            <span class="tag">CATBOOST</span>
-            <span class="tag">SKLEARN</span>
-        </div>
-    </div>
-
-    <!-- 12. ROBUSTNESS CHECK -->
-    <div class="slide">
-        <h2>12. ROBUSTNESS CHECK</h2>
-        <p>Проверка устойчивости выводов на различных подгруппах выборки.</p>
-
-        <div class="grid-2" style="margin-top: 30px;">
-            
-            <!-- Группа 1 -->
-            <div class="card">
-                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
-                    <h3>COHORT: GENDER</h3>
-                    <span class="tag">PASSED</span>
-                </div>
-                <!-- Строка таблицы -->
-                <div style="display: flex; justify-content: space-between; border-bottom: 1px solid #333; padding: 10px 0;">
-                    <span style="color: #ccc;">Men</span>
-                    <span style="color: var(--accent); font-weight: bold;">Signifficant (p < 0.05)</span>
-                </div>
-                <div style="display: flex; justify-content: space-between; padding: 10px 0;">
-                    <span style="color: #ccc;">Women</span>
-                    <span style="color: var(--accent); font-weight: bold;">Signifficant (p < 0.05)</span>
-                </div>
-            </div>
-
-            <!-- Группа 2 -->
-            <div class="card">
-                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
-                    <h3>COHORT: REGION</h3>
-                    <span class="tag">PASSED</span>
-                </div>
-                <!-- Строка таблицы -->
-                <div style="display: flex; justify-content: space-between; border-bottom: 1px solid #333; padding: 10px 0;">
-                    <span style="color: #ccc;">Moscow</span>
-                    <span style="color: var(--accent); font-weight: bold;">Signifficant (p < 0.01)</span>
-                </div>
-                <div style="display: flex; justify-content: space-between; padding: 10px 0;">
-                    <span style="color: #ccc;">Regions</span>
-                    <span style="color: var(--accent); font-weight: bold;">Signifficant (p < 0.05)</span>
-                </div>
-            </div>
-
-        </div>
-        
-        <div style="text-align: center; margin-top: 30px;">
-            <p style="color: #888;">Вывод: Эффект наблюдается во всех ключевых сегментах аудитории.</p>
-        </div>
-    </div>
-
-    <!-- 13. РЕЗУЛЬТАТЫ -->
-    <div class="slide">
-        <h2>13. РЕЗУЛЬТАТЫ</h2>
-        <div class="grid-3">
-            <div class="card">
-                <span class="stat-label">ROC-AUC</span>
-                <span class="big-stat">0.89</span>
-                <span style="color: var(--accent); font-weight: bold;">+0.05 vs Baseline</span>
-            </div>
-            <div class="card">
-                <span class="stat-label">PRECISION @ K=5</span>
-                <span class="big-stat">0.72</span>
-                <p>Высокая точность в топе</p>
-            </div>
-            <div class="card">
-                <span class="stat-label">INFERENCE TIME</span>
-                <span class="big-stat" style="color: #fff;">20ms</span>
-                <p>Подходит для Real-time</p>
-            </div>
-        </div>
-    </div>
-
-    <!-- 14. АНАЛИЗ ОШИБОК -->
-    <div class="slide">
-        <h2>14. АНАЛИЗ ОШИБОК</h2>
+        <h2>14. ПОЛИСИ</h2>
         <div class="grid-2">
-            <div>
-                <h3>Где ошибаемся?</h3>
-                <ul style="margin-top: 20px;">
-                    <li>1. <strong>Новые пользователи:</strong> Не хватает истории действий (Cold Start).</li>
-                    <li>2. <strong>Аномальные чеки:</strong> Модель путает оптовиков с фродом.</li>
-                </ul>
-                <br>
-                <h3>Решение</h3>
-                <p>Добавить фичу <span class="tag">Days_Since_Reg</span> и ветку для новых юзеров.</p>
+            <div class="card">
+                <h3>БИЗНЕС-РЕШЕНИЕ</h3>
+                <p>Корректировать план открытий в малых городах с учетом плотности конкурентов.</p>
             </div>
-            <div class="card flex-center">
-                <div style="text-align: center;">
-                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 2px; margin-bottom: 10px;">
-                        <div style="background: #222; padding: 20px; color: #555;">TN</div>
-                        <div style="background: #333; padding: 20px; border: 1px solid var(--accent); color: var(--accent);">FP (Error)</div>
-                        <div style="background: #333; padding: 20px;">FN</div>
-                        <div style="background: #fff; color:black; padding: 20px; font-weight: bold;">TP</div>
-                    </div>
-                    <span class="stat-label">CONFUSION MATRIX</span>
-                </div>
+            <div class="card" style="border: 1px solid var(--accent);">
+                <h3>ЭФФЕКТ</h3>
+                <p class="big-stat" style="color: var(--accent);">+$50M</p>
+                <p>Potential Revenue Uplift</p>
             </div>
         </div>
     </div>
 
-    <!-- 15. ЭКОНОМИКА -->
+    <!-- 15. КОМАНДА -->
     <div class="slide">
-        <h2>15. ЭКОНОМИКА (IMPACT)</h2>
-        <p>Расчет потенциальной прибыли при внедрении на 100% базы.</p>
-        
-        <div style="margin: 40px 0; padding: 20px; border: 1px dashed var(--accent); text-align: center; background: rgba(198,255,0,0.05);">
-            <h3 style="color: #fff; font-size: 1.5rem;">Profit = (Users * Uplift * Margin) - Tech_Cost</h3>
-        </div>
-
-        <div class="grid-3">
-            <div class="card">
-                <span class="stat-label">USERS</span>
-                <div class="big-stat" style="color:white; font-size: 2rem;">500k</div>
-            </div>
-            <div class="card">
-                <span class="stat-label">UPLIFT</span>
-                <div class="big-stat" style="color:white; font-size: 2rem;">+3%</div>
-            </div>
-            <div class="card" style="border: 2px solid var(--accent); box-shadow: 0 0 20px rgba(198, 255, 0, 0.2);">
-                <span class="stat-label">TOTAL PROFIT</span>
-                <div class="big-stat">$150,000</div>
-                <span class="tag">MONTHLY</span>
-            </div>
-        </div>
-    </div>
-
-    <!-- 16. POLICY IMPLICATION -->
-    <div class="slide">
-        <h2>16. POLICY IMPLICATION</h2>
-        <p>Практические рекомендации по внедрению решения.</p>
-
-        <div class="grid-3" style="margin-top: 30px;">
-            
-            <!-- Карточка 1 -->
-            <div class="card">
-                <h3 style="color: #fff;">PRODUCT</h3>
-                <div style="width: 40px; height: 3px; background: var(--accent); margin: 10px 0 20px 0;"></div>
-                <ul style="padding-left: 15px;">
-                    <li>Внедрить поп-ап предупреждения о рисках.</li>
-                    <li>Изменить сортировку ленты новостей.</li>
-                </ul>
-            </div>
-
-            <!-- Карточка 2 -->
-            <div class="card">
-                <h3 style="color: #fff;">MARKETING</h3>
-                <div style="width: 40px; height: 3px; background: var(--accent); margin: 10px 0 20px 0;"></div>
-                <ul style="padding-left: 15px;">
-                    <li>Персонализировать Push-уведомления.</li>
-                    <li>Исключить сегмент "Risk" из рассылок.</li>
-                </ul>
-            </div>
-
-            <!-- Карточка 3 -->
-            <div class="card" style="border: 1px dashed var(--accent);">
-                <h3 style="color: var(--accent);">EXPECTED IMPACT</h3>
-                <div style="margin-top: 20px;">
-                    <span class="stat-label">CHURN RATE</span>
-                    <span class="big-stat" style="font-size: 2rem;">-2.5%</span>
-                </div>
-                <div style="margin-top: 15px;">
-                    <span class="stat-label">REVENUE</span>
-                    <span class="big-stat" style="font-size: 2rem;">+$100k</span>
-                </div>
-            </div>
-
-        </div>
-    </div>
-
-    <!-- 17. КОМАНДА -->
-    <div class="slide">
-        <h2>17. КОМАНДА</h2>
-        
-        <!-- Изменили стиль контейнера: теперь это Flexbox, чтобы вместить 5 человек и центрировать их -->
+        <h2>15. КОМАНДА</h2>
         <div style="display: flex; justify-content: center; gap: 15px; flex-wrap: wrap; width: 100%;">
-            
-            <!-- Участник 1 -->
             <div class="card" style="padding: 10px; flex: 1 1 18%; min-width: 150px;">
-                <div class="team-photo-box" style="background-image: url('images/team_member_1.jpg');"></div>
-                <div style="padding: 10px;">
-                    <h3>CAPTAIN</h3>
-                    <p style="font-size: 0.8rem;">Strategy</p>
-                </div>
+                <div class="team-photo-box" style="background-image: url('images/photo_2025-12-09_11-27-21.jpg');"></div>
+                <div style="padding: 10px;"><h3>CARRY</h3></div>
             </div>
-
-            <!-- Участник 2 -->
             <div class="card" style="padding: 10px; flex: 1 1 18%; min-width: 150px;">
-                <div class="team-photo-box"></div> <!-- Вставьте фото в style="..." -->
-                <div style="padding: 10px;">
-                    <h3>ML ENG</h3>
-                    <p style="font-size: 0.8rem;">Pipeline</p>
-                </div>
+                <div class="team-photo-box" style="background-image: url('images/photo_2025-12-09_11-27-21.jpg');"></div>
+                <div style="padding: 10px;"><h3>MID</h3></div>
             </div>
-
-            <!-- Участник 3 -->
             <div class="card" style="padding: 10px; flex: 1 1 18%; min-width: 150px;">
                 <div class="team-photo-box"></div>
-                <div style="padding: 10px;">
-                    <h3>ANALYST</h3>
-                    <p style="font-size: 0.8rem;">EDA & Hypo</p>
-                </div>
+                <div style="padding: 10px;"><h3>OFFLANE</h3></div>
             </div>
-
-             <!-- Участник 4 -->
              <div class="card" style="padding: 10px; flex: 1 1 18%; min-width: 150px;">
                 <div class="team-photo-box"></div>
-                <div style="padding: 10px;">
-                    <h3>DESIGN</h3>
-                    <p style="font-size: 0.8rem;">Visuals</p>
-                </div>
+                <div style="padding: 10px;"><h3>SUPPORT</h3></div>
             </div>
-
-            <!-- Участник 5 -->
             <div class="card" style="padding: 10px; flex: 1 1 18%; min-width: 150px;">
-                <div class="team-photo-box"></div>
-                <div style="padding: 10px;">
-                    <h3>SUPPORT</h3>
-                    <p style="font-size: 0.8rem;">Research</p>
-                </div>
+                <div class="team-photo-box" style="background-image: url('images/photo_2025-12-09_11-27-57.jpg');"></div>
+                <div style="padding: 10px;"><h3>HARD SUPPORT</h3></div>
             </div>
-
         </div>
     </div>
 
-    <!-- 13. ФИНАЛ -->
+    <!-- ФИНАЛ -->
     <div class="slide flex-center">
-            <img src="images/pudge.png" 
-             style="position: absolute; top: 0; left: 30%; width: 70%; height: 100%; object-fit: cover; opacity: 0.25; z-index: 0; pointer-events: none;" 
-             alt="Pudge">
-
-        <!-- Контент (с z-index, чтобы быть поверх Пуджа) -->
+        <img src="images/pudge.png" style="position: absolute; top: 0; left: 30%; width: 70%; height: 100%; object-fit: cover; opacity: 0.25; z-index: 0; pointer-events: none;" alt="Pudge">
         <div style="position: relative; z-index: 1;">
-            <h1 style="font-size: 4.5rem; letter-spacing: -2px;">GG WP</h1>
-            <p style="font-size: 1rem; font-weight: 700; margin-top: 10px; color: var(--accent); letter-spacing: 2px;">THANKS FOR WATCHING</p>
+            <h1 style="font-size: 4.5rem;">GG WP</h1>
+            <p style="color: var(--accent);">THANKS FOR WATCHING</p>
             <div style="margin-top: 40px;">
                 <img src="images/Team_Spirit_new_em.svg" alt="TS Logo" style="filter: brightness(0) invert(1); width: 150px; opacity: 0.6;">
             </div>
@@ -636,88 +357,91 @@
             stroke: { curve: 'smooth', width: 3 },
         };
 
-        // 1. AREA CHART
-        const optionsArea = {
+        // SLIDE 7: SETTLEMENTS BAR CHART
+        const optionsBarSettlements = {
             ...commonOptions,
-            series: [{ name: 'Model Uplift', data: [31, 40, 28, 51, 42, 109, 100] }, 
-                     { name: 'Baseline', data: [11, 32, 45, 32, 34, 52, 41] }],
-            chart: { type: 'area', height: '100%', parentHeightOffset: 0, background: 'transparent', toolbar: { show: false } },
-            fill: { 
-                type: 'gradient', 
-                gradient: { 
-                    shadeIntensity: 1, 
-                    opacityFrom: 0.4, 
-                    opacityTo: 0.05, 
-                    stops: [0, 90, 100],
-                    colorStops: [
-                        { offset: 0, color: ACCENT_COLOR, opacity: 0.4 },
-                        { offset: 100, color: ACCENT_COLOR, opacity: 0 }
-                    ]
-                } 
-            },
-            xaxis: { categories: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'], axisBorder: { show: false }, axisTicks: { show: false } },
-            yaxis: { show: false }
-        };
-
-        // 2. BAR CHART
-        const optionsBar = {
-            ...commonOptions,
-            series: [{ name: 'Importance', data: [400, 430, 448, 470, 540] }],
+            series: [{ name: 'Count', data: [15, 150, 1200] }],
             chart: { type: 'bar', height: '100%', parentHeightOffset: 0, background: 'transparent', toolbar: { show: false } },
-            plotOptions: { bar: { borderRadius: 2, horizontal: true, barHeight: '50%' } },
-            xaxis: { categories: ['Age', 'Region', 'Last_Login', 'Total_Spend', 'Is_Weekend'], labels: { show: false }, axisBorder: { show: false }, axisTicks: { show: false } },
+            plotOptions: { bar: { borderRadius: 4, horizontal: false, columnWidth: '40%' } },
+            xaxis: { categories: ['Million+', 'Large (100k+)', 'Small (<100k)'], axisBorder: { show: false }, axisTicks: { show: false } },
+            colors: [ACCENT_COLOR]
         };
 
-        // 3. RADIAL BAR
-        const optionsRadial = {
+        // SLIDE 8: HEATMAP (CORRELATIONS)
+        const optionsHeatmap = {
             ...commonOptions,
-            series: [89],
-            chart: { type: 'radialBar', height: '110%', background: 'transparent' },
+            series: [
+                { name: 'Revenue', data: [1.0, 0.8, 0.1, 0.4] },
+                { name: 'Competitors', data: [0.8, 1.0, 0.3, 0.2] },
+                { name: 'Population', data: [0.1, 0.3, 1.0, 0.5] },
+                { name: 'Is_New', data: [0.4, 0.2, 0.5, 1.0] }
+            ],
+            chart: { type: 'heatmap', height: '100%', background: 'transparent', toolbar: { show: false } },
             plotOptions: {
-                radialBar: {
-                    startAngle: -135, endAngle: 135,
-                    hollow: { margin: 15, size: '60%', background: 'transparent' },
-                    track: { background: '#222', strokeWidth: '100%' },
-                    dataLabels: {
-                        show: true,
-                        name: { offsetY: -10, show: true, color: '#888', fontSize: '14px' },
-                        value: { 
-                            offsetY: 5, 
-                            color: ACCENT_COLOR, // Зеленая цифра
-                            fontSize: '30px', 
-                            fontWeight: '900', 
-                            fontFamily: 'Monument Extended, sans-serif', 
-                            show: true 
-                        }
+                heatmap: {
+                    shadeIntensity: 0.5,
+                    colorScale: {
+                        ranges: [{ from: 0, to: 0.5, color: '#333333', name: 'Low' }, { from: 0.51, to: 1.0, color: ACCENT_COLOR, name: 'High' }]
                     }
                 }
             },
-            labels: ['ROC-AUC'],
-            stroke: { lineCap: 'round' },
-            fill: { type: 'solid', colors: [ACCENT_COLOR] }
+            xaxis: { categories: ['Rev', 'Comp', 'Pop', 'New'] }
+        };
+
+        // SLIDE 10: MODEL PERFORMANCE
+        const optionsModelPerf = {
+            ...commonOptions,
+            series: [{ name: 'Actual', data: [30, 40, 35, 50, 49, 60, 70] }, { name: 'Predicted', data: [32, 38, 36, 52, 48, 62, 68] }],
+            chart: { type: 'area', height: '100%', background: 'transparent', toolbar: { show: false } },
+            fill: { type: 'gradient', gradient: { shadeIntensity: 1, opacityFrom: 0.4, opacityTo: 0.05, stops: [0, 90, 100] } },
+            xaxis: { categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul'], axisBorder: { show: false }, axisTicks: { show: false } },
+            colors: ['#ffffff', ACCENT_COLOR]
+        };
+
+        // SLIDE 11: ROBUSTNESS
+        const optionsRobustness = {
+            ...commonOptions,
+            series: [
+                { name: 'Train', data: [0.85, 0.84, 0.86] },
+                { name: 'Test', data: [0.83, 0.82, 0.84] },
+                { name: 'OOT', data: [0.81, 0.80, 0.82] }
+            ],
+            chart: { type: 'bar', height: '100%', background: 'transparent', toolbar: { show: false } },
+            plotOptions: { bar: { borderRadius: 2, horizontal: false, columnWidth: '50%' } },
+            xaxis: { categories: ['Fold 1', 'Fold 2', 'Fold 3'] },
+            colors: ['#555555', '#888888', ACCENT_COLOR]
         };
 
         // Initial Render
-        let chartArea, chartBar, chartRadial;
+        let chartSettlements, chartHeatmap, chartModel, chartRobustness;
         
         document.addEventListener('DOMContentLoaded', () => {
-             chartArea = new ApexCharts(document.querySelector("#chart-area"), optionsArea);
-             chartBar = new ApexCharts(document.querySelector("#chart-bar"), optionsBar);
-             chartRadial = new ApexCharts(document.querySelector("#chart-radial"), optionsRadial);
+             chartSettlements = new ApexCharts(document.querySelector("#chart-bar-settlements"), optionsBarSettlements);
+             chartHeatmap = new ApexCharts(document.querySelector("#chart-heatmap"), optionsHeatmap);
+             chartModel = new ApexCharts(document.querySelector("#chart-model-perf"), optionsModelPerf);
+             chartRobustness = new ApexCharts(document.querySelector("#chart-robustness"), optionsRobustness);
              
-             chartArea.render();
-             chartBar.render();
-             chartRadial.render();
+             chartSettlements.render();
+             chartHeatmap.render();
+             chartModel.render();
+             chartRobustness.render();
         });
 
         function triggerChartAnimations(index) {
             const slidesArr = Array.from(document.querySelectorAll('.slide'));
-            const chartSlideIndex = slidesArr.findIndex(s => s.id === 'chartSlide');
-
-            if (index === chartSlideIndex && chartArea) {
-                chartArea.updateOptions({ chart: { animations: { enabled: true } } });
-                chartBar.updateOptions({ chart: { animations: { enabled: true } } });
-                chartRadial.updateOptions({ chart: { animations: { enabled: true } } });
+            const currentSlideEl = slidesArr[index];
+            
+            if (currentSlideEl.id === 'chartSlide1' && chartSettlements) {
+                chartSettlements.updateOptions({ chart: { animations: { enabled: true } } });
+            }
+            if (currentSlideEl.id === 'chartSlide2' && chartHeatmap) {
+                chartHeatmap.updateOptions({ chart: { animations: { enabled: true } } });
+            }
+            if (currentSlideEl.id === 'chartSlide3' && chartModel) {
+                chartModel.updateOptions({ chart: { animations: { enabled: true } } });
+            }
+            if (currentSlideEl.id === 'chartSlide4' && chartRobustness) {
+                chartRobustness.updateOptions({ chart: { animations: { enabled: true } } });
             }
         }
 
@@ -729,6 +453,7 @@
         const slides = document.querySelectorAll('.slide');
         const totalSlidesEl = document.getElementById('totalSlide');
         const currSlideEl = document.getElementById('currSlide');
+        const slideCounter = document.querySelector('.slide-counter');
 
         function updateCounter() {
             let num = currentSlide + 1;
@@ -736,11 +461,17 @@
         }
 
         function showSlide(index) {
+            if (index === 0) {
+                slideCounter.style.display = 'none';
+            } else {
+                slideCounter.style.display = '';
+            }
+
             slides.forEach((slide, i) => {
                 slide.classList.remove('active');
                 if (i === index) {
                     slide.classList.add('active');
-                    slide.scrollTop = 0;
+                     slide.scrollTop = 0;
                 }
             });
             updateCounter();
@@ -772,7 +503,8 @@
         }, false);
 
         totalSlidesEl.innerText = slides.length;
-        updateCounter();
+        showSlide(currentSlide);
     </script>
+    
 </body>
 </html>

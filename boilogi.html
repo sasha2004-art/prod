@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <link rel="icon" href="images/Team_Spirit_new_em.svg" type="image/svg+xml">
+    <title>Viper Evolution | Biology</title>
+    
+    <!-- Подключаем тот же стиль, так как он идеально подходит под тему яда/кислоты -->
+    <link rel="stylesheet" href="style-spirit.css">
+    
+    <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+</head>
+<body>
+
+    <!-- ВОДЯНОЙ ЗНАК -->
+    <div class="watermark-container">
+        <div class="watermark-text">BIOLOGY PROJECT</div>
+    </div>
+
+    <!-- СЧЕТЧИК СЛАЙДОВ -->
+    <div class="slide-counter">
+        <span id="currSlide" style="color: var(--accent);">01</span> / <span id="totalSlide">10</span>
+    </div>
+
+    <!-- ================= СЛАЙДЫ ================= -->
+
+    <!-- 01. ТИТУЛЬНИК -->
+    <div class="slide active flex-center">
+        <div>
+            <h1 style="font-size: 4rem; color: var(--accent); text-shadow: 0 0 20px rgba(198, 255, 0, 0.4);">VIPER</h1>
+            <h2>Эволюция Netherdrake</h2>
+            <div style="width: 80px; height: 6px; background: var(--accent); margin: 25px auto; box-shadow: 0 0 10px var(--accent);"></div>
+            <p style="letter-spacing: 2px;">Биологический анализ вымышленного вида</p>
+            <br>
+            <div style="display: flex; justify-content: center; gap: 10px;">
+                <span class="tag">#EVOLUTION</span>
+                <span class="tag">#DOTA2</span>
+                <span class="tag">#BIOLOGY</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- 02. ОБЪЕКТ ИССЛЕДОВАНИЯ -->
+    <div class="slide">
+        <h2>01. ОБЪЕКТ ИССЛЕДОВАНИЯ</h2>
+        <div class="grid-2">
+            <div>
+                <h3>VIPER (Netherdrake)</h3>
+                <p>Летающий ящер, обитающий в подземных пещерах Nether Reaches. Известен своей исключительной токсичностью и агрессивностью.</p>
+                <ul style="margin-top: 20px; list-style: none; padding: 0;">
+                    <li style="margin-bottom: 10px;"><strong style="color: var(--accent);">Тип:</strong> Хордовые (Chordata)</li>
+                    <li style="margin-bottom: 10px;"><strong style="color: var(--accent);">Класс:</strong> Пресмыкающиеся (Reptilia)</li>
+                    <li style="margin-bottom: 10px;"><strong style="color: var(--accent);">Отряд:</strong> Чешуйчатые (Squamata)</li>
+                    <li style="margin-bottom: 10px;"><strong style="color: var(--accent);">Особенность:</strong> Гипертрофированные кислотные железы</li>
+                </ul>
+            </div>
+            <div class="card flex-center" style="border: 2px solid var(--accent); background: rgba(198, 255, 0, 0.05); padding: 0; overflow: hidden;">
+                <img src="images/viper.png" alt="Viper" style="width: 100%; height: 100%; object-fit: cover;">
+            </div>
+        </div>
+    </div>
+
+    <!-- 03. ПРЕДОК -->
+    <div class="slide">
+        <h2>02. ПРЕДОК</h2>
+        <p>Гипотетический предок: <strong>Dimorphodon</strong> (Ранний птерозавр юрского периода).</p>
+        <div class="grid-2">
+            <div class="card" style="padding: 0; overflow: hidden;">
+                <img src="images/360_F_539868016_KGhGqlksoagPh8XJDTBIzSJn55pxa4VO.jpg" alt="Dimorphodon" style="width: 100%; height: 100%; object-fit: cover;">
+            </div>
+            <div class="card">
+                <h3>ЭВОЛЮЦИОННЫЕ ИЗМЕНЕНИЯ</h3>
+                <ul>
+                    <li><strong>Крылья:</strong> Сохранение кожистой перепонки, но усиление мышечного каркаса для маневрирования в узких пещерах.</li>
+                    <li><strong>Хвост:</strong> У Dimorphodon хвост был жестким рулем. У Viper он стал гибким и ядовитым.</li>
+                    <li><strong>Челюсти:</strong> Редукция зубов в пользу ядовитых желез.</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- 04. СРЕДА ОБИТАНИЯ -->
+    <div class="slide">
+        <h2>03. СРЕДА ОБИТАНИЯ</h2>
+        <p><strong>The Nether Reaches</strong> - глубокие подземные разломы.</p>
+        <div class="grid-2">
+            <div class="card" style="padding: 0; overflow: hidden;">
+                <img src="https://images.unsplash.com/photo-1504333638930-c8787321eee0?q=80&w=1000&auto=format&fit=crop" alt="Cave" style="width: 100%; height: 100%; object-fit: cover; filter: hue-rotate(90deg) contrast(1.2);">
+            </div>
+            <div>
+                <div class="card" style="margin-bottom: 20px;">
+                    <h3>АТМОСФЕРА</h3>
+                    <p class="big-stat" style="color: #ff5555;">TOXIC</p>
+                    <p>Насыщена парами серы и кислот.</p>
+                </div>
+                <div class="card">
+                    <h3>ДАВЛЕНИЕ</h3>
+                    <p class="big-stat">HIGH</p>
+                    <p>Экстремальные условия.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 05. МУТАЦИИ И АДАПТАЦИИ -->
+    <div class="slide">
+        <h2>04. МУТАЦИИ И АДАПТАЦИИ</h2>
+        <p>Как организм приспособился к агрессивной среде.</p>
+        <div class="grid-2">
+            <div class="card">
+                <h3>CORROSIVE SKIN (Кожа)</h3>
+                <p>Эпидермис постоянно выделяет густую слизь с экстремально низким pH. Это защищает тело от внешней кислотной среды пещер и разъедает врагов при контакте.</p>
+            </div>
+            <div class="card">
+                <h3>NETHERTOXIN (Метаболизм)</h3>
+                <p>Уникальная дыхательная система фильтрует токсины из воздуха и концентрирует их в специальных железах, превращая в оружие.</p>
+            </div>
+        </div>
+        <div style="margin-top: 20px; padding: 20px; border: 1px dashed var(--accent);">
+            <h3>POISON ATTACK (Охота)</h3>
+            <p>Мутация слюнных желез. Позволяет "выстреливать" сгустками нейротоксина на расстояние, замедляя жертву.</p>
+        </div>
+    </div>
+
+    <!-- 06. ПИТАНИЕ (НОВЫЙ СЛАЙД) -->
+    <div class="slide">
+        <h2>05. ПИТАНИЕ И ТРОФОЛОГИЯ</h2>
+        <p>Viper — хищник-падальщик с уникальным пищеварением.</p>
+        <div class="grid-2">
+            <div class="card">
+                <h3>РАЦИОН</h3>
+                <p>Питается обитателями пещер и заблудшими героями. Желудочный сок способен переварить кости и металл.</p>
+                <br>
+                <span class="tag">ХИЩНИК</span>
+                <span class="tag">ПАДАЛЬЩИК</span>
+            </div>
+            <div class="card flex-center" style="border: 1px solid #ff5555;">
+                <div>
+                    <h3 style="color: #ff5555;">ТИПИЧНАЯ ЖЕРТВА</h3>
+                    <img src="images/pudge.png" alt="Prey" style="width: 150px; margin-top: 20px; border-radius: 50%; border: 2px solid #ff5555;">
+                    <p style="margin-top: 10px;">Pudge (Жирный и питательный)</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 07. ЖИЗНЕННЫЙ ЦИКЛ (НОВЫЙ СЛАЙД) -->
+    <div class="slide">
+        <h2>06. ЖИЗНЕННЫЙ ЦИКЛ</h2>
+        <p>Онтогенез Netherdrake.</p>
+        <div class="grid-3">
+            <div class="card">
+                <h3>1. ЯЙЦО</h3>
+                <p>Откладываются в кислотные озера. Оболочка устойчива к коррозии.</p>
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/6f/Snake_eggs.jpg/640px-Snake_eggs.jpg" style="width: 100%; height: 100px; object-fit: cover; margin-top: 10px; border-radius: 4px;">
+            </div>
+            <div class="card">
+                <h3>2. ЛИЧИНКА</h3>
+                <p>Бескрылая форма. Обитает в жидкости, питается планктоном.</p>
+            </div>
+            <div class="card">
+                <h3>3. ИМАГО</h3>
+                <p>Взрослая особь. Развиваются крылья, формируются ядовитые железы.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- 08. ГРАФИК СРАВНЕНИЯ -->
+    <div class="slide" id="chartSlide1">
+        <h2>07. СРАВНЕНИЕ С ПРЕДКОМ</h2>
+        <p>Эволюционный сдвиг характеристик.</p>
+        <div class="card" style="height: 70%; padding: 10px;">
+            <div id="chart-evolution" style="width: 100%; height: 100%;"></div>
+        </div>
+    </div>
+
+    <!-- 09. ВЫВОД -->
+    <div class="slide">
+        <h2>08. ВЫВОД</h2>
+        <p>Viper — пример <strong>дивергентной эволюции</strong> в экстремальных условиях изоляции.</p>
+        <div class="grid-2">
+            <div class="card">
+                <h3>ДВИЖУЩИЕ СИЛЫ</h3>
+                <ul>
+                    <li>Географическая изоляция (подземелье)</li>
+                    <li>Агрессивная химическая среда</li>
+                    <li>Внутривидовая конкуренция</li>
+                </ul>
+            </div>
+            <div class="card" style="border-color: var(--accent);">
+                <h3>РЕЗУЛЬТАТ</h3>
+                <p class="big-stat">APEX PREDATOR</p>
+                <p>Вершина пищевой цепи Nether Reaches. Идеальная машина для выживания в токсичной среде.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- 10. ФИНАЛ -->
+    <div class="slide flex-center">
+        <div>
+            <h1 style="font-size: 4rem;">GG, WP</h1>
+            <p style="color: var(--accent); letter-spacing: 5px;">THANKS FOR WATCHING</p>
+            <div style="margin-top: 50px;">
+                <p>Работу выполнил: Князев Александр, Валиев Максим</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- ================= CONTROLS & JS ================= -->
+    <div class="controls">
+        <div class="btn-group">
+            <button class="btn" onclick="prevSlide()"> &#8249; </button>
+            <button class="btn" onclick="nextSlide()"> &#8250; </button>
+        </div>
+    </div>
+
+    <script>
+        const ACCENT_COLOR = '#C6FF00';
+        
+        // Chart Configuration
+        const optionsEvolution = {
+            chart: { 
+                type: 'radar', 
+                height: '100%', 
+                background: 'transparent', 
+                toolbar: { show: false }, 
+                fontFamily: 'Inter, sans-serif',
+                animations: { enabled: true, easing: 'easeinout', speed: 800 }
+            },
+            series: [
+                { name: 'Viper (Netherdrake)', data: [95, 100, 70, 40, 100] }, 
+                { name: 'Ancestor (Pterosaur)', data: [60, 10, 90, 80, 10] }
+            ],
+            labels: ['Агрессия', 'Токсичность', 'Скорость полета', 'Зрение', 'Кислотоустойчивость'],
+            theme: { mode: 'dark' },
+            stroke: { width: 2, colors: [ACCENT_COLOR, '#888888'] },
+            fill: { opacity: 0.2, colors: [ACCENT_COLOR, '#888888'] },
+            markers: { size: 4, colors: [ACCENT_COLOR, '#888888'] },
+            yaxis: { show: false },
+            xaxis: {
+                labels: {
+                    style: {
+                        colors: ['#fff', '#fff', '#fff', '#fff', '#fff'],
+                        fontSize: '14px',
+                        fontFamily: 'Inter, sans-serif'
+                    }
+                }
+            },
+            legend: { labels: { colors: '#fff' } }
+        };
+
+        let chartEvo;
+        
+        document.addEventListener('DOMContentLoaded', () => {
+            chartEvo = new ApexCharts(document.querySelector("#chart-evolution"), optionsEvolution);
+            chartEvo.render();
+        });
+
+        // Slider Logic
+        let currentSlide = 0;
+        const slides = document.querySelectorAll('.slide');
+        const totalSlidesEl = document.getElementById('totalSlide');
+        const currSlideEl = document.getElementById('currSlide');
+        const slideCounter = document.querySelector('.slide-counter');
+
+        function updateCounter() {
+            let num = currentSlide + 1;
+            currSlideEl.innerText = num < 10 ? '0' + num : num;
+        }
+
+        function showSlide(index) {
+            if (index === 0) {
+                slideCounter.style.display = 'none';
+            } else {
+                slideCounter.style.display = '';
+            }
+
+            slides.forEach((slide, i) => {
+                slide.classList.remove('active');
+                if (i === index) {
+                    slide.classList.add('active');
+                    slide.scrollTop = 0;
+                }
+            });
+            updateCounter();
+            
+            // Trigger animation for chart slide
+            if (slides[index].id === 'chartSlide1' && chartEvo) {
+                chartEvo.updateOptions({ chart: { animations: { enabled: true } } });
+            }
+        }
+
+        function nextSlide() {
+            currentSlide = (currentSlide + 1) % slides.length;
+            showSlide(currentSlide);
+        }
+
+        function prevSlide() {
+            currentSlide = (currentSlide - 1 + slides.length) % slides.length;
+            showSlide(currentSlide);
+        }
+
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'ArrowRight' || e.key === 'Space') nextSlide();
+            if (e.key === 'ArrowLeft') prevSlide();
+        });
+
+        // Touch support
+        let touchStartX = 0;
+        let touchEndX = 0;
+        document.addEventListener('touchstart', e => { touchStartX = e.changedTouches[0].screenX; }, false);
+        document.addEventListener('touchend', e => {
+            touchEndX = e.changedTouches[0].screenX;
+            if (touchEndX < touchStartX - 50) nextSlide();
+            if (touchEndX > touchStartX + 50) prevSlide();
+        }, false);
+
+        if(totalSlidesEl) totalSlidesEl.innerText = slides.length < 10 ? '0' + slides.length : slides.length;
+        showSlide(currentSlide);
+    </script>
+</body>
+</html>
