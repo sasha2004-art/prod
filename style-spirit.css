@@ -228,10 +228,166 @@ ul { margin-left: 20px; margin-bottom: 20px; }
     background-size: cover;
     background-position: center;
     border: 1px solid #444;
+    filter: grayscale(0%); 
+    position: relative;
+    overflow: hidden;
+    /* Возврат в исходное состояние (цветное) будет длиться вечность */
+    transition: filter 999999s, border-color 999999s;
+}
+
+/* Траурная лента */
+.team-photo-box::before {
+    content: '';
+    position: absolute;
+    top: 15px;
+    right: -30px;
+    width: 100px;
+    height: 25px;
+    background: #000;
+    transform: rotate(45deg);
+    box-shadow: 0 0 5px rgba(0,0,0,0.5);
+    opacity: 0;
+    transition: opacity 999999s;
+    z-index: 5;
+    pointer-events: none;
+}
+
+/* Свечка */
+.team-photo-box::after {
+    content: '🕯️';
+    font-size: 3rem;
+    position: absolute;
+    bottom: 5px;
+    left: 50%;
+    transform: translateX(-50%);
+    opacity: 0;
+    transition: opacity 999999s;
+    z-index: 5;
+    pointer-events: none;
+    /* Попытка вернуть цвет свече через фильтр (инверсия серого?) - сложно, оставим как есть */
+}
+
+.team-photo-box:hover { 
     filter: grayscale(100%); 
+    border-color: #333; 
+    /* Переход в чб быстрый */
     transition: filter 0.3s, border-color 0.3s;
 }
-.team-photo-box:hover { filter: grayscale(0%); border-color: var(--accent); }
+
+.team-photo-box:hover::before,
+.team-photo-box:hover::after {
+    opacity: 1;
+    transition: opacity 0.3s;
+}
+
+/* ================= TECH DEMO STYLES ================= */
+
+/* 3D FLIP CARD */
+.flip-card {
+    background-color: transparent;
+    width: 300px;
+    height: 400px;
+    perspective: 1000px;
+}
+.flip-card-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    transition: transform 0.8s;
+    transform-style: preserve-3d;
+}
+.flip-card:hover .flip-card-inner {
+    transform: rotateY(180deg);
+}
+.flip-card-front, .flip-card-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid var(--border);
+}
+.flip-card-front {
+    background-color: var(--bg-card);
+}
+.flip-card-back {
+    background-color: var(--accent);
+    color: #000;
+    transform: rotateY(180deg);
+}
+
+/* TYPEWRITER */
+.typewriter h1 {
+    overflow: hidden;
+    border-right: .15em solid var(--accent);
+    white-space: nowrap;
+    margin: 0 auto;
+    letter-spacing: .15em;
+    animation: 
+        typing 3.5s steps(40, end),
+        blink-caret .75s step-end infinite;
+}
+@keyframes typing { from { width: 0 } to { width: 100% } }
+@keyframes blink-caret { from, to { border-color: transparent } 50% { border-color: var(--accent); } }
+
+/* GLASSMORPHISM */
+.glass-panel {
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 15px;
+    padding: 40px;
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+}
+
+/* GRADIENT TEXT */
+.gradient-text {
+    background: linear-gradient(45deg, var(--accent), #fff, var(--accent));
+    background-size: 200% auto;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: shine 3s linear infinite;
+}
+@keyframes shine { to { background-position: 200% center; } }
+
+/* LOADERS */
+.loader {
+    border: 8px solid #333;
+    border-top: 8px solid var(--accent);
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    animation: spin 1s linear infinite;
+}
+@keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+
+.loader-bars {
+    display: inline-block;
+    position: relative;
+    width: 80px;
+    height: 80px;
+}
+.loader-bars div {
+    display: inline-block;
+    position: absolute;
+    left: 8px;
+    width: 16px;
+    background: var(--accent);
+    animation: loader-bars 1.2s cubic-bezier(0, 0.5, 0.5, 1) infinite;
+}
+.loader-bars div:nth-child(1) { left: 8px; animation-delay: -0.24s; }
+.loader-bars div:nth-child(2) { left: 32px; animation-delay: -0.12s; }
+.loader-bars div:nth-child(3) { left: 56px; animation-delay: 0; }
+@keyframes loader-bars {
+    0% { top: 8px; height: 64px; }
+    50%, 100% { top: 24px; height: 32px; }
+}
 
 /* ================= MOBILE ADAPTATION ================= */
 @media (max-width: 768px) {
