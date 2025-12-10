@@ -666,6 +666,7 @@ model.fit(X_train, y_train)
     </div>
 
 
+    <div id="resurrection-explosion"></div>
     <!-- ================= CONTROLS & JS ================= -->
     <div class="controls">
         <div class="btn-group">
@@ -1304,6 +1305,42 @@ model.fit(X_train, y_train)
 
         totalSlidesEl.innerText = slides.length;
         showSlide(currentSlide);
+
+        // ==========================================
+        // RESURRECTION LOGIC
+        // ==========================================
+        const teamPhotos = document.querySelectorAll('.team-photo-box');
+        const explosionOverlay = document.getElementById('resurrection-explosion');
+
+        if (teamPhotos.length > 0 && explosionOverlay) {
+            teamPhotos.forEach(photo => {
+                photo.addEventListener('mouseenter', () => {
+                    if (!photo.classList.contains('dead') && !photo.classList.contains('resurrected')) {
+                        // First hover: Die
+                        photo.classList.add('dead');
+                    } else if (photo.classList.contains('dead')) {
+                        // Second hover: Resurrect
+                        triggerResurrection(photo);
+                    }
+                });
+            });
+        }
+
+        function triggerResurrection(element) {
+            // Play explosion
+            explosionOverlay.classList.add('explode-anim');
+            
+            // Wait for explosion to cover screen (approx 400ms)
+            setTimeout(() => {
+                element.classList.remove('dead');
+                element.classList.add('resurrected');
+            }, 400);
+
+            // Reset explosion after animation
+            setTimeout(() => {
+                explosionOverlay.classList.remove('explode-anim');
+            }, 800);
+        }
     </script>
     
 </body>

@@ -230,13 +230,20 @@ ul { margin-left: 20px; margin-bottom: 20px; }
     border: 1px solid #444;
     filter: grayscale(0%); 
     position: relative;
-    overflow: hidden;
-    /* Возврат в исходное состояние (цветное) будет длиться вечность */
-    transition: filter 999999s, border-color 999999s;
+    overflow: visible; /* Changed to visible to allow wings to stick out */
+    transition: filter 0.5s, border-color 0.5s, transform 0.5s, box-shadow 0.5s;
 }
 
-/* Траурная лента */
-.team-photo-box::before {
+/* --- STATES --- */
+
+/* STATE 1: DEAD */
+.team-photo-box.dead {
+    filter: grayscale(100%);
+    border-color: #333;
+}
+
+/* Ribbon (Only visible when dead) */
+.team-photo-box.dead::before {
     content: '';
     position: absolute;
     top: 15px;
@@ -246,39 +253,132 @@ ul { margin-left: 20px; margin-bottom: 20px; }
     background: #000;
     transform: rotate(45deg);
     box-shadow: 0 0 5px rgba(0,0,0,0.5);
-    opacity: 0;
-    transition: opacity 999999s;
     z-index: 5;
     pointer-events: none;
+    animation: fadeIn 0.5s forwards;
 }
 
-/* Свечка */
-.team-photo-box::after {
+/* Candle (Only visible when dead) */
+.team-photo-box.dead::after {
     content: '🕯️';
     font-size: 3rem;
     position: absolute;
     bottom: 5px;
     left: 50%;
     transform: translateX(-50%);
-    opacity: 0;
-    transition: opacity 999999s;
     z-index: 5;
     pointer-events: none;
-    /* Попытка вернуть цвет свече через фильтр (инверсия серого?) - сложно, оставим как есть */
+    animation: fadeIn 0.5s forwards;
 }
 
+/* STATE 2: RESURRECTED */
+.team-photo-box.resurrected {
+    filter: grayscale(0%);
+    border-color: var(--accent);
+    box-shadow: 0 0 30px var(--accent);
+    transform: scale(1.05);
+    z-index: 10;
+}
+
+/* Left Wing */
+.team-photo-box.resurrected::before {
+    content: '';
+    position: absolute;
+    top: -20px;
+    left: -50px;
+    width: 70px;
+    height: 100px;
+    background: linear-gradient(to bottom right, #fff, #ddd);
+    border-radius: 100% 0 50% 20%;
+    transform-origin: bottom right;
+    transform: rotate(10deg);
+    z-index: -1;
+    animation: wingFlapLeft 0.8s infinite alternate ease-in-out;
+    filter: drop-shadow(0 0 15px #fff);
+    border: 1px solid #fff;
+}
+
+/* Right Wing */
+.team-photo-box.resurrected::after {
+    content: '';
+    position: absolute;
+    top: -20px;
+    right: -50px;
+    width: 70px;
+    height: 100px;
+    background: linear-gradient(to bottom left, #fff, #ddd);
+    border-radius: 0 100% 20% 50%;
+    transform-origin: bottom left;
+    transform: rotate(-10deg);
+    z-index: -1;
+    animation: wingFlapRight 0.8s infinite alternate ease-in-out;
+    filter: drop-shadow(0 0 15px #fff);
+    border: 1px solid #fff;
+}
+
+@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+
+@keyframes wingFlapLeft {
+    from { transform: rotate(10deg); }
+    to { transform: rotate(-10deg) translateY(-5px); }
+}
+@keyframes wingFlapRight {
+    from { transform: rotate(-10deg); }
+    to { transform: rotate(10deg) translateY(-5px); }
+}
+
+/* EXPLOSION OVERLAY */
+#resurrection-explosion {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    /* Fire gradient: White -> Yellow -> Orange -> Red -> Transparent */
+    background: radial-gradient(circle, 
+        rgba(255, 255, 255, 1) 0%, 
+        rgba(255, 255, 0, 1) 15%, 
+        rgba(255, 140, 0, 1) 30%, 
+        rgba(255, 0, 0, 0.8) 50%, 
+        transparent 70%
+    );
+    z-index: 9999;
+    pointer-events: none;
+    opacity: 0;
+    transform: scale(0);
+    mix-blend-mode: screen; /* Makes the fire look more intense over dark backgrounds */
+}
+
+.explode-anim {
+    animation: explosion 1s cubic-bezier(0.1, 0.9, 0.2, 1) forwards;
+}
+
+@keyframes explosion {
+    0% { 
+        opacity: 1; 
+        transform: scale(0); 
+    }
+    20% {
+        opacity: 1;
+        transform: scale(1.2);
+    }
+    50% {
+        opacity: 0.8;
+        transform: scale(1.8);
+        filter: blur(5px);
+    }
+    100% { 
+        opacity: 0; 
+        transform: scale(2.5); 
+        filter: blur(20px);
+    }
+}
+
+/* Remove old hover effects */
 .team-photo-box:hover { 
-    filter: grayscale(100%); 
-    border-color: #333; 
-    /* Переход в чб быстрый */
-    transition: filter 0.3s, border-color 0.3s;
+    /* No default hover effect, handled by JS */
 }
 
-.team-photo-box:hover::before,
-.team-photo-box:hover::after {
-    opacity: 1;
-    transition: opacity 0.3s;
-}
 
 /* ================= TECH DEMO STYLES ================= */
 
