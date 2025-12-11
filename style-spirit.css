@@ -261,7 +261,7 @@ ul { margin-left: 20px; margin-bottom: 20px; }
 /* Candle (Only visible when dead) */
 .team-photo-box.dead::after {
     content: '🕯️';
-    font-size: 3rem;
+    font-size: 6rem;
     position: absolute;
     bottom: 5px;
     left: 50%;
@@ -269,6 +269,7 @@ ul { margin-left: 20px; margin-bottom: 20px; }
     z-index: 5;
     pointer-events: none;
     animation: fadeIn 0.5s forwards;
+    filter: drop-shadow(0 0 20px rgba(255, 165, 0, 0.8)) hue-rotate(15deg);
 }
 
 /* STATE 2: RESURRECTED */
