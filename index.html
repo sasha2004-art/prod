@@ -55,33 +55,81 @@
     <!-- 02. СТРУКТУРА ДАТАСЕТА -->
     <div class="slide">
         <h2>02. Структура данных</h2>
-        <div class="grid-2">
-            <div class="card">
-                <h3>ОБЪЕМ</h3>
-                <p class="big-stat">256 723</p>
-                <p>Строк</p>
-            </div>
-            <div class="card">
-                <h3>ОБЪЕКТЫ</h3>
-                <p class="big-stat">21 743</p>
-                <p>Магазина</p>
-            </div>
-        </div>
         
-        <div class="card" style="margin-top: 20px; border-color: var(--accent);">
-            <h3>ПЕРИОД</h3>
-            <p class="big-stat" style="font-size: 2rem;">2024 год</p>
-            <p>Информация представлена за каждый месяц</p>
-        </div>
+        <div style="display: grid; grid-template-columns: 1.2fr 0.8fr; gap: 30px; height: 80%; align-items: stretch;">
+            
+            <!-- ЛЕВАЯ КОЛОНКА -->
+            <div style="display: flex; flex-direction: column; gap: 20px;">
+                
+                <!-- Верхняя карточка -->
+                <div class="card" style="display: flex; align-items: center; justify-content: space-between; height: auto; border: 2px solid var(--accent); background: rgba(198, 255, 0, 0.05); box-shadow: 0 0 20px rgba(198, 255, 0, 0.1);">
+                    <div>
+                        <h3>Данные о магазинах</h3>
+                        <p style="margin: 0; font-size: 1.2rem;">Торговой сети</p>
+                    </div>
+                </div>
 
-        <div class="grid-2" style="margin-top: 20px;">
-            <div class="card">
-                <h3>ЧИСЛОВЫЕ ПРИЗНАКИ</h3>
-                <p>Средний чек, Трафик, Инфраструктура, Население</p>
+                <!-- Карточки с цифрами (grid внутри колонки) -->
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+                    <div class="card">
+                        <div class="big-stat">256 723</div>
+                        <div class="stat-label" style="font-size: 1rem;">Строк данных</div>
+                    </div>
+                    <div class="card">
+                        <div class="big-stat">21 743</div>
+                        <div class="stat-label" style="font-size: 1rem;">Магазина</div>
+                    </div>
+                </div>
+
+                <!-- Карточка с периодом -->
+                <div class="card" style="flex-grow: 1; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center;">
+                    <h3>Период данных</h3>
+                    <div class="big-stat" style="font-size: 4rem; margin: 20px 0;">2024</div>
+                    <p style="font-size: 1.2rem;">Информация по каждому месяцу</p>
+                </div>
             </div>
-            <div class="card">
-                <h3>КАТЕГОРИАЛЬНЫЕ</h3>
-                <p>Площадь, Дата открытия, Населенный пункт, Месяц (порядковая)</p>
+
+            <!-- ПРАВАЯ КОЛОНКА -->
+            <div style="display: flex; flex-direction: column; gap: 20px;">
+                
+                <!-- Карточка Числовые -->
+                <div class="card" style="flex-grow: 1;">
+                    <h3>Числовые признаки</h3>
+                    <ul style="list-style: none; padding: 0; margin-top: 20px; font-size: 1.2rem;">
+                        <li style="margin-bottom: 15px; display: flex; align-items: center;">
+                            <span style="color: var(--accent); margin-right: 10px;">•</span> Средний чек
+                        </li>
+                        <li style="margin-bottom: 15px; display: flex; align-items: center;">
+                            <span style="color: var(--accent); margin-right: 10px;">•</span> Трафик
+                        </li>
+                        <li style="margin-bottom: 15px; display: flex; align-items: center;">
+                            <span style="color: var(--accent); margin-right: 10px;">•</span> Инфраструктура
+                        </li>
+                        <li style="margin-bottom: 15px; display: flex; align-items: center;">
+                            <span style="color: var(--accent); margin-right: 10px;">•</span> Население
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Карточка Категориальные -->
+                <div class="card" style="flex-grow: 1;">
+                    <h3>Категориальные</h3>
+                    <ul style="list-style: none; padding: 0; margin-top: 20px; font-size: 1.2rem;">
+                        <li style="margin-bottom: 15px; display: flex; align-items: center;">
+                            <span style="color: var(--accent); margin-right: 10px;">•</span> Площадь
+                        </li>
+                        <li style="margin-bottom: 15px; display: flex; align-items: center;">
+                            <span style="color: var(--accent); margin-right: 10px;">•</span> Дата открытия
+                        </li>
+                        <li style="margin-bottom: 15px; display: flex; align-items: center;">
+                            <span style="color: var(--accent); margin-right: 10px;">•</span> Населенный пункт
+                        </li>
+                        <li style="margin-bottom: 15px; display: flex; align-items: center;">
+                            <span style="color: var(--accent); margin-right: 10px;">•</span> Месяц (порядковая)
+                        </li>
+                    </ul>
+                </div>
+
             </div>
         </div>
     </div>
