@@ -246,12 +246,12 @@ ul { margin-left: 20px; margin-bottom: 20px; }
 .team-photo-box.dead::before {
     content: '';
     position: absolute;
-    top: 15px;
-    right: -30px;
-    width: 100px;
-    height: 25px;
+    bottom: 60px;
+    right: -40px;
+    width: 200px;
+    height: 30px;
     background: #000;
-    transform: rotate(45deg);
+    transform: rotate(-45deg);
     box-shadow: 0 0 5px rgba(0,0,0,0.5);
     z-index: 5;
     pointer-events: none;
