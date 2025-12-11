@@ -209,14 +209,29 @@
         </div>
     </div>
 
-    <!-- 07. ГРАФИКИ (НАСЕЛЕННЫЕ ПУНКТЫ) -->
+    <!-- 07. АНАЛИЗ ВЫРУЧКИ И ЧЕКА -->
     <div class="slide" id="chartSlide1">
-        <h2>07. РАСПРЕДЕЛЕНИЕ ПО Н.П.</h2>
-        <div class="card" style="height: 80%; padding: 10px; width: 50%;">
-            <div id="chart-bar-settlements" style="width: 100%; height: 100%;"></div>
-        </div>
+        <h2>07. АНАЛИЗ ВЫРУЧКИ И ЧЕКА</h2>
         
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; height: 75vh; padding-bottom: 20px; box-sizing: border-box;">
+            
+            <!-- ЛЕВАЯ КОЛОНКА -->
+            <div class="card" style="padding: 15px 15px 40px 15px; display: flex; flex-direction: column; height: 100%;">
+                <!-- УВЕЛИЧИЛ ШРИФТ ДО 1.6rem -->
+                <h3 style="text-align: center; margin-bottom: 15px; font-size: 1.6rem; color: var(--accent);">РАСПРЕДЕЛЕНИЕ ВЫРУЧКИ</h3>
+                <div id="chart-bar-settlements" style="flex: 1; width: 100%; min-height: 0;"></div>
+            </div>
+
+            <!-- ПРАВАЯ КОЛОНКА -->
+            <div class="card" style="padding: 15px 15px 40px 15px; display: flex; flex-direction: column; height: 100%;">
+                <!-- УВЕЛИЧИЛ ШРИФТ ДО 1.6rem -->
+                <h3 style="text-align: center; margin-bottom: 15px; font-size: 1.6rem; color: var(--accent);">СРЕДНИЙ ЧЕК (ПО ВОЗРАСТУ)</h3>
+                <div id="chart-avg-check" style="flex: 1; width: 100%; min-height: 0;"></div>
+            </div>
+
+        </div>
     </div>
+        
 
     <!-- 08. ГРАФИКИ (КОРРЕЛЯЦИИ) -->
     <div class="slide" id="chartSlide2">
@@ -739,6 +754,7 @@ model.fit(X_train, y_train)
     let chartEx14, chartEx15, chartEx16, chartEx17, chartEx18, chartEx19;
     let chartEx20_1, chartEx20_2, chartEx20_3, chartEx21, chartEx22, chartEx23;
     let chartEx24, chartEx25, chartEx26;
+    let chartAvgCheck;
 
     const ACCENT_COLOR = '#C6FF00'; 
     const TEXT_COLOR = '#ffffff';
@@ -756,6 +772,58 @@ model.fit(X_train, y_train)
         grid: { borderColor: '#333', strokeDashArray: 4 },
         dataLabels: { enabled: false },
         stroke: { curve: 'smooth', width: 3 },
+    };
+    const optionsAvgCheck = {
+        ...commonOptions,
+        series: [{
+            name: 'Средний чек',
+            data: [1319, 969, 937, 776]
+        }],
+        chart: { 
+            type: 'bar', 
+            height: '100%', 
+            background: 'transparent', 
+            toolbar: { show: false }, 
+            animations: { enabled: true } 
+        },
+        // Увеличили отступ снизу до 30, чтобы большие буквы влезли
+        grid: {
+            padding: { bottom: 30, left: 10, right: 10 }
+        },
+        plotOptions: { 
+            bar: { 
+                borderRadius: 4, 
+                horizontal: false, 
+                columnWidth: '45%',
+                distributed: true 
+            } 
+        },
+        colors: [ACCENT_COLOR, '#aeea00', '#96d000', '#7cb300'],
+        xaxis: { 
+            categories: ['Открыт давно', 'Средний возраст', 'Недавно открытый', 'Новый'], 
+            labels: { 
+                // УВЕЛИЧИЛ ШРИФТ ДО 14px
+                style: { colors: '#ffffff', fontSize: '14px', fontWeight: 'bold' },
+                rotate: -45, // Наклон помогает длинному тексту не наезжать друг на друга
+                rotateAlways: false,
+                hideOverlappingLabels: false,
+                trim: false
+            },
+            axisBorder: { show: false },
+            axisTicks: { show: false }
+        },
+        yaxis: {
+            min: 0,
+            forceNiceScale: true,
+            // УВЕЛИЧИЛ ШРИФТ ЗАГОЛОВКА ОСИ И ЦИФР
+            title: { text: 'Рубли', style: { color: '#ffffff', fontSize: '16px' } },
+            labels: { 
+                style: { colors: '#888', fontSize: '13px' },
+                formatter: (value) => { return value.toFixed(0) }
+            }
+        },
+        tooltip: { theme: 'dark', y: { formatter: (val) => val + " ₽" } },
+        legend: { show: false }
     };
 
     // ==========================================
@@ -819,33 +887,31 @@ model.fit(X_train, y_train)
         series: [{ name: 'Магазинов', data: [] }],
         chart: { type: 'bar', height: '100%', background: 'transparent', toolbar: { show: false }, animations: { enabled: true } },
         plotOptions: { 
-            bar: { 
-                borderRadius: 0, 
-                horizontal: false, 
-                columnWidth: '100%' // Столбцы вплотную
-            } 
+            bar: { borderRadius: 0, horizontal: false, columnWidth: '100%' } 
+        },
+        // Увеличили отступ снизу до 30
+        grid: {
+            borderColor: '#333',
+            strokeDashArray: 4,
+            padding: { bottom: 30, left: 10, right: 10 }
         },
         xaxis: { 
             categories: [], 
             title: {
                 text: 'Выручка',
-                offsetY: -5, // Чуть приподнять, если нужно
-                style: { color: '#ffffff', fontSize: '14px', fontWeight: 'bold' }
+                offsetY: -5,
+                // УВЕЛИЧИЛ ШРИФТ
+                style: { color: '#ffffff', fontSize: '16px', fontWeight: 'bold' }
             },
             labels: { 
                 show: true,
                 rotate: -45,
-                style: { colors: '#888', fontSize: '11px' },
-                // === ВОТ ЗДЕСЬ МАГИЯ ===
+                // УВЕЛИЧИЛ ШРИФТ ЦИФР СНИЗУ
+                style: { colors: '#888', fontSize: '12px' },
                 formatter: function(val, timestamp, opts) {
-                    // Проверяем индекс столбца (opts.i)
-                    // Если индекс делится на 4 без остатка (0, 4, 8...), показываем подпись.
-                    // Иначе возвращаем пустую строку.
                     if (opts && typeof opts.i !== 'undefined') {
-                        if (opts.i % 8 === 0) { 
-                            return val; 
-                        }
-                        return ''; // Скрываем подпись
+                        if (opts.i % 8 === 0) return val; 
+                        return ''; 
                     }
                     return val;
                 }
@@ -854,12 +920,14 @@ model.fit(X_train, y_train)
             axisTicks: { show: false } 
         },
         yaxis: {
-            // === ПОДПИСЬ ОСИ Y ===
+            min: 0,
             title: {
                 text: 'Количество',
-                style: { color: '#ffffff', fontSize: '14px', fontWeight: 'bold' }
+                // УВЕЛИЧИЛ ШРИФТ
+                style: { color: '#ffffff', fontSize: '16px', fontWeight: 'bold' }
             },
-            labels: { style: { colors: '#888' } }
+            // УВЕЛИЧИЛ ШРИФТ ЦИФР СЛЕВА
+            labels: { style: { colors: '#888', fontSize: '13px' } }
         },
         colors: [ACCENT_COLOR],
         tooltip: { theme: 'dark', y: { formatter: (val) => val + " шт." } }
@@ -903,7 +971,10 @@ model.fit(X_train, y_train)
     // ИНИЦИАЛИЗАЦИЯ ПОСЛЕ ЗАГРУЗКИ DOM
     // ==========================================
     document.addEventListener('DOMContentLoaded', () => {
-        
+         if(document.querySelector("#chart-avg-check")) {
+            chartAvgCheck = new ApexCharts(document.querySelector("#chart-avg-check"), optionsAvgCheck);
+            chartAvgCheck.render();
+        }
         // 1. Создаем экземпляры графиков
         if(document.querySelector("#chart-bar-settlements")) {
             chartSettlements = new ApexCharts(document.querySelector("#chart-bar-settlements"), optionsBarSettlements);
@@ -1005,6 +1076,10 @@ model.fit(X_train, y_train)
         }
         if (currentSlideEl.id === 'chartSlide4' && chartRobustness) {
             chartRobustness.updateOptions({ chart: { animations: { enabled: true } } });
+        }
+        if (currentSlideEl.id === 'chartSlide1') {
+            if (chartSettlements) chartSettlements.updateOptions({ chart: { animations: { enabled: true } } });
+            if (chartAvgCheck) chartAvgCheck.updateOptions({ chart: { animations: { enabled: true } } });
         }
     }
 
