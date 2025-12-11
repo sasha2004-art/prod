@@ -344,12 +344,13 @@ model.fit(X_train, y_train)
                 <div style="padding: 10px;"><h3>CARRY</h3></div>
             </div>
             <div class="card" style="padding: 10px; flex: 1 1 18%; min-width: 150px;">
-                <div class="team-photo-box" style="background-image: url('images/tete.jpg');"></div>
+                <div class="team-photo-box" style="background-image: url('images/db112ad479a169c8f5f1465418636ee5.1000x1000x1.png');"></div>
                 <div style="padding: 10px;"><h3>MID</h3></div>
             </div>
             <div class="card" style="padding: 10px; flex: 1 1 18%; min-width: 150px;">
-                <div class="team-photo-box" style="background-image: url('images/tete.jpg');"></div>
+                <div id="offlane-photo" class="team-photo-box dead" style="background-image: url('images/penis.jpg');"></div>
                 <div style="padding: 10px;"><h3>OFFLANE</h3></div>
+                <h5>вечная память</h5>
             </div>
              <div class="card" style="padding: 10px; flex: 1 1 18%; min-width: 150px;">
                 <div class="team-photo-box" style="background-image: url('images/tete.jpg');"></div>
@@ -358,6 +359,7 @@ model.fit(X_train, y_train)
             <div class="card" style="padding: 10px; flex: 1 1 18%; min-width: 150px;">
                 <div class="team-photo-box" style="background-image: url('images/photo_2025-12-09_11-27-57.jpg');"></div>
                 <div style="padding: 10px;"><h3>HARD SUPPORT</h3></div>
+                
             </div>
         </div>
     </div>
@@ -746,14 +748,82 @@ model.fit(X_train, y_train)
         };
 
         // SLIDE 7: SETTLEMENTS BAR CHART
+        function createHistogramData(dataArray, binCount = 20) {
+            // Фильтруем пустые значения и превращаем в числа
+            const nums = dataArray
+                .map(v => parseFloat(v))
+                .filter(v => !isNaN(v));
+
+            if (nums.length === 0) return { categories: [], data: [] };
+
+            const min = Math.min(...nums);
+            const max = Math.max(...nums);
+            const range = max - min;
+            const step = range / binCount;
+            
+            const bins = new Array(binCount).fill(0);
+            const categories = [];
+
+            // Создаем подписи категорий
+            for (let i = 0; i < binCount; i++) {
+                const start = min + (i * step);
+                const end = min + ((i + 1) * step);
+                // Форматируем числа (например, 1.5M или 500k)
+                const label = new Intl.NumberFormat('en-US', { notation: "compact", maximumFractionDigits: 1 }).format(start);
+                categories.push(label);
+            }
+
+            // Раскладываем данные по бинам
+            nums.forEach(num => {
+                let bucketIndex = Math.floor((num - min) / step);
+                if (bucketIndex >= binCount) bucketIndex = binCount - 1; // Обработка максимума
+                bins[bucketIndex]++;
+            });
+
+            return { categories, data: bins };
+        }
+
+        // ==========================================
+        // SLIDE 7: HISTOGRAM (FROM CSV)
+        // ==========================================
+        
+        // Начальные настройки (пустой график, пока данные грузятся)
         const optionsBarSettlements = {
             ...commonOptions,
-            series: [{ name: 'Count', data: [15, 150, 1200] }],
-            chart: { type: 'bar', height: '100%', parentHeightOffset: 0, background: 'transparent', toolbar: { show: false } },
-            plotOptions: { bar: { borderRadius: 4, horizontal: false, columnWidth: '40%' } },
-            xaxis: { categories: ['Million+', 'Large (100k+)', 'Small (<100k)'], axisBorder: { show: false }, axisTicks: { show: false } },
-            colors: [ACCENT_COLOR]
+            series: [{ name: 'Магазинов', data: [] }],
+            chart: { 
+                type: 'bar', 
+                height: '100%', 
+                background: 'transparent', 
+                toolbar: { show: false },
+                animations: { enabled: true } 
+            },
+            plotOptions: { 
+                bar: { 
+                    borderRadius: 2, 
+                    horizontal: false, 
+                    columnWidth: '95%', // Делаем столбцы широкими как в гистограмме
+                    dataLabels: { position: 'top' }
+                } 
+            },
+            xaxis: { 
+                categories: [], 
+                labels: { style: { colors: '#888', fontSize: '10px' } },
+                axisBorder: { show: false }, 
+                axisTicks: { show: false },
+                tooltip: { enabled: false }
+            },
+            yaxis: {
+                labels: { style: { colors: '#888' } }
+            },
+            colors: [ACCENT_COLOR],
+            dataLabels: { enabled: false },
+            tooltip: {
+                theme: 'dark',
+                y: { formatter: function (val) { return val + " шт." } }
+            }
         };
+
 
         // SLIDE 8: HEATMAP (CORRELATIONS)
         const optionsHeatmap = {
@@ -1211,6 +1281,40 @@ model.fit(X_train, y_train)
              chartEx26 = new ApexCharts(document.querySelector("#chart-extra-26"), optionsExtra26);
 
              chartSettlements.render();
+             
+             // ============================================
+             // ЗАГРУЗКА ДАННЫХ ИЗ CSV (HISTPLOT.CSV)
+             // ============================================
+             Papa.parse("histplot.csv", {
+                download: true,
+                header: true,
+                skipEmptyLines: true,
+                complete: function(results) {
+                    console.log("CSV Loaded:", results.data.length, "rows");
+                    
+                    // 1. Извлекаем колонку 'выручка'
+                    // Убедись, что в CSV заголовок именно 'выручка' (с маленькой буквы)
+                    const revenueData = results.data.map(row => row['выручка']);
+                    
+                    // 2. Считаем гистограмму (разбиваем на 30 столбиков)
+                    const histData = createHistogramData(revenueData, 30);
+                    
+                    // 3. Обновляем график
+                    chartSettlements.updateOptions({
+                        xaxis: { categories: histData.categories },
+                        series: [{ name: 'Количество магазинов', data: histData.data }]
+                    });
+                },
+                error: function(err) {
+                    console.error("Ошибка загрузки CSV:", err);
+                    // Если ошибка (например, нет сервера), показываем демо-данные
+                    chartSettlements.updateOptions({
+                        xaxis: { categories: ['Error', 'Open', 'With', 'Live', 'Server'] },
+                        series: [{ data: [10, 20, 30, 20, 10] }]
+                    });
+                }
+             });
+             
              chartHeatmap.render();
              chartModel.render();
              chartRobustness.render();
@@ -1363,6 +1467,9 @@ model.fit(X_train, y_train)
         if (teamPhotos.length > 0 && explosionOverlay) {
             teamPhotos.forEach(photo => {
                 photo.addEventListener('mouseenter', () => {
+                    // OFFLANE is always dead
+                    if (photo.id === 'offlane-photo') return;
+
                     if (!photo.classList.contains('dead') && !photo.classList.contains('resurrected')) {
                         // First hover: Die
                         photo.classList.add('dead');
