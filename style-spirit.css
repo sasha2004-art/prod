@@ -257,12 +257,12 @@ ul { margin-bottom: 10px; }
 .team-photo-box.dead::before {
     content: '';
     position: absolute;
-    top: 15px;
-    right: -30px;
-    width: 100px;
-    height: 25px;
+    bottom: 60px;
+    right: -40px;
+    width: 200px;
+    height: 30px;
     background: #000;
-    transform: rotate(45deg);
+    transform: rotate(-45deg);
     box-shadow: 0 0 5px rgba(0,0,0,0.5);
     z-index: 5;
     pointer-events: none;
@@ -272,7 +272,7 @@ ul { margin-bottom: 10px; }
 /* Candle (Only visible when dead) */
 .team-photo-box.dead::after {
     content: '🕯️';
-    font-size: 3rem;
+    font-size: 6rem;
     position: absolute;
     bottom: 5px;
     left: 50%;
@@ -280,6 +280,7 @@ ul { margin-bottom: 10px; }
     z-index: 5;
     pointer-events: none;
     animation: fadeIn 0.5s forwards;
+    filter: drop-shadow(0 0 20px rgba(255, 165, 0, 0.8)) hue-rotate(15deg);
 }
 
 /* STATE 2: RESURRECTED */
