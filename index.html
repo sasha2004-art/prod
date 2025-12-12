@@ -341,23 +341,45 @@
         </div>
     </div>
 
-    <!-- 09. АНАЛИЗ ВЫРУЧКИ И ЧЕКА (БЫВШИЙ 7 СЛАЙД) -->
-    <div class="slide" id="chartSlide1">
-        <h2>09. АНАЛИЗ ВЫРУЧКИ И ЧЕКА</h2>
+    <!-- 09. РАЗМЕР ГОРОДА И ЦЕНООБРАЗОВАНИЕ -->
+    <div class="slide">
+        <h2>09. РАЗМЕР ГОРОДА И ЦЕНООБРАЗОВАНИЕ</h2>
         
-        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; height: 65vh; width: 100%;">
-            <div class="card" style="padding: 15px; height: 100%; overflow: hidden;">
-                <h3 style="text-align: center; color: var(--accent);">РАСПРЕДЕЛЕНИЕ ВЫРУЧКИ</h3>
-                <div class="chart-container-fix">
-                    <div id="chart-bar-settlements" style="width: 100%; height: 100%;"></div>
+        <div style="display: grid; grid-template-rows: auto 1fr auto; gap: 20px; height: 70vh;">
+            
+            <!-- Заголовок с тезисом -->
+            <div class="card" style="padding: 25px; border-left: 6px solid var(--accent); background: rgba(198, 255, 0, 0.05);">
+                <h3 style="color: var(--accent); margin-bottom: 15px; font-size: 1.8rem;">ГИПОТЕЗА</h3>
+                <p style="font-size: 1.3rem; line-height: 1.5; margin: 0;">
+                    Выручка зависит от <span style="color: var(--accent); font-weight: bold;">размера города</span>, 
+                    потому что размер зачастую задает <span style="color: var(--accent); font-weight: bold;">ценообразование</span>.
+                </p>
+            </div>
+
+            <!-- Основная часть с графиками -->
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; height: 100%;">
+                <div class="card" style="padding: 15px; overflow: hidden; display: flex; flex-direction: column;">
+                    <h3 style="text-align: center; color: var(--accent); margin-bottom: 10px;">РАСПРЕДЕЛЕНИЕ ВЫРУЧКИ</h3>
+                    <div class="chart-container-fix" style="flex: 1;">
+                        <div id="chart-bar-settlements" style="width: 100%; height: 100%;"></div>
+                    </div>
+                </div>
+
+                <div class="card" style="padding: 15px; overflow: hidden; display: flex; flex-direction: column;">
+                    <h3 style="text-align: center; color: var(--accent); margin-bottom: 10px;">СРЕДНИЙ ЧЕК ПО КАТЕГОРИЯМ</h3>
+                    <div class="chart-container-fix" style="flex: 1;">
+                        <div id="chart-avg-check" style="width: 100%; height: 100%;"></div>
+                    </div>
                 </div>
             </div>
 
-            <div class="card" style="padding: 15px; height: 100%; overflow: hidden;">
-                <h3 style="text-align: center; color: var(--accent);">СРЕДНИЙ ЧЕК</h3>
-                <div class="chart-container-fix">
-                    <div id="chart-avg-check" style="width: 100%; height: 100%;"></div>
-                </div>
+            <!-- Вывод -->
+            <div class="card" style="padding: 20px; border: 2px solid var(--accent); background: rgba(198, 255, 0, 0.02);">
+                <h3 style="color: var(--accent); margin-bottom: 10px;">ВЫВОД</h3>
+                <p style="font-size: 1.1rem; margin: 0;">
+                    Больше размер города → выше средний чек → больше выручка. 
+                    Размер города <span style="color: var(--accent); font-weight: bold;">критически важен</span> для прогнозирования выручки.
+                </p>
             </div>
         </div>
     </div>
