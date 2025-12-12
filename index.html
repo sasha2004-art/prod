@@ -217,7 +217,6 @@
                 <p style="font-size: 0.8rem; margin-bottom: 10px; color: #aaa;">
                     Средний чек и трафик по отдельности не отражают результат.
                 </p>
-                <!-- Исправленный блок с формулой (выровнен влево) -->
                 <div class="code-block" style="margin: 0; padding: 8px 12px; font-size: 0.8rem; display: inline-block; white-space: nowrap;">
                     Выручка = Средний_чек * Трафик
                 </div>
@@ -243,19 +242,49 @@
                 </div>
             </div>
 
-            <!-- 3. Новый магазин + Месяц (Левая колонка, Низ) -->
-            <div class="card" style="display: flex; flex-direction: column; justify-content: space-between;">
+            <!-- 3. Новый магазин + Статистика (Левая колонка, Низ) -->
+            <div class="card" style="display: flex; flex-direction: column; justify-content: space-between; padding: 20px;">
                 <div>
-                    <h3 style="color: var(--accent);">НОВЫЙ МАГАЗИН</h3>
-                    <p style="font-size: 0.9rem; margin-bottom: 10px;">
-                        Магазины, открытые в этом году.
-                    </p>
-                    <ul style="font-size: 0.85rem; list-style: none; padding-left: 0; margin-bottom: 15px;">
-                        <li style="margin-bottom: 5px; display: flex; align-items: center;">
-                            <span style="color: var(--accent); margin-right: 10px;">&bull;</span>
-                            Неполная история за год
+                    <h3 style="color: var(--accent); margin-bottom: 10px;">НОВЫЙ МАГАЗИН</h3>
+                    <ul style="font-size: 0.85rem; list-style: none; padding-left: 0; margin-bottom: 15px; color: #e0e0e0;">
+                        <li style="margin-bottom: 8px; display: flex; align-items: flex-start;">
+                            <span style="color: var(--accent); margin-right: 10px; font-weight: bold;">&bull;</span>
+                            <span>Неполная история за год</span>
+                        </li>
+                        <li style="margin-bottom: 5px; display: flex; align-items: flex-start;">
+                            <span style="color: var(--accent); margin-right: 10px; font-weight: bold;">&bull;</span>
+                            <span>Сильная разница в выручке в соседние месяцы</span>
                         </li>
                     </ul>
+                </div>
+
+                <!-- СЕТКА 2x2 С ЦИФРАМИ -->
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: auto;">
+                    
+                    <!-- Ячейка 1: Новый -->
+                    <div style="background: rgba(255,255,255,0.05); padding: 8px 12px; border-radius: 6px; border: 1px solid #333;">
+                        <div style="font-size: 0.7rem; color: var(--accent); text-transform: uppercase; font-weight: 700; margin-bottom: 2px;">Новый</div>
+                        <div style="font-size: 1.1rem; font-weight: 900; color: #fff;">1 072</div>
+                    </div>
+
+                    <!-- Ячейка 2: Недавно открытые -->
+                    <div style="background: rgba(255,255,255,0.05); padding: 8px 12px; border-radius: 6px; border: 1px solid #333;">
+                        <div style="font-size: 0.7rem; color: #888; text-transform: uppercase; font-weight: 700; margin-bottom: 2px;">Недавно открытые</div>
+                        <div style="font-size: 1.1rem; font-weight: 900; color: #fff;">6 326</div>
+                    </div>
+
+                    <!-- Ячейка 3: Средний возраст -->
+                    <div style="background: rgba(255,255,255,0.05); padding: 8px 12px; border-radius: 6px; border: 1px solid #333;">
+                        <div style="font-size: 0.7rem; color: #888; text-transform: uppercase; font-weight: 700; margin-bottom: 2px;">Средний возраст</div>
+                        <div style="font-size: 1.1rem; font-weight: 900; color: #fff;">13 428</div>
+                    </div>
+
+                    <!-- Ячейка 4: Открыты давно -->
+                    <div style="background: rgba(255,255,255,0.05); padding: 8px 12px; border-radius: 6px; border: 1px solid #333;">
+                        <div style="font-size: 0.7rem; color: #888; text-transform: uppercase; font-weight: 700; margin-bottom: 2px;">Открыты давно</div>
+                        <div style="font-size: 1.1rem; font-weight: 900; color: #fff;">916</div>
+                    </div>
+
                 </div>
             </div>
         </div>
@@ -309,35 +338,61 @@
         </div>
     </div>
 
-    <!-- 09. ГИПОТЕЗА И МЕХАНИЗМ -->
+    <!-- 09. ГИПОТЕЗА -->
     <div class="slide">
-        <h2>09. ГИПОТЕЗА И МЕХАНИЗМ</h2>
-        <p>Логическая цепочка возникновения проблемы.</p>
-        <div style="display: flex; gap: 15px; justify-content: center; align-items: stretch; margin-top: 50px; flex-wrap: wrap;">
-            <div class="card" style="flex: 1; min-width: 200px; padding: 20px;">
-                <h3 style="font-size: 1rem;">TRIGGER</h3>
-                <p style="font-size: 0.9rem;">Открытие нового магазина</p>
+        <h2>09. ГИПОТЕЗА</h2>
+        <div class="fill-height flex-center">
+            <div class="card" style="padding: 50px; border: 2px solid var(--accent); text-align: center; max-width: 900px; background: rgba(198, 255, 0, 0.02);">
+               <h1 style="font-size: 2.5rem; line-height: 1.4; text-transform: none; text-shadow: none;">
+                   Рядом стоящие пятёрочки <span style="color: var(--accent);">значительнее</span> влияют на <span style="color: var(--accent);">выручку</span> <span style="color: #ff5555;">старого магазина</span>, чем на <span style="color: var(--accent);">выручку</span> остальных.
+               </h1>
             </div>
-            <div class="flex-center" style="color: var(--accent); font-size: 2rem; font-weight: 900;">&rarr;</div>
-            <div class="card" style="flex: 1; min-width: 200px; padding: 20px;">
-                <h3 style="font-size: 1rem;">ACTION</h3>
-                <p style="font-size: 0.9rem;">Перераспределение потока покупателей</p>
-            </div>
-            <div class="flex-center" style="color: var(--accent); font-size: 2rem; font-weight: 900;">&rarr;</div>
-            <div class="card" style="flex: 1; min-width: 200px; padding: 20px; border-color: #ff5555;">
-                <h3 style="font-size: 1rem; color: #ff5555;">RESULT</h3>
-                <p style="font-size: 0.9rem;">Изменение выручки (Revenue)</p>
-            </div>
-        </div>
-        <div style="margin-top: 40px; padding: 20px; background: rgba(255,255,255,0.05); border-left: 4px solid var(--accent); text-align: left;">
-            <strong style="color: var(--accent);">ГИПОТЕЗА:</strong>
-            <span style="color: #fff;">Эффект коннолизации выше для новых магазинов в малых городах.</span>
         </div>
     </div>
 
-    <!-- 10. МАТ МОДЕЛЬ -->
+    <!-- 10. МЕХАНИЗМ -->
+    <div class="slide">
+        <h2>10. МЕХАНИЗМ</h2>
+        <div class="fill-height" style="justify-content: center;">
+            <div style="display: flex; flex-direction: column; gap: 20px; max-width: 800px; margin: 0 auto;">
+                
+                <!-- Шаг 1 -->
+                <div class="card" style="display: flex; flex-direction: row; align-items: center; gap: 25px; padding: 25px;">
+                    <div>
+                        <h3 style="color: var(--accent); margin-bottom: 5px;">ЭФФЕКТ НОВИЗНЫ</h3>
+                        <p>Новые магазины «отнимают» клиентов у соседних точек за счёт более современного оборудования и свежего интерьера.</p>
+                    </div>
+                </div>
+
+                <!-- Стрелка -->
+                <div style="text-align: center; color: var(--accent); font-size: 1.5rem; line-height: 0.5;">▼</div>
+
+                <!-- Шаг 2 -->
+                <div class="card" style="display: flex; flex-direction: row; align-items: center; gap: 25px; padding: 25px;">
+                    <div>
+                        <h3 style="color: #fff; margin-bottom: 5px;">ПЕРЕТОК ТРАФИКА</h3>
+                        <p>У новых пятёрочек, при прочих равных, формируется <strong>бóльшая доля трафика</strong> в локации и более высокий средний чек.</p>
+                    </div>
+                </div>
+
+                <!-- Стрелка -->
+                <div style="text-align: center; color: var(--accent); font-size: 1.5rem; line-height: 0.5;">▼</div>
+
+                <!-- Вывод -->
+                <div class="card" style="border-left: 6px solid var(--accent); padding: 25px;">
+                    <h3 style="color: var(--accent); margin-bottom: 5px;">СЛЕДСТВИЕ</h3>
+                    <p style="font-size: 1.1rem;">
+                        Наличие конкурентов <strong>менее значительно</strong> влияет на выручку новых магазинов, тогда как старые магазины чувствуют конкуренцию острее.
+                    </p>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <!-- 11. МАТ МОДЕЛЬ -->
     <div class="slide" id="chartSlide3">
-        <h2>10. МАТ МОДЕЛЬ</h2>
+        <h2>11. МАТ МОДЕЛЬ</h2>
         <div class="grid-2">
             <div>
                 <p>CatBoost Regressor</p>
@@ -356,18 +411,18 @@ model.fit(X_train, y_train)
         </div>
     </div>
 
-    <!-- 11. МАТ МОДЕЛЬ (УСТОЙЧИВОСТЬ) -->
+    <!-- 12. УСТОЙЧИВОСТЬ -->
     <div class="slide" id="chartSlide4">
-        <h2>11. УСТОЙЧИВОСТЬ</h2>
+        <h2>12. УСТОЙЧИВОСТЬ</h2>
         <p>Проверка на различных подвыборках.</p>
         <div class="card" style="height: 60%; padding: 10px; margin-top: 20px;">
              <div id="chart-robustness" style="width: 100%; height: 100%;"></div>
         </div>
     </div>
 
-    <!-- 12. ИНТЕРПРЕТАЦИЯ -->
+    <!-- 13. ИНТЕРПРЕТАЦИЯ -->
     <div class="slide">
-        <h2>12. ИНТЕРПРЕТАЦИЯ</h2>
+        <h2>13. ИНТЕРПРЕТАЦИЯ</h2>
         <div class="grid-3">
             <div class="card">
                 <span class="stat-label">R2 SCORE</span>
@@ -385,9 +440,9 @@ model.fit(X_train, y_train)
         <p style="margin-top: 30px;">Модель отлично предсказывает выручку новых магазинов.</p>
     </div>
 
-    <!-- 13. ОГРАНИЧЕНИЯ И ПЕРСПЕКТИВЫ -->
+    <!-- 14. ОГРАНИЧЕНИЯ И ПЕРСПЕКТИВЫ -->
     <div class="slide">
-        <h2>13. ОГРАНИЧЕНИЯ И ПЕРСПЕКТИВЫ</h2>
+        <h2>14. ОГРАНИЧЕНИЯ И ПЕРСПЕКТИВЫ</h2>
         <div class="grid-2">
             <div class="card">
                 <h3>ОГРАНИЧЕНИЯ</h3>
@@ -406,9 +461,9 @@ model.fit(X_train, y_train)
         </div>
     </div>
 
-    <!-- 14. ПОЛИСИ -->
+    <!-- 15. ПОЛИСИ -->
     <div class="slide">
-        <h2>14. ПОЛИСИ</h2>
+        <h2>15. ПОЛИСИ</h2>
         <div class="grid-2">
             <div class="card">
                 <h3>БИЗНЕС-РЕШЕНИЕ</h3>
@@ -422,9 +477,9 @@ model.fit(X_train, y_train)
         </div>
     </div>
 
-    <!-- 15. КОМАНДА -->
+    <!-- 16. КОМАНДА -->
     <div class="slide">
-        <h2>15. КОМАНДА</h2>
+        <h2>16. КОМАНДА</h2>
         <div class="fill-height" style="justify-content: center;">
             <div style="display: flex; justify-content: center; gap: 20px; width: 100%; height: 60%;"> <!-- Ограничиваем высоту контейнера фото -->
                 <div class="card" style="padding: 10px; flex: 1;">
