@@ -59,80 +59,56 @@
     <div class="slide">
         <h2>02. Структура данных</h2>
         
-        <div style="display: grid; grid-template-columns: 1.2fr 0.8fr; gap: 30px; height: 80%; align-items: stretch;">
+        <!-- Убрали fill-height, добавили align-items: start -->
+        <div style="display: grid; grid-template-columns: 1.2fr 0.8fr; gap: 30px; align-items: start;">
             
             <!-- ЛЕВАЯ КОЛОНКА -->
             <div style="display: flex; flex-direction: column; gap: 20px;">
-                
-                <!-- Верхняя карточка -->
-                <div class="card" style="display: flex; align-items: center; justify-content: space-between; height: auto; border: 2px solid var(--accent); background: rgba(198, 255, 0, 0.05); box-shadow: 0 0 20px rgba(198, 255, 0, 0.1);">
+                <div class="card" style="display: flex; flex-direction: row; justify-content: space-between; align-items: center; border: 2px solid var(--accent); background: rgba(198, 255, 0, 0.05);">
                     <div>
                         <h3>Данные о магазинах</h3>
                         <p style="margin: 0; font-size: 1.2rem;">Торговой сети</p>
                     </div>
                 </div>
 
-                <!-- Карточки с цифрами (grid внутри колонки) -->
                 <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
                     <div class="card">
-                        <div class="big-stat">256 723</div>
-                        <div class="stat-label" style="font-size: 1rem;">Строк данных</div>
+                        <div class="big-stat">256k</div>
+                        <div class="stat-label">Строк данных</div>
                     </div>
                     <div class="card">
-                        <div class="big-stat">21 743</div>
-                        <div class="stat-label" style="font-size: 1rem;">Магазина</div>
+                        <div class="big-stat">21k</div>
+                        <div class="stat-label">Магазина</div>
                     </div>
                 </div>
 
-                <!-- Карточка с периодом -->
-                <div class="card" style="flex-grow: 1; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center;">
+                <div class="card" style="text-align: center;">
                     <h3>Период данных</h3>
-                    <div class="big-stat" style="font-size: 4rem; margin: 20px 0;">2024</div>
-                    <p style="font-size: 1.2rem;">Информация по каждому месяцу</p>
+                    <div class="big-stat" style="font-size: 3.5rem; margin: 10px 0;">2024</div>
+                    <p>Информация по каждому месяцу</p>
                 </div>
             </div>
 
             <!-- ПРАВАЯ КОЛОНКА -->
             <div style="display: flex; flex-direction: column; gap: 20px;">
-                
-                <!-- Карточка Числовые -->
-                <div class="card" style="flex-grow: 1;">
+                <div class="card">
                     <h3>Числовые признаки</h3>
-                    <ul style="list-style: none; padding: 0; margin-top: 20px; font-size: 1.2rem;">
-                        <li style="margin-bottom: 15px; display: flex; align-items: center;">
-                            <span style="color: var(--accent); margin-right: 10px;">•</span> Средний чек
-                        </li>
-                        <li style="margin-bottom: 15px; display: flex; align-items: center;">
-                            <span style="color: var(--accent); margin-right: 10px;">•</span> Трафик
-                        </li>
-                        <li style="margin-bottom: 15px; display: flex; align-items: center;">
-                            <span style="color: var(--accent); margin-right: 10px;">•</span> Инфраструктура
-                        </li>
-                        <li style="margin-bottom: 15px; display: flex; align-items: center;">
-                            <span style="color: var(--accent); margin-right: 10px;">•</span> Население
-                        </li>
+                    <ul style="list-style: none; padding: 0; margin-top: 15px; font-size: 1.1rem;">
+                        <li style="margin-bottom: 10px;">• Средний чек</li>
+                        <li style="margin-bottom: 10px;">• Трафик</li>
+                        <li style="margin-bottom: 10px;">• Инфраструктура</li>
+                        <li>• Население</li>
                     </ul>
                 </div>
-
-                <!-- Карточка Категориальные -->
-                <div class="card" style="flex-grow: 1;">
+                <div class="card">
                     <h3>Категориальные</h3>
-                    <ul style="list-style: none; padding: 0; margin-top: 20px; font-size: 1.2rem;">
-                        <li style="margin-bottom: 15px; display: flex; align-items: center;">
-                            <span style="color: var(--accent); margin-right: 10px;">•</span> Площадь
-                        </li>
-                        <li style="margin-bottom: 15px; display: flex; align-items: center;">
-                            <span style="color: var(--accent); margin-right: 10px;">•</span> Дата открытия
-                        </li>
-                        <li style="margin-bottom: 15px; display: flex; align-items: center;">
-                            <span style="color: var(--accent); margin-right: 10px;">•</span> Населенный пункт
-                        </li>
-                        <li style="margin-bottom: 15px; display: flex; align-items: center;">
-                            <span style="color: var(--accent); margin-right: 10px;">•</span> Месяц (порядковая)
-                        </li>
+                    <ul style="list-style: none; padding: 0; margin-top: 15px; font-size: 1.1rem;">
+                        <li style="margin-bottom: 10px;">• Площадь</li>
+                        <li style="margin-bottom: 10px;">• Дата открытия</li>
+                        <li style="margin-bottom: 10px;">• Населенный пункт</li>
+                        <li>• Месяц (порядковая)</li>
                     </ul>
                 </div>
-
             </div>
         </div>
     </div>
@@ -213,20 +189,24 @@
     <div class="slide" id="chartSlide1">
         <h2>07. АНАЛИЗ ВЫРУЧКИ И ЧЕКА</h2>
         
-        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; height: 75vh; padding-bottom: 20px; box-sizing: border-box;">
+        <!-- Используем grid с фиксированной высотой (например 65vh), чтобы графики были большие -->
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; height: 65vh; width: 100%;">
             
-            <!-- ЛЕВАЯ КОЛОНКА -->
-            <div class="card" style="padding: 15px 15px 40px 15px; display: flex; flex-direction: column; height: 100%;">
-                <!-- УВЕЛИЧИЛ ШРИФТ ДО 1.6rem -->
-                <h3 style="text-align: center; margin-bottom: 15px; font-size: 1.6rem; color: var(--accent);">РАСПРЕДЕЛЕНИЕ ВЫРУЧКИ</h3>
-                <div id="chart-bar-settlements" style="flex: 1; width: 100%; min-height: 0;"></div>
+            <!-- Добавляем overflow: hidden в style -->
+            <div class="card" style="padding: 15px; height: 100%; overflow: hidden;">
+                <h3 style="text-align: center; color: var(--accent);">РАСПРЕДЕЛЕНИЕ ВЫРУЧКИ</h3>
+                <!-- Обертка fix -->
+                <div class="chart-container-fix">
+                    <div id="chart-bar-settlements" style="width: 100%; height: 100%;"></div>
+                </div>
             </div>
 
-            <!-- ПРАВАЯ КОЛОНКА -->
-            <div class="card" style="padding: 15px 15px 40px 15px; display: flex; flex-direction: column; height: 100%;">
-                <!-- УВЕЛИЧИЛ ШРИФТ ДО 1.6rem -->
-                <h3 style="text-align: center; margin-bottom: 15px; font-size: 1.6rem; color: var(--accent);">СРЕДНИЙ ЧЕК (ПО ВОЗРАСТУ)</h3>
-                <div id="chart-avg-check" style="flex: 1; width: 100%; min-height: 0;"></div>
+            <div class="card" style="padding: 15px; height: 100%; overflow: hidden;">
+                <h3 style="text-align: center; color: var(--accent);">СРЕДНИЙ ЧЕК</h3>
+                <!-- Обертка fix -->
+                <div class="chart-container-fix">
+                    <div id="chart-avg-check" style="width: 100%; height: 100%;"></div>
+                </div>
             </div>
 
         </div>
@@ -236,8 +216,10 @@
     <!-- 08. ГРАФИКИ (КОРРЕЛЯЦИИ) -->
     <div class="slide" id="chartSlide2">
         <h2>08. КОРРЕЛЯЦИИ</h2>
-        <div class="card" style="height: 80%; padding: 10px;">
-            <div id="chart-heatmap" style="width: 100%; height: 100%;"></div>
+        <div class="card" style="height: 70vh; padding: 10px; overflow: hidden;">
+            <div class="chart-container-fix">
+                 <div id="chart-heatmap" style="width: 100%; height: 100%;"></div>
+            </div>
         </div>
     </div>
 
@@ -357,28 +339,30 @@ model.fit(X_train, y_train)
     <!-- 15. КОМАНДА -->
     <div class="slide">
         <h2>15. КОМАНДА</h2>
-        <div style="display: flex; justify-content: center; gap: 15px; flex-wrap: wrap; width: 100%;">
-            <div class="card" style="padding: 10px; flex: 1 1 18%; min-width: 150px;">
-                <div class="team-photo-box" style="background-image: url('images/photo_2025-12-09_11-27-21.jpg');"></div>
-                <div style="padding: 10px;"><h3>CARRY</h3></div>
-            </div>
-            <div class="card" style="padding: 10px; flex: 1 1 18%; min-width: 150px;">
-                <div class="team-photo-box" style="background-image: url('images/db112ad479a169c8f5f1465418636ee5.1000x1000x1.png');"></div>
-                <div style="padding: 10px;"><h3>MID</h3></div>
-            </div>
-            <div class="card" style="padding: 10px; flex: 1 1 18%; min-width: 150px;">
-                <div id="offlane-photo" class="team-photo-box dead" style="background-image: url('images/penis.jpg');"></div>
-                <div style="padding: 10px;"><h3>OFFLANE</h3></div>
-                <h5>вечная память</h5>
-            </div>
-             <div class="card" style="padding: 10px; flex: 1 1 18%; min-width: 150px;">
-                <div class="team-photo-box" style="background-image: url('images/tete.jpg');"></div>
-                <div style="padding: 10px;"><h3>SUPPORT</h3></div>
-            </div>
-            <div class="card" style="padding: 10px; flex: 1 1 18%; min-width: 150px;">
-                <div class="team-photo-box" style="background-image: url('images/photo_2025-12-09_11-27-57.jpg');"></div>
-                <div style="padding: 10px;"><h3>HARD SUPPORT</h3></div>
-                
+        <div class="fill-height" style="justify-content: center;">
+            <div style="display: flex; justify-content: center; gap: 20px; width: 100%; height: 60%;"> <!-- Ограничиваем высоту контейнера фото -->
+                <div class="card" style="padding: 10px; flex: 1;">
+                    <div class="team-photo-box" style="height: 70%; background-image: url('images/photo_2025-12-09_11-27-21.jpg');"></div>
+                    <div style="padding: 10px;"><h3>CARRY</h3></div>
+                </div>
+                <div class="card" style="padding: 10px; flex: 1;">
+                    <div class="team-photo-box" style="height: 70%; background-image: url('images/db112ad479a169c8f5f1465418636ee5.1000x1000x1.png');"></div>
+                    <div style="padding: 10px;"><h3>MID</h3></div>
+                </div>
+                <div class="card" style="padding: 10px; flex: 1;">
+                    <div id="offlane-photo" class="team-photo-box dead" style="height: 70%; background-image: url('images/penis.jpg');"></div>
+                    <div style="padding: 10px;"><h3>OFFLANE</h3></div>
+                    <h5>вечная память</h5>
+                </div>
+                 <div class="card" style="padding: 10px; flex: 1;">
+                    <div class="team-photo-box" style="height: 70%; background-image: url('images/tete.jpg');"></div>
+                    <div style="padding: 10px;"><h3>SUPPORT</h3></div>
+                </div>
+                <div class="card" style="padding: 10px; flex: 1;">
+                    <div class="team-photo-box" style="height: 70%; background-image: url('images/photo_2025-12-09_11-27-57.jpg');"></div>
+                    <div style="padding: 10px;"><h3>HARD SUPPORT</h3></div>
+                    
+                </div>
             </div>
         </div>
     </div>
@@ -395,344 +379,6 @@ model.fit(X_train, y_train)
         </div>
     </div>
 
-    <!-- EXTRA 01. LINE CHART -->
-    <div class="slide" id="extraSlide1">
-        <h2>EX.01 LINE CHART</h2>
-        <div class="card" style="height: 80%; padding: 10px;">
-            <div id="chart-extra-1" style="width: 100%; height: 100%;"></div>
-        </div>
-    </div>
-
-    <!-- EXTRA 02. AREA CHART -->
-    <div class="slide" id="extraSlide2">
-        <h2>EX.02 AREA CHART</h2>
-        <div class="card" style="height: 80%; padding: 10px;">
-            <div id="chart-extra-2" style="width: 100%; height: 100%;"></div>
-        </div>
-    </div>
-
-    <!-- EXTRA 03. COLUMN CHART -->
-    <div class="slide" id="extraSlide3">
-        <h2>EX.03 COLUMN CHART</h2>
-        <div class="card" style="height: 80%; padding: 10px;">
-            <div id="chart-extra-3" style="width: 100%; height: 100%;"></div>
-        </div>
-    </div>
-
-    <!-- EXTRA 04. BAR CHART -->
-    <div class="slide" id="extraSlide4">
-        <h2>EX.04 BAR CHART</h2>
-        <div class="card" style="height: 80%; padding: 10px;">
-            <div id="chart-extra-4" style="width: 100%; height: 100%;"></div>
-        </div>
-    </div>
-
-    <!-- EXTRA 05. MIXED CHART -->
-    <div class="slide" id="extraSlide5">
-        <h2>EX.05 MIXED CHART</h2>
-        <div class="card" style="height: 80%; padding: 10px;">
-            <div id="chart-extra-5" style="width: 100%; height: 100%;"></div>
-        </div>
-    </div>
-
-    <!-- EXTRA 06. DONUT CHART -->
-    <div class="slide" id="extraSlide6">
-        <h2>EX.06 DONUT CHART</h2>
-        <div class="card" style="height: 80%; padding: 10px;">
-            <div id="chart-extra-6" style="width: 100%; height: 100%;"></div>
-        </div>
-    </div>
-
-    <!-- EXTRA 07. RADAR CHART -->
-    <div class="slide" id="extraSlide7">
-        <h2>EX.07 RADAR CHART</h2>
-        <div class="card" style="height: 80%; padding: 10px;">
-            <div id="chart-extra-7" style="width: 100%; height: 100%;"></div>
-        </div>
-    </div>
-
-    <!-- EXTRA 08. POLAR AREA CHART -->
-    <div class="slide" id="extraSlide8">
-        <h2>EX.08 POLAR AREA</h2>
-        <div class="card" style="height: 80%; padding: 10px;">
-            <div id="chart-extra-8" style="width: 100%; height: 100%;"></div>
-        </div>
-    </div>
-
-    <!-- EXTRA 09. SCATTER CHART -->
-    <div class="slide" id="extraSlide9">
-        <h2>EX.09 SCATTER CHART</h2>
-        <div class="card" style="height: 80%; padding: 10px;">
-            <div id="chart-extra-9" style="width: 100%; height: 100%;"></div>
-        </div>
-    </div>
-
-    <!-- EXTRA 10. BUBBLE CHART -->
-    <div class="slide" id="extraSlide10">
-        <h2>EX.10 BUBBLE CHART</h2>
-        <div class="card" style="height: 80%; padding: 10px;">
-            <div id="chart-extra-10" style="width: 100%; height: 100%;"></div>
-        </div>
-    </div>
-
-    <!-- EXTRA 11. RADIAL BAR CHART -->
-    <div class="slide" id="extraSlide11">
-        <h2>EX.11 RADIAL BAR</h2>
-        <div class="card" style="height: 80%; padding: 10px;">
-            <div id="chart-extra-11" style="width: 100%; height: 100%;"></div>
-        </div>
-    </div>
-
-    <!-- EXTRA 12. CANDLESTICK CHART -->
-    <div class="slide" id="extraSlide12">
-        <h2>EX.12 CANDLESTICK</h2>
-        <div class="card" style="height: 80%; padding: 10px;">
-            <div id="chart-extra-12" style="width: 100%; height: 100%;"></div>
-        </div>
-    </div>
-
-    <!-- EXTRA 13. BOXPLOT CHART -->
-    <div class="slide" id="extraSlide13">
-        <h2>EX.13 BOXPLOT</h2>
-        <div class="card" style="height: 80%; padding: 10px;">
-            <div id="chart-extra-13" style="width: 100%; height: 100%;"></div>
-        </div>
-    </div>
-
-    <!-- EXTRA 14. TREEMAP CHART -->
-    <div class="slide" id="extraSlide14">
-        <h2>EX.14 TREEMAP</h2>
-        <div class="card" style="height: 80%; padding: 10px;">
-            <div id="chart-extra-14" style="width: 100%; height: 100%;"></div>
-        </div>
-    </div>
-
-    <!-- EXTRA 15. RANGE BAR CHART -->
-    <div class="slide" id="extraSlide15">
-        <h2>EX.15 RANGE BAR</h2>
-        <div class="card" style="height: 80%; padding: 10px;">
-            <div id="chart-extra-15" style="width: 100%; height: 100%;"></div>
-        </div>
-    </div>
-
-    <!-- EXTRA 16. FUNNEL CHART -->
-    <div class="slide" id="extraSlide16">
-        <h2>EX.16 FUNNEL</h2>
-        <div class="card" style="height: 80%; padding: 10px;">
-            <div id="chart-extra-16" style="width: 100%; height: 100%;"></div>
-        </div>
-    </div>
-
-    <!-- EXTRA 17. GAUGE CHART (SPEEDOMETER) -->
-    <div class="slide" id="extraSlide17">
-        <h2>EX.17 GAUGE (CUSTOM)</h2>
-        <div class="card" style="height: 80%; padding: 10px;">
-            <div id="chart-extra-17" style="width: 100%; height: 100%;"></div>
-        </div>
-    </div>
-
-    <!-- EXTRA 18. DUMBBELL CHART -->
-    <div class="slide" id="extraSlide18">
-        <h2>EX.18 DUMBBELL</h2>
-        <div class="card" style="height: 80%; padding: 10px;">
-            <div id="chart-extra-18" style="width: 100%; height: 100%;"></div>
-        </div>
-    </div>
-
-    <!-- EXTRA 19. STACKED 100% COLUMN -->
-    <div class="slide" id="extraSlide19">
-        <h2>EX.19 STACKED 100%</h2>
-        <div class="card" style="height: 80%; padding: 10px;">
-            <div id="chart-extra-19" style="width: 100%; height: 100%;"></div>
-        </div>
-    </div>
-
-    <!-- EXTRA 20. SPARKLINES -->
-    <div class="slide" id="extraSlide20">
-        <h2>EX.20 SPARKLINES</h2>
-        <div class="grid-3" style="height: 80%;">
-            <div class="card" style="padding: 10px; display: flex; flex-direction: column; justify-content: center;">
-                <h3 style="text-align: center;">Total Sales</h3>
-                <div id="chart-extra-20-1" style="width: 100%; height: 150px;"></div>
-            </div>
-            <div class="card" style="padding: 10px; display: flex; flex-direction: column; justify-content: center;">
-                <h3 style="text-align: center;">Profits</h3>
-                <div id="chart-extra-20-2" style="width: 100%; height: 150px;"></div>
-            </div>
-            <div class="card" style="padding: 10px; display: flex; flex-direction: column; justify-content: center;">
-                <h3 style="text-align: center;">Orders</h3>
-                <div id="chart-extra-20-3" style="width: 100%; height: 150px;"></div>
-            </div>
-        </div>
-    </div>
-
-    <!-- EXTRA 21. SLOPE CHART -->
-    <div class="slide" id="extraSlide21">
-        <h2>EX.21 SLOPE CHART</h2>
-        <div class="card" style="height: 80%; padding: 10px;">
-            <div id="chart-extra-21" style="width: 100%; height: 100%;"></div>
-        </div>
-    </div>
-
-    <!-- EXTRA 22. PIE CHART -->
-    <div class="slide" id="extraSlide22">
-        <h2>EX.22 PIE CHART</h2>
-        <div class="card" style="height: 80%; padding: 10px;">
-            <div id="chart-extra-22" style="width: 100%; height: 100%;"></div>
-        </div>
-    </div>
-
-    <!-- EXTRA 23. RANGE AREA CHART -->
-    <div class="slide" id="extraSlide23">
-        <h2>EX.23 RANGE AREA</h2>
-        <div class="card" style="height: 80%; padding: 10px;">
-            <div id="chart-extra-23" style="width: 100%; height: 100%;"></div>
-        </div>
-    </div>
-
-    <!-- EXTRA 24. SCATTER + REGRESSION -->
-    <div class="slide" id="extraSlide24">
-        <h2>EX.24 SCATTER + LINE</h2>
-        <div class="card" style="height: 80%; padding: 10px;">
-            <div id="chart-extra-24" style="width: 100%; height: 100%;"></div>
-        </div>
-    </div>
-
-    <!-- EXTRA 25. SHAPE MARKERS -->
-    <div class="slide" id="extraSlide25">
-        <h2>EX.25 SHAPE MARKERS</h2>
-        <div class="card" style="height: 80%; padding: 10px;">
-            <div id="chart-extra-25" style="width: 100%; height: 100%;"></div>
-        </div>
-    </div>
-
-    <!-- EXTRA 26. RADAR MULTI-SERIES -->
-    <div class="slide" id="extraSlide26">
-        <h2>EX.26 RADAR OVERLAY</h2>
-        <div class="card" style="height: 80%; padding: 10px;">
-            <div id="chart-extra-26" style="width: 100%; height: 100%;"></div>
-        </div>
-    </div>
-
-    <!-- EXTRA 27. 3D FLIP CARD -->
-    <div class="slide" id="extraSlide27">
-        <h2>EX.27 3D FLIP CARD</h2>
-        <div class="card" style="display: flex; justify-content: center; align-items: center; height: 80%;">
-            <div class="flip-card">
-                <div class="flip-card-inner">
-                    <div class="flip-card-front">
-                        <h3>HOVER ME</h3>
-                        <p>HTML & CSS 3D Transform</p>
-                    </div>
-                    <div class="flip-card-back">
-                        <h3>REVEALED</h3>
-                        <p>No JavaScript Required</p>
-                        <p>Pure CSS Magic</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- EXTRA 28. TYPEWRITER -->
-    <div class="slide" id="extraSlide28">
-        <h2>EX.28 TYPEWRITER CSS</h2>
-        <div class="card" style="display: flex; justify-content: center; align-items: center; height: 80%;">
-            <div class="typewriter">
-                <h1>HELLO WORLD...</h1>
-            </div>
-        </div>
-    </div>
-
-    <!-- EXTRA 29. GLASSMORPHISM -->
-    <div class="slide" id="extraSlide29">
-        <h2>EX.29 GLASSMORPHISM</h2>
-        <div class="card" style="background: linear-gradient(135deg, #444, #111); display: flex; justify-content: center; align-items: center; height: 80%;">
-            <div class="glass-panel">
-                <h3>Glass Effect</h3>
-                <p>Backdrop-filter: blur(10px)</p>
-                <p>Modern UI Trend</p>
-            </div>
-        </div>
-    </div>
-
-    <!-- EXTRA 30. GRADIENT TEXT -->
-    <div class="slide" id="extraSlide30">
-        <h2>EX.30 ANIMATED GRADIENT</h2>
-        <div class="card" style="display: flex; justify-content: center; align-items: center; height: 80%;">
-            <h1 class="gradient-text" style="font-size: 4rem; font-weight: 900;">TOXIC SPIRIT</h1>
-        </div>
-    </div>
-
-    <!-- EXTRA 31. CSS LOADERS -->
-    <div class="slide" id="extraSlide31">
-        <h2>EX.31 CSS LOADERS</h2>
-        <div class="card" style="display: flex; justify-content: space-around; align-items: center; height: 80%;">
-            <div style="text-align: center;">
-                <div class="loader"></div>
-                <p style="margin-top: 20px;">Spinner</p>
-            </div>
-            <div style="text-align: center;">
-                <div class="loader-bars"><div></div><div></div><div></div></div>
-                <p style="margin-top: 20px;">Equalizer</p>
-            </div>
-        </div>
-    </div>
-
-    <!-- EXTRA 32. FLEXBOX LAYOUT -->
-    <div class="slide" id="extraSlide32">
-        <h2>EX.32 FLEXBOX POWER</h2>
-        <div class="card" style="height: 80%; display: flex; flex-direction: column; gap: 10px;">
-            <div style="flex: 1; background: #333; display: flex; justify-content: center; align-items: center;">Header (Flex 1)</div>
-            <div style="flex: 3; display: flex; gap: 10px;">
-                <div style="flex: 1; background: var(--accent); color: #000; display: flex; justify-content: center; align-items: center;">Sidebar (1)</div>
-                <div style="flex: 3; background: #444; display: flex; justify-content: center; align-items: center;">Content (3)</div>
-            </div>
-            <div style="flex: 1; background: #333; display: flex; justify-content: center; align-items: center;">Footer (Flex 1)</div>
-        </div>
-    </div>
-
-    <!-- EXTRA 33. GRID LAYOUT -->
-    <div class="slide" id="extraSlide33">
-        <h2>EX.33 CSS GRID</h2>
-        <div class="card" style="height: 80%; display: grid; grid-template-columns: repeat(3, 1fr); grid-template-rows: repeat(3, 1fr); gap: 10px;">
-            <div style="background: var(--accent); color: #000; grid-column: 1 / 3; display: flex; justify-content: center; align-items: center;">Span 2 Cols</div>
-            <div style="background: #444; display: flex; justify-content: center; align-items: center;">1</div>
-            <div style="background: #444; grid-row: 2 / 4; display: flex; justify-content: center; align-items: center;">Span 2 Rows</div>
-            <div style="background: #333; display: flex; justify-content: center; align-items: center;">Center</div>
-            <div style="background: #333; display: flex; justify-content: center; align-items: center;">Right</div>
-            <div style="background: var(--accent); color: #000; grid-column: 2 / 4; display: flex; justify-content: center; align-items: center;">Footer Span</div>
-        </div>
-    </div>
-
-    <!-- EXTRA 34. HOVER EFFECTS -->
-    <div class="slide" id="extraSlide34">
-        <h2>EX.34 HOVER EFFECTS</h2>
-        <div class="card" style="height: 80%; display: flex; justify-content: center; align-items: center; gap: 20px;">
-            <div style="width: 150px; height: 150px; background: #333; border: 1px solid var(--accent); transition: all 0.3s; display: flex; justify-content: center; align-items: center;" onmouseover="this.style.transform='scale(1.1) rotate(5deg)'; this.style.background='var(--accent)'; this.style.color='#000'" onmouseout="this.style.transform='scale(1)'; this.style.background='#333'; this.style.color='#fff'">Scale</div>
-            <div style="width: 150px; height: 150px; background: #333; border: 1px solid var(--accent); transition: all 0.3s; display: flex; justify-content: center; align-items: center; border-radius: 0;" onmouseover="this.style.borderRadius='50%'; this.style.background='var(--accent)'; this.style.color='#000'" onmouseout="this.style.borderRadius='0'; this.style.background='#333'; this.style.color='#fff'">Morph</div>
-            <div style="width: 150px; height: 150px; background: #333; border: 1px solid var(--accent); transition: all 0.3s; display: flex; justify-content: center; align-items: center; box-shadow: 0 0 0 transparent;" onmouseover="this.style.boxShadow='0 0 20px var(--accent)'" onmouseout="this.style.boxShadow='0 0 0 transparent'">Glow</div>
-        </div>
-    </div>
-
-    <!-- EXTRA 35. STYLED INPUTS -->
-    <div class="slide" id="extraSlide35">
-        <h2>EX.35 STYLED INPUTS</h2>
-        <div class="card" style="height: 80%; display: flex; flex-direction: column; justify-content: center; align-items: center; gap: 20px;">
-            <input type="text" placeholder="Neon Input" style="background: transparent; border: none; border-bottom: 2px solid #555; color: #fff; padding: 10px; width: 300px; outline: none; transition: 0.3s;" onfocus="this.style.borderBottomColor='var(--accent)'" onblur="this.style.borderBottomColor='#555'">
-            <button style="background: transparent; border: 2px solid var(--accent); color: var(--accent); padding: 10px 30px; font-weight: bold; cursor: pointer; transition: 0.3s; text-transform: uppercase;" onmouseover="this.style.background='var(--accent)'; this.style.color='#000'" onmouseout="this.style.background='transparent'; this.style.color='var(--accent)'">Hover Me</button>
-        </div>
-    </div>
-
-    <!-- EXTRA 36. PURE HTML/CSS -->
-    <div class="slide" id="extraSlide36">
-        <h2>EX.36 PURE HTML/CSS</h2>
-        <div class="card" style="height: 80%; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center;">
-            <h1 style="font-size: 3rem; margin-bottom: 20px;">NO LIMITS</h1>
-            <p style="font-size: 1.5rem; max-width: 600px;">This entire presentation is built with standard web technologies.</p>
-            <div style="margin-top: 40px; font-size: 4rem;">🚀</div>
-        </div>
-    </div>
 
 
     <div id="resurrection-explosion"></div>
@@ -749,11 +395,6 @@ model.fit(X_train, y_train)
     // ГЛОБАЛЬНЫЕ ПЕРЕМЕННЫЕ ДЛЯ ГРАФИКОВ
     // ==========================================
     let chartSettlements, chartHeatmap, chartModel, chartRobustness;
-    let chartEx1, chartEx2, chartEx3, chartEx4, chartEx5, chartEx6, chartEx7;
-    let chartEx8, chartEx9, chartEx10, chartEx11, chartEx12, chartEx13;
-    let chartEx14, chartEx15, chartEx16, chartEx17, chartEx18, chartEx19;
-    let chartEx20_1, chartEx20_2, chartEx20_3, chartEx21, chartEx22, chartEx23;
-    let chartEx24, chartEx25, chartEx26;
     let chartAvgCheck;
 
     const ACCENT_COLOR = '#C6FF00'; 
@@ -786,15 +427,14 @@ model.fit(X_train, y_train)
             toolbar: { show: false }, 
             animations: { enabled: true } 
         },
-        // Увеличили отступ снизу до 30, чтобы большие буквы влезли
         grid: {
-            padding: { bottom: 30, left: 10, right: 10 }
+            padding: { bottom: 10, left: 10, right: 20 }
         },
         plotOptions: { 
             bar: { 
                 borderRadius: 4, 
-                horizontal: false, 
-                columnWidth: '45%',
+                horizontal: true, 
+                barHeight: '60%',
                 distributed: true 
             } 
         },
@@ -802,24 +442,15 @@ model.fit(X_train, y_train)
         xaxis: { 
             categories: ['Открыт давно', 'Средний возраст', 'Недавно открытый', 'Новый'], 
             labels: { 
-                // УВЕЛИЧИЛ ШРИФТ ДО 14px
-                style: { colors: '#ffffff', fontSize: '14px', fontWeight: 'bold' },
-                rotate: -45, // Наклон помогает длинному тексту не наезжать друг на друга
-                rotateAlways: false,
-                hideOverlappingLabels: false,
-                trim: false
+                style: { colors: '#888', fontSize: '12px' },
             },
             axisBorder: { show: false },
             axisTicks: { show: false }
         },
         yaxis: {
-            min: 0,
-            forceNiceScale: true,
-            // УВЕЛИЧИЛ ШРИФТ ЗАГОЛОВКА ОСИ И ЦИФР
-            title: { text: 'Рубли', style: { color: '#ffffff', fontSize: '16px' } },
             labels: { 
-                style: { colors: '#888', fontSize: '13px' },
-                formatter: (value) => { return value.toFixed(0) }
+                style: { colors: '#ffffff', fontSize: '14px', fontWeight: 'bold' },
+                maxWidth: 200
             }
         },
         tooltip: { theme: 'dark', y: { formatter: (val) => val + " ₽" } },

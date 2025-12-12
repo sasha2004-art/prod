@@ -42,22 +42,17 @@
 }
 
 /* ================= RESET & BASE ================= */
-* { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
-
-/* Цвет выделения текста */
-::selection {
-    background: var(--accent);
-    color: #000;
-}
+* { box-sizing: border-box; margin: 0; padding: 0; outline: none; }
 
 body {
     background-color: var(--bg-dark);
     color: var(--text-main);
     font-family: var(--font-body);
-    overflow: hidden;
-    height: 100vh;
+    /* ЖЕСТКАЯ ФИКСАЦИЯ FULL HD */
     width: 100vw;
-    /* Гранж-текстура */
+    height: 100vh;
+    overflow: hidden; /* Убирает скролл у всего окна */
+    
     background-image: 
         linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
         linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
@@ -65,64 +60,57 @@ body {
     position: relative;
 }
 
-/* ================= TYPOGRAPHY ================= */
+/* ================= TYPOGRAPHY (Уменьшаем отступы для экономии места) ================= */
 h1 { 
     font-family: var(--font-head); 
-    font-size: 3.5rem; 
+    font-size: 3rem; /* Чуть меньше */
     line-height: 1; 
     font-weight: 900; 
     text-transform: uppercase; 
-    margin-bottom: 20px; 
-    /* Небольшое зеленое свечение */
+    margin-bottom: 15px; 
     text-shadow: 0 0 25px rgba(198, 255, 0, 0.25);
 }
 
 h2 { 
     font-family: var(--font-head); 
-    font-size: 2rem; 
+    font-size: 1.8rem; /* Чуть компактнее */
     font-weight: 900; 
     text-transform: uppercase; 
-    margin-bottom: 30px; 
+    margin-bottom: 20px; 
     border-left: 6px solid var(--accent); 
     padding-left: 20px; 
     display: inline-block; 
-    box-shadow: -15px 0 20px -10px rgba(198, 255, 0, 0.2);
+    /* Важно: H2 не должен сжиматься */
+    flex-shrink: 0; 
 }
 
 h3 { 
-    font-family: var(--font-body);
-    font-size: 1.2rem; 
-    font-weight: 700; 
-    margin-bottom: 10px; 
-    color: var(--accent); 
-    text-transform: uppercase;
-    letter-spacing: 1px;
+    font-size: 1.1rem; 
+    margin-bottom: 8px; 
 }
 
 p, li { 
-    font-family: var(--font-body); 
-    font-size: 1rem; 
-    color: #ccc; 
-    line-height: 1.6; 
-    margin-bottom: 10px; 
+    font-size: 0.95rem; 
+    line-height: 1.4; /* Более плотный текст */
+    margin-bottom: 8px; 
 }
 
-ul { margin-left: 20px; margin-bottom: 20px; }
+ul { margin-bottom: 10px; }
 
 /* ================= LAYOUT & SLIDES ================= */
+/* Обновляем класс .slide */
 .slide {
     position: absolute;
     top: 0; left: 0; width: 100%; height: 100%;
-    padding: 60px 80px;
     display: flex;
     flex-direction: column;
+    justify-content: center; /* Центрируем контент по вертикали */
+    padding: 60px 80px;      /* Вернули отступы */
     opacity: 0;
     visibility: hidden;
     transform: translateY(10px);
     transition: opacity 0.4s ease, transform 0.4s ease;
-    overflow-y: auto; 
-    overflow-x: hidden;
-    padding-bottom: 100px;
+    overflow: hidden; 
 }
 
 .slide.active {
@@ -132,19 +120,42 @@ ul { margin-left: 20px; margin-bottom: 20px; }
     z-index: 2;
 }
 
-.flex-center { display: flex; justify-content: center; align-items: center; min-height: 100%; text-align: center; }
-.grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-content: center; }
-.grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
-.grid-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
-.grid-5 { display: grid; grid-template-columns: repeat(5, 1fr); gap: 15px; }
+/* Класс для контейнера, который должен занять всё оставшееся место */
+.fill-height {
+    flex: 1;
+    min-height: 0; /* Магия CSS: позволяет контенту сжиматься, если не влезает */
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.flex-center { display: flex; justify-content: center; align-items: center; text-align: center; height: 100%; }
+
+/* Обновляем Grid системы - чтобы не растягивались на весь экран */
+.grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: start; }
+.grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; align-items: start; }
+
+/* ! ВАЖНО: Добавляем новый класс специально для слайдов с ГРАФИКАМИ */
+/* Это лечит баг с зумом */
+.chart-container-fix {
+    flex: 1;             /* Занимать всё доступное место */
+    width: 100%;
+    min-height: 0;       /* Критично для Flexbox + Charts */
+    overflow: hidden;    /* Обрезает график при зуме, предотвращая рекурсию */
+    display: flex;
+    flex-direction: column;
+}
 
 /* ================= CARDS & UI ================= */
+/* Обновляем класс .card - убираем принудительную высоту */
 .card {
     background: var(--bg-card);
     border: 1px solid var(--border);
     padding: 25px;
     position: relative;
-    height: 100%;
+    height: auto; /* Блок теперь по размеру контента */
+    display: flex;
+    flex-direction: column;
     transition: all 0.3s ease;
 }
 .card:hover { 
