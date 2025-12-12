@@ -297,63 +297,95 @@
     <div class="slide">
         <h2>08. ОБРАБОТКА ДАННЫХ</h2>
         
-        <div style="display: flex; flex-direction: column; gap: 25px; height: 70vh;">
+        <div style="display: grid; grid-template-columns: 1fr 2.5fr; gap: 30px; height: 70vh;">
             
-            <!-- Блок 1: Пропуски -->
-            <div class="card" style="padding: 25px; display: flex; align-items: center; justify-content: space-between; border-left: 6px solid var(--accent); background: rgba(198, 255, 0, 0.05);">
-                <div>
-                    <h3 style="color: var(--accent); margin: 0; font-size: 1.4rem; text-transform: uppercase;">Качество данных</h3>
-                    <p style="margin: 5px 0 0 0; color: #ccc;">Проверка на пропущенные значения</p>
-                </div>
-                <div style="text-align: right; display: flex; align-items: center; gap: 15px;">
-                    <span style="font-size: 3.5rem; font-weight: 900; color: #fff; line-height: 1;">0</span>
-                    <span style="font-size: 1.2rem; font-weight: 700; color: var(--accent); line-height: 1.2; text-align: left;">ПУСТЫХ<br>ЗНАЧЕНИЙ</span>
+            <!-- ЛЕВАЯ КОЛОНКА: Пропуски -->
+            <div style="display: flex; flex-direction: column; gap: 20px;">
+                <div class="card" style="padding: 25px; flex: 1; display: flex; flex-direction: column; justify-content: center; border-left: 6px solid var(--accent); background: rgba(198, 255, 0, 0.05);">
+                    <h3 style="color: var(--accent); margin-bottom: 10px;">ПРОПУСКИ</h3>
+                    <p style="color: #ccc; font-size: 0.95rem;">Проверка датасета на пустые значения (Null/NaN).</p>
+                    <div style="margin-top: 20px; text-align: center;">
+                        <span style="font-size: 5rem; font-weight: 900; color: #fff; line-height: 1; text-shadow: 0 0 20px rgba(255,255,255,0.3);">0</span>
+                        <div style="font-weight: 700; color: var(--accent); margin-top: 10px;">ПУСТЫХ ЗНАЧЕНИЙ</div>
+                    </div>
                 </div>
             </div>
 
-            <!-- Блок 2: Выбросы -->
-            <div class="card" style="padding: 30px; flex: 1; border-left: 6px solid #ff5555; background: rgba(255, 85, 85, 0.05); display: flex; flex-direction: column;">
-                <div style="display: flex; align-items: center; gap: 15px; margin-bottom: 25px;">
-                    <div style="background: #ff5555; color: #fff; width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 900; font-size: 1.2rem;">!</div>
-                    <h3 style="color: #ff5555; margin: 0; font-size: 1.4rem;">ОЧИСТКА ВЫБРОСОВ</h3>
+            <!-- ПРАВАЯ КОЛОНКА: Выбросы -->
+            <div class="card" style="padding: 30px; border-left: 6px solid #ff5555; background: rgba(255, 85, 85, 0.05); display: flex; flex-direction: column;">
+                
+                <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 25px; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 15px;">
+                    <div style="display: flex; align-items: center; gap: 15px;">
+                        <div style="background: #ff5555; color: #fff; width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 900; font-size: 1.2rem;">!</div>
+                        <h3 style="color: #ff5555; margin: 0; font-size: 1.5rem;">ОЧИСТКА ВЫБРОСОВ</h3>
+                    </div>
+                    <div style="text-align: right;">
+                        <span style="font-size: 0.9rem; color: #888;">Метод:</span>
+                        <span style="font-weight: bold; color: #fff;">IQR (Межквартильный размах)</span>
+                    </div>
                 </div>
                 
                 <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 40px; height: 100%;">
                     
-                    <!-- Левая часть -->
-                    <div style="display: flex; flex-direction: column; gap: 20px; justify-content: center;">
+                    <!-- Логика очистки (Текст) -->
+                    <div style="display: flex; flex-direction: column; gap: 25px; justify-content: flex-start;">
+                        
+                        <!-- Блок 1: Простые проверки -->
                         <div>
-                            <strong style="color: var(--accent); font-size: 1.1rem; display: block; margin-bottom: 5px;">Количество пятерочек</strong>
-                            <span style="color: #ccc;">Выбросов нет.</span>
+                            <div style="margin-bottom: 8px;">
+                                <span class="tag" style="border-color: #555; color: #ccc;">Пятерочки</span>
+                                <span style="color: #fff; font-weight: bold;">Выбросов нет.</span>
+                            </div>
+                            <div>
+                                <span class="tag" style="border-color: var(--accent); color: var(--accent);">Выручка (Y)</span>
+                                <span style="color: #fff;">Очищаем, так как это целевая переменная.</span>
+                            </div>
                         </div>
+
+                        <!-- Блок 2: Трафик -->
                         <div>
-                            <strong style="color: var(--accent); font-size: 1.1rem; display: block; margin-bottom: 5px;">Выручка (Target)</strong>
-                            <span style="color: #ccc;">Очищаем, так как это целевая переменная.</span>
+                            <strong style="color: var(--accent); font-size: 1.1rem; display: block; margin-bottom: 8px;">ТРАФИК</strong>
+                            <p style="font-size: 0.9rem; color: #ccc; margin-bottom: 5px;">
+                                Население сильно различается -> <span style="color: #fff;">Верхней границы нет.</span>
+                            </p>
+                            <p style="font-size: 0.9rem; color: #ccc;">
+                                Удаляем только экстремально низкие значения:
+                            </p>
+                            <div class="code-block" style="margin: 10px 0; padding: 10px;">Lower = Q1 - <span style="color: var(--accent); font-weight: bold;">3</span> * IQR</div>
                         </div>
+
+                        <!-- Блок 3: Средний чек -->
                         <div>
-                            <strong style="color: var(--accent); font-size: 1.1rem; display: block; margin-bottom: 5px;">Трафик</strong>
-                            <ul style="margin: 0; padding-left: 20px; color: #ccc; list-style-type: disc;">
-                                <li>3 IQR по нижней границе (удаляем только экстремальные значения).</li>
-                                <li>Верхней границы нет (население сильно различается).</li>
-                            </ul>
-                            <div style="margin-top: 5px; color: #fff; font-weight: bold;">Удалено: 59 значений (< 1%)</div>
+                            <strong style="color: var(--accent); font-size: 1.1rem; display: block; margin-bottom: 8px;">СРЕДНИЙ ЧЕК</strong>
+                            <p style="font-size: 0.9rem; color: #ccc;">
+                                Меньше зависит от населения. Удаляем строже:
+                            </p>
+                            <div class="code-block" style="margin: 10px 0; padding: 10px;">Lower = Q1 - <span style="color: var(--accent); font-weight: bold;">1.5</span> * IQR</div>
                         </div>
                     </div>
 
-                    <!-- Правая часть -->
-                    <div style="display: flex; flex-direction: column; gap: 20px; justify-content: center;">
-                        <div>
-                            <strong style="color: var(--accent); font-size: 1.1rem; display: block; margin-bottom: 5px;">Средний чек</strong>
-                            <ul style="margin: 0; padding-left: 20px; color: #ccc; list-style-type: disc;">
-                                <li>Меньше подвержен влиянию разного населения.</li>
-                                <li>Удаляем значения ниже 1.5 IQR.</li>
-                            </ul>
-                            <div style="margin-top: 5px; color: #fff; font-weight: bold;">Удалено: 229 значений (< 1%)</div>
-                        </div>
+                    <!-- Результаты (Цифры) -->
+                    <div style="display: flex; flex-direction: column; justify-content: center; gap: 20px; background: rgba(0,0,0,0.2); padding: 20px; border-radius: 10px;">
+                        <h4 style="text-align: center; color: #888; text-transform: uppercase; letter-spacing: 2px;">Итого удалено</h4>
                         
-                        <div class="code-block" style="padding: 15px; font-size: 1rem; margin-top: 20px;">
-                            <div style="margin-bottom: 8px;">Трафик: lower = Q1 - <span style="color: var(--accent);">3</span> * IQR</div>
-                            <div>Чек: lower = Q1 - <span style="color: var(--accent);">1.5</span> * IQR</div>
+                        <!-- Трафик -->
+                        <div style="text-align: center;">
+                            <div style="font-size: 3rem; font-weight: 900; color: #fff; line-height: 1;">59</div>
+                            <div style="color: var(--accent); font-weight: 700; font-size: 0.9rem; margin-top: 5px;">ЗНАЧЕНИЙ ТРАФИКА</div>
+                            <div style="font-size: 0.8rem; color: #666; margin-top: 2px;">(менее 1%)</div>
+                        </div>
+
+                        <div style="height: 1px; background: #444; width: 50%; margin: 0 auto;"></div>
+
+                        <!-- Чек -->
+                        <div style="text-align: center;">
+                            <div style="font-size: 3rem; font-weight: 900; color: #fff; line-height: 1;">229</div>
+                            <div style="color: var(--accent); font-weight: 700; font-size: 0.9rem; margin-top: 5px;">ЗНАЧЕНИЙ СР. ЧЕКА</div>
+                            <div style="font-size: 0.8rem; color: #666; margin-top: 2px;">(менее 1%)</div>
+                        </div>
+
+                        <div style="margin-top: 10px; text-align: center; font-style: italic; color: #777; font-size: 0.85rem;">
+                            Данные очищены и готовы к анализу
                         </div>
                     </div>
                 </div>
