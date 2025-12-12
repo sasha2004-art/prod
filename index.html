@@ -21,7 +21,6 @@
     <!-- ВОДЯНОЙ ЗНАК -->
     <div class="watermark-container">
         <div class="watermark-text">TEAM SPIRIT</div>
-        <!-- Логотип белый (инверсия) -->
         <img src="images/Team_Spirit_new_em.svg" alt="TS Logo" class="logo-watermark-img" style="filter: brightness(0) invert(1);">
     </div>
 
@@ -35,7 +34,6 @@
     <!-- 01. ТИТУЛЬНИК -->
     <div class="slide active flex-center">
         <div>
-            <!-- Главный логотип -->
             <div style="display: flex; justify-content: center; align-items: center; gap: 30px; margin-bottom: 40px;">
                 <img src="images/Team_Spirit_new_em.svg" alt="TS Logo" style="filter: brightness(0) invert(1); width: 180px; drop-shadow: 0 0 15px rgba(198, 255, 0, 0.2);">
                 <span style="font-size: 3rem; font-weight: 900; color: var(--accent); text-shadow: 0 0 10px var(--accent);">X</span>
@@ -58,11 +56,7 @@
     <!-- 02. СТРУКТУРА ДАТАСЕТА -->
     <div class="slide">
         <h2>02. Структура данных</h2>
-        
-        <!-- Убрали fill-height, добавили align-items: start -->
         <div style="display: grid; grid-template-columns: 1.2fr 0.8fr; gap: 30px; align-items: start;">
-            
-            <!-- ЛЕВАЯ КОЛОНКА -->
             <div style="display: flex; flex-direction: column; gap: 20px;">
                 <div class="card" style="display: flex; flex-direction: row; justify-content: space-between; align-items: center; border: 2px solid var(--accent); background: rgba(198, 255, 0, 0.05);">
                     <div>
@@ -89,7 +83,6 @@
                 </div>
             </div>
 
-            <!-- ПРАВАЯ КОЛОНКА -->
             <div style="display: flex; flex-direction: column; gap: 20px;">
                 <div class="card">
                     <h3>Числовые признаки</h3>
@@ -113,105 +106,109 @@
         </div>
     </div>
 
-    <!-- 03. ОЧИСТКА ДАННЫХ -->
-    <div class="slide">
-        <h2>03. ОЧИСТКА ДАННЫХ</h2>
-        <p>Борьба с выбросами и пропусками.</p>
-        <div class="grid-2">
-            <div class="card">
-                <h3>ВЫБРОСЫ</h3>
-                <p class="big-stat" style="color: #ff5555;">5%</p>
-                <p>Удалено по правилу 3-х сигм</p>
-            </div>
-            <div class="card">
-                <h3>ПРОПУСКИ</h3>
-                <p class="big-stat">2%</p>
-                <p>Заполнены медианой по региону</p>
-            </div>
-        </div>
-        <div style="margin-top: 30px; padding: 20px; border: 1px dashed #555;">
-            <h3>МЕТОДЫ</h3>
-            <ul style="list-style: none; padding: 0; display: flex; gap: 20px; justify-content: center;">
-                <li class="tag">IQR Filtering</li>
-                <li class="tag">Median Imputation</li>
-                <li class="tag">Log Transformation</li>
-            </ul>
-        </div>
-    </div>
-
-    <!-- 04. НОВЫЕ ПЕРЕМЕННЫЕ: ОКРУЖЕНИЕ -->
-    <div class="slide">
-        <h2>04. НОВЫЕ ПЕРЕМЕННЫЕ: ОКРУЖЕНИЕ</h2>
+    <!-- 03. SCATTER PLOT (ОБНОВЛЕННЫЙ СЛАЙД - КАРТИНКА) -->
+    <div class="slide" id="chartSlideScatter">
+        <h2>03. ВВОД ПЕРЕМЕННОЙ: ВЫРУЧКА</h2>
         
-        <!-- Сделали левую колонку чуть шире, чтобы вместить 6 категорий -->
-        <div style="display: grid; grid-template-columns: 2fr 1fr; gap: 25px; align-items: start;">
+        <div style="display: grid; grid-template-columns: 1fr 300px; gap: 30px; height: 70vh;">
             
-            <!-- Левая колонка: Население (Обновленная группировка) -->
-            <div class="card" style="padding: 20px;">
-                <h3 style="color: var(--accent); margin-bottom: 20px; font-size: 1.5rem;">КЛАССИФИКАЦИЯ ГОРОДОВ (POPULATION)</h3>
-                
-                <!-- Сетка 3x2 для 6 категорий -->
-                <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 15px; margin-bottom: 25px;">
-                    <!-- 1 -->
-                    <div style="background: rgba(255,255,255,0.05); padding: 10px; border-radius: 4px; border: 1px solid #333;">
-                        <div style="color: var(--accent); font-weight: bold; font-size: 0.9rem;">МАЛЫЙ</div>
-                        <div style="font-size: 0.75rem; color: #888;">0-50 тыс.</div>
-                    </div>
-                    <!-- 2 -->
-                    <div style="background: rgba(255,255,255,0.05); padding: 10px; border-radius: 4px; border: 1px solid #333;">
-                        <div style="color: #fff; font-weight: bold; font-size: 0.9rem;">СРЕДНИЙ</div>
-                        <div style="font-size: 0.75rem; color: #888;">50-100 тыс.</div>
-                    </div>
-                    <!-- 3 -->
-                    <div style="background: rgba(255,255,255,0.05); padding: 10px; border-radius: 4px; border: 1px solid #333;">
-                        <div style="color: #fff; font-weight: bold; font-size: 0.9rem;">БОЛЬШОЙ</div>
-                        <div style="font-size: 0.75rem; color: #888;">100-250 тыс.</div>
-                    </div>
-                    <!-- 4 -->
-                    <div style="background: rgba(255,255,255,0.05); padding: 10px; border-radius: 4px; border: 1px solid #333;">
-                        <div style="color: #fff; font-weight: bold; font-size: 0.9rem;">КРУПНЫЙ</div>
-                        <div style="font-size: 0.75rem; color: #888;">250-500 тыс.</div>
-                    </div>
-                    <!-- 5 -->
-                    <div style="background: rgba(255,255,255,0.05); padding: 10px; border-radius: 4px; border: 1px solid #333;">
-                        <div style="color: #fff; font-weight: bold; font-size: 0.8rem;">КРУПНЕЙШИЙ</div> <!-- Чуть меньше шрифт, чтобы влезло -->
-                        <div style="font-size: 0.75rem; color: #888;">500 тыс. - 1 млн</div>
-                    </div>
-                    <!-- 6 -->
-                    <div style="background: rgba(255,255,255,0.05); padding: 10px; border-radius: 4px; border: 1px solid #333;">
-                        <div style="color: var(--accent); font-weight: bold; font-size: 0.8rem;">МИЛЛИОННИК</div>
-                        <div style="font-size: 0.75rem; color: #888;">> 1 млн</div>
-                    </div>
-                </div>
-
-                <!-- Сноска -->
-                <div style="border-top: 1px solid #333; padding-top: 10px; font-size: 0.75rem; color: #666; font-style: italic;">
-                    * Для корректного сравнения эффективности использована градостроительная классификация из учебника Т.В. Малеевой «Инженерно-экономические основы градостроительства».
+            <!-- Левая часть: Картинка графика -->
+            <div class="card" style="padding: 0px; overflow: hidden; display: flex; flex-direction: column; justify-content: center; align-items: center; background: #000;">
+                <div class="chart-container-fix" style="width: 100%; height: 100%; display: flex; justify-content: center; align-items: center;">
+                    <!-- ВСТАВЛЕНА КАРТИНКА ВМЕСТО ГРАФИКА -->
+                    <img src="images/grahs.jpg" alt="График зависимости" style="max-width: 100%; max-height: 100%; object-fit: contain; border-radius: 4px;">
                 </div>
             </div>
 
-            <!-- Правая колонка: Конкуренты -->
-            <div class="card" style="padding: 20px; border: 1px dashed #555;">
-                <h3 style="color: var(--accent);">Наличие пятерочёк</h3>
-                <div class="big-stat" style="font-size: 2.5rem; margin: 15px 0;">БИНАРНЫЙ</div>
-                <p style="font-size: 0.9rem;">
-                    Флаг: <strong>Есть конкурент рядом / Нет</strong>.
+            <!-- Правая часть: Описание -->
+            <div style="display: flex; flex-direction: column; gap: 20px;">
+                <div class="card">
+                    <h3 style="color: var(--accent);">Предпосылка</h3>
+                    <p>Почти каждый посетитель совершает покупку.</p>
+                </div>
+                
+                <div class="card" style="border: 2px solid var(--accent); background: rgba(198, 255, 0, 0.05);">
+                    <h3>ФОРМУЛА</h3>
+                    <div style="font-size: 1.4rem; font-weight: 900; margin: 15px 0;">
+                        ВЫРУЧКА = <br>
+                        <span style="color: var(--accent);">ТРАФИК</span> &times; ЧЕК
+                    </div>
+                    <p style="font-size: 0.8rem; opacity: 0.7;">
+                        Мы заменяем два показателя одним интегральным для упрощения моделирования.
+                    </p>
+                </div>
+
+                <div class="card">
+                    <h3>ДАННЫЕ</h3>
+                    <ul style="list-style: none; padding: 0;">
+                        <li style="margin-bottom: 10px;"><strong>X:</strong> Трафик (чел)</li>
+                        <li><strong>Y:</strong> Средний чек (руб)</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 04. КОРРЕЛЯЦИИ (БЫВШИЙ 8 СЛАЙД) -->
+    <div class="slide" id="chartSlide2">
+        <h2>04. КОРРЕЛЯЦИИ</h2>
+        <div class="card" style="height: 70vh; padding: 10px; overflow: hidden;">
+            <div class="chart-container-fix">
+                 <div id="chart-heatmap" style="width: 100%; height: 100%;"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 05. РАСПРЕДЕЛЕНИЕ (СТАТИЧНЫЕ ДАННЫЕ) -->
+    <div class="slide" id="chartSlideDist">
+        <h2>05. ВЛИЯНИЕ ОКРУЖЕНИЯ</h2>
+        
+        <div style="display: grid; grid-template-rows: 1fr auto; gap: 20px; height: 75vh;">
+            
+            <!-- Блок с графиками -->
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; min-height: 0;">
+                
+                <!-- График 1: Пятерочки -->
+                <div class="card" style="padding: 15px; display: flex; flex-direction: column;">
+                    <h3 style="text-align: center; font-size: 1rem; color: #fff; margin-bottom: 10px;">
+                        ПО КОЛИЧЕСТВУ <span style="color: var(--accent);">ПЯТЕРОЧЕК</span> РЯДОМ
+                    </h3>
+                    <div class="chart-container-fix" style="flex: 1;">
+                        <div id="chart-pyat-dist" style="width: 100%; height: 100%;"></div>
+                    </div>
+                </div>
+
+                <!-- График 2: Магазины -->
+                <div class="card" style="padding: 15px; display: flex; flex-direction: column;">
+                    <h3 style="text-align: center; font-size: 1rem; color: #fff; margin-bottom: 10px;">
+                        ПО КОЛИЧЕСТВУ <span style="color: #aaa;">МАГАЗИНОВ</span> РЯДОМ
+                    </h3>
+                    <div class="chart-container-fix" style="flex: 1;">
+                        <div id="chart-shops-dist" style="width: 100%; height: 100%;"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Блок с выводом -->
+            <div class="card" style="padding: 20px; border-left: 6px solid var(--accent); background: rgba(198, 255, 0, 0.05); display: flex; flex-direction: column; justify-content: center;">
+                <h3 style="color: var(--accent); margin-bottom: 10px; text-transform: uppercase;">ВЫВОД</h3>
+                <p style="font-size: 1.1rem; margin-bottom: 5px; font-weight: bold;">
+                   Пятерочек, у которых нет обычных магазинов рядом, крайне мало.
                 </p>
-                <br>
-                <p style="font-size: 0.85rem; color: #aaa;">
-                    Для проверки гипотезы важнее сам факт наличия магазина сети поблизости, а не их точное количество.
+                <p style="font-size: 0.9rem; color: #ccc; margin-top: 5px;">
+                   Исследовать влияние полного отсутствия конкуренции бессмысленно (выборка мала). <br>
+                   К тому же, "обычные магазины" могут быть любого размера, что вносит шум в данные.
                 </p>
             </div>
         </div>
     </div>
 
-    <!-- 05. НОВЫЕ ПЕРЕМЕННЫЕ: МЕТРИКИ -->
+    <!-- 06. НОВЫЕ ПЕРЕМЕННЫЕ: МЕТРИКИ (БЫВШИЙ 5 СЛАЙД) -->
     <div class="slide" id="slide-metrics">
-        <h2>05. ПРЕОБРАЗОВАНИЕ МЕТРИК</h2>
+        <h2>06. ПРЕОБРАЗОВАНИЕ МЕТРИК</h2>
         
         <div style="display: grid; grid-template-columns: 1fr 1fr; grid-template-rows: auto 1fr; gap: 20px; height: 65vh;">
             
-            <!-- 1. Выручка (Левая колонка, Верх) -->
             <div class="card" style="display: flex; flex-direction: column; justify-content: center; align-items: flex-start; padding: 20px;">
                 <h3 style="margin-bottom: 5px;">НОВАЯ ЦЕЛЕВАЯ: ВЫРУЧКА</h3>
                 <p style="font-size: 0.8rem; margin-bottom: 10px; color: #aaa;">
@@ -221,7 +218,6 @@
                     Выручка = Средний_чек * Трафик
                 </div>
 
-                <!-- НОВАЯ ПОДПИСЬ -->
                 <div style="margin-top: 15px; padding-top: 10px; border-top: 1px dashed #333; width: 100%;">
                     <p style="font-size: 0.7rem; color: #666; font-style: italic; margin: 0;">
                         * Переменные модифицированы составителями датасета
@@ -229,7 +225,6 @@
                 </div>
             </div>
 
-            <!-- 2. График (Правая колонка, На всю высоту) -->
             <div class="card" style="grid-column: 2; grid-row: 1 / -1; padding: 15px; overflow: hidden; display: flex; flex-direction: column;">
                 <h3 style="text-align: center; color: var(--accent); margin-bottom: 10px;">РАСПРЕДЕЛЕНИЕ ВЫРУЧКИ</h3>
                 <div style="flex: 1; display: flex; overflow: hidden;">
@@ -242,7 +237,6 @@
                 </div>
             </div>
 
-            <!-- 3. Новый магазин + Статистика (Левая колонка, Низ) -->
             <div class="card" style="display: flex; flex-direction: column; justify-content: space-between; padding: 20px;">
                 <div>
                     <h3 style="color: var(--accent); margin-bottom: 10px;">НОВЫЙ МАГАЗИН</h3>
@@ -258,59 +252,102 @@
                     </ul>
                 </div>
 
-                <!-- СЕТКА 2x2 С ЦИФРАМИ -->
                 <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: auto;">
-                    
-                    <!-- Ячейка 1: Новый -->
                     <div style="background: rgba(255,255,255,0.05); padding: 8px 12px; border-radius: 6px; border: 1px solid #333;">
                         <div style="font-size: 0.7rem; color: var(--accent); text-transform: uppercase; font-weight: 700; margin-bottom: 2px;">Новый</div>
                         <div style="font-size: 1.1rem; font-weight: 900; color: #fff;">1 072</div>
                     </div>
-
-                    <!-- Ячейка 2: Недавно открытые -->
                     <div style="background: rgba(255,255,255,0.05); padding: 8px 12px; border-radius: 6px; border: 1px solid #333;">
                         <div style="font-size: 0.7rem; color: #888; text-transform: uppercase; font-weight: 700; margin-bottom: 2px;">Недавно открытые</div>
                         <div style="font-size: 1.1rem; font-weight: 900; color: #fff;">6 326</div>
                     </div>
-
-                    <!-- Ячейка 3: Средний возраст -->
                     <div style="background: rgba(255,255,255,0.05); padding: 8px 12px; border-radius: 6px; border: 1px solid #333;">
                         <div style="font-size: 0.7rem; color: #888; text-transform: uppercase; font-weight: 700; margin-bottom: 2px;">Средний возраст</div>
                         <div style="font-size: 1.1rem; font-weight: 900; color: #fff;">13 428</div>
                     </div>
-
-                    <!-- Ячейка 4: Открыты давно -->
                     <div style="background: rgba(255,255,255,0.05); padding: 8px 12px; border-radius: 6px; border: 1px solid #333;">
                         <div style="font-size: 0.7rem; color: #888; text-transform: uppercase; font-weight: 700; margin-bottom: 2px;">Открыты давно</div>
                         <div style="font-size: 1.1rem; font-weight: 900; color: #fff;">916</div>
                     </div>
-
                 </div>
             </div>
         </div>
     </div>
 
-    <!-- 06. ИССЛЕДОВАТЕЛЬСКИЙ ВОПРОС -->
+    <!-- 07. ИССЛЕДОВАТЕЛЬСКИЙ ВОПРОС (БЫВШИЙ 6 СЛАЙД) -->
     <div class="slide">
-        <h2>06. ИССЛЕДОВАТЕЛЬСКИЙ ВОПРОС</h2>
+        <h2>07. ИССЛЕДОВАТЕЛЬСКИЙ ВОПРОС</h2>
         <div class="card flex-center" style="flex: 1; height: auto;">
             <h1 style="font-size: 2.5rem; text-align: center;">
-                как <span style="color: var(--accent);">инфраструктура</span> влияет на <span style="color: var(--accent);">выручку</span> пятерочки ?
+                Как соседство с <span style="color: #E31E24;">пятерочками</span> влияет на <span style="color: var(--accent);">выручку</span> <span style="color: #E31E24;">пятёрочки</span>?
             </h1>
         </div>
     </div>
 
-    <!-- 07. АНАЛИЗ ВЫРУЧКИ И ЧЕКА -->
-    <div class="slide" id="chartSlide1">
-        <h2>07. АНАЛИЗ ВЫРУЧКИ И ЧЕКА</h2>
+    <!-- 08. ОКРУЖЕНИЕ (БЫВШИЙ 4 СЛАЙД) -->
+    <div class="slide">
+        <h2>08. НОВЫЕ ПЕРЕМЕННЫЕ: ОКРУЖЕНИЕ</h2>
         
-        <!-- Используем grid с фиксированной высотой (например 65vh), чтобы графики были большие -->
-        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; height: 65vh; width: 100%;">
+        <div style="display: grid; grid-template-columns: 2fr 1fr; gap: 25px; align-items: start;">
             
-            <!-- Добавляем overflow: hidden в style -->
+            <!-- Левая колонка: Население -->
+            <div class="card" style="padding: 20px;">
+                <h3 style="color: var(--accent); margin-bottom: 20px; font-size: 1.5rem;">КЛАССИФИКАЦИЯ ГОРОДОВ (POPULATION)</h3>
+                
+                <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 15px; margin-bottom: 25px;">
+                    <div style="background: rgba(255,255,255,0.05); padding: 10px; border-radius: 4px; border: 1px solid #333;">
+                        <div style="color: var(--accent); font-weight: bold; font-size: 0.9rem;">МАЛЫЙ</div>
+                        <div style="font-size: 0.75rem; color: #888;">0-50 тыс.</div>
+                    </div>
+                    <div style="background: rgba(255,255,255,0.05); padding: 10px; border-radius: 4px; border: 1px solid #333;">
+                        <div style="color: #fff; font-weight: bold; font-size: 0.9rem;">СРЕДНИЙ</div>
+                        <div style="font-size: 0.75rem; color: #888;">50-100 тыс.</div>
+                    </div>
+                    <div style="background: rgba(255,255,255,0.05); padding: 10px; border-radius: 4px; border: 1px solid #333;">
+                        <div style="color: #fff; font-weight: bold; font-size: 0.9rem;">БОЛЬШОЙ</div>
+                        <div style="font-size: 0.75rem; color: #888;">100-250 тыс.</div>
+                    </div>
+                    <div style="background: rgba(255,255,255,0.05); padding: 10px; border-radius: 4px; border: 1px solid #333;">
+                        <div style="color: #fff; font-weight: bold; font-size: 0.9rem;">КРУПНЫЙ</div>
+                        <div style="font-size: 0.75rem; color: #888;">250-500 тыс.</div>
+                    </div>
+                    <div style="background: rgba(255,255,255,0.05); padding: 10px; border-radius: 4px; border: 1px solid #333;">
+                        <div style="color: #fff; font-weight: bold; font-size: 0.8rem;">КРУПНЕЙШИЙ</div>
+                        <div style="font-size: 0.75rem; color: #888;">500 тыс. - 1 млн</div>
+                    </div>
+                    <div style="background: rgba(255,255,255,0.05); padding: 10px; border-radius: 4px; border: 1px solid #333;">
+                        <div style="color: var(--accent); font-weight: bold; font-size: 0.8rem;">МИЛЛИОННИК</div>
+                        <div style="font-size: 0.75rem; color: #888;">> 1 млн</div>
+                    </div>
+                </div>
+
+                <div style="border-top: 1px solid #333; padding-top: 10px; font-size: 0.75rem; color: #666; font-style: italic;">
+                    * Для корректного сравнения эффективности использована градостроительная классификация.
+                </div>
+            </div>
+
+            <!-- Правая колонка: Конкуренты -->
+            <div class="card" style="padding: 20px; border: 1px dashed #555;">
+                <h3 style="color: var(--accent);">Наличие пятерочёк</h3>
+                <div class="big-stat" style="font-size: 2.5rem; margin: 15px 0;">БИНАРНЫЙ</div>
+                <p style="font-size: 0.9rem;">
+                    Флаг: <strong>Есть конкурент рядом / Нет</strong>.
+                </p>
+                <br>
+                <p style="font-size: 0.85rem; color: #aaa;">
+                    Для проверки гипотезы важнее сам факт наличия магазина сети поблизости.
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- 09. АНАЛИЗ ВЫРУЧКИ И ЧЕКА (БЫВШИЙ 7 СЛАЙД) -->
+    <div class="slide" id="chartSlide1">
+        <h2>09. АНАЛИЗ ВЫРУЧКИ И ЧЕКА</h2>
+        
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; height: 65vh; width: 100%;">
             <div class="card" style="padding: 15px; height: 100%; overflow: hidden;">
                 <h3 style="text-align: center; color: var(--accent);">РАСПРЕДЕЛЕНИЕ ВЫРУЧКИ</h3>
-                <!-- Обертка fix -->
                 <div class="chart-container-fix">
                     <div id="chart-bar-settlements" style="width: 100%; height: 100%;"></div>
                 </div>
@@ -318,154 +355,96 @@
 
             <div class="card" style="padding: 15px; height: 100%; overflow: hidden;">
                 <h3 style="text-align: center; color: var(--accent);">СРЕДНИЙ ЧЕК</h3>
-                <!-- Обертка fix -->
                 <div class="chart-container-fix">
                     <div id="chart-avg-check" style="width: 100%; height: 100%;"></div>
                 </div>
             </div>
-
-        </div>
-    </div>
-        
-
-    <!-- 08. ГРАФИКИ (КОРРЕЛЯЦИИ) -->
-    <div class="slide" id="chartSlide2">
-        <h2>08. КОРРЕЛЯЦИИ</h2>
-        <div class="card" style="height: 70vh; padding: 10px; overflow: hidden;">
-            <div class="chart-container-fix">
-                 <div id="chart-heatmap" style="width: 100%; height: 100%;"></div>
-            </div>
         </div>
     </div>
 
-    <!-- 09. ГИПОТЕЗА -->
+    <!-- 10. ГИПОТЕЗА -->
     <div class="slide">
-        <h2>09. ГИПОТЕЗА</h2>
+        <h2>10. ГИПОТЕЗА</h2>
         <div class="fill-height flex-center">
             <div class="card" style="padding: 50px; border: 2px solid var(--accent); text-align: center; max-width: 900px; background: rgba(198, 255, 0, 0.02);">
                <h1 style="font-size: 2.5rem; line-height: 1.4; text-transform: none; text-shadow: none;">
-                   Рядом стоящие пятёрочки <span style="color: var(--accent);">значительнее</span> снижают <span style="color: var(--accent);">выручку</span> старого магазина, чем <span style="color: var(--accent);">выручку</span> остальных
+                   Рядом стоящие пятёрочки снижают <span style="color: var(--accent);">выручку</span> старых магазина <span style="color: var(--accent);">сильнее</span>, чем <span style="color: var(--accent);">выручку</span> остальных
                </h1>
             </div>
         </div>
     </div>
 
-    <!-- 10. ОСНОВНОЙ МЕХАНИЗМ -->
+    <!-- 11. МЕХАНИЗМ -->
     <div class="slide">
-        <h2>10. МЕХАНИЗМ: ДИЗАЙН</h2>
-        
+        <h2>11. МЕХАНИЗМ</h2>
         <div class="fill-height" style="display: flex; flex-direction: column; justify-content: center; gap: 15px;">
-            
-            <!-- 1. ИСТОК -->
             <div class="card flex-center" style="padding: 20px; border-color: var(--accent);">
                 <h3 style="color: var(--accent); margin: 0; font-size: 1.3rem;">СОВРЕМЕННОЕ ОБОРУДОВАНИЕ И ДИЗАЙН</h3>
             </div>
-
-            <!-- Стрелка -->
             <div style="text-align: center; color: var(--accent); font-size: 1.5rem; line-height: 1;">▼</div>
-
-            <!-- 2. СЛЕДСТВИЕ -->
             <div class="card flex-center" style="padding: 15px; border: 1px dashed #555;">
                 <p style="margin: 0; font-weight: bold; font-size: 1.1rem;">НОВЫЕ ПЯТЕРОЧКИ ПРИВЛЕКАТЕЛЬНЕЕ СТАРЫХ</p>
             </div>
-
-            <!-- Стрелка -->
             <div style="text-align: center; color: var(--accent); font-size: 1.5rem; line-height: 1;">▼</div>
-
-            <!-- 3. РАЗВЕТВЛЕНИЕ (2 ПУНКТА) -->
             <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 30px; width: 100%;">
-                
-                <!-- Пункт 1 -->
                 <div class="card" style="padding: 20px; background: rgba(198, 255, 0, 0.05);">
                     <div style="display: flex; align-items: baseline; gap: 10px; margin-bottom: 10px;">
                         <span style="font-size: 2.5rem; font-weight: 900; color: var(--accent); line-height: 1;">01</span>
                         <h4 style="margin: 0;">НОВЫЕ</h4>
                     </div>
-                    <p style="font-size: 0.95rem;">
-                        Теряют <span style="color: var(--accent); font-weight: 900; text-transform: uppercase;">меньше</span> спроса от наличия старых магазинов рядом.
-                    </p>
+                    <p style="font-size: 0.95rem;">Теряют меньше спроса от наличия старых магазинов рядом.</p>
                 </div>
-
-                <!-- Пункт 2 -->
                 <div class="card" style="padding: 20px; background: rgba(255, 85, 85, 0.05); border-color: #ff5555;">
                     <div style="display: flex; align-items: baseline; gap: 10px; margin-bottom: 10px;">
                         <span style="font-size: 2.5rem; font-weight: 900; color: #ff5555; line-height: 1;">02</span>
                         <h4 style="margin: 0;">СТАРЫЕ</h4>
                     </div>
-                    <p style="font-size: 0.95rem;">
-                        Теряют <span style="color: #ff5555; font-weight: 900; text-transform: uppercase;">больше</span> спроса от наличия новых магазинов рядом.
-                    </p>
+                    <p style="font-size: 0.95rem;">Теряют больше спроса от наличия новых магазинов рядом.</p>
                 </div>
             </div>
-
-            <!-- Стрелка -->
             <div style="text-align: center; color: var(--accent); font-size: 1.5rem; line-height: 1;">▼</div>
-
-            <!-- 4. ФИНАЛЬНЫЙ ВЫВОД -->
             <div class="card" style="padding: 20px; text-align: center; border: 2px solid var(--accent); background: rgba(198, 255, 0, 0.02);">
                 <p style="font-size: 1.2rem; line-height: 1.4; font-weight: bold; margin: 0;">
                     Наличие пятерочёк рядом <span style="color: var(--accent);">значительнее</span> влияет на выручку <span style="color: #ff5555;">СТАРЫХ</span>, чем на выручку новых.
                 </p>
             </div>
-
         </div>
     </div>
 
-    <!-- 11. АЛЬТЕРНАТИВНЫЙ МЕХАНИЗМ -->
+    <!-- 12. АЛЬТЕРНАТИВНЫЙ МЕХАНИЗМ -->
     <div class="slide">
-        <h2>11. АЛЬТЕРНАТИВНЫЙ МЕХАНИЗМ</h2>
-        
+        <h2>12. АЛЬТЕРНАТИВНЫЙ МЕХАНИЗМ</h2>
         <div class="fill-height" style="display: flex; flex-direction: column; justify-content: center; align-items: center; gap: 20px;">
-            
-            <!-- БЛОК ЦЕПОЧКИ -->
             <div style="display: flex; flex-direction: column; gap: 20px; width: 100%; max-width: 800px;">
-                
-                <!-- Шаг 1 -->
                 <div class="card" style="display: flex; flex-direction: row; align-items: center; gap: 20px; padding: 25px;">
                     <div style="background: #333; color: #fff; width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold;">1</div>
                     <div>
-                        <h3 style="color: var(--accent); margin-bottom: 5px;">Неполнота информации</h3>
-                        <h5>Старые пятерочки открывались без информации о местности в момент сбора данных для датасета.</h5>
+                        <h3 style="color: #fff; margin-bottom: 5px;">Неполнота информации</h3>
+                        <h5>Старые пятерочки открывались с меньшей информацией о местности.</h5>
                     </div>
                 </div>
-
-                <!-- Стрелка -->
                 <div style="text-align: center; color: #555; font-size: 1.5rem; line-height: 0.5;">▼</div>
-
-                <!-- Шаг 2 -->
                 <div class="card" style="display: flex; flex-direction: row; align-items: center; gap: 20px; padding: 25px;">
                     <div style="background: #333; color: #fff; width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold;">2</div>
                     <div>
-                        <h3 style="color: #fff; margin-bottom: 5px;">ОПТИМАЛЬНАЯ ЛОКАЦИЯ</h3>
-                        <p>Новые пятёрочки <span style="color: var(--accent);">оптимальнее</span> старых выбрали место для открытия с учетом окружения.</p>
+                        <h3 style="color: #fff; margin-bottom: 5px;">Оптимальная локация</h3>
+                        <h5>Новые пятёрочки <span style="color: var(--accent);">оптимальнее</span> выбрали место.</h5>
                     </div>
                 </div>
-
-                <!-- Стрелка -->
                 <div style="text-align: center; color: #555; font-size: 1.5rem; line-height: 0.5;">▼</div>
-
-                <!-- Шаг 3 (Вывод) -->
                 <div class="card" style="border-left: 6px solid var(--accent); padding: 25px; background: rgba(255, 255, 255, 0.02);">
-                    <h3 style="margin-bottom: 5px;">СЛЕДСТВИЕ</h3>
-                    <p style="font-size: 1.1rem;">
-                        Выручка новых пятёрочек будет <span style="color: var(--accent); font-weight: bold;">слабее зависеть</span> от наличия пятёрочек рядом.
-                    </p>
+                    <h3 style="margin-bottom: 5px;">Следствие</h3>
+                    <h5 style="font-size: 1.1rem;">
+                        Рядом стоящие пятёрочки <span style="color: var(--accent);">значительнее</span> снижают выручку старого магазина.
+                    </h5>
                 </div>
             </div>
-
-            <!-- СНОСКА (FOOTNOTE) -->
-            <div style="margin-top: 40px; text-align: center; opacity: 0.6;">
-                <p style="font-size: 0.8rem; color: #888; font-style: italic;">
-                    * Идея модели Хотеллинга, но с последующим изменением спроса в каждой точке и с последовательным открытием магазинов.
-                </p>
-            </div>
-
         </div>
     </div>
 
-    <!-- 11. МАТ МОДЕЛЬ -->
+    <!-- 13. МАТ МОДЕЛЬ -->
     <div class="slide" id="chartSlide3">
-        <h2>11. МАТ МОДЕЛЬ</h2>
+        <h2>13. МАТ МОДЕЛЬ</h2>
         <div class="grid-2">
             <div>
                 <p>CatBoost Regressor</p>
@@ -484,18 +463,18 @@ model.fit(X_train, y_train)
         </div>
     </div>
 
-    <!-- 12. УСТОЙЧИВОСТЬ -->
+    <!-- 14. УСТОЙЧИВОСТЬ -->
     <div class="slide" id="chartSlide4">
-        <h2>12. УСТОЙЧИВОСТЬ</h2>
+        <h2>14. УСТОЙЧИВОСТЬ</h2>
         <p>Проверка на различных подвыборках.</p>
         <div class="card" style="height: 60%; padding: 10px; margin-top: 20px;">
              <div id="chart-robustness" style="width: 100%; height: 100%;"></div>
         </div>
     </div>
 
-    <!-- 13. ИНТЕРПРЕТАЦИЯ -->
+    <!-- 15. ИНТЕРПРЕТАЦИЯ -->
     <div class="slide">
-        <h2>13. ИНТЕРПРЕТАЦИЯ</h2>
+        <h2>15. ИНТЕРПРЕТАЦИЯ</h2>
         <div class="grid-3">
             <div class="card">
                 <span class="stat-label">R2 SCORE</span>
@@ -513,9 +492,9 @@ model.fit(X_train, y_train)
         <p style="margin-top: 30px;">Модель отлично предсказывает выручку новых магазинов.</p>
     </div>
 
-    <!-- 14. ОГРАНИЧЕНИЯ И ПЕРСПЕКТИВЫ -->
+    <!-- 16. ОГРАНИЧЕНИЯ -->
     <div class="slide">
-        <h2>14. ОГРАНИЧЕНИЯ И ПЕРСПЕКТИВЫ</h2>
+        <h2>16. ОГРАНИЧЕНИЯ И ПЕРСПЕКТИВЫ</h2>
         <div class="grid-2">
             <div class="card">
                 <h3>ОГРАНИЧЕНИЯ</h3>
@@ -534,9 +513,9 @@ model.fit(X_train, y_train)
         </div>
     </div>
 
-    <!-- 15. ПОЛИСИ -->
+    <!-- 17. ПОЛИСИ -->
     <div class="slide">
-        <h2>15. ПОЛИСИ</h2>
+        <h2>17. ПОЛИСИ</h2>
         <div class="grid-2">
             <div class="card">
                 <h3>БИЗНЕС-РЕШЕНИЕ</h3>
@@ -550,11 +529,11 @@ model.fit(X_train, y_train)
         </div>
     </div>
 
-    <!-- 16. КОМАНДА -->
+    <!-- 18. КОМАНДА -->
     <div class="slide">
-        <h2>16. КОМАНДА</h2>
+        <h2>18. КОМАНДА</h2>
         <div class="fill-height" style="justify-content: center;">
-            <div style="display: flex; justify-content: center; gap: 20px; width: 100%; height: 60%;"> <!-- Ограничиваем высоту контейнера фото -->
+            <div style="display: flex; justify-content: center; gap: 20px; width: 100%; height: 60%;">
                 <div class="card" style="padding: 10px; flex: 1;">
                     <div class="team-photo-box" style="height: 70%; background-image: url('images/photo_2025-12-09_11-27-21.jpg');"></div>
                     <div style="padding: 10px;"><h3>CARRY</h3></div>
@@ -593,9 +572,8 @@ model.fit(X_train, y_train)
         </div>
     </div>
 
-
-
     <div id="resurrection-explosion"></div>
+    
     <!-- ================= CONTROLS & JS ================= -->
     <div class="controls">
         <div class="btn-group">
@@ -609,8 +587,9 @@ model.fit(X_train, y_train)
     // ГЛОБАЛЬНЫЕ ПЕРЕМЕННЫЕ ДЛЯ ГРАФИКОВ
     // ==========================================
     let chartSettlements, chartHeatmap, chartModel, chartRobustness;
-    let chartAvgCheck;
-    let chartMiniRevenue;
+    let chartAvgCheck, chartMiniRevenue;
+    let chartPyatDist, chartShopsDist;
+    // Переменная chartScatter удалена, так как заменена на картинку
 
     const ACCENT_COLOR = '#C6FF00'; 
     const TEXT_COLOR = '#ffffff';
@@ -629,6 +608,8 @@ model.fit(X_train, y_train)
         dataLabels: { enabled: false },
         stroke: { curve: 'smooth', width: 3 },
     };
+
+    // СЛАЙД 9: СРЕДНИЙ ЧЕК
     const optionsAvgCheck = {
         ...commonOptions,
         series: [{
@@ -672,88 +653,54 @@ model.fit(X_train, y_train)
         legend: { show: false }
     };
 
-    // ==========================================
-    // ФУНКЦИЯ ДЛЯ ГИСТОГРАММЫ (БИННИНГ)
-    // ==========================================
+    // ГИСТОГРАММА (БИННИНГ)
     function createHistogramData(dataArray) {
-        // 1. Чистим данные
         const nums = dataArray.map(v => parseFloat(v)).filter(v => !isNaN(v));
         if (nums.length === 0) return { categories: [], data: [] };
 
         const minVal = Math.min(...nums);
         const maxVal = Math.max(...nums);
-
-        // 2. Задаем шаг: 5 * 10^7 = 50,000,000
         const step = 3000000; 
 
-        // 3. Выравниваем начало и конец по сетке шага
-        // Например, если минимум 12M, начало оси будет 0. Если 60M -> 50M.
         const start = Math.floor(minVal / step) * step;
         const end = Math.ceil(maxVal / step) * step;
 
-        // 4. Генерируем категории (подписи)
         const categories = [];
-        const binsCount = Math.round((end - start) / step) + 1; // +1 на всякий случай для запаса
+        const binsCount = Math.round((end - start) / step) + 1;
         const bins = new Array(binsCount).fill(0);
 
         for (let i = 0; i < binsCount; i++) {
             const currentVal = start + (i * step);
-            // Красивое форматирование: 50M, 100M
             const label = new Intl.NumberFormat('en-US', { 
                 notation: "compact", 
                 compactDisplay: "short",
                 maximumFractionDigits: 1 
             }).format(currentVal);
-            
             categories.push(label);
         }
 
-        // 5. Раскладываем данные по корзинам
         nums.forEach(num => {
-            // Находим индекс корзины относительно start
             let bucketIndex = Math.floor((num - start) / step);
-            
             if (bucketIndex < 0) bucketIndex = 0;
             if (bucketIndex >= binsCount) bucketIndex = binsCount - 1;
-            
             bins[bucketIndex]++;
         });
 
-        // Удаляем пустые хвосты справа, если нужно (опционально), но оставим для сетки
         return { categories, data: bins };
     }
 
-    // ==========================================
-    // НАСТРОЙКИ ОСНОВНЫХ ГРАФИКОВ
-    // ==========================================
-
-    // СЛАЙД 7: ГИСТОГРАММА (Заготовка)
+    // СЛАЙД 9: ГИСТОГРАММА (Заготовка)
     const optionsBarSettlements = {
         ...commonOptions,
         series: [{ name: 'Магазинов', data: [] }],
         chart: { type: 'bar', height: '100%', background: 'transparent', toolbar: { show: false }, animations: { enabled: true } },
-        plotOptions: { 
-            bar: { borderRadius: 0, horizontal: false, columnWidth: '100%' } 
-        },
-        // Увеличили отступ снизу до 30
-        grid: {
-            borderColor: '#333',
-            strokeDashArray: 4,
-            padding: { bottom: 30, left: 10, right: 10 }
-        },
+        plotOptions: { bar: { borderRadius: 0, horizontal: false, columnWidth: '100%' } },
+        grid: { borderColor: '#333', strokeDashArray: 4, padding: { bottom: 30, left: 10, right: 10 } },
         xaxis: { 
             categories: [], 
-            title: {
-                text: 'Выручка',
-                offsetY: -5,
-                // УВЕЛИЧИЛ ШРИФТ
-                style: { color: '#ffffff', fontSize: '16px', fontWeight: 'bold' }
-            },
+            title: { text: 'Выручка', offsetY: -5, style: { color: '#ffffff', fontSize: '18px', fontWeight: 'bold' } },
             labels: { 
-                show: true,
-                rotate: -45,
-                // УВЕЛИЧИЛ ШРИФТ ЦИФР СНИЗУ
-                style: { colors: '#888', fontSize: '12px' },
+                show: true, rotate: -45, style: { colors: '#888', fontSize: '14px' },
                 formatter: function(val, timestamp, opts) {
                     if (opts && typeof opts.i !== 'undefined') {
                         if (opts.i % 8 === 0) return val; 
@@ -762,38 +709,62 @@ model.fit(X_train, y_train)
                     return val;
                 }
             }, 
-            axisBorder: { show: false }, 
-            axisTicks: { show: false } 
+            axisBorder: { show: false }, axisTicks: { show: false } 
         },
         yaxis: {
             min: 0,
-            title: {
-                text: 'Количество',
-                // УВЕЛИЧИЛ ШРИФТ
-                style: { color: '#ffffff', fontSize: '16px', fontWeight: 'bold' }
-            },
-            // УВЕЛИЧИЛ ШРИФТ ЦИФР СЛЕВА
-            labels: { style: { colors: '#888', fontSize: '13px' } }
+            title: { text: 'Количество', style: { color: '#ffffff', fontSize: '18px', fontWeight: 'bold' } },
+            labels: { style: { colors: '#888', fontSize: '14px' } }
         },
         colors: [ACCENT_COLOR],
         tooltip: { theme: 'dark', y: { formatter: (val) => val + " шт." } }
     };
 
-    // СЛАЙД 8: HEATMAP
+    // СЛАЙД 4: HEATMAP (КОРРЕЛЯЦИИ)
     const optionsHeatmap = {
         ...commonOptions,
         series: [
-            { name: 'Revenue', data: [1.0, 0.8, 0.1, 0.4] },
-            { name: 'Competitors', data: [0.8, 1.0, 0.3, 0.2] },
-            { name: 'Population', data: [0.1, 0.3, 1.0, 0.5] },
-            { name: 'Is_New', data: [0.4, 0.2, 0.5, 1.0] }
+            { name: 'e-commerce',      data: [1.00, 0.23, 0.11, 0.22, 0.23, 0.17, 0.22] },
+            { name: 'медучреждения',   data: [0.23, 1.00, 0.22, 0.37, 0.43, 0.34, 0.15] },
+            { name: 'школы',           data: [0.11, 0.22, 1.00, 0.19, 0.24, 0.20, 0.08] },
+            { name: 'остановки',       data: [0.22, 0.37, 0.19, 1.00, 0.27, 0.26, 0.20] },
+            { name: 'магазины',        data: [0.23, 0.43, 0.24, 0.27, 1.00, 0.72, -0.01] },
+            { name: 'пятерочки',       data: [0.17, 0.34, 0.20, 0.26, 0.72, 1.00, -0.02] },
+            { name: 'выручка',         data: [0.22, 0.15, 0.08, 0.20, -0.01, -0.02, 1.00] }
         ],
         chart: { type: 'heatmap', height: '100%', background: 'transparent', toolbar: { show: false } },
-        plotOptions: { heatmap: { shadeIntensity: 0.5, colorScale: { ranges: [{ from: 0, to: 0.5, color: '#333333' }, { from: 0.51, to: 1.0, color: ACCENT_COLOR }] } } },
-        xaxis: { categories: ['Rev', 'Comp', 'Pop', 'New'] }
+        legend: {
+            show: true, position: 'right', offsetY: 0, width: 60,
+            itemMargin: { vertical: 0, horizontal: 0 },
+            markers: { width: 20, height: 25, radius: 0 },
+            fontSize: '11px', labels: { colors: '#888' }
+        },
+        plotOptions: { 
+            heatmap: { 
+                shadeIntensity: 0.5, radius: 2, useFillColorAsStroke: false,
+                colorScale: { 
+                    ranges: [
+                        { from: -1.0, to: 0.0, color: '#560319', name: '< 0' },
+                        { from: 0.01, to: 0.15, color: '#FF2300', name: '0.1' },
+                        { from: 0.16, to: 0.30, color: '#FF6F00', name: '0.2' },
+                        { from: 0.31, to: 0.45, color: '#FFBA00', name: '0.4' },
+                        { from: 0.46, to: 0.60, color: '#E6FF00', name: '0.6' },
+                        { from: 0.61, to: 0.80, color: '#9bd100', name: '0.8' },
+                        { from: 0.81, to: 1.00, color: '#8fb900', name: '1.0' }
+                    ] 
+                } 
+            } 
+        },
+        dataLabels: { enabled: true, style: { colors: ['#fff'], fontSize: '11px', fontWeight: 'bold' } },
+        xaxis: { 
+            categories: ['e-commerce', 'медучреждения', 'школы', 'остановки', 'магазины', 'пятерочки', 'выручка'],
+            labels: { style: { colors: '#888', fontSize: '10px' } }, tooltip: { enabled: false }
+        },
+        yaxis: { reversed: true, labels: { style: { colors: '#ffffff', fontSize: '12px', fontWeight: 'bold' } } },
+        stroke: { width: 1, colors: ['#000'] }
     };
 
-    // СЛАЙД 10: МОДЕЛЬ
+    // СЛАЙД 13: МОДЕЛЬ
     const optionsModelPerf = {
         ...commonOptions,
         series: [{ name: 'Actual', data: [30, 40, 35, 50, 49, 60, 70] }, { name: 'Predicted', data: [32, 38, 36, 52, 48, 62, 68] }],
@@ -803,7 +774,7 @@ model.fit(X_train, y_train)
         colors: ['#ffffff', ACCENT_COLOR]
     };
 
-    // СЛАЙД 11: УСТОЙЧИВОСТЬ
+    // СЛАЙД 14: УСТОЙЧИВОСТЬ
     const optionsRobustness = {
         ...commonOptions,
         series: [{ name: 'Train', data: [0.85, 0.84, 0.86] }, { name: 'Test', data: [0.83, 0.82, 0.84] }, { name: 'OOT', data: [0.81, 0.80, 0.82] }],
@@ -814,23 +785,56 @@ model.fit(X_train, y_train)
     };
 
     // ==========================================
-    // ИНИЦИАЛИЗАЦИЯ ПОСЛЕ ЗАГРУЗКИ DOM
+    // ДАННЫЕ ДЛЯ 5 СЛАЙДА (СНЯТЫ СО СКРИНШОТОВ)
+    // ==========================================
+    // Данные по выручке (примерно 1e7) в зависимости от кол-ва пятерочек (0-9)
+    const dataPyatRevenue = [5.95, 6.1, 6.15, 5.8, 5.6, 5.0, 5.3, 4.0, 4.7, 2.9]; 
+    const catsPyat = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'];
+
+    // Данные по выручке (примерно 1e7) в зависимости от кол-ва магазинов (0-19)
+    const dataShopRevenue = [
+        5.7, 5.95, 6.0, 6.1, 6.2, 6.15, 6.18, 6.0, 5.95, 5.6, 
+        5.7, 5.5, 5.1, 5.6, 4.8, 5.1, 3.5, 4.5, 5.5, 6.2
+    ];
+    const catsShop = Array.from({length: 20}, (_, i) => i.toString());
+
+    // Настройки для графиков 5 слайда
+    const optionsDistStatic = {
+        ...commonOptions,
+        chart: { type: 'bar', height: '100%', background: 'transparent', toolbar: { show: false }, animations: { enabled: true } },
+        plotOptions: { 
+            bar: { 
+                borderRadius: 4, 
+                columnWidth: '70%',
+                dataLabels: { position: 'top' } // убрали цифры сверху для чистоты
+            } 
+        },
+        dataLabels: { enabled: false },
+        yaxis: { 
+            title: { text: 'Выручка (x10 млн)', style: { color: '#888', fontSize: '16px' } },
+            labels: { style: { colors: '#888', fontSize: '14px' }, formatter: (val) => val.toFixed(1) }
+        },
+        colors: [ACCENT_COLOR],
+        tooltip: { 
+            theme: 'dark', 
+            y: { formatter: (val) => (val * 10).toFixed(1) + " млн ₽" } 
+        }
+    };
+
+    // ==========================================
+    // ИНИЦИАЛИЗАЦИЯ
     // ==========================================
     document.addEventListener('DOMContentLoaded', () => {
-         if(document.querySelector("#chart-avg-check")) {
+        // 1. Инит статичных графиков
+        if(document.querySelector("#chart-avg-check")) {
             chartAvgCheck = new ApexCharts(document.querySelector("#chart-avg-check"), optionsAvgCheck);
             chartAvgCheck.render();
         }
-        // 1. Создаем экземпляры графиков
         if(document.querySelector("#chart-bar-settlements")) {
-        chartSettlements = new ApexCharts(document.querySelector("#chart-bar-settlements"), optionsBarSettlements);
-        chartSettlements.render();
-    }
-
-        // 2. Создаем МИНИ график (Слайд 5) - используем те же настройки optionsBarSettlements
+            chartSettlements = new ApexCharts(document.querySelector("#chart-bar-settlements"), optionsBarSettlements);
+            chartSettlements.render();
+        }
         if(document.querySelector("#chart-mini-revenue")) {
-            // Клонируем настройки, чтобы отключить анимацию при инициализации (опционально) или меняем шрифты
-            // Но для простоты используем те же настройки
             chartMiniRevenue = new ApexCharts(document.querySelector("#chart-mini-revenue"), optionsBarSettlements);
             chartMiniRevenue.render();
         }
@@ -847,52 +851,70 @@ model.fit(X_train, y_train)
             chartRobustness.render();
         }
 
-        // 2. Загружаем CSV (HISTPLOT.CSV)
-        // ВАЖНО: Работает только через Live Server!
-        if (typeof Papa !== 'undefined') {
-        Papa.parse("histplot.csv", {
-            download: true,
-            header: true,
-            skipEmptyLines: true,
-            complete: function(results) {
-                console.log("CSV Loaded");
-                const revenueData = results.data.map(row => row['выручка']); 
-                const histData = createHistogramData(revenueData);
-                
-                // Обновляем график на 7 слайде
-                if(chartSettlements) {
-                    chartSettlements.updateOptions({
-                        xaxis: { categories: histData.categories },
-                        series: [{ name: 'Магазинов', data: histData.data }]
-                    });
+        // ИНИЦИАЛИЗАЦИЯ ГРАФИКОВ 5 СЛАЙДА (СТАТИКА)
+        if(document.querySelector("#chart-pyat-dist")) {
+            chartPyatDist = new ApexCharts(document.querySelector("#chart-pyat-dist"), {
+                ...optionsDistStatic,
+                series: [{ name: 'Выручка', data: dataPyatRevenue }],
+                xaxis: { 
+                    categories: catsPyat, 
+                    title: { text: 'Кол-во Пятерочек', style: { color: '#666', fontSize: '16px' } },
+                    labels: { style: { colors: '#888', fontSize: '14px' } }
                 }
-                
-                // Обновляем график на 5 слайде (ТО ЖЕ САМОЕ)
-                if(chartMiniRevenue) {
-                chartMiniRevenue.updateOptions({
-                    xaxis: { 
-                        categories: histData.categories, 
-                        // 1. ВКЛЮЧАЕМ ПОДПИСИ
-                        labels: { 
-                            show: true,
-                            rotate: -45,
-                            style: { colors: '#888', fontSize: '10px' }
-                        } 
-                    }, 
-                    yaxis: { show: false }, // Ось Y обычно скрывают на мини-графиках, но можно включить true
-                    
-                    // 2. ВАЖНО: Добавляем отступ снизу (bottom: 25), иначе подписи обрежутся
-                    grid: { padding: { left: 10, right: 10, bottom: 25 } },
-                    
-                    series: [{ name: 'Магазинов', data: histData.data }]
-                });
-            }
-            },
-            error: function(err) { console.warn("CSV Error:", err); }
-        });
-    }
+            });
+            chartPyatDist.render();
+        }
 
-        // 4. ЗАПУСК СЛАЙДЕРА (Только после того как DOM готов)
+        if(document.querySelector("#chart-shops-dist")) {
+            chartShopsDist = new ApexCharts(document.querySelector("#chart-shops-dist"), {
+                ...optionsDistStatic,
+                series: [{ name: 'Выручка', data: dataShopRevenue }],
+                xaxis: { 
+                    categories: catsShop,
+                    title: { text: 'Кол-во Магазинов', style: { color: '#666', fontSize: '16px' } },
+                    labels: { style: { colors: '#888', fontSize: '14px' } }
+                }
+            });
+            chartShopsDist.render();
+        }
+        // SCATTER chart (chartScatter) больше не инициализируется, так как заменен на картинку
+
+        // 2. Загрузка данных для Scatter (Слайд 3) удалена
+
+        // 3. Загрузка данных для Гистограмм (Слайд 6 и 9)
+        if (typeof Papa !== 'undefined') {
+            Papa.parse("histplot.csv", {
+                download: true,
+                header: true,
+                skipEmptyLines: true,
+                complete: function(results) {
+                    console.log("Hist CSV Loaded");
+                    const revenueData = results.data.map(row => row['выручка']); 
+                    const histData = createHistogramData(revenueData);
+                    
+                    if(chartSettlements) {
+                        chartSettlements.updateOptions({
+                            xaxis: { categories: histData.categories },
+                            series: [{ name: 'Магазинов', data: histData.data }]
+                        });
+                    }
+                    if(chartMiniRevenue) {
+                        chartMiniRevenue.updateOptions({
+                            xaxis: { 
+                                categories: histData.categories, 
+                                labels: { 
+                                    show: true, rotate: -45, style: { colors: '#888', fontSize: '14px' }
+                                } 
+                            }, 
+                            yaxis: { show: false }, 
+                            grid: { padding: { left: 10, right: 10, bottom: 25 } },
+                            series: [{ name: 'Магазинов', data: histData.data }]
+                        });
+                    }
+                }
+            });
+        }
+
         totalSlidesEl.innerText = slides.length;
         showSlide(currentSlide);
     });
@@ -930,9 +952,15 @@ model.fit(X_train, y_train)
         const slidesArr = Array.from(document.querySelectorAll('.slide'));
         const currentSlideEl = slidesArr[index];
         
-        // Добавлена проверка if (chart...), чтобы не падала ошибка
-        if (currentSlideEl.id === 'chartSlide1' && chartSettlements) {
-            chartSettlements.updateOptions({ chart: { animations: { enabled: true } } });
+        // Обновляем анимации по ID слайда, чтобы не зависеть от порядка
+        // chartScatter удален из списка обновлений
+        if (currentSlideEl.id === 'chartSlideDist') {
+            if (chartPyatDist) chartPyatDist.updateOptions({ chart: { animations: { enabled: true } } });
+            if (chartShopsDist) chartShopsDist.updateOptions({ chart: { animations: { enabled: true } } });
+        }
+        if (currentSlideEl.id === 'chartSlide1') {
+            if (chartSettlements) chartSettlements.updateOptions({ chart: { animations: { enabled: true } } });
+            if (chartAvgCheck) chartAvgCheck.updateOptions({ chart: { animations: { enabled: true } } });
         }
         if (currentSlideEl.id === 'chartSlide2' && chartHeatmap) {
             chartHeatmap.updateOptions({ chart: { animations: { enabled: true } } });
@@ -943,9 +971,9 @@ model.fit(X_train, y_train)
         if (currentSlideEl.id === 'chartSlide4' && chartRobustness) {
             chartRobustness.updateOptions({ chart: { animations: { enabled: true } } });
         }
-        if (currentSlideEl.id === 'chartSlide1') {
-            if (chartSettlements) chartSettlements.updateOptions({ chart: { animations: { enabled: true } } });
-            if (chartAvgCheck) chartAvgCheck.updateOptions({ chart: { animations: { enabled: true } } });
+        // Для мини графика на слайде с метриками
+        if (currentSlideEl.id === 'slide-metrics' && chartMiniRevenue) {
+            chartMiniRevenue.updateOptions({ chart: { animations: { enabled: true } } });
         }
     }
 
@@ -964,7 +992,6 @@ model.fit(X_train, y_train)
         if (e.key === 'ArrowLeft') prevSlide();
     });
 
-    // Пасхалка с фото
     const teamPhotos = document.querySelectorAll('.team-photo-box');
     const explosionOverlay = document.getElementById('resurrection-explosion');
     if (teamPhotos.length > 0 && explosionOverlay) {
@@ -991,3 +1018,5 @@ model.fit(X_train, y_train)
         }, 800);
     }
 </script>
+</body>
+</html>
