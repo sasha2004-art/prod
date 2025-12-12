@@ -105,7 +105,7 @@ ul { margin-bottom: 10px; }
     display: flex;
     flex-direction: column;
     justify-content: center; /* Центрируем контент по вертикали */
-    padding: 60px 80px;      /* Вернули отступы */
+    padding: 60px 80px 100px 80px;      /* Вернули отступы */
     opacity: 0;
     visibility: hidden;
     transform: translateY(10px);

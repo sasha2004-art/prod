@@ -284,7 +284,7 @@
     </div>
 
     <!-- 07. ИССЛЕДОВАТЕЛЬСКИЙ ВОПРОС (БЫВШИЙ 6 СЛАЙД) -->
-    <div class="slide" style="padding-bottom: 100px;">
+    <div class="slide">
         <h2>07. ИССЛЕДОВАТЕЛЬСКИЙ ВОПРОС</h2>
         <div class="card flex-center" style="flex: 1;">
             <h1 style="font-size: 2.5rem; text-align: center;">
@@ -480,7 +480,6 @@
                     
                     <div style="background: rgba(255,255,255,0.05); padding: 12px; border-radius: 6px; border: 1px solid #444;">
                         <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 5px;">
-                            <span style="color: #ff5555; font-weight: bold;">!</span>
                             <span style="font-size: 0.9rem; font-weight: bold; color: #fff;">Критерий Левена</span>
                         </div>
                         <p style="font-size: 0.85rem; margin: 0; color: #aaa;">
@@ -490,22 +489,39 @@
                     </div>
                 </div>
 
-                <!-- Блок статистики (Сводный) -->
+                <!-- Блок статистики (Численные) -->
                 <div class="card" style="padding: 20px; flex: 1; display: flex; flex-direction: column; justify-content: center;">
-                    <h3 style="margin-bottom: 20px; text-align: left;">Результаты</h3>
+                    <h3 style="margin-bottom: 15px; text-align: left;">Результаты (млн ₽)</h3>
                     
-                    <div style="margin-bottom: 25px;">
-                        <div style="font-size: 0.85rem; color: #888; text-transform: uppercase; margin-bottom: 5px;">Разница (Старые магазины)</div>
-                        <div style="font-size: 2rem; color: #ff5555; font-weight: 900;">-16.9M ₽</div>
-                        <div style="color: #ff5555; font-size: 1rem;">(p < 0.01)</div>
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+                        <div>
+                            <div style="font-size: 0.85rem; color: #888; text-transform: uppercase; margin-bottom: 5px;">Разница (Старые)</div>
+                            <div style="font-size: 1.8rem; color: #ff5555; font-weight: 900;">-16.9M</div>
+                            <div style="color: #ff5555; font-size: 0.9rem;">(p < 0.01)</div>
+                        </div>
+
+                        <div>
+                            <div style="font-size: 0.85rem; color: #888; text-transform: uppercase; margin-bottom: 5px;">Разница (остальные)</div>
+                            <div style="font-size: 1.8rem; color: #fff; font-weight: 900;">-0.75M</div>
+                            <div style="color: var(--accent); font-size: 0.9rem;">(p < 0.01)</div>
+                        </div>
                     </div>
+                </div>
 
-                    <div style="width: 100%; height: 1px; background: #333; margin-bottom: 25px;"></div>
+                <!-- Блок статистики (Проценты) -->
+                <div class="card" style="padding: 20px; flex: 1; display: flex; flex-direction: column; justify-content: center;">
+                    <h3 style="margin-bottom: 15px; text-align: left;">Результаты (%)</h3>
+                    
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+                        <div>
+                            <div style="font-size: 0.85rem; color: #888; text-transform: uppercase; margin-bottom: 5px;">Разница (Старые)</div>
+                            <div style="font-size: 1.8rem; color: #ff5555; font-weight: 900;">14.4%</div>
+                        </div>
 
-                    <div>
-                        <div style="font-size: 0.85rem; color: #888; text-transform: uppercase; margin-bottom: 5px;">Разница (Общая выборка)</div>
-                        <div style="font-size: 2rem; color: #fff; font-weight: 900;">-0.75M ₽</div>
-                        <div style="color: var(--accent); font-size: 1rem;">(p < 0.05)</div>
+                        <div>
+                            <div style="font-size: 0.85rem; color: #888; text-transform: uppercase; margin-bottom: 5px;">Разница (остальные)</div>
+                            <div style="font-size: 1.8rem; color: #fff; font-weight: 900;">1.3%</div>
+                        </div>
                     </div>
                 </div>
 
@@ -528,7 +544,7 @@
                 <!-- ГРАФИК 2: Все (Слабый эффект) -->
                 <div class="card" style="flex: 1; padding: 15px; display: flex; flex-direction: column; overflow: hidden;">
                     <div style="display: flex; justify-content: space-between; align-items: center;">
-                        <h4 style="margin: 0; color: #fff;">2. Выборка: Все магазины</h4>
+                        <h4 style="margin: 0; color: #fff;">2. Выборка: Остальные</h4>
                         <span style="font-size: 0.8rem; color: #666;">Слабое влияние</span>
                     </div>
                     <div class="chart-container-fix" style="flex: 1; min-height: 0;">
@@ -611,26 +627,26 @@
     <div class="slide">
         <h2>18. КОМАНДА</h2>
         <div class="fill-height" style="justify-content: center;">
-            <div style="display: flex; justify-content: center; gap: 20px; width: 100%; height: 60%;">
+            <div style="display: flex; justify-content: center; gap: 20px; width: 100%;">
                 <div class="card" style="padding: 10px; flex: 1;">
-                    <div class="team-photo-box" style="height: 70%; background-image: url('images/photo_2025-12-09_11-27-21.jpg');"></div>
+                    <div class="team-photo-box" style="background-image: url('images/photo_2025-12-09_11-27-21.jpg');"></div>
                     <div style="padding: 10px;"><h3>CARRY</h3></div>
                 </div>
                 <div class="card" style="padding: 10px; flex: 1;">
-                    <div class="team-photo-box" style="height: 70%; background-image: url('images/db112ad479a169c8f5f1465418636ee5.1000x1000x1.png');"></div>
+                    <div class="team-photo-box" style="background-image: url('images/db112ad479a169c8f5f1465418636ee5.1000x1000x1.png');"></div>
                     <div style="padding: 10px;"><h3>MID</h3></div>
                 </div>
                 <div class="card" style="padding: 10px; flex: 1;">
-                    <div id="offlane-photo" class="team-photo-box dead" style="height: 70%; background-image: url('images/penis.jpg');"></div>
+                    <div id="offlane-photo" class="team-photo-box dead" style="background-image: url('images/penis.jpg');"></div>
                     <div style="padding: 10px;"><h3>OFFLANE</h3></div>
                     <h5>вечная память</h5>
                 </div>
                  <div class="card" style="padding: 10px; flex: 1;">
-                    <div id="offlane-photo" class="team-photo-box dead" style="height: 70%; background-image: url('images/tete.jpg');"></div>
+                    <div class="team-photo-box dead" style="background-image: url('images/tete.jpg');"></div>
                     <div style="padding: 10px;"><h3>SUPPORT</h3></div>
                 </div>
                 <div class="card" style="padding: 10px; flex: 1;">
-                    <div class="team-photo-box" style="height: 70%; background-image: url('images/photo_2025-12-09_11-27-57.jpg');"></div>
+                    <div class="team-photo-box" style="background-image: url('images/photo_2025-12-09_11-27-57.jpg');"></div>
                     <div style="padding: 10px;"><h3>HARD SUPPORT</h3></div>
                     
                 </div>
@@ -864,7 +880,7 @@
         },
         stroke: {
             colors: ['#ccc'],
-            width: 3 // Увеличили толщину линий
+            width: 1 // Уменьшили толщину линий
         },
         grid: {
             borderColor: '#333',
@@ -909,7 +925,7 @@
         xaxis: {
             categories: ['Без Пятерочек', 'С Пятерочками'],
             labels: {
-                style: { colors: '#fff', fontSize: '16px', fontWeight: 'bold' } // Крупный шрифт
+                style: { colors: '#fff', fontSize: '12px', fontWeight: 'bold' } // Мелкий шрифт
             },
             tooltip: { enabled: false }
         },
@@ -958,7 +974,7 @@
         xaxis: {
             categories: ['Без Пятерочек', 'С Пятерочками'],
             labels: {
-                style: { colors: '#fff', fontSize: '16px', fontWeight: 'bold' } // Крупный шрифт
+                style: { colors: '#fff', fontSize: '12px', fontWeight: 'bold' } // Мелкий шрифт
             },
             tooltip: { enabled: false }
         },

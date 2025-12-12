@@ -207,52 +207,127 @@
         </div>
     </div>
 
-    <!-- 8. КОД МОДЕЛИ -->
-    <div class="slide">
-        <h2>08. МОДЕЛЬ (CODE)</h2>
-        <p>Используем CatBoostClassifier с кастомной метрикой.</p>
+    <!-- 08. ОЧИСТКА ВЫБРОСОВ (NEW STYLE) -->
+    <div class="slide" id="slide-outliers">
+        <h2>08. ОЧИСТКА ВЫБРОСОВ</h2>
         
-        <div class="code-block">
-<span class="keyword">from</span> catboost <span class="keyword">import</span> CatBoostClassifier
+        <!-- Верхние карточки со статистикой удалений -->
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 30px; margin-bottom: 25px;">
+            <div class="card" style="flex-direction: row; justify-content: space-between; align-items: center; border-left: 4px solid #ff5555; background: rgba(255, 85, 85, 0.05);">
+                <div>
+                    <div class="stat-label" style="color: #ff5555;">ТРАФИК (УДАЛЕНО)</div>
+                    <div class="big-stat" style="color: #fff; margin: 5px 0;">59 <span style="font-size: 1rem; color: #888;">строк</span></div>
+                </div>
+                <div style="text-align: right;">
+                    <div style="font-size: 1.5rem; font-weight: 900; color: #ff5555;">&lt; 1%</div>
+                    <div style="font-size: 0.8rem; color: #aaa;">Экстремальные минимумы</div>
+                </div>
+            </div>
 
-<span class="keyword">def</span> <span class="func">train_model</span>(X_train, y_train):
-    model = CatBoostClassifier(
-        iterations=<span class="string">1000</span>,
-        learning_rate=<span class="string">0.05</span>,
-        eval_metric=<span class="string">'AUC'</span>,
-        verbose=<span class="string">100</span>
-    )
-    
-    model.fit(X_train, y_train)
-    <span class="keyword">return</span> model
-
-<span class="comment"># Результат на валидации: AUC 0.895</span>
+            <div class="card" style="flex-direction: row; justify-content: space-between; align-items: center; border-left: 4px solid #ff5555; background: rgba(255, 85, 85, 0.05);">
+                <div>
+                    <div class="stat-label" style="color: #ff5555;">СРЕДНИЙ ЧЕК (УДАЛЕНО)</div>
+                    <div class="big-stat" style="color: #fff; margin: 5px 0;">229 <span style="font-size: 1rem; color: #888;">строк</span></div>
+                </div>
+                <div style="text-align: right;">
+                    <div style="font-size: 1.5rem; font-weight: 900; color: #ff5555;">&lt; 1%</div>
+                    <div style="font-size: 0.8rem; color: #aaa;">Аномально низкие</div>
+                </div>
+            </div>
         </div>
-        <div style="display: flex; gap: 20px;">
-            <span class="tag">PYTHON 3.9</span>
-            <span class="tag">CATBOOST</span>
-            <span class="tag">SKLEARN</span>
+
+        <!-- Основной контент: Логика + Графики -->
+        <div style="display: grid; grid-template-columns: 1fr 1.2fr; gap: 30px; height: 50vh;">
+            
+            <!-- Левая колонка: Логика -->
+            <div class="card" style="justify-content: center; gap: 20px; padding: 30px;">
+                <!-- Блок Пятерочки -->
+                <div style="display: flex; align-items: center; gap: 15px;">
+                    <div style="min-width: 40px; height: 40px; border-radius: 50%; background: rgba(198, 255, 0, 0.1); color: var(--accent); display: flex; justify-content: center; align-items: center; font-weight: bold;">OK</div>
+                    <div>
+                        <h4 style="margin: 0; color: var(--accent);">ПЯТЕРОЧКИ</h4>
+                        <p style="font-size: 0.9rem; margin: 0; color: #888;">Выбросов нет. Оставляем всё.</p>
+                    </div>
+                </div>
+
+                <div style="width: 100%; height: 1px; background: #333;"></div>
+
+                <!-- Блок Трафик -->
+                <div>
+                    <h4 style="margin-bottom: 5px;">ТРАФИК</h4>
+                    <div class="code-block" style="margin: 5px 0; padding: 8px 12px; font-size: 0.85rem;">Lower = Q1 - <span style="color: var(--accent);">3</span> * IQR</div>
+                    <p style="font-size: 0.85rem; color: #aaa; margin-top: 8px;">
+                        Население везде разное &rarr; Верхней границы нет.<br>
+                        Удаляем только <span style="color: #ff5555;">экстремальные</span> минимумы.
+                    </p>
+                </div>
+
+                <div style="width: 100%; height: 1px; background: #333;"></div>
+
+                <!-- Блок Чек -->
+                <div>
+                    <h4 style="margin-bottom: 5px;">СРЕДНИЙ ЧЕК</h4>
+                    <div class="code-block" style="margin: 5px 0; padding: 8px 12px; font-size: 0.85rem;">Lower = Q1 - <span style="color: var(--accent);">1.5</span> * IQR</div>
+                    <p style="font-size: 0.85rem; color: #aaa; margin-top: 8px;">
+                        Менее зависим от населения &rarr; Фильтр строже.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Правая колонка: Графики BoxPlot -->
+            <div style="display: flex; flex-direction: column; gap: 20px;">
+                
+                <div class="card" style="flex: 1; padding: 10px 20px; overflow: hidden; display: flex; flex-direction: column;">
+                    <div style="display: flex; justify-content: space-between;">
+                        <span class="stat-label">Boxplot: Трафик</span>
+                        <span style="font-size: 0.75rem; color: #ff5555;">&#9679; Удаленные выбросы слева</span>
+                    </div>
+                    <div class="chart-container-fix" style="flex: 1;">
+                        <div id="chart-outlier-traffic" style="width: 100%; height: 100%;"></div>
+                    </div>
+                </div>
+
+                <div class="card" style="flex: 1; padding: 10px 20px; overflow: hidden; display: flex; flex-direction: column;">
+                    <div style="display: flex; justify-content: space-between;">
+                        <span class="stat-label">Boxplot: Средний чек</span>
+                         <span style="font-size: 0.75rem; color: #ff5555;">&#9679; Более строгий фильтр</span>
+                    </div>
+                    <div class="chart-container-fix" style="flex: 1;">
+                        <div id="chart-outlier-check" style="width: 100%; height: 100%;"></div>
+                    </div>
+                </div>
+
+            </div>
         </div>
     </div>
 
-    <!-- 9. РЕЗУЛЬТАТЫ -->
-    <div class="slide">
-        <h2>09. РЕЗУЛЬТАТЫ</h2>
-        <div class="grid-3">
-            <div class="card">
-                <span class="stat-label">ROC-AUC</span>
-                <span class="big-stat">0.89</span>
-                <span style="color: var(--accent); font-weight: bold;">+0.05 vs Baseline</span>
+    <!-- 09. ВЫРУЧКА ПО ДАТЕ И КОНКУРЕНЦИИ -->
+    <div class="slide" id="slide-revenue-impact">
+        <h2>09. ВЫРУЧКА И КОНКУРЕНЦИЯ</h2>
+        
+        <div class="card" style="height: 75vh; padding: 20px; display: flex; flex-direction: column;">
+            <div style="display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 10px;">
+                <h3 style="color: var(--accent); margin: 0;">Влияние Пятерочек на выручку разных поколений магазинов</h3>
+                <div style="font-size: 0.9rem; color: #888;">Данные в млн ₽</div>
             </div>
-            <div class="card">
-                <span class="stat-label">PRECISION @ K=5</span>
-                <span class="big-stat">0.72</span>
-                <p>Высокая точность в топе</p>
+            
+            <div class="chart-container-fix" style="flex: 1;">
+                <div id="chart-revenue-impact" style="width: 100%; height: 100%;"></div>
             </div>
-            <div class="card">
-                <span class="stat-label">INFERENCE TIME</span>
-                <span class="big-stat" style="color: #fff;">20ms</span>
-                <p>Подходит для Real-time</p>
+
+            <!-- Легенда/Вывод внизу карточки -->
+            <div style="margin-top: 15px; padding-top: 15px; border-top: 1px dashed #333; display: flex; gap: 30px; align-items: center;">
+                <div style="display: flex; align-items: center; gap: 10px;">
+                    <span style="width: 15px; height: 15px; background: #66c2a5; display: block; border-radius: 2px;"></span>
+                    <span style="font-size: 0.9rem;">Нет Пятерочек рядом</span>
+                </div>
+                <div style="display: flex; align-items: center; gap: 10px;">
+                    <span style="width: 15px; height: 15px; background: #fc8d62; display: block; border-radius: 2px;"></span>
+                    <span style="font-size: 0.9rem;">Есть Пятерочки рядом</span>
+                </div>
+                <div style="margin-left: auto; color: #fc8d62; font-weight: bold;">
+                    Самое сильное падение у старых магазинов (-17 млн ₽)
+                </div>
             </div>
         </div>
     </div>
@@ -457,6 +532,8 @@
 
         // Initial Render
         let chartArea, chartBar, chartRadial;
+        let chartOutlierTraffic, chartOutlierCheck;
+        let chartRevenueImpact;
         
         document.addEventListener('DOMContentLoaded', () => {
              chartArea = new ApexCharts(document.querySelector("#chart-area"), optionsArea);
@@ -466,6 +543,175 @@
              chartArea.render();
              chartBar.render();
              chartRadial.render();
+
+            // === СЛАЙД 8: ГРАФИКИ ВЫБРОСОВ (BOXPLOTS) ===
+            
+            // Данные симулированы под описание (с длинными хвостами и выбросами)
+            const optionsBoxPlotTraffic = {
+                ...commonOptions,
+                series: [
+                    {
+                        type: 'boxPlot',
+                        data: [
+                            {
+                                x: 'Трафик',
+                                y: [200, 350, 450, 600, 900] // Min, Q1, Median, Q3, Max (до очистки)
+                            }
+                        ]
+                    },
+                    {
+                        type: 'scatter',
+                        data: [
+                            { x: 'Трафик', y: 120 }, // Выброс
+                            { x: 'Трафик', y: 80 }   // Выброс
+                        ]
+                    }
+                ],
+                chart: { type: 'boxPlot', height: '100%', background: 'transparent', toolbar: { show: false } },
+                colors: [ACCENT_COLOR, '#ff5555'], // Зеленый бокс, красные точки
+                plotOptions: {
+                    boxPlot: {
+                        colors: { upper: '#2b2b2b', lower: '#2b2b2b' },
+                        stroke: { colors: [ACCENT_COLOR], width: 2 }
+                    }
+                },
+                stroke: { colors: ['#ff5555'] }, // Цвет обводки точек
+                grid: { xaxis: { lines: { show: true } }, yaxis: { lines: { show: false } } },
+                xaxis: { 
+                    labels: { style: { colors: '#888' } },
+                    tooltip: { enabled: false }
+                },
+                yaxis: { show: false }, // Скрываем ось Y, так как одна категория
+                tooltip: { theme: 'dark' }
+            };
+
+            const optionsBoxPlotCheck = {
+                ...commonOptions,
+                series: [
+                    {
+                        type: 'boxPlot',
+                        data: [
+                            {
+                                x: 'Чек',
+                                y: [300, 400, 550, 700, 1100] 
+                            }
+                        ]
+                    },
+                    {
+                        type: 'scatter',
+                        data: [
+                            { x: 'Чек', y: 150 }, // Выброс
+                            { x: 'Чек', y: 100 }, // Выброс
+                            { x: 'Чек', y: 50 }   // Выброс
+                        ]
+                    }
+                ],
+                chart: { type: 'boxPlot', height: '100%', background: 'transparent', toolbar: { show: false } },
+                colors: [ACCENT_COLOR, '#ff5555'],
+                plotOptions: {
+                    boxPlot: {
+                        colors: { upper: '#2b2b2b', lower: '#2b2b2b' },
+                        stroke: { colors: [ACCENT_COLOR], width: 2 }
+                    }
+                },
+                stroke: { colors: ['#ff5555'] },
+                grid: { xaxis: { lines: { show: true } }, yaxis: { lines: { show: false } } },
+                xaxis: { labels: { style: { colors: '#888' } } },
+                yaxis: { show: false },
+                tooltip: { theme: 'dark' }
+            };
+
+            if(document.querySelector("#chart-outlier-traffic")) {
+                chartOutlierTraffic = new ApexCharts(document.querySelector("#chart-outlier-traffic"), optionsBoxPlotTraffic);
+                chartOutlierTraffic.render();
+            }
+            if(document.querySelector("#chart-outlier-check")) {
+                chartOutlierCheck = new ApexCharts(document.querySelector("#chart-outlier-check"), optionsBoxPlotCheck);
+                chartOutlierCheck.render();
+            }
+
+            // === СЛАЙД 9: ВЫРУЧКА ПО ДАТАМ И ПЯТЕРОЧКАМ ===
+    
+            // Данные из запроса (переведены в млн и округлены для графика)
+            // Порядок категорий: Открыты давно, Средние, Новые, Новейшие (сверху вниз)
+            const categoriesImpact = ['Открыты давно', 'Средние по возрасту', 'Новые', 'Новейшие'];
+            
+            // Данные для 0 (Нет пятерочек)
+            const dataNoPyat = [
+                117.37, // Открыты давно (1.173708e+08)
+                59.59,  // Средние (5.958790e+07)
+                56.97,  // Новые (5.697144e+07)
+                42.30   // Новейшие (4.229615e+07)
+            ];
+
+            // Данные для 1 (Есть пятерочки)
+            const dataYesPyat = [
+                100.49, // Открыты давно (1.004910e+08)
+                59.15,  // Средние (5.915417e+07)
+                55.60,  // Новые (5.559887e+07)
+                37.31   // Новейшие (3.730690e+07)
+            ];
+
+            const optionsRevenueImpact = {
+                ...commonOptions, // Берем общие стили (фон, шрифт и т.д.)
+                chart: {
+                    type: 'bar',
+                    height: '100%',
+                    background: 'transparent',
+                    toolbar: { show: false },
+                    animations: { enabled: true }
+                },
+                plotOptions: {
+                    bar: {
+                        horizontal: true,
+                        dataLabels: { position: 'top' },
+                        barHeight: '70%',
+                        borderRadius: 3
+                    }
+                },
+                colors: ['#66c2a5', '#fc8d62'], // Цвета как на фото (Тиловый и Лососевый)
+                series: [
+                    { name: 'Нет Пятерочек (0)', data: dataNoPyat },
+                    { name: 'Есть Пятерочки (1)', data: dataYesPyat }
+                ],
+                dataLabels: {
+                    enabled: true,
+                    offsetX: 40,
+                    style: { fontSize: '12px', colors: ['#fff'] },
+                    formatter: function (val) { return val.toFixed(1) + "M"; }
+                },
+                xaxis: {
+                    categories: categoriesImpact,
+                    labels: {
+                        style: { colors: '#888', fontSize: '12px' },
+                        formatter: (val) => val + "M"
+                    },
+                    axisBorder: { show: false },
+                    axisTicks: { show: false }
+                },
+                yaxis: {
+                    labels: {
+                        style: { colors: '#fff', fontSize: '14px', fontWeight: 'bold' },
+                        maxWidth: 200
+                    }
+                },
+                grid: {
+                    borderColor: '#333',
+                    strokeDashArray: 4,
+                    xaxis: { lines: { show: true } },   
+                    yaxis: { lines: { show: false } }
+                },
+                legend: { show: false }, // Легенда сделана кастомная в HTML для красоты
+                tooltip: {
+                    theme: 'dark',
+                    y: { formatter: (val) => (val * 1000000).toLocaleString() + " ₽" }
+                }
+            };
+
+            if(document.querySelector("#chart-revenue-impact")) {
+                chartRevenueImpact = new ApexCharts(document.querySelector("#chart-revenue-impact"), optionsRevenueImpact);
+                chartRevenueImpact.render();
+            }
         });
 
         function triggerChartAnimations(index) {
@@ -476,6 +722,15 @@
                 chartArea.updateOptions({ chart: { animations: { enabled: true } } });
                 chartBar.updateOptions({ chart: { animations: { enabled: true } } });
                 chartRadial.updateOptions({ chart: { animations: { enabled: true } } });
+            }
+
+            if (slidesArr[index].id === 'slide-outliers') {
+                if (chartOutlierTraffic) chartOutlierTraffic.updateOptions({ chart: { animations: { enabled: true } } });
+                if (chartOutlierCheck) chartOutlierCheck.updateOptions({ chart: { animations: { enabled: true } } });
+            }
+
+            if (slidesArr[index].id === 'slide-revenue-impact' && chartRevenueImpact) {
+                chartRevenueImpact.updateOptions({ chart: { animations: { enabled: true } } });
             }
         }
 
