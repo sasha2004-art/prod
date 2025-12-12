@@ -139,39 +139,123 @@
         </div>
     </div>
 
-    <!-- 04. НОВЫЕ ПЕРЕМЕННЫЕ (НАСЕЛЕНИЕ) -->
+    <!-- 04. НОВЫЕ ПЕРЕМЕННЫЕ: ОКРУЖЕНИЕ -->
     <div class="slide">
-        <h2>04. НОВЫЕ ПЕРЕМЕННЫЕ</h2>
-        <p>Классификация населенных пунктов.</p>
-        <div class="grid-3">
-            <div class="card">
-                <h3>МИЛЛИОННИКИ</h3>
-                <p>> 1 млн чел.</p>
-                <span class="tag">15 городов</span>
+        <h2>04. НОВЫЕ ПЕРЕМЕННЫЕ: ОКРУЖЕНИЕ</h2>
+        
+        <!-- Сделали левую колонку чуть шире, чтобы вместить 6 категорий -->
+        <div style="display: grid; grid-template-columns: 2fr 1fr; gap: 25px; align-items: start;">
+            
+            <!-- Левая колонка: Население (Обновленная группировка) -->
+            <div class="card" style="padding: 20px;">
+                <h3 style="color: var(--accent); margin-bottom: 20px; font-size: 1.5rem;">КЛАССИФИКАЦИЯ ГОРОДОВ (POPULATION)</h3>
+                
+                <!-- Сетка 3x2 для 6 категорий -->
+                <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 15px; margin-bottom: 25px;">
+                    <!-- 1 -->
+                    <div style="background: rgba(255,255,255,0.05); padding: 10px; border-radius: 4px; border: 1px solid #333;">
+                        <div style="color: var(--accent); font-weight: bold; font-size: 0.9rem;">МАЛЫЙ</div>
+                        <div style="font-size: 0.75rem; color: #888;">0-50 тыс.</div>
+                    </div>
+                    <!-- 2 -->
+                    <div style="background: rgba(255,255,255,0.05); padding: 10px; border-radius: 4px; border: 1px solid #333;">
+                        <div style="color: #fff; font-weight: bold; font-size: 0.9rem;">СРЕДНИЙ</div>
+                        <div style="font-size: 0.75rem; color: #888;">50-100 тыс.</div>
+                    </div>
+                    <!-- 3 -->
+                    <div style="background: rgba(255,255,255,0.05); padding: 10px; border-radius: 4px; border: 1px solid #333;">
+                        <div style="color: #fff; font-weight: bold; font-size: 0.9rem;">БОЛЬШОЙ</div>
+                        <div style="font-size: 0.75rem; color: #888;">100-250 тыс.</div>
+                    </div>
+                    <!-- 4 -->
+                    <div style="background: rgba(255,255,255,0.05); padding: 10px; border-radius: 4px; border: 1px solid #333;">
+                        <div style="color: #fff; font-weight: bold; font-size: 0.9rem;">КРУПНЫЙ</div>
+                        <div style="font-size: 0.75rem; color: #888;">250-500 тыс.</div>
+                    </div>
+                    <!-- 5 -->
+                    <div style="background: rgba(255,255,255,0.05); padding: 10px; border-radius: 4px; border: 1px solid #333;">
+                        <div style="color: #fff; font-weight: bold; font-size: 0.8rem;">КРУПНЕЙШИЙ</div> <!-- Чуть меньше шрифт, чтобы влезло -->
+                        <div style="font-size: 0.75rem; color: #888;">500 тыс. - 1 млн</div>
+                    </div>
+                    <!-- 6 -->
+                    <div style="background: rgba(255,255,255,0.05); padding: 10px; border-radius: 4px; border: 1px solid #333;">
+                        <div style="color: var(--accent); font-weight: bold; font-size: 0.8rem;">МИЛЛИОННИК</div>
+                        <div style="font-size: 0.75rem; color: #888;">> 1 млн</div>
+                    </div>
+                </div>
+
+                <!-- Сноска -->
+                <div style="border-top: 1px solid #333; padding-top: 10px; font-size: 0.75rem; color: #666; font-style: italic;">
+                    * Для корректного сравнения эффективности использована градостроительная классификация из учебника Т.В. Малеевой «Инженерно-экономические основы градостроительства».
+                </div>
             </div>
-            <div class="card">
-                <h3>КРУПНЫЕ</h3>
-                <p>100к - 1 млн чел.</p>
-                <span class="tag">150 городов</span>
-            </div>
-            <div class="card">
-                <h3>МАЛЫЕ</h3>
-                <p>< 100к чел.</p>
-                <span class="tag">1000+ н.п.</span>
+
+            <!-- Правая колонка: Конкуренты -->
+            <div class="card" style="padding: 20px; border: 1px dashed #555;">
+                <h3 style="color: var(--accent);">Наличие пятерочек</h3>
+                <div class="big-stat" style="font-size: 2.5rem; margin: 15px 0;">БИНАРНЫЙ</div>
+                <p style="font-size: 0.9rem;">
+                    Флаг: <strong>Есть конкурент рядом / Нет</strong>.
+                </p>
+                <br>
+                <p style="font-size: 0.85rem; color: #aaa;">
+                    Для проверки гипотезы важнее сам факт наличия магазина сети поблизости, а не их точное количество.
+                </p>
             </div>
         </div>
     </div>
 
-    <!-- 05. НОВЫЕ ПЕРЕМЕННЫЕ (НОВЫЕ ПЯТЕРКИ) -->
+    <!-- 05. НОВЫЕ ПЕРЕМЕННЫЕ: МЕТРИКИ -->
     <div class="slide">
-        <h2>05. НОВЫЕ ПЯТЕРКИ</h2>
-        <p>Фокус на магазинах, открытых в текущем году.</p>
-        <div class="card flex-center" style="flex: 1; height: auto; border: 2px solid var(--accent); background: rgba(198, 255, 0, 0.05);">
-            <div style="text-align: center;">
-                <h3>FEATURE: IS_NEW_STORE</h3>
-                <p style="font-size: 1.2rem; margin: 20px 0;">Флаг, указывающий на открытие магазина в 2024 году.</p>
-                <div class="big-stat" style="color: var(--accent);">TRUE / FALSE</div>
+        <h2>05. ПРЕОБРАЗОВАНИЕ МЕТРИК</h2>
+        <div style="display: grid; grid-template-columns: 1fr 1fr; grid-template-rows: auto auto; gap: 20px;">
+            
+            <!-- Выручка (Левое выравнивание) -->
+            <div class="card" style="grid-column: 1 / -1; display: flex; flex-direction: row; align-items: center; gap: 40px;">
+                <div style="flex: 1;">
+                    <h3 style="margin-bottom: 10px;">НОВАЯ ЦЕЛЕВАЯ: ВЫРУЧКА (REVENUE)</h3>
+                    <p style="font-size: 0.9rem; margin-bottom: 10px; color: #aaa;">
+                        Средний чек и трафик по отдельности не отражают результат.
+                    </p>
+                    <div class="code-block" style="margin: 0; padding: 8px 15px; display: inline-block;">
+                        Revenue = Avg_Check * Traffic
+                    </div>
+                </div>
+                <!-- KPI слева от края, без float: right -->
+                <div style="text-align: left;">
+                    <span class="big-stat" style="font-size: 2.5rem; color: var(--accent);">KPI</span>
+                </div>
             </div>
+
+            <!-- Мегановые магазины -->
+            <div class="card">
+                <h3 style="color: var(--accent);">MEGA_NEW_STORE</h3>
+                <p style="font-size: 0.9rem; margin-bottom: 10px;">
+                    Магазины, открытые в 2024 году (начиная с февраля).
+                </p>
+                <ul style="font-size: 0.85rem; list-style: none; padding-left: 0;">
+                    <li style="margin-bottom: 5px; display: flex; align-items: center;">
+                        <span style="color: var(--accent); margin-right: 10px;">&bull;</span>
+                        Исключаем "старые новые"
+                    </li>
+                    <li style="display: flex; align-items: center;">
+                        <span style="color: var(--accent); margin-right: 10px;">&bull;</span>
+                        Есть полная история за год
+                    </li>
+                </ul>
+            </div>
+
+            <!-- Перекодировка месяца -->
+            <div class="card">
+                <h3 style="color: var(--accent);">MONTH_ID</h3>
+                <p style="font-size: 0.9rem;">Замена названий на порядковый номер.</p>
+                <div style="margin-top: 15px; display: flex; align-items: center; gap: 15px;">
+                    <span class="tag" style="text-decoration: line-through; opacity: 0.5;">"May"</span>
+                    <span style="color: var(--accent); font-weight: bold;">&rarr;</span>
+                    <span class="tag" style="border-color: #fff; color: #fff;">5</span>
+                </div>
+            </div>
+
         </div>
     </div>
 
@@ -245,7 +329,7 @@
         </div>
         <div style="margin-top: 40px; padding: 20px; background: rgba(255,255,255,0.05); border-left: 4px solid var(--accent); text-align: left;">
             <strong style="color: var(--accent);">ГИПОТЕЗА:</strong>
-            <span style="color: #fff;">Эффект каннибализации выше для новых магазинов в малых городах.</span>
+            <span style="color: #fff;">Эффект коннолизации выше для новых магазинов в малых городах.</span>
         </div>
     </div>
 

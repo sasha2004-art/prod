@@ -292,7 +292,7 @@ ul { margin-bottom: 10px; }
     z-index: 10;
 }
 
-/* Left Wing */
+/* Left Wing (Левое крыло) */
 .team-photo-box.resurrected::before {
     content: '';
     position: absolute;
@@ -300,17 +300,18 @@ ul { margin-bottom: 10px; }
     left: -50px;
     width: 70px;
     height: 100px;
+    /* Поменяли форму на "правую" зеркально */
     background: linear-gradient(to bottom right, #fff, #ddd);
-    border-radius: 100% 0 50% 20%;
+    border-radius: 100% 0 20% 50%; 
     transform-origin: bottom right;
-    transform: rotate(10deg);
+    transform: rotate(20deg); /* Повернули, чтобы росло от плеча */
     z-index: -1;
     animation: wingFlapLeft 0.8s infinite alternate ease-in-out;
     filter: drop-shadow(0 0 15px #fff);
     border: 1px solid #fff;
 }
 
-/* Right Wing */
+/* Right Wing (Правое крыло) */
 .team-photo-box.resurrected::after {
     content: '';
     position: absolute;
@@ -318,10 +319,11 @@ ul { margin-bottom: 10px; }
     right: -50px;
     width: 70px;
     height: 100px;
+    /* Поменяли форму на "левую" зеркально */
     background: linear-gradient(to bottom left, #fff, #ddd);
-    border-radius: 0 100% 20% 50%;
+    border-radius: 0 100% 50% 20%;
     transform-origin: bottom left;
-    transform: rotate(-10deg);
+    transform: rotate(-20deg); /* Повернули, чтобы росло от плеча */
     z-index: -1;
     animation: wingFlapRight 0.8s infinite alternate ease-in-out;
     filter: drop-shadow(0 0 15px #fff);
@@ -331,12 +333,12 @@ ul { margin-bottom: 10px; }
 @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
 
 @keyframes wingFlapLeft {
-    from { transform: rotate(10deg); }
-    to { transform: rotate(-10deg) translateY(-5px); }
+    from { transform: rotate(20deg); }
+    to { transform: rotate(0deg) translateY(-5px); }
 }
 @keyframes wingFlapRight {
-    from { transform: rotate(-10deg); }
-    to { transform: rotate(10deg) translateY(-5px); }
+    from { transform: rotate(-20deg); }
+    to { transform: rotate(0deg) translateY(-5px); }
 }
 
 /* EXPLOSION OVERLAY */
