@@ -206,56 +206,58 @@
     </div>
 
     <!-- 05. НОВЫЕ ПЕРЕМЕННЫЕ: МЕТРИКИ -->
-    <div class="slide">
+    <div class="slide" id="slide-metrics">
         <h2>05. ПРЕОБРАЗОВАНИЕ МЕТРИК</h2>
-        <div style="display: grid; grid-template-columns: 1fr 1fr; grid-template-rows: auto auto; gap: 20px;">
+        
+        <div style="display: grid; grid-template-columns: 1fr 1fr; grid-template-rows: auto 1fr; gap: 20px; height: 65vh;">
             
-            <!-- Выручка (Левое выравнивание) -->
-            <div class="card" style="grid-column: 1 / -1; display: flex; flex-direction: row; align-items: center; gap: 40px;">
-                <div style="flex: 1;">
-                    <h3 style="margin-bottom: 10px;">НОВАЯ ЦЕЛЕВАЯ: ВЫРУЧКА (ВЫРУЧКА)</h3>
-                    <p style="font-size: 0.9rem; margin-bottom: 10px; color: #aaa;">
-                        Средний чек и трафик по отдельности не отражают результат.
+            <!-- 1. Выручка (Левая колонка, Верх) -->
+            <div class="card" style="display: flex; flex-direction: column; justify-content: center; align-items: flex-start; padding: 20px;">
+                <h3 style="margin-bottom: 5px;">НОВАЯ ЦЕЛЕВАЯ: ВЫРУЧКА</h3>
+                <p style="font-size: 0.8rem; margin-bottom: 10px; color: #aaa;">
+                    Средний чек и трафик по отдельности не отражают результат.
+                </p>
+                <!-- Исправленный блок с формулой (выровнен влево) -->
+                <div class="code-block" style="margin: 0; padding: 8px 12px; font-size: 0.8rem; display: inline-block; white-space: nowrap;">
+                    Выручка = Средний_чек * Трафик
+                </div>
+
+                <!-- НОВАЯ ПОДПИСЬ -->
+                <div style="margin-top: 15px; padding-top: 10px; border-top: 1px dashed #333; width: 100%;">
+                    <p style="font-size: 0.7rem; color: #666; font-style: italic; margin: 0;">
+                        * Переменные модифицированы составителями датасета
                     </p>
-                    <div class="code-block" style="margin: 0; padding: 8px 15px; display: inline-block;">
-                        Выручка = Средний_чек * Трафик
+                </div>
+            </div>
+
+            <!-- 2. График (Правая колонка, На всю высоту) -->
+            <div class="card" style="grid-column: 2; grid-row: 1 / -1; padding: 15px; overflow: hidden; display: flex; flex-direction: column;">
+                <h3 style="text-align: center; color: var(--accent); margin-bottom: 10px;">РАСПРЕДЕЛЕНИЕ ВЫРУЧКИ</h3>
+                <div style="flex: 1; display: flex; overflow: hidden;">
+                    <div style="writing-mode: vertical-rl; transform: rotate(180deg); text-align: center; color: #888; font-size: 0.8rem; padding: 5px 0; margin-right: 5px;">
+                        Количество магазинов
+                    </div>
+                    <div class="chart-container-fix" style="flex: 1;">
+                        <div id="chart-mini-revenue" style="width: 100%; height: 100%;"></div>
                     </div>
                 </div>
-                <!-- KPI слева от края, без float: right -->
-                <div style="text-align: left;">
-                    <span class="big-stat" style="font-size: 2.5rem; color: var(--accent);">КПИ</span>
+            </div>
+
+            <!-- 3. Новый магазин + Месяц (Левая колонка, Низ) -->
+            <div class="card" style="display: flex; flex-direction: column; justify-content: space-between;">
+                <div>
+                    <h3 style="color: var(--accent);">НОВЫЙ МАГАЗИН</h3>
+                    <p style="font-size: 0.9rem; margin-bottom: 10px;">
+                        Магазины, открытые в этом году.
+                    </p>
+                    <ul style="font-size: 0.85rem; list-style: none; padding-left: 0; margin-bottom: 15px;">
+                        <li style="margin-bottom: 5px; display: flex; align-items: center;">
+                            <span style="color: var(--accent); margin-right: 10px;">&bull;</span>
+                            Неполная история за год
+                        </li>
+                    </ul>
                 </div>
             </div>
-
-            <!-- Мегановые магазины -->
-            <div class="card">
-                <h3 style="color: var(--accent);">МЕГА_НОВЫЙ_МАГАЗИН</h3>
-                <p style="font-size: 0.9rem; margin-bottom: 10px;">
-                    Магазины, открытые в 2024 году (начиная с февраля).
-                </p>
-                <ul style="font-size: 0.85rem; list-style: none; padding-left: 0;">
-                    <li style="margin-bottom: 5px; display: flex; align-items: center;">
-                        <span style="color: var(--accent); margin-right: 10px;">&bull;</span>
-                        Исключаем "старые новые"
-                    </li>
-                    <li style="display: flex; align-items: center;">
-                        <span style="color: var(--accent); margin-right: 10px;">&bull;</span>
-                        Есть полная история за год
-                    </li>
-                </ul>
-            </div>
-
-            <!-- Перекодировка месяца -->
-            <div class="card">
-                <h3 style="color: var(--accent);">ИД_МЕСЯЦА</h3>
-                <p style="font-size: 0.9rem;">Замена названий на порядковый номер.</p>
-                <div style="margin-top: 15px; display: flex; align-items: center; gap: 15px;">
-                    <span class="tag" style="text-decoration: line-through; opacity: 0.5;">"Май"</span>
-                    <span style="color: var(--accent); font-weight: bold;">&rarr;</span>
-                    <span class="tag" style="border-color: #fff; color: #fff;">5</span>
-                </div>
-            </div>
-
         </div>
     </div>
 
@@ -264,7 +266,7 @@
         <h2>06. ИССЛЕДОВАТЕЛЬСКИЙ ВОПРОС</h2>
         <div class="card flex-center" style="flex: 1; height: auto;">
             <h1 style="font-size: 2.5rem; text-align: center;">
-                Влияет ли <span style="color: var(--accent);">плотность конкурентов</span> на выручку <span style="color: var(--accent);">новых</span> магазинов сильнее, чем на старые?
+                как <span style="color: var(--accent);">инфраструктура</span> влияет на <span style="color: var(--accent);">выручку</span> пятерочки ?
             </h1>
         </div>
     </div>
@@ -480,6 +482,7 @@ model.fit(X_train, y_train)
     // ==========================================
     let chartSettlements, chartHeatmap, chartModel, chartRobustness;
     let chartAvgCheck;
+    let chartMiniRevenue;
 
     const ACCENT_COLOR = '#C6FF00'; 
     const TEXT_COLOR = '#ffffff';
@@ -692,8 +695,16 @@ model.fit(X_train, y_train)
         }
         // 1. Создаем экземпляры графиков
         if(document.querySelector("#chart-bar-settlements")) {
-            chartSettlements = new ApexCharts(document.querySelector("#chart-bar-settlements"), optionsBarSettlements);
-            chartSettlements.render();
+        chartSettlements = new ApexCharts(document.querySelector("#chart-bar-settlements"), optionsBarSettlements);
+        chartSettlements.render();
+    }
+
+        // 2. Создаем МИНИ график (Слайд 5) - используем те же настройки optionsBarSettlements
+        if(document.querySelector("#chart-mini-revenue")) {
+            // Клонируем настройки, чтобы отключить анимацию при инициализации (опционально) или меняем шрифты
+            // Но для простоты используем те же настройки
+            chartMiniRevenue = new ApexCharts(document.querySelector("#chart-mini-revenue"), optionsBarSettlements);
+            chartMiniRevenue.render();
         }
         if(document.querySelector("#chart-heatmap")) {
             chartHeatmap = new ApexCharts(document.querySelector("#chart-heatmap"), optionsHeatmap);
@@ -711,31 +722,47 @@ model.fit(X_train, y_train)
         // 2. Загружаем CSV (HISTPLOT.CSV)
         // ВАЖНО: Работает только через Live Server!
         if (typeof Papa !== 'undefined') {
-            Papa.parse("histplot.csv", {
-                download: true,
-                header: true,
-                skipEmptyLines: true,
-                 complete: function(results) {
-            console.log("CSV Loaded:", results.data.length, "rows");
-            const revenueData = results.data.map(row => row['выручка']); 
-            
-            // Вызываем БЕЗ аргумента количества, шаг 50М уже внутри функции
-            const histData = createHistogramData(revenueData);
-            
-            if(chartSettlements) {
-                chartSettlements.updateOptions({
-                    xaxis: { categories: histData.categories },
+        Papa.parse("histplot.csv", {
+            download: true,
+            header: true,
+            skipEmptyLines: true,
+            complete: function(results) {
+                console.log("CSV Loaded");
+                const revenueData = results.data.map(row => row['выручка']); 
+                const histData = createHistogramData(revenueData);
+                
+                // Обновляем график на 7 слайде
+                if(chartSettlements) {
+                    chartSettlements.updateOptions({
+                        xaxis: { categories: histData.categories },
+                        series: [{ name: 'Магазинов', data: histData.data }]
+                    });
+                }
+                
+                // Обновляем график на 5 слайде (ТО ЖЕ САМОЕ)
+                if(chartMiniRevenue) {
+                chartMiniRevenue.updateOptions({
+                    xaxis: { 
+                        categories: histData.categories, 
+                        // 1. ВКЛЮЧАЕМ ПОДПИСИ
+                        labels: { 
+                            show: true,
+                            rotate: -45,
+                            style: { colors: '#888', fontSize: '10px' }
+                        } 
+                    }, 
+                    yaxis: { show: false }, // Ось Y обычно скрывают на мини-графиках, но можно включить true
+                    
+                    // 2. ВАЖНО: Добавляем отступ снизу (bottom: 25), иначе подписи обрежутся
+                    grid: { padding: { left: 10, right: 10, bottom: 25 } },
+                    
                     series: [{ name: 'Магазинов', data: histData.data }]
                 });
             }
-        },
-                error: function(err) {
-                    console.warn("CSV Error (use Live Server):", err);
-                }
-            });
-        } else {
-            console.error("PapaParse library is not loaded!");
-        }
+            },
+            error: function(err) { console.warn("CSV Error:", err); }
+        });
+    }
 
         // 3. Инициализация EXTRA графиков (сокращенно для примера, добавьте остальные по аналогии если нужны)
         // ... Ваш код для extra графиков можно оставить тут или вставить ниже ... 
