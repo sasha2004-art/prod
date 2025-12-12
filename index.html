@@ -101,7 +101,7 @@
                     </ul>
                 </div>
                 <div class="card">
-                    <h3>Категориальные</h3>
+                    <h3>Категориальные признаки</h3>
                     <ul style="list-style: none; padding: 0; margin-top: 15px; font-size: 1.1rem;">
                         <li style="margin-bottom: 10px;">• Площадь</li>
                         <li style="margin-bottom: 10px;">• Дата открытия</li>
@@ -192,7 +192,7 @@
 
             <!-- Правая колонка: Конкуренты -->
             <div class="card" style="padding: 20px; border: 1px dashed #555;">
-                <h3 style="color: var(--accent);">Наличие пятерочек</h3>
+                <h3 style="color: var(--accent);">Наличие пятерочёк</h3>
                 <div class="big-stat" style="font-size: 2.5rem; margin: 15px 0;">БИНАРНЫЙ</div>
                 <p style="font-size: 0.9rem;">
                     Флаг: <strong>Есть конкурент рядом / Нет</strong>.
@@ -350,43 +350,116 @@
         </div>
     </div>
 
-    <!-- 10. МЕХАНИЗМ -->
+    <!-- 10. ОСНОВНОЙ МЕХАНИЗМ -->
     <div class="slide">
-        <h2>10. МЕХАНИЗМ</h2>
-        <div class="fill-height" style="justify-content: center;">
-            <div style="display: flex; flex-direction: column; gap: 20px; max-width: 800px; margin: 0 auto;">
+        <h2>10. МЕХАНИЗМ: ДИЗАЙН</h2>
+        
+        <div class="fill-height" style="display: flex; flex-direction: column; justify-content: center; gap: 15px;">
+            
+            <!-- 1. ИСТОК -->
+            <div class="card flex-center" style="padding: 20px; border-color: var(--accent);">
+                <h3 style="color: var(--accent); margin: 0; font-size: 1.3rem;">СОВРЕМЕННОЕ ОБОРУДОВАНИЕ И ДИЗАЙН</h3>
+            </div>
+
+            <!-- Стрелка -->
+            <div style="text-align: center; color: var(--accent); font-size: 1.5rem; line-height: 1;">▼</div>
+
+            <!-- 2. СЛЕДСТВИЕ -->
+            <div class="card flex-center" style="padding: 15px; border: 1px dashed #555;">
+                <p style="margin: 0; font-weight: bold; font-size: 1.1rem;">НОВЫЕ ПЯТЕРОЧКИ ПРИВЛЕКАТЕЛЬНЕЕ СТАРЫХ</p>
+            </div>
+
+            <!-- Стрелка -->
+            <div style="text-align: center; color: var(--accent); font-size: 1.5rem; line-height: 1;">▼</div>
+
+            <!-- 3. РАЗВЕТВЛЕНИЕ (2 ПУНКТА) -->
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 30px; width: 100%;">
                 
-                <!-- Шаг 1 -->
-                <div class="card" style="display: flex; flex-direction: row; align-items: center; gap: 25px; padding: 25px;">
-                    <div>
-                        <h3 style="color: var(--accent); margin-bottom: 5px;">ЭФФЕКТ НОВИЗНЫ</h3>
-                        <p>Новые магазины «отнимают» клиентов у соседних точек за счёт более современного оборудования и свежего интерьера.</p>
+                <!-- Пункт 1 -->
+                <div class="card" style="padding: 20px; background: rgba(198, 255, 0, 0.05);">
+                    <div style="display: flex; align-items: baseline; gap: 10px; margin-bottom: 10px;">
+                        <span style="font-size: 2.5rem; font-weight: 900; color: var(--accent); line-height: 1;">01</span>
+                        <h4 style="margin: 0;">НОВЫЕ</h4>
                     </div>
-                </div>
-
-                <!-- Стрелка -->
-                <div style="text-align: center; color: var(--accent); font-size: 1.5rem; line-height: 0.5;">▼</div>
-
-                <!-- Шаг 2 -->
-                <div class="card" style="display: flex; flex-direction: row; align-items: center; gap: 25px; padding: 25px;">
-                    <div>
-                        <h3 style="color: #fff; margin-bottom: 5px;">ПЕРЕТОК ТРАФИКА</h3>
-                        <p>У новых пятёрочек, при прочих равных, формируется <strong>бóльшая доля трафика</strong> в локации и более высокий средний чек.</p>
-                    </div>
-                </div>
-
-                <!-- Стрелка -->
-                <div style="text-align: center; color: var(--accent); font-size: 1.5rem; line-height: 0.5;">▼</div>
-
-                <!-- Вывод -->
-                <div class="card" style="border-left: 6px solid var(--accent); padding: 25px;">
-                    <h3 style="color: var(--accent); margin-bottom: 5px;">СЛЕДСТВИЕ</h3>
-                    <p style="font-size: 1.1rem;">
-                        Наличие конкурентов <strong>менее значительно</strong> влияет на выручку новых магазинов, тогда как старые магазины чувствуют конкуренцию острее.
+                    <p style="font-size: 0.95rem;">
+                        Теряют <span style="color: var(--accent); font-weight: 900; text-transform: uppercase;">меньше</span> спроса от наличия старых магазинов рядом.
                     </p>
                 </div>
 
+                <!-- Пункт 2 -->
+                <div class="card" style="padding: 20px; background: rgba(255, 85, 85, 0.05); border-color: #ff5555;">
+                    <div style="display: flex; align-items: baseline; gap: 10px; margin-bottom: 10px;">
+                        <span style="font-size: 2.5rem; font-weight: 900; color: #ff5555; line-height: 1;">02</span>
+                        <h4 style="margin: 0;">СТАРЫЕ</h4>
+                    </div>
+                    <p style="font-size: 0.95rem;">
+                        Теряют <span style="color: #ff5555; font-weight: 900; text-transform: uppercase;">больше</span> спроса от наличия новых магазинов рядом.
+                    </p>
+                </div>
             </div>
+
+            <!-- Стрелка -->
+            <div style="text-align: center; color: var(--accent); font-size: 1.5rem; line-height: 1;">▼</div>
+
+            <!-- 4. ФИНАЛЬНЫЙ ВЫВОД -->
+            <div class="card" style="padding: 20px; text-align: center; border: 2px solid var(--accent); background: rgba(198, 255, 0, 0.02);">
+                <p style="font-size: 1.2rem; line-height: 1.4; font-weight: bold; margin: 0;">
+                    Наличие пятерочёк рядом <span style="color: var(--accent);">значительнее</span> влияет на выручку <span style="color: #ff5555;">СТАРЫХ</span>, чем на выручку новых.
+                </p>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- 11. АЛЬТЕРНАТИВНЫЙ МЕХАНИЗМ -->
+    <div class="slide">
+        <h2>11. АЛЬТЕРНАТИВНЫЙ МЕХАНИЗМ</h2>
+        
+        <div class="fill-height" style="display: flex; flex-direction: column; justify-content: center; align-items: center; gap: 20px;">
+            
+            <!-- БЛОК ЦЕПОЧКИ -->
+            <div style="display: flex; flex-direction: column; gap: 20px; width: 100%; max-width: 800px;">
+                
+                <!-- Шаг 1 -->
+                <div class="card" style="display: flex; flex-direction: row; align-items: center; gap: 20px; padding: 25px;">
+                    <div style="background: #333; color: #fff; width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold;">1</div>
+                    <div>
+                        <h3 style="color: var(--accent); margin-bottom: 5px;">Неполнота информации</h3>
+                        <h5>Старые пятерочки открывались без информации о местности в момент сбора данных для датасета.</h5>
+                    </div>
+                </div>
+
+                <!-- Стрелка -->
+                <div style="text-align: center; color: #555; font-size: 1.5rem; line-height: 0.5;">▼</div>
+
+                <!-- Шаг 2 -->
+                <div class="card" style="display: flex; flex-direction: row; align-items: center; gap: 20px; padding: 25px;">
+                    <div style="background: #333; color: #fff; width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold;">2</div>
+                    <div>
+                        <h3 style="color: #fff; margin-bottom: 5px;">ОПТИМАЛЬНАЯ ЛОКАЦИЯ</h3>
+                        <p>Новые пятёрочки <span style="color: var(--accent);">оптимальнее</span> старых выбрали место для открытия с учетом окружения.</p>
+                    </div>
+                </div>
+
+                <!-- Стрелка -->
+                <div style="text-align: center; color: #555; font-size: 1.5rem; line-height: 0.5;">▼</div>
+
+                <!-- Шаг 3 (Вывод) -->
+                <div class="card" style="border-left: 6px solid var(--accent); padding: 25px; background: rgba(255, 255, 255, 0.02);">
+                    <h3 style="margin-bottom: 5px;">СЛЕДСТВИЕ</h3>
+                    <p style="font-size: 1.1rem;">
+                        Выручка новых пятёрочек будет <span style="color: var(--accent); font-weight: bold;">слабее зависеть</span> от наличия пятёрочек рядом.
+                    </p>
+                </div>
+            </div>
+
+            <!-- СНОСКА (FOOTNOTE) -->
+            <div style="margin-top: 40px; text-align: center; opacity: 0.6;">
+                <p style="font-size: 0.8rem; color: #888; font-style: italic;">
+                    * Идея модели Хотеллинга, но с последующим изменением спроса в каждой точке и с последовательным открытием магазинов.
+                </p>
+            </div>
+
         </div>
     </div>
 
@@ -818,10 +891,6 @@ model.fit(X_train, y_train)
             error: function(err) { console.warn("CSV Error:", err); }
         });
     }
-
-        // 3. Инициализация EXTRA графиков (сокращенно для примера, добавьте остальные по аналогии если нужны)
-        // ... Ваш код для extra графиков можно оставить тут или вставить ниже ... 
-        // Чтобы не загромождать, я оставил основные. Если они нужны, просто скопируйте их инициализацию сюда же.
 
         // 4. ЗАПУСК СЛАЙДЕРА (Только после того как DOM готов)
         totalSlidesEl.innerText = slides.length;
