@@ -210,25 +210,26 @@
         <div style="display: grid; grid-template-columns: 1fr 1fr; grid-template-rows: auto 1fr; gap: 20px; height: 65vh;">
             
             <div class="card" style="display: flex; flex-direction: column; justify-content: center; align-items: flex-start; padding: 20px;">
-                <h3 style="margin-bottom: 5px;">НОВАЯ ЦЕЛЕВАЯ: ВЫРУЧКА</h3>
-                <p style="font-size: 0.8rem; margin-bottom: 10px; color: #aaa;">
+                <h3 style="margin-bottom: 8px; font-size: 1.2rem;">НОВАЯ ЦЕЛЕВАЯ: ВЫРУЧКА</h3>
+                <p style="font-size: 1rem; margin-bottom: 12px; color: #aaa;">
                     Средний чек и трафик по отдельности не отражают результат.
                 </p>
-                <div class="code-block" style="margin: 0; padding: 8px 12px; font-size: 0.8rem; display: inline-block; white-space: nowrap;">
+                <div class="code-block" style="margin: 0; padding: 10px 15px; font-size: 1rem; display: inline-block; white-space: nowrap;">
                     Выручка = Средний_чек * Трафик
                 </div>
 
                 <div style="margin-top: 15px; padding-top: 10px; border-top: 1px dashed #333; width: 100%;">
-                    <p style="font-size: 0.7rem; color: #666; font-style: italic; margin: 0;">
+                    <p style="font-size: 0.85rem; color: #666; font-style: italic; margin: 0;">
                         * Переменные модифицированы составителями датасета
                     </p>
                 </div>
             </div>
 
             <div class="card" style="grid-column: 2; grid-row: 1 / -1; padding: 15px; overflow: hidden; display: flex; flex-direction: column;">
-                <h3 style="text-align: center; color: var(--accent); margin-bottom: 10px;">РАСПРЕДЕЛЕНИЕ ВЫРУЧКИ</h3>
+                <h3 style="text-align: center; color: var(--accent); margin-bottom: 10px; font-size: 1.3rem;">РАСПРЕДЕЛЕНИЕ ВЫРУЧКИ</h3>
+                <p style="text-align: center; color: #aaa; font-size: 0.85rem; margin-bottom: 10px;">Распределение всей выручки за все время по всем данным</p>
                 <div style="flex: 1; display: flex; overflow: hidden;">
-                    <div style="writing-mode: vertical-rl; transform: rotate(180deg); text-align: center; color: #888; font-size: 0.8rem; padding: 5px 0; margin-right: 5px;">
+                    <div style="writing-mode: vertical-rl; transform: rotate(180deg); text-align: center; color: #888; font-size: 1rem; padding: 5px 0; margin-right: 5px;">
                         Количество магазинов
                     </div>
                     <div class="chart-container-fix" style="flex: 1;">
@@ -239,13 +240,13 @@
 
             <div class="card" style="display: flex; flex-direction: column; justify-content: space-between; padding: 20px;">
                 <div>
-                    <h3 style="color: var(--accent); margin-bottom: 10px;">НОВЫЙ МАГАЗИН</h3>
-                    <ul style="font-size: 0.85rem; list-style: none; padding-left: 0; margin-bottom: 15px; color: #e0e0e0;">
-                        <li style="margin-bottom: 8px; display: flex; align-items: flex-start;">
+                    <h3 style="color: var(--accent); margin-bottom: 10px; font-size: 1.2rem;">НОВЫЙ МАГАЗИН</h3>
+                    <ul style="font-size: 1rem; list-style: none; padding-left: 0; margin-bottom: 15px; color: #e0e0e0;">
+                        <li style="margin-bottom: 10px; display: flex; align-items: flex-start;">
                             <span style="color: var(--accent); margin-right: 10px; font-weight: bold;">&bull;</span>
                             <span>Неполная история за год</span>
                         </li>
-                        <li style="margin-bottom: 5px; display: flex; align-items: flex-start;">
+                        <li style="margin-bottom: 8px; display: flex; align-items: flex-start;">
                             <span style="color: var(--accent); margin-right: 10px; font-weight: bold;">&bull;</span>
                             <span>Сильная разница в выручке в соседние месяцы</span>
                         </li>
@@ -253,21 +254,21 @@
                 </div>
 
                 <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: auto;">
-                    <div style="background: rgba(255,255,255,0.05); padding: 8px 12px; border-radius: 6px; border: 1px solid #333;">
-                        <div style="font-size: 0.7rem; color: var(--accent); text-transform: uppercase; font-weight: 700; margin-bottom: 2px;">Новый</div>
-                        <div style="font-size: 1.1rem; font-weight: 900; color: #fff;">1 072</div>
+                    <div style="background: rgba(255,255,255,0.05); padding: 10px 14px; border-radius: 6px; border: 1px solid #333;">
+                        <div style="font-size: 0.85rem; color: var(--accent); text-transform: uppercase; font-weight: 700; margin-bottom: 3px;">Новый</div>
+                        <div style="font-size: 1.3rem; font-weight: 900; color: #fff;">1 072</div>
                     </div>
-                    <div style="background: rgba(255,255,255,0.05); padding: 8px 12px; border-radius: 6px; border: 1px solid #333;">
-                        <div style="font-size: 0.7rem; color: #888; text-transform: uppercase; font-weight: 700; margin-bottom: 2px;">Недавно открытые</div>
-                        <div style="font-size: 1.1rem; font-weight: 900; color: #fff;">6 326</div>
+                    <div style="background: rgba(255,255,255,0.05); padding: 10px 14px; border-radius: 6px; border: 1px solid #333;">
+                        <div style="font-size: 0.85rem; color: #888; text-transform: uppercase; font-weight: 700; margin-bottom: 3px;">Недавно открытые</div>
+                        <div style="font-size: 1.3rem; font-weight: 900; color: #fff;">6 326</div>
                     </div>
-                    <div style="background: rgba(255,255,255,0.05); padding: 8px 12px; border-radius: 6px; border: 1px solid #333;">
-                        <div style="font-size: 0.7rem; color: #888; text-transform: uppercase; font-weight: 700; margin-bottom: 2px;">Средний возраст</div>
-                        <div style="font-size: 1.1rem; font-weight: 900; color: #fff;">13 428</div>
+                    <div style="background: rgba(255,255,255,0.05); padding: 10px 14px; border-radius: 6px; border: 1px solid #333;">
+                        <div style="font-size: 0.85rem; color: #888; text-transform: uppercase; font-weight: 700; margin-bottom: 3px;">Средний возраст</div>
+                        <div style="font-size: 1.3rem; font-weight: 900; color: #fff;">13 428</div>
                     </div>
-                    <div style="background: rgba(255,255,255,0.05); padding: 8px 12px; border-radius: 6px; border: 1px solid #333;">
-                        <div style="font-size: 0.7rem; color: #888; text-transform: uppercase; font-weight: 700; margin-bottom: 2px;">Открыты давно</div>
-                        <div style="font-size: 1.1rem; font-weight: 900; color: #fff;">916</div>
+                    <div style="background: rgba(255,255,255,0.05); padding: 10px 14px; border-radius: 6px; border: 1px solid #333;">
+                        <div style="font-size: 0.85rem; color: #888; text-transform: uppercase; font-weight: 700; margin-bottom: 3px;">Открыты давно</div>
+                        <div style="font-size: 1.3rem; font-weight: 900; color: #fff;">916</div>
                     </div>
                 </div>
             </div>
