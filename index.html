@@ -159,7 +159,7 @@
                 
                 <div class="card">
                     <h3 style="color: var(--accent);">Предпосылка</h3>
-                    <p>Почти каждый посетитель совершает покупку.</p>
+                    <p>Практически каждый посетитель совершает покупку.</p>
                 </div>
                 
                 <!-- 4. Добавили flex: 1, чтобы эта карточка растянулась и заполнила пустоту -->
@@ -258,7 +258,7 @@
                 <div class="card" style="padding: 20px;">
                     <h3 style="color: var(--accent); margin-bottom: 10px;">Почему бинарная?</h3>
                     <p>
-                        Графики показывают, что магазинов с > 2 пятерочками рядом очень мало.
+                        Графики показывают, что магазинов с > 2 пятерочками рядом достаточно мало, их тяжелее сравнивать.
                         <br>
                         Поэтому переходим к бинарной переменной.
                     </p>
@@ -523,7 +523,7 @@
             </div>
             <div style="text-align: center; color: var(--accent); font-size: 1.5rem; line-height: 1;">▼</div>
             <div class="card flex-center" style="padding: 15px; border: 1px dashed #555;">
-                <p style="margin: 0; font-weight: bold; font-size: 1.1rem;">НОВЫЕ ПЯТЕРОЧКИ ПРИВЛЕКАТЕЛЬНЕЕ СТАРЫХ</p>
+                <p style="margin: 0; font-weight: bold; font-size: 1.1rem;">БОЛЕЕ НОВЫЕ ПЯТЕРОЧКИ ПРИВЛЕКАТЕЛЬНЕЕ СТАРЫХ</p>
             </div>
             <div style="text-align: center; color: var(--accent); font-size: 1.5rem; line-height: 1;">▼</div>
             <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 30px; width: 100%;">
@@ -944,7 +944,47 @@
         </div>
     </div>
 
+    <!-- 20. BOXPLOTS -->
+    <div class="slide">
+        <h2>Боксы-коксы</h2>
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; height: 70vh;">
+            <img src="boxplot1.png" alt="Boxplot 1" style="max-width: 100%; max-height: 100%; object-fit: contain;">
+            <img src="boxplot2.png" alt="Boxplot 2" style="max-width: 100%; max-height: 100%; object-fit: contain;">
+        </div>
+    </div>
+
     
+    <!-- 21. all-cors -->
+    <div class="slide">
+        <h2>Все корреляции</h2>
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; height: 70vh;">
+            <img src="all_cors.png" alt="Boxplot 1" style="max-width: 130%; max-height: 130%; object-fit: contain;">
+        </div>
+    </div>
+
+    <!-- 22. ну неважно -->
+    <div class="slide">
+        <h2>Выстрел из пушки типо</h2>
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; height: 70vh;">
+            <img src="images/pushko.png" alt="Boxplot 1" style="max-width: 200%; max-height: 200%; object-fit: contain;">
+        </div>
+    </div>
+
+    <!-- 23. ну неважно -->
+    <div class="slide">
+        <h2>Количество данных</h2>
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; height: 70vh;">
+            <img src="images/doki.png" alt="Boxplot 1" style="max-width: 130%; max-height: 130%; object-fit: contain;">
+        </div>
+    </div>
+
+    <!-- 24. ну неважно -->
+    <div class="slide">
+        <h2>Попытка в линрег</h2>
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; height: 70vh;">
+            <img src="images/popitka_linreg.png" alt="Boxplot 1" style="max-width: 130%; max-height: 80%; object-fit: contain;">
+        </div>
+    </div>
 
     <div id="resurrection-explosion"></div>
     
@@ -1326,36 +1366,53 @@
     };
 // СЛАЙД 9: НАСТРОЙКИ ГРАФИКА
     // СЛАЙД 3: РАСПРЕДЕЛЕНИЕ СРЕДНЕГО ЧЕКА
+    const checkCats = Array.from({length: 100}, (_, i) => (156 + i * (3912 - 156) / 100).toFixed(0));
     const optionsMeanCheck = {
         ...commonOptions,
-        chart: { type: 'bar', height: '100%', toolbar: { show: false }, animations: { enabled: false } },
-        plotOptions: { bar: { borderRadius: 4, columnWidth: '90%', dataLabels: { position: 'top' } } },
+        chart: { type: 'bar', height: '100%', background: 'transparent', toolbar: { show: false }, animations: { enabled: false } },
+        plotOptions: { bar: { borderRadius: 0, columnWidth: '100%', dataLabels: { position: 'top' } } },
         dataLabels: { enabled: false },
-        series: [{ name: 'Кол-во чеков', data: [339, 758, 6386, 27677, 46899, 49269, 39386, 28310, 19858, 13132, 8641, 5908, 3696, 2404, 1574, 985, 559, 293, 179, 109, 57, 22, 18, 17, 6, 4, 1, 2, 1, 1] }],
+        series: [{ name: 'Кол-во чеков', data: [107, 95, 100, 106, 175, 243, 469, 922, 1809, 3457, 5605, 7848, 10312, 12382, 13640, 14674, 15377, 15208, 14553, 14246, 13229, 11974, 10762, 9859, 8962, 8036, 7205, 6569, 5844, 5114, 4463, 3966, 3636, 3070, 2797, 2361, 2115, 1926, 1773, 1574, 1321, 1119, 966, 857, 786, 648, 596, 527, 468, 386, 380, 285, 248, 210, 182, 164, 110, 101, 88, 69, 63, 55, 47, 47, 32, 25, 23, 18, 18, 17, 6, 4, 8, 8, 8, 4, 2, 7, 4, 6, 2, 2, 1, 1, 2, 1, 1, 0, 0, 1, 0, 2, 0, 0, 0, 0, 1, 0, 0, 1] }],
         xaxis: {
-            categories: ['156-285', '285-410', '410-535', '535-660', '660-785', '785-910', '910-1035', '1035-1160', '1160-1285', '1285-1410', '1410-1535', '1535-1660', '1660-1785', '1785-1911', '1911-2036', '2036-2161', '2161-2286', '2286-2411', '2411-2536', '2536-2661', '2661-2786', '2786-2911', '2911-3036', '3036-3161', '3161-3286', '3286-3411', '3411-3536', '3536-3661', '3661-3786', '3786-3912'],
+            categories: checkCats,
             title: { text: 'Средний чек', style: { color: '#666', fontSize: '14px' } },
-            labels: { style: { colors: '#888', fontSize: '10px' }, rotate: -45 }
+            labels: { 
+                show: true, 
+                style: { colors: '#888', fontSize: '10px' }, 
+                rotate: -45,
+                formatter: (val) => {
+                    const num = Number(val);
+                    if (isNaN(num)) return val;
+                    return (Math.round(num / 300) * 300).toString();
+                }
+            },
+            tickAmount: 12,
+            tooltip: { enabled: false }
         },
         yaxis: {
+            title: { text: 'Количество', style: { color: '#666', fontSize: '12px' } },
             labels: { style: { colors: '#888', fontSize: '12px' } }
         },
         colors: [ACCENT_COLOR]
     };
 
     // СЛАЙД 3: РАСПРЕДЕЛЕНИЕ ТРАФИКА
+    const trafCats = Array.from({length: 100}, (_, i) => ((6270 + i * (153105 - 6270) / 100)/1000).toFixed(1) + 'k');
     const optionsMeanTraf = {
         ...commonOptions,
-        chart: { type: 'bar', height: '100%', toolbar: { show: false }, animations: { enabled: false } },
-        plotOptions: { bar: { borderRadius: 4, columnWidth: '90%', dataLabels: { position: 'top' } } },
+        chart: { type: 'bar', height: '100%', background: 'transparent', toolbar: { show: false }, animations: { enabled: false } },
+        plotOptions: { bar: { borderRadius: 0, columnWidth: '100%', dataLabels: { position: 'top' } } },
         dataLabels: { enabled: false },
-        series: [{ name: 'Кол-во магазинов', data: [62, 186, 157, 216, 443, 2152, 8254, 21650, 37218, 45633, 41495, 31147, 21692, 15331, 10660, 7566, 5099, 3038, 1901, 1134, 615, 415, 218, 123, 39, 23, 11, 6, 3, 4] }],
+        series: [{ name: 'Кол-во магазинов', data: [5, 10, 29, 58, 55, 56, 50, 63, 38, 41, 59, 67, 66, 84, 109, 135, 242, 434, 636, 979, 1475, 2276, 3225, 4369, 5828, 7118, 8732, 10079, 11359, 12661, 13435, 13712, 13865, 13733, 12903, 11943, 11011, 10118, 9209, 8346, 7339, 6638, 5892, 5377, 4787, 4306, 3901, 3595, 3060, 2788, 2567, 2352, 2034, 1826, 1640, 1455, 1200, 1041, 846, 742, 684, 525, 518, 427, 383, 306, 266, 216, 169, 156, 144, 131, 114, 88, 48, 67, 57, 42, 43, 22, 17, 15, 5, 6, 7, 9, 5, 4, 2, 3, 0, 2, 4, 1, 1, 1, 0, 1, 2, 1] }],
         xaxis: {
-            categories: ['6k-11k', '11k-16k', '16k-21k', '21k-26k', '26k-31k', '31k-36k', '36k-41k', '41k-46k', '46k-50k', '50k-55k', '55k-60k', '60k-65k', '65k-70k', '70k-75k', '75k-80k', '80k-85k', '85k-90k', '90k-94k', '94k-99k', '99k-104k', '104k-109k', '109k-114k', '114k-119k', '119k-124k', '124k-129k', '129k-134k', '134k-138k', '138k-143k', '143k-148k', '148k-153k'],
+            categories: trafCats,
             title: { text: 'Трафик', style: { color: '#666', fontSize: '14px' } },
-            labels: { style: { colors: '#888', fontSize: '10px' }, rotate: -45 }
+            labels: { show: true, style: { colors: '#888', fontSize: '10px' }, rotate: -45 },
+            tickAmount: 10,
+            tooltip: { enabled: false }
         },
         yaxis: {
+            title: { text: 'Количество', style: { color: '#666', fontSize: '12px' } },
             labels: { style: { colors: '#888', fontSize: '12px' } }
         },
         colors: [ACCENT_COLOR]
@@ -1625,7 +1682,7 @@
             chartTtest2.render();
         }
 
-        totalSlidesEl.innerText = 19;
+        totalSlidesEl.innerText = 20;
         showSlide(currentSlide);
     });
 
@@ -1644,7 +1701,7 @@
     }
 
     function showSlide(index) {
-        if (index === 0 || index >= 19) slideCounter.style.display = 'none';
+        if (index === 0 || index >= 20) slideCounter.style.display = 'none';
         else slideCounter.style.display = '';
 
         slides.forEach((slide, i) => {
