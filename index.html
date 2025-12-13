@@ -926,15 +926,12 @@
         </div>
     </div>
 
+    
+
     <div id="resurrection-explosion"></div>
     
     <!-- ================= CONTROLS & JS ================= -->
-    <div class="controls">
-        <div class="btn-group">
-            <button class="btn" onclick="prevSlide()"> &#8249; </button>
-            <button class="btn" onclick="nextSlide()"> &#8250; </button>
-        </div>
-    </div>
+    <!-- Controls removed -->
 
     <script>
     // ==========================================
@@ -1361,7 +1358,7 @@
             width: 1, 
             colors: ['#000'] // Черная обводка для контраста
         },
-        
+
         xaxis: {
             max: 140000000,
             // Порядок категорий снизу вверх или сверху вниз (ApexCharts рисует снизу вверх по массиву)
@@ -1568,7 +1565,7 @@
             chartTtest2.render();
         }
 
-        totalSlidesEl.innerText = slides.length;
+        totalSlidesEl.innerText = 19;
         showSlide(currentSlide);
     });
 
@@ -1587,7 +1584,7 @@
     }
 
     function showSlide(index) {
-        if (index === 0) slideCounter.style.display = 'none';
+        if (index === 0 || index >= 19) slideCounter.style.display = 'none';
         else slideCounter.style.display = '';
 
         slides.forEach((slide, i) => {
