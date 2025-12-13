@@ -211,77 +211,61 @@
 
     <!-- 06. НОВЫЕ ПЕРЕМЕННЫЕ: МЕТРИКИ (БЫВШИЙ 5 СЛАЙД) -->
     <div class="slide" id="slide-metrics">
-        <h2>06. ПРЕОБРАЗОВАНИЕ МЕТРИК</h2>
+        <h2>06. ВВОД НОВОЙ БИНАРНОЙ ПЕРЕМЕННОЙ «НАЛИЧИЕ ПЯТЕРОЧЕК»</h2>
         
-        <div style="display: grid; grid-template-columns: 1fr 1fr; grid-template-rows: auto 1fr; gap: 20px; height: 65vh;">
+        <div style="display: grid; grid-template-columns: 1.5fr 1fr; gap: 30px; height: 70vh;">
             
-            <div class="card" style="display: flex; flex-direction: column; justify-content: center; align-items: flex-start; padding: 20px;">
-                <h3 style="margin-bottom: 5px; font-size: 1.3rem;">НОВАЯ ЦЕЛЕВАЯ: ВЫРУЧКА</h3>
-                <p style="font-size: 1rem; margin-bottom: 10px; color: #aaa;">
-                    Средний чек и трафик по отдельности не отражают результат.
-                </p>
-                <div class="code-block" style="margin: 0; padding: 8px 12px; font-size: 1rem; display: inline-block; white-space: nowrap;">
-                    Выручка = Средний_чек * Трафик
+            <!-- Left Column: 2 Charts -->
+            <div style="display: flex; flex-direction: column; gap: 20px;">
+                <div class="card" style="flex: 1; display: flex; flex-direction: column; overflow: hidden;">
+                    <h4 style="margin-bottom: 5px; text-align: center;">Распределение по кол-ву пятерочек</h4>
+                    <div class="chart-container-fix" style="flex: 1;">
+                        <div id="chart-pyat-dist-new" style="width: 100%; height: 100%;"></div>
+                    </div>
                 </div>
+                <div class="card" style="flex: 1; display: flex; flex-direction: column; overflow: hidden;">
+                    <h4 style="margin-bottom: 5px; text-align: center;">Распределение по кол-ву магазинов</h4>
+                    <div class="chart-container-fix" style="flex: 1;">
+                        <div id="chart-shops-dist-new" style="width: 100%; height: 100%;"></div>
+                    </div>
+                </div>
+            </div>
 
-                <div style="margin-top: 15px; padding-top: 10px; border-top: 1px dashed #333; width: 100%;">
-                    <p style="font-size: 0.85rem; color: #666; font-style: italic; margin: 0;">
-                        * Переменные модифицированы составителями датасета
+            <!-- Right Column: Explanation + Binary Stats -->
+            <div style="display: flex; flex-direction: column; gap: 20px;">
+                <div class="card" style="padding: 20px;">
+                    <h3 style="color: var(--accent); margin-bottom: 10px;">Почему бинарная?</h3>
+                    <p>
+                        Графики показывают, что магазинов с > 2 пятерочками рядом очень мало.
+                        <br>
+                        Поэтому переходим к бинарной переменной.
                     </p>
                 </div>
-            </div>
 
-            <div class="card" style="grid-column: 2; grid-row: 1 / -1; padding: 15px; overflow: hidden; display: flex; flex-direction: column;">
-                <h3 style="text-align: center; color: var(--accent); margin-bottom: 10px; font-size: 1.3rem;">РАСПРЕДЕЛЕНИЕ ВЫРУЧКИ</h3>
-                <p style="text-align: center; font-size: 0.95rem; color: #ccc; margin-bottom: 15px; font-style: italic;">
-                    Распределение всей выручки за всё время по всем данным
-                </p>
-                <div style="flex: 1; display: flex; overflow: hidden;">
-                    <div style="writing-mode: vertical-rl; transform: rotate(180deg); text-align: center; color: #888; font-size: 1rem; padding: 5px 0; margin-right: 5px;">
-                        Количество магазинов
-                    </div>
-                    <div class="chart-container-fix" style="flex: 1;">
-                        <div id="chart-mini-revenue" style="width: 100%; height: 100%;"></div>
+                 <div class="card" style="padding: 20px; flex: 1; display: flex; flex-direction: column; justify-content: center;">
+                    <h3 style="margin-bottom: 20px; text-align: center;">Новая переменная: «наличие_пятерочек»</h3>
+                    
+                    <div style="display: flex; flex-direction: column; gap: 30px;">
+                        <!-- 0: Без Пятерочек -->
+                        <div style="background: rgba(255,255,255,0.05); padding: 15px; border-radius: 8px; border-left: 4px solid #888;">
+                            <div style="font-size: 1rem; color: #aaa; margin-bottom: 5px;">Без Пятерочек</div>
+                            <div style="font-size: 2.2rem; font-weight: 900; color: #fff;">121 509</div>
+                            <div style="font-size: 0.9rem; color: #666;">~47%</div>
+                        </div>
+
+                        <!-- 1: С Пятерочками -->
+                        <div style="background: rgba(255,255,255,0.05); padding: 15px; border-radius: 8px; border-left: 4px solid var(--accent);">
+                            <div style="font-size: 1rem; color: #aaa; margin-bottom: 5px;">С Пятерочками</div>
+                            <div style="font-size: 2.2rem; font-weight: 900; color: #fff;">134 982</div>
+                            <div style="font-size: 0.9rem; color: #666;">~53%</div>
+                        </div>
                     </div>
                 </div>
             </div>
 
-            <div class="card" style="display: flex; flex-direction: column; justify-content: space-between; padding: 20px;">
-                <div>
-                    <h3 style="color: var(--accent); margin-bottom: 10px; font-size: 1.3rem;">НОВЫЙ МАГАЗИН</h3>
-                    <ul style="font-size: 1rem; list-style: none; padding-left: 0; margin-bottom: 15px; color: #e0e0e0;">
-                        <li style="margin-bottom: 8px; display: flex; align-items: flex-start;">
-                            <span style="color: var(--accent); margin-right: 10px; font-weight: bold;">&bull;</span>
-                            <span>Неполная история за год</span>
-                        </li>
-                        <li style="margin-bottom: 5px; display: flex; align-items: flex-start;">
-                            <span style="color: var(--accent); margin-right: 10px; font-weight: bold;">&bull;</span>
-                            <span>Сильная разница в выручке в соседние месяцы</span>
-                        </li>
-                    </ul>
-                </div>
-
-                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: auto;">
-                    <div style="background: rgba(255,255,255,0.05); padding: 8px 12px; border-radius: 6px; border: 1px solid #333;">
-                        <div style="font-size: 0.85rem; color: var(--accent); text-transform: uppercase; font-weight: 700; margin-bottom: 2px;">Новый</div>
-                        <div style="font-size: 1.3rem; font-weight: 900; color: #fff;">1 072</div>
-                    </div>
-                    <div style="background: rgba(255,255,255,0.05); padding: 8px 12px; border-radius: 6px; border: 1px solid #333;">
-                        <div style="font-size: 0.85rem; color: #888; text-transform: uppercase; font-weight: 700; margin-bottom: 2px;">Недавно открытые</div>
-                        <div style="font-size: 1.3rem; font-weight: 900; color: #fff;">6 326</div>
-                    </div>
-                    <div style="background: rgba(255,255,255,0.05); padding: 8px 12px; border-radius: 6px; border: 1px solid #333;">
-                        <div style="font-size: 0.85rem; color: #888; text-transform: uppercase; font-weight: 700; margin-bottom: 2px;">Средний возраст</div>
-                        <div style="font-size: 1.3rem; font-weight: 900; color: #fff;">13 428</div>
-                    </div>
-                    <div style="background: rgba(255,255,255,0.05); padding: 8px 12px; border-radius: 6px; border: 1px solid #333;">
-                        <div style="font-size: 0.85rem; color: #888; text-transform: uppercase; font-weight: 700; margin-bottom: 2px;">Открыты давно</div>
-                        <div style="font-size: 1.3rem; font-weight: 900; color: #fff;">916</div>
-                    </div>
-                </div>
-            </div>
         </div>
     </div>
+    
 
     <!-- 07. ИССЛЕДОВАТЕЛЬСКИЙ ВОПРОС (БЫВШИЙ 6 СЛАЙД) -->
     <div class="slide">
@@ -364,8 +348,8 @@
                                 <span style="color: #fff; font-weight: bold;">Выбросов нет.</span>
                             </div>
                             <div>
-                                <span class="tag" style="border-color: var(--accent); color: var(--accent);">Выручка (Y)</span>
-                                <span style="color: #fff;">Очищаем, так как это целевая переменная.</span>
+                                <!-- <span class="tag" style="border-color: var(--accent); color: var(--accent);">Выручка (Y)</span> -->
+                                <!-- <span style="color: #fff;">Очищаем, так как это целевая переменная.</span> -->
                             </div>
                         </div>
 
@@ -411,9 +395,9 @@
                             <div style="font-size: 0.8rem; color: #666; margin-top: 2px;">(менее 1%)</div>
                         </div>
 
-                        <div style="margin-top: 10px; text-align: center; font-style: italic; color: #777; font-size: 0.85rem;">
+                        <!-- <div style="margin-top: 10px; text-align: center; font-style: italic; color: #777; font-size: 0.85rem;">
                             Данные очищены и готовы к анализу
-                        </div>
+                        </div> -->
                     </div>
                 </div>
             </div>
@@ -460,16 +444,38 @@
                     </div>
                 </div>
 
-                <!-- Вывод -->
-                <!-- <div class="card" style="flex: 1; padding: 20px; border-left: 4px solid var(--accent); background: rgba(198, 255, 0, 0.05); display: flex; flex-direction: column; justify-content: center;">
-                    <h3 style="color: var(--accent); margin-bottom: 10px;">ВЫВОД</h3>
-                    <p style="font-size: 1rem; line-height: 1.4;">
-                        Старые магазины теряют <span style="color: #fff; font-weight: bold;">~17 млн</span> выручки при появлении конкурента.
-                    </p>
-                    <p style="font-size: 0.85rem; color: #aaa; margin-top: 10px;">
-                        Для новых магазинов эффект почти незаметен.
-                    </p>
-                </div> -->
+                <!-- Статистика по датам -->
+                <div class="card" style="padding: 15px; flex: 1; display: flex; flex-direction: column;">
+                    <h3 style="margin-bottom: 10px; font-size: 1rem; color: #fff;">Количество магазинов</h3>
+                    <div style="overflow-x: auto;">
+                        <table style="width: 100%; border-collapse: collapse; font-size: 0.85rem;">
+                            <thead>
+                                <tr style="border-bottom: 1px solid var(--accent);">
+                                    <th style="text-align: left; padding: 8px; color: #aaa;">Дата открытия</th>
+                                    <th style="text-align: right; padding: 8px; color: #aaa;">Count</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr style="border-bottom: 1px solid #333;">
+                                    <td style="padding: 8px;">Средний по возрасту</td>
+                                    <td style="text-align: right; padding: 8px; font-weight: bold; color: #fff;">161 020</td>
+                                </tr>
+                                <tr style="border-bottom: 1px solid #333;">
+                                    <td style="padding: 8px;">Новый</td>
+                                    <td style="text-align: right; padding: 8px; font-weight: bold; color: #fff;">75 861</td>
+                                </tr>
+                                <tr style="border-bottom: 1px solid #333;">
+                                    <td style="padding: 8px;">Открыт давно</td>
+                                    <td style="text-align: right; padding: 8px; font-weight: bold; color: #fff;">10 978</td>
+                                </tr>
+                                <tr>
+                                    <td style="padding: 8px;">Мегановый</td>
+                                    <td style="text-align: right; padding: 8px; font-weight: bold; color: #fff;">8 632</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
@@ -653,24 +659,187 @@
     </div>
 
     <!-- 14. УСТОЙЧИВОСТЬ -->
+    <!-- 14. УСТОЙЧИВОСТЬ И НОВЫЕ ПЕРЕМЕННЫЕ (ОБЪЕДИНЕННЫЙ) -->
     <div class="slide" id="chartSlide4">
-        <h2>14. УСТОЙЧИВОСТЬ</h2>
-        <p>Проверка на различных подвыборках.</p>
-        <div class="card" style="height: 60%; padding: 10px; margin-top: 20px;">
-             <div id="chart-robustness" style="width: 100%; height: 100%;"></div>
+        <h2>14. ПРОВЕРКА НА УСТОЙЧИВОСТЬ</h2>
+        
+        <div style="display: grid; grid-template-columns: 1.8fr 1fr; gap: 30px; height: 75vh;">
+            
+            <!-- ЛЕВАЯ КОЛОНКА: ТАБЛИЦА -->
+            <div class="card" style="padding: 20px; display: flex; flex-direction: column; gap: 20px;">
+                
+                <!-- ТАБЛИЦА 1 -->
+                <div style="flex: 1; display: flex; flex-direction: column;">
+                    <h3 style="margin-bottom: 10px;">По типам населенных пунктов</h3>
+                    <div style="overflow-x: auto; flex: 1;">
+                        <table style="width: 100%; border-collapse: collapse; font-size: 0.9rem; text-align: center;">
+                            <thead>
+                                <tr style="border-bottom: 2px solid var(--accent);">
+                                    <th style="padding: 8px; text-align: left;">Тип НП</th>
+                                    <th style="padding: 8px;">Разница (без 5-ок)</th>
+                                    <th style="padding: 8px;">%</th>
+                                    <th style="padding: 8px;">P-value</th>
+                                    <th style="padding: 8px; border-left: 1px solid #555;">Разница (с 5-ками)</th>
+                                    <th style="padding: 8px;">%</th>
+                                    <th style="padding: 8px;">P-value</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr style="border-bottom: 1px solid #333;">
+                                    <td style="padding: 8px; text-align: left; font-weight: bold; color: #fff;">Малые</td>
+                                    <td>14.1 M</td>
+                                    <td style="color: var(--accent);">13.9%</td>
+                                    <td>0.00</td>
+                                    <td style="border-left: 1px solid #555;">1.7 M</td>
+                                    <td style="color: var(--accent);">2.9%</td>
+                                    <td>0.00</td>
+                                </tr>
+                                <tr style="border-bottom: 1px solid #333;">
+                                    <td style="padding: 8px; text-align: left; font-weight: bold; color: #fff;">Средние</td>
+                                    <td>12.7 M</td>
+                                    <td style="color: var(--accent);">11.5%</td>
+                                    <td>0.00</td>
+                                    <td style="border-left: 1px solid #555;">-0.9 M</td>
+                                    <td style="color: #ff4560;">-1.9%</td>
+                                    <td>0.00</td>
+                                </tr>
+                                <tr style="border-bottom: 1px solid #333;">
+                                    <td style="padding: 8px; text-align: left; font-weight: bold; color: #fff;">Большие</td>
+                                    <td>-4.5 M</td>
+                                    <td style="color: #ff4560;">-5.3%</td>
+                                    <td style="color: #ff4560;">0.15</td>
+                                    <td style="border-left: 1px solid #555;">-0.2 M</td>
+                                    <td style="color: #ff4560;">-0.4%</td>
+                                    <td style="color: #ff4560;">0.53</td>
+                                </tr>
+                                <tr style="border-bottom: 1px solid #333;">
+                                    <td style="padding: 8px; text-align: left; font-weight: bold; color: #fff;">Крупные</td>
+                                    <td>11.8 M</td>
+                                    <td style="color: var(--accent);">12.6%</td>
+                                    <td>0.00</td>
+                                    <td style="border-left: 1px solid #555;">3.1 M</td>
+                                    <td style="color: var(--accent);">5.3%</td>
+                                    <td>0.00</td>
+                                </tr>
+                                <tr style="border-bottom: 1px solid #333;">
+                                    <td style="padding: 8px; text-align: left; font-weight: bold; color: #fff;">Крупнейшие</td>
+                                    <td>28.6 M</td>
+                                    <td style="color: var(--accent);">27.5%</td>
+                                    <td>0.00</td>
+                                    <td style="border-left: 1px solid #555;">3.6 M</td>
+                                    <td style="color: var(--accent);">6.8%</td>
+                                    <td>0.00</td>
+                                </tr>
+                                <tr>
+                                    <td style="padding: 8px; text-align: left; font-weight: bold; color: #fff;">Миллионники</td>
+                                    <td>23.9 M</td>
+                                    <td style="color: var(--accent);">18.0%</td>
+                                    <td>0.00</td>
+                                    <td style="border-left: 1px solid #555;">6.0 M</td>
+                                    <td style="color: var(--accent);">8.6%</td>
+                                    <td>0.00</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- ТАБЛИЦА 2 -->
+                <div style="flex: 0.8; display: flex; flex-direction: column; border-top: 1px solid #333; padding-top: 15px;">
+                    <div style="display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 10px;">
+                        <h3 style="margin: 0;">По дате открытия пятерочки</h3>
+                    </div>
+                    <div style="overflow-x: auto; flex: 1;">
+                        <table style="width: 100%; border-collapse: collapse; font-size: 0.9rem; text-align: center;">
+                            <thead>
+                                <tr style="border-bottom: 2px solid var(--accent);">
+                                    <th style="padding: 8px; text-align: left;">Группа</th>
+                                    <th style="padding: 8px;">Разница средних</th>
+                                    <th style="padding: 8px;">Проценты</th>
+                                    <th style="padding: 8px;">P-value</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr style="border-bottom: 1px solid #333;">
+                                    <td style="padding: 8px; text-align: left; font-weight: bold; color: #fff;">Новейшие</td>
+                                    <td>5.0 M</td>
+                                    <td style="color: var(--accent);">11.80%</td>
+                                    <td>0.00</td>
+                                </tr>
+                                <tr style="border-bottom: 1px solid #333;">
+                                    <td style="padding: 8px; text-align: left; font-weight: bold; color: #fff;">Новые</td>
+                                    <td>1.4 M</td>
+                                    <td style="color: var(--accent);">2.41%</td>
+                                    <td>0.00</td>
+                                </tr>
+                                <tr style="border-bottom: 1px solid #333;">
+                                    <td style="padding: 8px; text-align: left; font-weight: bold; color: #fff;">Средние по возрасту</td>
+                                    <td>0.4 M</td>
+                                    <td style="color: var(--accent);">0.73%</td>
+                                    <td>0.00</td>
+                                </tr>
+                                <tr>
+                                    <td style="padding: 8px; text-align: left; font-weight: bold; color: #fff;">Открыты давно</td>
+                                    <td>16.9 M</td>
+                                    <td style="color: var(--accent);">14.38%</td>
+                                    <td>0.00</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ПРАВАЯ КОЛОНКА: ОБЪЯСНЕНИЯ ПЕРЕМЕННЫХ -->
+            <div style="display: flex; flex-direction: column; gap: 20px;">
+                
+                <!-- 1. Классификация (Легенда к таблице) -->
+                <div class="card" style="padding: 20px; flex: 1; display: flex; flex-direction: column;">
+                    <h3 style="color: #fff; margin-bottom: 15px; font-size: 1.1rem;">Классификация</h3>
+                    <div style="display: flex; flex-direction: column; gap: 10px; flex: 1; justify-content: space-evenly;">
+                        <div style="background: rgba(255,255,255,0.05); padding: 15px; border-radius: 4px; display: flex; align-items: center; justify-content: space-between;">
+                            <div style="color: #fff; font-weight: bold; font-size: 1rem;">МАЛЫЙ</div>
+                            <div style="font-size: 0.9rem; color: #888;">0-50 тыс.</div>
+                        </div>
+                        <div style="background: rgba(255,255,255,0.05); padding: 15px; border-radius: 4px; display: flex; align-items: center; justify-content: space-between;">
+                            <div style="color: #fff; font-weight: bold; font-size: 1rem;">СРЕДНИЙ</div>
+                            <div style="font-size: 0.9rem; color: #888;">50-100 тыс.</div>
+                        </div>
+                        <div style="background: rgba(255,255,255,0.05); padding: 15px; border-radius: 4px; display: flex; align-items: center; justify-content: space-between;">
+                            <div style="color: #fff; font-weight: bold; font-size: 1rem;">БОЛЬШОЙ</div>
+                            <div style="font-size: 0.9rem; color: #888;">100-250 тыс.</div>
+                        </div>
+                        <div style="background: rgba(255,255,255,0.05); padding: 15px; border-radius: 4px; display: flex; align-items: center; justify-content: space-between;">
+                            <div style="color: #fff; font-weight: bold; font-size: 1rem;">КРУПНЫЙ</div>
+                            <div style="font-size: 0.9rem; color: #888;">250-500 тыс.</div>
+                        </div>
+                        <div style="background: rgba(255,255,255,0.05); padding: 15px; border-radius: 4px; display: flex; align-items: center; justify-content: space-between;">
+                            <div style="color: #fff; font-weight: bold; font-size: 1rem;">КРУПНЕЙШИЙ</div>
+                            <div style="font-size: 0.9rem; color: #888;">0.5 - 1 млн</div>
+                        </div>
+                        <div style="background: rgba(255,255,255,0.05); padding: 15px; border-radius: 4px; display: flex; align-items: center; justify-content: space-between;">
+                            <div style="color: #fff; font-weight: bold; font-size: 1rem;">МИЛЛИОННИК</div>
+                            <div style="font-size: 0.9rem; color: #888;">> 1 млн</div>
+                        </div>
+                    </div>
+                    <div style="margin-top: 15px; font-size: 0.8rem; color: #666; font-style: italic; text-align: center;">
+                        * Классификация по Т.В. Малеевой («Инженерно-экономические основы градостроительства»)
+                    </div>
+                </div>
+
+            </div>
         </div>
     </div>
-
     <!-- 15. Гипотеза подтвердилась -->
     <div class="slide">
         <h2>15. Гипотеза подтвердилась</h2>
         <div class="card" style="padding: 40px; height: 60vh; display: flex; flex-direction: column; justify-content: center;">
-            <h3 style="color: var(--accent); margin-bottom: 20px;">Проверка на устойчивость</h3>
-            <p style="font-size: 1.2rem; margin-bottom: 20px;">
+            <h3 style="color: var(--accent); margin-bottom: 30px; font-size: 2.5rem;">Проверка на устойчивость</h3>
+            <p style="font-size: 2.0rem; margin-bottom: 30px; line-height: 1.4;">
                 Почти для всех населенных пунктов подтвердилось, кроме больших. Это можно объяснить:
             </p>
-            <ul style="list-style: none; padding: 0; font-size: 1.2rem;">
-                <li style="margin-bottom: 15px; padding-left: 20px; border-left: 3px solid var(--accent);">
+            <ul style="list-style: none; padding: 0; font-size: 2.0rem; line-height: 1.4;">
+                <li style="margin-bottom: 20px; padding-left: 25px; border-left: 5px solid var(--accent);">
                     Не самый высокий спрос и относительно большое число магазинов <br>
                     <span style="color: var(--accent); font-weight: bold;">=></span> жёсткая конкуренция, а потому эффект новизны заглушается на данных.
                 </li>
@@ -684,18 +853,20 @@
         <div class="grid-2">
             <div class="card">
                 <h3>ОГРАНИЧЕНИЯ</h3>
-                <ul>
-                    <li>Нет данных об оборудовании, дизайне каждой Пятёрочки</li>
-                    <li>Нет данных о количестве Пятёрочек для разных радиусов</li>
-                    <li>Нет данных за несколько лет</li>
+                <ul style="font-size: 1.3rem;">
+                    <li><strong>Короткий период:</strong> Данные за 1 год скрывают долгосрочные тренды.</li>
+                    <li><strong>Слепые зоны:</strong> Нет данных о конкурентах в радиусах 200–500 м.</li>
+                    <li><strong>Детали точек:</strong> Нет сведений об оборудовании и дизайне.</li>
+                    <li><strong>Геолокация:</strong> Отсутствие координат снижает точность моделей.</li>
                 </ul>
             </div>
             <div class="card">
                 <h3>ПЕРСПЕКТИВЫ</h3>
-                <ul>
-                    <li>Оценить роль конкретного оборудования и дизайна в большей стабильности выручки</li>
-                    <li>Оценить расстояние, до которого присуща каннибализация для каждого возраста Пятёрочки</li>
-                    <li>Оценить время, за которое "эффект новой Пятёрочки" закончится</li>
+                <ul style="font-size: 1.3rem;">
+                    <li><strong>Срок эффекта:</strong> Найти момент ослабевания «эффекта новой Пятёрочки».</li>
+                    <li><strong>Радиус влияния:</strong> Оценить дистанцию воздействия на рынок.</li>
+                    <li><strong>Драйверы:</strong> Определить элементы формата, усиливающие эффект.</li>
+                    <li><strong>Гео-анализ:</strong> Повысить качество пространственных расчетов.</li>
                 </ul>
             </div>
         </div>
@@ -729,11 +900,6 @@
                 <div class="card" style="padding: 10px; flex: 1;">
                     <div class="team-photo-box" style="background-image: url('images/db112ad479a169c8f5f1465418636ee5.1000x1000x1.png');"></div>
                     <div style="padding: 10px;"><h3>MID</h3></div>
-                </div>
-                <div class="card" style="padding: 10px; flex: 1;">
-                    <div id="offlane-photo" class="team-photo-box dead" style="background-image: url('images/penis.jpg');"></div>
-                    <div style="padding: 10px;"><h3>OFFLANE</h3></div>
-                    <h5>вечная память</h5>
                 </div>
                  <div class="card" style="padding: 10px; flex: 1;">
                     <div class="team-photo-box dead" style="background-image: url('images/tete.jpg');"></div>
@@ -1274,6 +1440,69 @@
                 }
             });
             chartPyatDist.render();
+        }
+
+        // НОВЫЕ ГРАФИКИ ДЛЯ 6 СЛАЙДА (МЕТРИКИ)
+        if(document.querySelector("#chart-pyat-dist-new")) {
+            const optionsPyatDistNew = {
+                ...optionsDistStatic,
+                plotOptions: { 
+                    bar: { 
+                        borderRadius: 2, 
+                        borderRadiusApplication: 'end', // Fix for small values sinking
+                        columnWidth: '70%',
+                        dataLabels: { position: 'top' } 
+                    } 
+                },
+                series: [{ name: 'Кол-во магазинов', data: [10319, 5998, 3157, 1441, 566, 187, 49, 20, 4, 1] }],
+                xaxis: { 
+                    categories: ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'],
+                    title: { text: 'Кол-во Пятерочек рядом', style: { color: '#666', fontSize: '14px' } },
+                    labels: { style: { colors: '#888', fontSize: '12px' } }
+                },
+                // === ИСПРАВЛЕНИЕ: ПЕРЕОПРЕДЕЛЯЕМ ФОРМАТ (ШТУКИ ВМЕСТО ВАЛЮТЫ) ===
+                yaxis: { 
+                    min: 0,
+                    labels: { style: { colors: '#888', fontSize: '12px' }, formatter: (val) => val }
+                },
+                tooltip: { 
+                    theme: 'dark', 
+                    y: { formatter: (val) => val + " шт." } 
+                },
+                colors: [ACCENT_COLOR]
+            };
+            new ApexCharts(document.querySelector("#chart-pyat-dist-new"), optionsPyatDistNew).render();
+        }
+
+        if(document.querySelector("#chart-shops-dist-new")) {
+            const optionsShopsDistNew = {
+                ...optionsDistStatic,
+                plotOptions: { 
+                    bar: { 
+                        borderRadius: 2, 
+                        borderRadiusApplication: 'end', // Fix for small values sinking
+                        columnWidth: '70%',
+                        dataLabels: { position: 'top' } 
+                    } 
+                },
+                series: [{ name: 'Кол-во магазинов', data: [2780, 3138, 2839, 2619, 2348, 2083, 1706, 1375, 992, 759, 451, 278, 170, 110, 55, 23, 8, 4, 1, 3] }],
+                xaxis: { 
+                    categories: ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12', '13', '14', '15', '16', '17', '18', '19'],
+                    title: { text: 'Кол-во Магазинов рядом', style: { color: '#666', fontSize: '14px' } },
+                    labels: { style: { colors: '#888', fontSize: '12px' } }
+                },
+                // === ИСПРАВЛЕНИЕ: ПЕРЕОПРЕДЕЛЯЕМ ФОРМАТ (ШТУКИ ВМЕСТО ВАЛЮТЫ) ===
+                yaxis: { 
+                    min: 0,
+                    labels: { style: { colors: '#888', fontSize: '12px' }, formatter: (val) => val }
+                },
+                tooltip: { 
+                    theme: 'dark', 
+                    y: { formatter: (val) => val + " шт." } 
+                },
+                colors: ['#ffffff'] 
+            };
+            new ApexCharts(document.querySelector("#chart-shops-dist-new"), optionsShopsDistNew).render();
         }
 
         if(document.querySelector("#chart-shops-dist")) {
