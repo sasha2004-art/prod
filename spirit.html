@@ -455,19 +455,74 @@
         const ACCENT_COLOR = '#C6FF00'; // Наш новый цвет
         const TEXT_COLOR = '#ffffff';
 
-        const commonOptions = {
-            chart: {
-                background: 'transparent',
-                toolbar: { show: false },
-                animations: { enabled: true, easing: 'easeinout', speed: 800 },
-                fontFamily: 'Inter, sans-serif',
+    // Общие настройки графиков (UPDATED FONT SIZES)
+    const commonOptions = {
+        chart: {
+            background: 'transparent',
+            toolbar: { show: false },
+            animations: { enabled: true, easing: 'easeinout', speed: 800 },
+            fontFamily: 'Inter, sans-serif',
+        },
+        theme: { mode: 'dark' },
+        colors: [ACCENT_COLOR, '#444444'],
+        grid: { borderColor: '#333', strokeDashArray: 4 },
+        dataLabels: { 
+            enabled: false,
+            style: {
+                fontSize: '16px', // Было default, ставим крупно
+                fontWeight: 'bold',
+            }
+        },
+        stroke: { curve: 'smooth', width: 4 }, // Линии графика жирнее (было 3)
+        
+        // Глобальное увеличение шрифтов осей
+        xaxis: {
+            labels: {
+                style: {
+                    fontSize: '16px', // ОСЬ X
+                    fontFamily: 'Inter, sans-serif',
+                    fontWeight: 600,
+                    colors: '#888'
+                }
             },
-            theme: { mode: 'dark' },
-            colors: [ACCENT_COLOR, '#444444'], // Зеленый для данных, серый для фона
-            grid: { borderColor: '#333', strokeDashArray: 4 },
-            dataLabels: { enabled: false },
-            stroke: { curve: 'smooth', width: 3 },
-        };
+            title: {
+                style: {
+                    fontSize: '18px', // Название оси
+                    fontWeight: 700,
+                    color: '#fff'
+                }
+            }
+        },
+        yaxis: {
+            labels: {
+                style: {
+                    fontSize: '16px', // ОСЬ Y
+                    fontFamily: 'Inter, sans-serif',
+                    fontWeight: 600,
+                    colors: '#888'
+                }
+            },
+            title: {
+                style: {
+                    fontSize: '18px', // Название оси
+                    fontWeight: 700,
+                    color: '#fff'
+                }
+            }
+        },
+        legend: {
+            fontSize: '18px', // Легенда
+            fontWeight: 600,
+            labels: {
+                colors: '#fff'
+            }
+        },
+        tooltip: {
+            style: {
+                fontSize: '16px' // Тултип
+            }
+        }
+    };
 
         // 1. AREA CHART
         const optionsArea = {
@@ -513,11 +568,11 @@
                     track: { background: '#222', strokeWidth: '100%' },
                     dataLabels: {
                         show: true,
-                        name: { offsetY: -10, show: true, color: '#888', fontSize: '14px' },
+                        name: { offsetY: -10, show: true, color: '#888', fontSize: '16px' },
                         value: { 
                             offsetY: 5, 
                             color: ACCENT_COLOR, // Зеленая цифра
-                            fontSize: '30px', 
+                            fontSize: '36px', 
                             fontWeight: '900', 
                             fontFamily: 'Monument Extended, sans-serif', 
                             show: true 
@@ -578,7 +633,7 @@
                 stroke: { colors: ['#ff5555'] }, // Цвет обводки точек
                 grid: { xaxis: { lines: { show: true } }, yaxis: { lines: { show: false } } },
                 xaxis: { 
-                    labels: { style: { colors: '#888' } },
+                    labels: { style: { colors: '#888', fontSize: '14px' } },
                     tooltip: { enabled: false }
                 },
                 yaxis: { show: false }, // Скрываем ось Y, так как одна категория
@@ -616,7 +671,7 @@
                 },
                 stroke: { colors: ['#ff5555'] },
                 grid: { xaxis: { lines: { show: true } }, yaxis: { lines: { show: false } } },
-                xaxis: { labels: { style: { colors: '#888' } } },
+                xaxis: { labels: { style: { colors: '#888', fontSize: '14px' } } },
                 yaxis: { show: false },
                 tooltip: { theme: 'dark' }
             };
@@ -677,13 +732,13 @@
                 dataLabels: {
                     enabled: true,
                     offsetX: 40,
-                    style: { fontSize: '12px', colors: ['#fff'] },
+                    style: { fontSize: '14px', colors: ['#fff'] },
                     formatter: function (val) { return val.toFixed(1) + "M"; }
                 },
                 xaxis: {
                     categories: categoriesImpact,
                     labels: {
-                        style: { colors: '#888', fontSize: '12px' },
+                        style: { colors: '#888', fontSize: '14px' },
                         formatter: (val) => val + "M"
                     },
                     axisBorder: { show: false },
@@ -691,8 +746,8 @@
                 },
                 yaxis: {
                     labels: {
-                        style: { colors: '#fff', fontSize: '14px', fontWeight: 'bold' },
-                        maxWidth: 200
+                        style: { colors: '#fff', fontSize: '16px', fontWeight: 'bold' },
+                        maxWidth: 250
                     }
                 },
                 grid: {
