@@ -98,10 +98,10 @@
                     <ul style="list-style: none; padding: 0; margin-top: 15px; font-size: 1.1rem;">
                         <li style="margin-bottom: 12px;">• Средний чек</li>
                         <li style="margin-bottom: 12px;">• Трафик</li>
-                        <li style="margin-bottom: 12px;">• Инфраструктура <span style="color: var(--accent);">*</span></li>
+                        <li style="margin-bottom: 12px;">• Инфраструктура</li>
                         <li>• Население</li>
                     </ul>
-                    <p style="margin-top: 15px; font-size: 0.8rem; color: #888;">
+                    <p style="margin-top: 15px; font-size: 1rem; color: #888;">
                         <span style="color: var(--accent);">*</span> много переменных об окружении и трафике
                     </p>
                 </div>
@@ -812,7 +812,7 @@
                 
                 <!-- 1. Классификация (Легенда к таблице) -->
                 <div class="card" style="padding: 20px; flex: 1; display: flex; flex-direction: column;">
-                    <h3 style="color: #fff; margin-bottom: 15px; font-size: 1.1rem;">Классификация</h3>
+                    <h3 style="color: #fff; margin-bottom: 15px; font-size: 1rem;">Классификация</h3>
                     <div style="display: flex; flex-direction: column; gap: 10px; flex: 1; justify-content: space-evenly;">
                         <div style="background: rgba(255,255,255,0.05); padding: 15px; border-radius: 4px; display: flex; align-items: center; justify-content: space-between;">
                             <div style="color: #fff; font-weight: bold; font-size: 1rem;">МАЛЫЙ</div>
@@ -1009,8 +1009,62 @@
         theme: { mode: 'dark' },
         colors: [ACCENT_COLOR, '#444444'],
         grid: { borderColor: '#333', strokeDashArray: 4 },
-        dataLabels: { enabled: false },
-        stroke: { curve: 'smooth', width: 3 },
+        dataLabels: { 
+            enabled: false,
+            style: {
+                fontSize: '16px', // Было default, ставим крупно
+                fontWeight: 'bold',
+            }
+        },
+        stroke: { curve: 'smooth', width: 4 }, // Линии графика жирнее (было 3)
+        
+        // Глобальное увеличение шрифтов осей
+        xaxis: {
+            labels: {
+                style: {
+                    fontSize: '16px', // ОСЬ X
+                    fontFamily: 'Inter, sans-serif',
+                    fontWeight: 600,
+                    colors: '#888'
+                }
+            },
+            title: {
+                style: {
+                    fontSize: '18px', // Название оси
+                    fontWeight: 700,
+                    color: '#fff'
+                }
+            }
+        },
+        yaxis: {
+            labels: {
+                style: {
+                    fontSize: '16px', // ОСЬ Y
+                    fontFamily: 'Inter, sans-serif',
+                    fontWeight: 600,
+                    colors: '#888'
+                }
+            },
+            title: {
+                style: {
+                    fontSize: '18px', // Название оси
+                    fontWeight: 700,
+                    color: '#fff'
+                }
+            }
+        },
+        legend: {
+            fontSize: '18px', // Легенда
+            fontWeight: 600,
+            labels: {
+                colors: '#fff'
+            }
+        },
+        tooltip: {
+            style: {
+                fontSize: '16px' // Тултип
+            }
+        }
     };
 
     // СЛАЙД 3: СРЕДНИЙ ЧЕК (Вспомогательный график, но переменная chartAvgCheck)
@@ -1369,7 +1423,7 @@
         series: [{ name: 'Кол-во чеков', data: [107, 95, 100, 106, 175, 243, 469, 922, 1809, 3457, 5605, 7848, 10312, 12382, 13640, 14674, 15377, 15208, 14553, 14246, 13229, 11974, 10762, 9859, 8962, 8036, 7205, 6569, 5844, 5114, 4463, 3966, 3636, 3070, 2797, 2361, 2115, 1926, 1773, 1574, 1321, 1119, 966, 857, 786, 648, 596, 527, 468, 386, 380, 285, 248, 210, 182, 164, 110, 101, 88, 69, 63, 55, 47, 47, 32, 25, 23, 18, 18, 17, 6, 4, 8, 8, 8, 4, 2, 7, 4, 6, 2, 2, 1, 1, 2, 1, 1, 0, 0, 1, 0, 2, 0, 0, 0, 0, 1, 0, 0, 1] }],
         xaxis: {
             categories: checkCats,
-            title: { text: 'Средний чек', style: { color: '#666', fontSize: '14px' } },
+            title: { text: 'Средний чек', style: { color: '#666', fontSize: '18px' } },
             labels: { 
                 show: true, 
                 style: { colors: '#888', fontSize: '10px' }, 
