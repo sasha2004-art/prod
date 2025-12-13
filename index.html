@@ -78,7 +78,7 @@
                     </div>
                     <div class="card">
                         <div class="big-stat">21k</div>
-                        <div class="stat-label">Магазина</div>
+                        <div class="stat-label">Магазинов</div>
                     </div>
                 </div>
 
@@ -98,9 +98,12 @@
                     <ul style="list-style: none; padding: 0; margin-top: 15px; font-size: 1.1rem;">
                         <li style="margin-bottom: 12px;">• Средний чек</li>
                         <li style="margin-bottom: 12px;">• Трафик</li>
-                        <li style="margin-bottom: 12px;">• Инфраструктура</li>
+                        <li style="margin-bottom: 12px;">• Инфраструктура <span style="color: var(--accent);">*</span></li>
                         <li>• Население</li>
                     </ul>
+                    <p style="margin-top: 15px; font-size: 0.8rem; color: #888;">
+                        <span style="color: var(--accent);">*</span> много переменных об окружении и трафике
+                    </p>
                 </div>
                 
                 <div class="card" style="flex: 1; display: flex; flex-direction: column; justify-content: center;">
@@ -865,16 +868,21 @@
     <!-- 16. ПОЛИСИ -->
     <div class="slide">
         <h2>16. ПОЛИСИ</h2>
-        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 30px; height: 70vh;">
-            <div class="card" style="padding: 40px; display: flex; flex-direction: column; justify-content: center;">
-                <p style="font-size: 1.8rem; line-height: 1.4;">
-                    Сеть сможет лучше предсказывать уменьшение выручки при <span style="color: var(--accent);">каннибализации</span> спроса
-                </p>
-            </div>
-            <div class="card" style="padding: 40px; display: flex; flex-direction: column; justify-content: center;">
-                <p style="font-size: 1.8rem; line-height: 1.4;">
-                    Снижение критичности соседства со старыми магазинами
-                </p>
+        <div class="fill-height flex-center">
+            <div class="card" style="width: 100%; height: 70vh; display: flex; flex-direction: column; gap: 30px; padding: 40px;">
+                
+                <div style="background: rgba(255,255,255,0.05); padding: 30px; border-radius: 10px; flex: 1; display: flex; align-items: center; justify-content: flex-start;">
+                    <p style="font-size: 1.4rem; line-height: 1.4; margin: 0; text-align: left;">
+                        Сеть сможет лучше предсказывать уменьшение выручки при <span style="color: var(--accent);">каннибализации</span> спроса
+                    </p>
+                </div>
+
+                <div style="background: rgba(255,255,255,0.05); padding: 30px; border-radius: 10px; flex: 1; display: flex; align-items: center; justify-content: flex-start;">
+                    <p style="font-size: 1.4rem; line-height: 1.4; margin: 0; text-align: left;">
+                        Снижение критичности соседства со старыми магазинами
+                    </p>
+                </div>
+
             </div>
         </div>
     </div>
