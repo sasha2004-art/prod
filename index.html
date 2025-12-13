@@ -26,7 +26,7 @@
 
     <!-- СЧЕТЧИК СЛАЙДОВ -->
     <div class="slide-counter">
-        <span id="currSlide" style="color: var(--accent);">01</span> / <span id="totalSlide">54</span>
+        <span id="currSlide" style="color: var(--accent);">01</span> / <span id="totalSlide">24</span>
     </div>
 
     <!-- ================= СЛАЙДЫ ================= -->
@@ -56,7 +56,7 @@
    <!-- 02. СТРУКТУРА ДАТАСЕТА -->
     <div class="slide">
         <h2>02. Структура данных</h2>
-        <!-- 1. Задали фиксированную высоту сетке (70vh) и убрали align-items: start -->
+        <!-- Фиксированная высота сетки (70vh) -->
         <div style="display: grid; grid-template-columns: 1.2fr 0.8fr; gap: 30px; height: 70vh;">
             
             <!-- ЛЕВАЯ КОЛОНКА -->
@@ -82,7 +82,7 @@
                     </div>
                 </div>
 
-                <!-- Нижняя карточка (Период) -> добавили flex: 1, чтобы она растянулась до низа -->
+                <!-- Нижняя карточка (Период) с flex: 1 для растягивания -->
                 <div class="card" style="text-align: center; flex: 1; display: flex; flex-direction: column; justify-content: center;">
                     <h3>Период данных</h3>
                     <div class="big-stat" style="font-size: 4rem; margin: 10px 0;">2024</div>
@@ -92,7 +92,7 @@
 
             <!-- ПРАВАЯ КОЛОНКА -->
             <div style="display: flex; flex-direction: column; gap: 20px; height: 100%;">
-                <!-- Добавили flex: 1 обеим карточкам, чтобы они равномерно заполнили высоту -->
+                <!-- Карточки с flex: 1 для равномерного заполнения высоты -->
                 <div class="card" style="flex: 1; display: flex; flex-direction: column; justify-content: center;">
                     <h3>Числовые признаки</h3>
                     <ul style="list-style: none; padding: 0; margin-top: 15px; font-size: 1.1rem;">
@@ -138,23 +138,21 @@
         </div>
     </div>
 
-    <!-- 04. SCATTER PLOT (ОБНОВЛЕННЫЙ СЛАЙД - КАРТИНКА) -->
+    <!-- 04. SCATTER PLOT (СЛАЙД С КАРТИНКОЙ) -->
     <div class="slide" id="chartSlideScatter">
         <h2>04. ВВОД ПЕРЕМЕННОЙ: ВЫРУЧКА</h2>
         
-        <!-- 1. Задали общую высоту 70vh для выравнивания низа -->
+        <!-- Общая высота 70vh для выравнивания -->
         <div style="display: grid; grid-template-columns: 1fr 300px; gap: 30px; height: 70vh;">
             
-            <!-- Левая часть: Картинка графика -->
-            <!-- 2. Добавили height: 100%, чтобы карточка занимала всю высоту ячейки -->
+            <!-- Левая часть: Картинка графика с height: 100% -->
             <div class="card" style="padding: 0px; overflow: hidden; display: flex; flex-direction: column; justify-content: center; align-items: center; background: #000; height: 100%;">
                 <div class="chart-container-fix" style="width: 100%; height: 100%; display: flex; justify-content: center; align-items: center;">
                     <img src="images/grahs.jpg" alt="График зависимости" style="max-width: 100%; max-height: 100%; object-fit: contain; border-radius: 4px;">
                 </div>
             </div>
 
-            <!-- Правая часть: Описание -->
-            <!-- 3. Добавили height: 100%, чтобы контейнер колонки был во всю высоту -->
+            <!-- Правая часть: Описание с height: 100% -->
             <div style="display: flex; flex-direction: column; gap: 20px; height: 100%;">
                 
                 <div class="card">
@@ -162,7 +160,7 @@
                     <p>Практически каждый посетитель совершает покупку.</p>
                 </div>
                 
-                <!-- 4. Добавили flex: 1, чтобы эта карточка растянулась и заполнила пустоту -->
+                <!-- Карточка с flex: 1 для заполнения пространства -->
                 <div class="card" style="border: 2px solid var(--accent); background: rgba(198, 255, 0, 0.05); flex: 1; display: flex; flex-direction: column; justify-content: center;">
                     <h3>ФОРМУЛА</h3>
                     <div style="font-size: 1.4rem; font-weight: 900; margin: 15px 0;">
@@ -177,7 +175,7 @@
         </div>
     </div>
 
-    <!-- 04. КОРРЕЛЯЦИИ (БЫВШИЙ 8 СЛАЙД) -->
+    <!-- 05. КОРРЕЛЯЦИИ -->
     <div class="slide" id="chartSlide2">
         <h2>05. КОРРЕЛЯЦИИ</h2>
         <div class="card" style="height: 70vh; padding: 10px; overflow: hidden;">
@@ -187,7 +185,7 @@
         </div>
     </div>
 
-    <!-- 05. РАСПРЕДЕЛЕНИЕ (СТАТИЧНЫЕ ДАННЫЕ) -->
+    <!-- 06. РАСПРЕДЕЛЕНИЕ (СТАТИЧНЫЕ ДАННЫЕ) -->
     <div class="slide" id="chartSlideDist">
         <h2>06. ВЛИЯНИЕ ОКРУЖЕНИЯ</h2>
         
@@ -231,9 +229,9 @@
         </div>
     </div>
 
-    <!-- 06. НОВЫЕ ПЕРЕМЕННЫЕ: МЕТРИКИ (БЫВШИЙ 5 СЛАЙД) -->
+    <!-- 07. НОВЫЕ ПЕРЕМЕННЫЕ: МЕТРИКИ -->
     <div class="slide" id="slide-metrics">
-        <h2>06. ВВОД НОВОЙ БИНАРНОЙ ПЕРЕМЕННОЙ «НАЛИЧИЕ ПЯТЕРОЧЕК»</h2>
+        <h2>07. ВВОД НОВОЙ БИНАРНОЙ ПЕРЕМЕННОЙ «НАЛИЧИЕ ПЯТЕРОЧЕК»</h2>
         
         <div style="display: grid; grid-template-columns: 1.5fr 1fr; gap: 30px; height: 70vh;">
             
@@ -289,9 +287,9 @@
     </div>
     
 
-    <!-- 07. ИССЛЕДОВАТЕЛЬСКИЙ ВОПРОС (БЫВШИЙ 6 СЛАЙД) -->
+    <!-- 08. ИССЛЕДОВАТЕЛЬСКИЙ ВОПРОС -->
     <div class="slide">
-        <h2>07. ИССЛЕДОВАТЕЛЬСКИЙ ВОПРОС</h2>
+        <h2>08. ИССЛЕДОВАТЕЛЬСКИЙ ВОПРОС</h2>
         <div class="card flex-center" style="flex: 1;">
             <h1 style="font-size: 2.5rem; text-align: center;">
                 Как соседство с <span style="color: #ea1f41;">пятерочками</span> влияет на <span style="color: var(--accent);">выручку</span>?
@@ -299,9 +297,9 @@
         </div>
     </div>
 
-    <!-- 08. ОБРАБОТКА ДАННЫХ -->
+    <!-- 09. ОБРАБОТКА ДАННЫХ -->
     <div class="slide">
-        <h2>08. ОБРАБОТКА ДАННЫХ</h2>
+        <h2>09. ОБРАБОТКА ДАННЫХ</h2>
         
         <div style="display: grid; grid-template-columns: 1fr 2.5fr; gap: 30px; height: 70vh;">
             
@@ -426,15 +424,15 @@
         </div>
     </div>
 
-    <!-- 09. ВЫРУЧКА ПО ДАТАМ ОТКРЫТИЯ (ОБНОВЛЕННЫЙ) -->
+    <!-- 10. ВЫРУЧКА ПО ДАТАМ ОТКРЫТИЯ -->
     <div class="slide" id="chartSlideAge">
-        <h2>09. ВЫРУЧКА ПО ДАТАМ ОТКРЫТИЯ</h2>
+        <h2>10. ВЫРУЧКА ПО ДАТАМ ОТКРЫТИЯ</h2>
         
         <div style="display: grid; grid-template-columns: 3.5fr 1fr; gap: 30px; height: 70vh;">
             
             <!-- ГРАФИК -->
             <div class="card" style="padding: 20px; display: flex; flex-direction: column; overflow: hidden;">
-                <!-- chart-container-fix гарантирует, что график займет всю высоту и ширину -->
+                <!-- Контейнер графика занимает всю доступную высоту и ширину -->
                 <div class="chart-container-fix" style="flex: 1; min-height: 0;">
                     <div id="chart-age-revenue" style="width: 100%; height: 100%;"></div>
                 </div>
@@ -502,9 +500,9 @@
         </div>
     </div>
 
-    <!-- 10. ГИПОТЕЗА -->
+    <!-- 11. ГИПОТЕЗА -->
     <div class="slide">
-        <h2>10. ГИПОТЕЗА</h2>
+        <h2>11. ГИПОТЕЗА</h2>
         <div class="fill-height flex-center">
             <div class="card" style="padding: 50px; border: 2px solid var(--accent); text-align: center; max-width: 900px; background: rgba(198, 255, 0, 0.02);">
                <h1 style="font-size: 2.5rem; line-height: 1.4; text-transform: none; text-shadow: none;">
@@ -514,9 +512,9 @@
         </div>
     </div>
 
-    <!-- 11. МЕХАНИЗМ -->
+    <!-- 12. МЕХАНИЗМ -->
     <div class="slide">
-        <h2>11. МЕХАНИЗМ</h2>
+        <h2>12. МЕХАНИЗМ</h2>
         <div class="fill-height" style="display: flex; flex-direction: column; justify-content: center; gap: 15px;">
             <div class="card flex-center" style="padding: 20px; border-color: var(--accent);">
                 <h3 style="color: var(--accent); margin: 0; font-size: 1.3rem;">СОВРЕМЕННОЕ ОБОРУДОВАНИЕ И ДИЗАЙН</h3>
@@ -551,9 +549,9 @@
         </div>
     </div>
 
-    <!-- 12. АЛЬТЕРНАТИВНЫЙ МЕХАНИЗМ -->
+    <!-- 13. АЛЬТЕРНАТИВНЫЙ МЕХАНИЗМ -->
     <div class="slide">
-        <h2>12. АЛЬТЕРНАТИВНЫЙ МЕХАНИЗМ</h2>
+        <h2>13. АЛЬТЕРНАТИВНЫЙ МЕХАНИЗМ</h2>
         <div class="fill-height" style="display: flex; flex-direction: column; justify-content: center; gap: 15px;">
             
             <!-- 1. Неполнота информации -->
@@ -585,9 +583,9 @@
         </div>
     </div>
 
-    <!-- 13. МАТ МОДЕЛЬ (ОБНОВЛЕННЫЙ: 2 ГРАФИКА) -->
+    <!-- 14. МАТ МОДЕЛЬ (2 ГРАФИКА) -->
     <div class="slide" id="chartSlide3">
-        <h2>13. МАТ-МОДЕЛЬ</h2>
+        <h2>14. МАТ-МОДЕЛЬ</h2>
         
         <div style="display: grid; grid-template-columns: 500px 1fr; gap: 30px; height: 75vh;">
             
@@ -680,10 +678,9 @@
         </div>
     </div>
 
-    <!-- 14. УСТОЙЧИВОСТЬ -->
-    <!-- 14. УСТОЙЧИВОСТЬ И НОВЫЕ ПЕРЕМЕННЫЕ (ОБЪЕДИНЕННЫЙ) -->
+    <!-- 15. УСТОЙЧИВОСТЬ И НОВЫЕ ПЕРЕМЕННЫЕ -->
     <div class="slide" id="chartSlide4">
-        <h2>14. ПРОВЕРКА НА УСТОЙЧИВОСТЬ</h2>
+        <h2>15. ПРОВЕРКА НА УСТОЙЧИВОСТЬ</h2>
         
         <div style="display: grid; grid-template-columns: 1.8fr 1fr; gap: 30px; height: 75vh;">
             
@@ -852,9 +849,9 @@
             </div>
         </div>
     </div>
-    <!-- 15. Выводы и Ограничения -->
+    <!-- 16. ВЫВОДЫ И ОГРАНИЧЕНИЯ -->
     <div class="slide">
-        <h2>15. ВЫВОДЫ</h2>
+        <h2>16. ВЫВОДЫ</h2>
         <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 20px; height: 70vh;">
             <!-- Вывод -->
             <div class="card" style="padding: 30px; display: flex; flex-direction: column; justify-content: center;">
@@ -884,9 +881,9 @@
         </div>
     </div>
 
-    <!-- 16. ПОЛИСИ -->
+    <!-- 17. ПОЛИСИ -->
     <div class="slide">
-        <h2>16. ПОЛИСИ</h2>
+        <h2>17. ПОЛИСИ</h2>
         <div class="fill-height flex-center">
             <div class="card" style="width: 100%; height: 70vh; display: flex; flex-direction: column; gap: 30px; padding: 40px;">
                 
@@ -906,9 +903,9 @@
         </div>
     </div>
 
-    <!-- 17. КОМАНДА -->
+    <!-- 18. КОМАНДА -->
     <div class="slide">
-        <h2>17. КОМАНДА</h2>
+        <h2>18. КОМАНДА</h2>
         <div class="fill-height" style="justify-content: center;">
             <div style="display: flex; justify-content: center; gap: 20px; width: 100%;">
                 <div class="card" style="padding: 10px; flex: 1;">
@@ -932,11 +929,11 @@
         </div>
     </div>
 
-    <!-- ФИНАЛ -->
+    <!-- 19. ФИНАЛ -->
     <div class="slide flex-center">
         <img src="images/pudge.png" style="position: absolute; top: 0; left: 30%; width: 70%; height: 100%; object-fit: cover; opacity: 0.25; z-index: 0; pointer-events: none;" alt="Pudge">
         <div style="position: relative; z-index: 1;">
-            <h1 style="font-size: 4.5rem;">GG WP</h1>
+            <h1 style="font-size: 4.5rem;">19. GG WP</h1>
             <p style="color: var(--accent);">THANKS FOR WATCHING</p>
             <div style="margin-top: 40px;">
                 <img src="images/Team_Spirit_new_em.svg" alt="TS Logo" style="filter: brightness(0) invert(1); width: 150px; opacity: 0.6;">
@@ -946,7 +943,7 @@
 
     <!-- 20. BOXPLOTS -->
     <div class="slide">
-        <h2>Боксы-коксы</h2>
+        <h2>20. Боксы-коксы</h2>
         <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; height: 70vh;">
             <img src="boxplot1.png" alt="Boxplot 1" style="max-width: 100%; max-height: 100%; object-fit: contain;">
             <img src="boxplot2.png" alt="Boxplot 2" style="max-width: 100%; max-height: 100%; object-fit: contain;">
@@ -956,31 +953,31 @@
     
     <!-- 21. all-cors -->
     <div class="slide">
-        <h2>Все корреляции</h2>
+        <h2>21. Все корреляции</h2>
         <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; height: 70vh;">
             <img src="all_cors.png" alt="Boxplot 1" style="max-width: 130%; max-height: 130%; object-fit: contain;">
         </div>
     </div>
 
-    <!-- 22. ну неважно -->
+    <!-- 22. Выстрел из пушки -->
     <div class="slide">
-        <h2>Выстрел из пушки типо</h2>
+        <h2>22. Выстрел из пушки типо</h2>
         <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; height: 70vh;">
             <img src="images/pushko.png" alt="Boxplot 1" style="max-width: 200%; max-height: 200%; object-fit: contain;">
         </div>
     </div>
 
-    <!-- 23. ну неважно -->
+    <!-- 23. Количество данных -->
     <div class="slide">
-        <h2>Количество данных</h2>
+        <h2>23. Количество данных</h2>
         <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; height: 70vh;">
             <img src="images/doki.png" alt="Boxplot 1" style="max-width: 130%; max-height: 130%; object-fit: contain;">
         </div>
     </div>
 
-    <!-- 24. ну неважно -->
+    <!-- 24. Попытка в линрег -->
     <div class="slide">
-        <h2>Попытка в линрег</h2>
+        <h2>24. Попытка в линрег</h2>
         <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; height: 70vh;">
             <img src="images/popitka_linreg.png" alt="Boxplot 1" style="max-width: 130%; max-height: 80%; object-fit: contain;">
         </div>
@@ -998,7 +995,7 @@
     let chartSettlements, chartHeatmap, chartRobustness;
     let chartAvgCheck, chartMiniRevenue, chartAgeRevenue;
     let chartPyatDist, chartShopsDist;
-    // Переменная chartScatter удалена, так как заменена на картинку
+    // График Scatter заменен на статичное изображение
 
     const ACCENT_COLOR = '#C6FF00'; 
     const TEXT_COLOR = '#ffffff';
@@ -1195,7 +1192,7 @@
         },
         stroke: {
             colors: ['#ccc'],
-            width: 1 // Уменьшили толщину линий
+            width: 1 // Толщина линий
         },
         grid: {
             borderColor: '#333',
@@ -1204,7 +1201,7 @@
             padding: { top: 0, bottom: 0 }
         },
         markers: {
-            size: 8, // Увеличили размер точек
+            size: 8, // Размер маркеров
             strokeWidth: 0,
             hover: { size: 10 }
         },
@@ -1216,7 +1213,7 @@
         }
     };
 
-    // ГРАФИК 1: СТАРЫЕ МАГАЗИНЫ (Данные из предыдущей версии)
+    // ГРАФИК 1: СТАРЫЕ МАГАЗИНЫ
     const optionsTtest = {
         ...ttestCommonOptions,
         series: [
@@ -1240,7 +1237,7 @@
         xaxis: {
             categories: ['Без Пятерочек', 'С Пятерочками'],
             labels: {
-                style: { colors: '#fff', fontSize: '12px', fontWeight: 'bold' } // Мелкий шрифт
+                style: { colors: '#fff', fontSize: '12px', fontWeight: 'bold' } // Размер шрифта для категорий
             },
             tooltip: { enabled: false }
         },
@@ -1258,8 +1255,8 @@
         }
     };
 
-    // ГРАФИК 2: ОБЩАЯ ВЫБОРКА (Новые данные)
-    // Данные: Без=58.11 (CI: 57.94-58.28), С=57.36 (CI: 57.19-57.52)
+    // ГРАФИК 2: ОБЩАЯ ВЫБОРКА
+    // Данные: Без=58.11 (ДИ: 57.94-58.28), С=57.36 (ДИ: 57.19-57.52)
     const optionsTtest2 = {
         ...ttestCommonOptions,
         series: [
@@ -1269,7 +1266,7 @@
                 data: [
                     { 
                         x: 'Без Пятерочек', 
-                        y: [57.94, 58.11, 58.11, 58.11, 58.28] // Min, Q1, Med, Q3, Max
+                        y: [57.94, 58.11, 58.11, 58.11, 58.28] // Мин, Q1, Медиана, Q3, Макс
                     },
                     { 
                         x: 'С Пятерочками', 
@@ -1289,7 +1286,7 @@
         xaxis: {
             categories: ['Без Пятерочек', 'С Пятерочками'],
             labels: {
-                style: { colors: '#fff', fontSize: '12px', fontWeight: 'bold' } // Мелкий шрифт
+                style: { colors: '#fff', fontSize: '12px', fontWeight: 'bold' } // Размер шрифта для категорий
             },
             tooltip: { enabled: false }
         },
@@ -1298,7 +1295,7 @@
                 style: { colors: '#888', fontSize: '12px' },
                 formatter: (val) => val.toFixed(1) + "M"
             },
-            // Задаем узкий диапазон, чтобы было видно разницу
+            // Узкий диапазон для лучшей видимости разницы
             min: 56.5, 
             max: 59.0,
             tickAmount: 5
@@ -1309,9 +1306,7 @@
         }
     };
 
-    // --- ВСТАВИТЬ ЭТО В document.addEventListener('DOMContentLoaded', ...) ---
-    
-    // Инициализация (вместо chartModel)
+    // Инициализация графика T-test
     if(document.querySelector("#chart-ttest")) {
         chartTtest = new ApexCharts(document.querySelector("#chart-ttest"), optionsTtest);
         chartTtest.render();
@@ -1508,7 +1503,7 @@
     // ИНИЦИАЛИЗАЦИЯ
     // ==========================================
     document.addEventListener('DOMContentLoaded', () => {
-        // 1. Инит статичных графиков
+        // Инициализация статичных графиков
         if(document.querySelector("#chart-mean-check")) {
             new ApexCharts(document.querySelector("#chart-mean-check"), optionsMeanCheck).render();
         }
@@ -1558,14 +1553,14 @@
             chartPyatDist.render();
         }
 
-        // НОВЫЕ ГРАФИКИ ДЛЯ 6 СЛАЙДА (МЕТРИКИ)
+        // НОВЫЕ ГРАФИКИ ДЛЯ 7 СЛАЙДА (МЕТРИКИ)
         if(document.querySelector("#chart-pyat-dist-new")) {
             const optionsPyatDistNew = {
                 ...optionsDistStatic,
                 plotOptions: { 
                     bar: { 
                         borderRadius: 2, 
-                        borderRadiusApplication: 'end', // Fix for small values sinking
+                        borderRadiusApplication: 'end', // Применение скругления к верхней части
                         columnWidth: '70%',
                         dataLabels: { position: 'top' } 
                     } 
@@ -1576,7 +1571,7 @@
                     title: { text: 'Кол-во Пятерочек рядом', style: { color: '#666', fontSize: '14px' } },
                     labels: { style: { colors: '#888', fontSize: '12px' } }
                 },
-                // === ИСПРАВЛЕНИЕ: ПЕРЕОПРЕДЕЛЯЕМ ФОРМАТ (ШТУКИ ВМЕСТО ВАЛЮТЫ) ===
+                // Переопределение формата (штуки вместо валюты)
                 yaxis: { 
                     min: 0,
                     labels: { style: { colors: '#888', fontSize: '12px' }, formatter: (val) => val }
@@ -1596,7 +1591,7 @@
                 plotOptions: { 
                     bar: { 
                         borderRadius: 2, 
-                        borderRadiusApplication: 'end', // Fix for small values sinking
+                        borderRadiusApplication: 'end', // Применение скругления к верхней части
                         columnWidth: '70%',
                         dataLabels: { position: 'top' } 
                     } 
@@ -1607,7 +1602,7 @@
                     title: { text: 'Кол-во Магазинов рядом', style: { color: '#666', fontSize: '14px' } },
                     labels: { style: { colors: '#888', fontSize: '12px' } }
                 },
-                // === ИСПРАВЛЕНИЕ: ПЕРЕОПРЕДЕЛЯЕМ ФОРМАТ (ШТУКИ ВМЕСТО ВАЛЮТЫ) ===
+                // Переопределение формата (штуки вместо валюты)
                 yaxis: { 
                     min: 0,
                     labels: { style: { colors: '#888', fontSize: '12px' }, formatter: (val) => val }
@@ -1633,11 +1628,9 @@
             });
             chartShopsDist.render();
         }
-        // SCATTER chart (chartScatter) больше не инициализируется, так как заменен на картинку
+        // График Scatter заменен на статичное изображение
 
-        // 2. Загрузка данных для Scatter (Слайд 3) удалена
-
-        // 3. Загрузка данных для Гистограмм (Слайд 6 и 9)
+        // Загрузка данных для гистограмм
         if (typeof Papa !== 'undefined') {
             Papa.parse("histplot.csv", {
                 download: true,
@@ -1682,7 +1675,7 @@
             chartTtest2.render();
         }
 
-        totalSlidesEl.innerText = 20;
+        totalSlidesEl.innerText = 24;
         showSlide(currentSlide);
     });
 
@@ -1701,7 +1694,7 @@
     }
 
     function showSlide(index) {
-        if (index === 0 || index >= 20) slideCounter.style.display = 'none';
+        if (index === 0) slideCounter.style.display = 'none';
         else slideCounter.style.display = '';
 
         slides.forEach((slide, i) => {
@@ -1719,8 +1712,7 @@
         const slidesArr = Array.from(document.querySelectorAll('.slide'));
         const currentSlideEl = slidesArr[index];
         
-        // Обновляем анимации по ID слайда, чтобы не зависеть от порядка
-        // chartScatter удален из списка обновлений
+        // Обновление анимаций графиков по ID слайда
         if (currentSlideEl.id === 'chartSlideDist') {
             if (chartPyatDist) chartPyatDist.updateOptions({ chart: { animations: { enabled: true } } });
             if (chartShopsDist) chartShopsDist.updateOptions({ chart: { animations: { enabled: true } } });
@@ -1745,7 +1737,7 @@
         if (currentSlideEl.id === 'chartSlide4' && chartRobustness) {
             chartRobustness.updateOptions({ chart: { animations: { enabled: true } } });
         }
-        // Для мини графика на слайде с метриками
+        // Мини график на слайде с метриками
         if (currentSlideEl.id === 'slide-metrics' && chartMiniRevenue) {
             chartMiniRevenue.updateOptions({ chart: { animations: { enabled: true } } });
         }
