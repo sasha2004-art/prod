@@ -296,27 +296,27 @@
 
                 <!-- Удалено по дате -->
                 <div class="card" style="padding: 20px; flex: 1.4; border-left: 6px solid #ff5555; background: rgba(255, 85, 85, 0.05); display: flex; flex-direction: column; justify-content: center;">
-                    <h3 style="color: #ff5555; margin-bottom: 15px; font-size: 1.1rem;">УДАЛЕНО ПО ДАТЕ</h3>
+                    <h3 style="color: #ff5555; margin-bottom: 15px; font-size: 1.1rem;">УДАЛЕННЫЕ СТРОКИ ПО ДАТЕ ОТКРЫТИЯ</h3>
                     <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px;">
                         <!-- Мегановый -->
-                        <div style="background: rgba(0,0,0,0.2); padding: 10px; border-radius: 8px; text-align: center;">
+                        <div style="background: rgba(0,0,0,0.6); padding: 10px; border-radius: 8px; text-align: center;">
                             <div style="font-size: 1.8rem; font-weight: bold; color: #fff;">176</div>
-                            <div style="font-size: 0.75rem; color: #ccc;">Мегановый</div>
+                            <div style="font-size: 0.75rem; color: #ccc;">Новейших</div>
                         </div>
                         <!-- Новый -->
-                        <div style="background: rgba(0,0,0,0.2); padding: 10px; border-radius: 8px; text-align: center;">
+                        <div style="background: rgba(0,0,0,0.6); padding: 10px; border-radius: 8px; text-align: center;">
                             <div style="font-size: 1.8rem; font-weight: bold; color: #fff;">43</div>
-                            <div style="font-size: 0.75rem; color: #ccc;">Новый</div>
+                            <div style="font-size: 0.75rem; color: #ccc;">Новых</div>
                         </div>
                         <!-- Средний -->
-                        <div style="background: rgba(0,0,0,0.2); padding: 10px; border-radius: 8px; text-align: center;">
+                        <div style="background: rgba(0,0,0,0.6); padding: 10px; border-radius: 8px; text-align: center;">
                             <div style="font-size: 1.8rem; font-weight: bold; color: #fff;">7</div>
-                            <div style="font-size: 0.75rem; color: #ccc;">Средний</div>
+                            <div style="font-size: 0.75rem; color: #ccc;">Средних</div>
                         </div>
                         <!-- Давно -->
-                        <div style="background: rgba(0,0,0,0.2); padding: 10px; border-radius: 8px; text-align: center;">
+                        <div style="background: rgba(0,0,0,0.6); padding: 10px; border-radius: 8px; text-align: center;">
                             <div style="font-size: 1.8rem; font-weight: bold; color: #fff;">6</div>
-                            <div style="font-size: 0.75rem; color: #ccc;">Давно</div>
+                            <div style="font-size: 0.75rem; color: #ccc;">Давних</div>
                         </div>
                     </div>
                 </div>
@@ -598,7 +598,7 @@
                         <div>
                             <div style="font-size: 0.85rem; color: #888; text-transform: uppercase; margin-bottom: 5px;">Разница (Старые)</div>
                             <div style="font-size: 1.8rem; color: #ff5555; font-weight: 900;">-16.9M</div>
-                            <div style="color: #ff5555; font-size: 0.9rem;">(p < 0.01)</div>
+                            <div style="color: var(--accent); font-size: 0.9rem;">(p < 0.01)</div>
                         </div>
 
                         <div>
@@ -830,61 +830,58 @@
             </div>
         </div>
     </div>
-    <!-- 15. Гипотеза подтвердилась -->
+    <!-- 15. Выводы и Ограничения -->
     <div class="slide">
-        <h2>15. Гипотеза подтвердилась</h2>
-        <div class="card" style="padding: 40px; height: 60vh; display: flex; flex-direction: column; justify-content: center;">
-            <h3 style="color: var(--accent); margin-bottom: 30px; font-size: 2.5rem;">Проверка на устойчивость</h3>
-            <p style="font-size: 2.0rem; margin-bottom: 30px; line-height: 1.4;">
-                Почти для всех населенных пунктов подтвердилось, кроме больших. Это можно объяснить:
-            </p>
-            <ul style="list-style: none; padding: 0; font-size: 2.0rem; line-height: 1.4;">
-                <li style="margin-bottom: 20px; padding-left: 25px; border-left: 5px solid var(--accent);">
-                    Не самый высокий спрос и относительно большое число магазинов <br>
-                    <span style="color: var(--accent); font-weight: bold;">=></span> жёсткая конкуренция, а потому эффект новизны заглушается на данных.
-                </li>
-            </ul>
-        </div>
-    </div>
-
-    <!-- 16. ОГРАНИЧЕНИЯ -->
-    <div class="slide">
-        <h2>16. ОГРАНИЧЕНИЯ И ПЕРСПЕКТИВЫ</h2>
-        <div class="grid-2">
-            <div class="card">
-                <h3>ОГРАНИЧЕНИЯ</h3>
-                <ul style="font-size: 1.3rem;">
-                    <li><strong>Короткий период:</strong> Данные за 1 год скрывают долгосрочные тренды.</li>
-                    <li><strong>Слепые зоны:</strong> Нет данных о конкурентах в радиусах 200–500 м.</li>
-                    <li><strong>Детали точек:</strong> Нет сведений об оборудовании и дизайне.</li>
-                    <li><strong>Геолокация:</strong> Отсутствие координат снижает точность моделей.</li>
-                </ul>
+        <h2>15. ВЫВОДЫ</h2>
+        <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 20px; height: 70vh;">
+            <!-- Вывод -->
+            <div class="card" style="padding: 30px; display: flex; flex-direction: column; justify-content: center;">
+                <h3 style="color: var(--accent); margin-bottom: 20px; font-size: 2rem;">Вывод</h3>
+                <p style="font-size: 1.4rem; line-height: 1.4;">
+                    Гипотеза подтвердилась, наличие пятерочки рядом влияет на выручку старых пятёрочек сильнее, чем для более новых
+                </p>
             </div>
-            <div class="card">
-                <h3>ПЕРСПЕКТИВЫ</h3>
-                <ul style="font-size: 1.3rem;">
-                    <li><strong>Срок эффекта:</strong> Найти момент ослабевания «эффекта новой Пятёрочки».</li>
-                    <li><strong>Радиус влияния:</strong> Оценить дистанцию воздействия на рынок.</li>
-                    <li><strong>Драйверы:</strong> Определить элементы формата, усиливающие эффект.</li>
-                    <li><strong>Гео-анализ:</strong> Повысить качество пространственных расчетов.</li>
+            <!-- Устойчивость -->
+            <div class="card" style="padding: 30px; display: flex; flex-direction: column; justify-content: center;">
+                <h3 style="color: var(--accent); margin-bottom: 20px; font-size: 2rem;">Устойчивость</h3>
+                 <p style="font-size: 1.4rem; line-height: 1.4;">
+                    При проверке на устойчивость выявлено влияние по категории населения
+                </p>
+            </div>
+            <!-- Ограничения -->
+            <div class="card" style="padding: 30px; background: rgba(255, 85, 85, 0.05); border-color: #ff5555; display: flex; flex-direction: column; justify-content: center;">
+                <div style="display: flex; align-items: center; gap: 15px; margin-bottom: 20px; border-bottom: 1px solid rgba(255, 85, 85, 0.3); padding-bottom: 15px;">
+                    <h3 style="margin: 0; color: #ff5555; font-size: 2rem;">ОГРАНИЧЕНИЯ</h3>
+                </div>
+                <ul style="font-size: 15px; list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 15px;">
+                    <li><strong style="color: #ff8888;"></strong>Данные только за 1 год</li>
+                    <li><strong style="color: #ff8888;"></strong>Нет сведений о ремонте и персонале.</li>
+                    <li><strong style="color: #ff8888;"></strong>Отсутствие координат / мало данных о соседних пятерочек.</li>
                 </ul>
             </div>
         </div>
     </div>
 
-    <!-- 17. ПОЛИСИ -->
+    <!-- 16. ПОЛИСИ -->
     <div class="slide">
-        <h2>17. ПОЛИСИ</h2>
-        <div class="fill-height flex-center">
-            <div class="card" style="padding: 40px; text-align: center;">
-                <p style="font-size: 28px; line-height: 1.4;">Сеть сможет лучше предсказывать уменьшение выручки при каннибализации спроса</p>
+        <h2>16. ПОЛИСИ</h2>
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 30px; height: 70vh;">
+            <div class="card" style="padding: 40px; display: flex; flex-direction: column; justify-content: center;">
+                <p style="font-size: 1.8rem; line-height: 1.4;">
+                    Сеть сможет лучше предсказывать уменьшение выручки при <span style="color: var(--accent);">каннибализации</span> спроса
+                </p>
+            </div>
+            <div class="card" style="padding: 40px; display: flex; flex-direction: column; justify-content: center;">
+                <p style="font-size: 1.8rem; line-height: 1.4;">
+                    Снижение критичности соседства со старыми магазинами
+                </p>
             </div>
         </div>
     </div>
 
-    <!-- 18. КОМАНДА -->
+    <!-- 17. КОМАНДА -->
     <div class="slide">
-        <h2>18. КОМАНДА</h2>
+        <h2>17. КОМАНДА</h2>
         <div class="fill-height" style="justify-content: center;">
             <div style="display: flex; justify-content: center; gap: 20px; width: 100%;">
                 <div class="card" style="padding: 10px; flex: 1;">
@@ -1559,7 +1556,7 @@
             chartTtest2.render();
         }
 
-        totalSlidesEl.innerText = 19;
+        totalSlidesEl.innerText = 18;
         showSlide(currentSlide);
     });
 
@@ -1578,7 +1575,7 @@
     }
 
     function showSlide(index) {
-        if (index === 0 || index >= 19) slideCounter.style.display = 'none';
+        if (index === 0 || index >= 18) slideCounter.style.display = 'none';
         else slideCounter.style.display = '';
 
         slides.forEach((slide, i) => {
