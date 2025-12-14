@@ -179,13 +179,13 @@ ul { margin-bottom: 10px; }
     margin-bottom: 10px; 
     text-shadow: 0 0 15px rgba(198, 255, 0, 0.2);
 }
-.stat-label { font-size: 1.0rem; text-transform: uppercase; letter-spacing: 1px; color: var(--text-muted); font-weight: 700; }
+.stat-label { font-size: 1.25rem; text-transform: uppercase; letter-spacing: 1px; color: var(--text-muted); font-weight: 700; }
 
 .tag { 
     display: inline-block; 
     padding: 5px 10px; 
     border: 1px solid var(--accent); 
-    font-size: 1.0rem; 
+    font-size: 1.25rem; 
     font-weight: 700; 
     margin-right: 5px; 
     margin-bottom: 5px; 
@@ -227,7 +227,7 @@ ul { margin-bottom: 10px; }
 
 /* --- WATERMARK --- */
 .watermark-container { position: fixed; top: 30px; right: 40px; display: flex; align-items: center; gap: 15px; opacity: 0.8; z-index: 10; }
-.watermark-text { font-family: var(--font-head); font-weight: 900; border: 2px solid #fff; padding: 5px 12px; font-size: 0.9rem; }
+.watermark-text { font-family: var(--font-head); font-weight: 900; border: 2px solid #fff; padding: 5px 12px; font-size: 1.1rem; }
 .logo-watermark-img { width: 40px; }
 
 /* --- IMAGES PLACEHOLDERS --- */
@@ -688,7 +688,7 @@ ul { margin-bottom: 10px; }
     width: 100%;
     background: rgba(0,0,0,0.8);
     color: #fff;
-    font-size: 0.8rem;
+    font-size: 1.1rem;
     font-weight: 900;
     text-align: center;
     padding: 5px 0;
