@@ -26,7 +26,7 @@
 
     <!-- СЧЕТЧИК СЛАЙДОВ -->
     <div class="slide-counter">
-        <span id="currSlide" style="color: var(--accent);">01</span> / <span id="totalSlide">24</span>
+        <span id="currSlide" style="color: var(--accent);">01</span> / <span id="totalSlide">25</span>
     </div>
 
     <!-- ================= СЛАЙДЫ ================= -->
@@ -177,6 +177,48 @@
         </div>
     </div>
 
+    <!-- 04.5. ПОЧЕМУ МИЛЛИОННИКИ -->
+    <div class="slide">
+        <h2>04.5. ФОКУСИРОВКА ВЫБОРКИ</h2>
+        <div style="display: grid; grid-template-columns: 0.8fr 1.2fr; gap: 40px; height: 70vh;">
+            <div style="display: flex; flex-direction: column; justify-content: center;">                
+                <div class="card" style="padding: 25px; margin-bottom: 20px; border-left: 4px solid var(--accent);">
+                    <h3 style="color: var(--accent); margin-bottom: 10px;">ПРОБЛЕМА МАЛЫХ ГОРОДОВ</h3>
+                    <p>Мало магазино следовательно в них идут не по предпочтениям а из-за отсутствия альтернатив.</p>
+                </div>
+
+                <div style="margin-left: 20px;">
+                    <h3 style="margin-bottom: 15px;">ПОЭТОМУ МЫ ВЫБРАЛИ <span style="color: var(--accent);">МИЛЛИОННИКИ</span>:</h3>
+                    <ul style="list-style: none; padding: 0;">
+                        <li style="margin-bottom: 15px; font-size: 1.3rem; display: flex; align-items: center;">
+                            <span style="color: var(--accent); font-size: 1.5rem; margin-right: 15px;">✓</span> 
+                            Структурная однородность среды
+                        </li>
+                        <li style="margin-bottom: 15px; font-size: 1.3rem; display: flex; align-items: center;">
+                            <span style="color: var(--accent); font-size: 1.5rem; margin-right: 15px;">✓</span> 
+                            Высокая плотность данных
+                        </li>
+                        <li style="margin-bottom: 15px; font-size: 1.3rem; display: flex; align-items: center;">
+                            <span style="color: var(--accent); font-size: 1.5rem; margin-right: 15px;">✓</span> 
+                            Высокая конкуренция между магазинами
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div style="display: flex; flex-direction: column; gap: 20px;">
+                <div class="card" style="flex: 1; padding: 10px; overflow: hidden;">
+                    <div class="chart-container-fix">
+                        <div id="chart-cities-pie" style="width: 100%; height: 100%;"></div>
+                    </div>
+                </div>
+                <!-- <div class="card" style="flex: 1; display: flex; justify-content: center; align-items: center; border: 2px dashed #333; background: rgba(255,255,255,0.02);">
+                    <p style="color: var(--text-muted); font-family: var(--font-head); text-align: center;">СРАВНЕНИЕ<br>КОНКУРЕНЦИИ</p>
+                </div> -->
+            </div>
+        </div>
+    </div>
+
     <!-- 05. КОРРЕЛЯЦИИ -->
     <div class="slide" id="chartSlide2">
         <h2>05. КОРРЕЛЯЦИИ</h2>
@@ -189,45 +231,10 @@
 
     <!-- 06. РАСПРЕДЕЛЕНИЕ (СТАТИЧНЫЕ ДАННЫЕ) -->
     <div class="slide" id="chartSlideDist">
-        <h2>06. ВЛИЯНИЕ ОКРУЖЕНИЯ</h2>
+        <h2>06. РАСПРЕДЕЛЕНИЕ ПО ПЛОЩАДИ И ВОЗРАСТУ</h2>
         
-        <div style="display: grid; grid-template-rows: 1fr auto; gap: 20px; height: 75vh;">
-            
-            <!-- Блок с графиками -->
-            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; min-height: 0;">
-                
-                <!-- График 1: Пятерочки -->
-                <div class="card" style="padding: 15px; display: flex; flex-direction: column;">
-                    <h3 style="text-align: center; font-size: 1rem; color: #fff; margin-bottom: 10px;">
-                        ПО КОЛИЧЕСТВУ <span style="color: var(--accent);">ПЯТЕРОЧЕК</span> РЯДОМ
-                    </h3>
-                    <div class="chart-container-fix" style="flex: 1;">
-                        <div id="chart-pyat-dist" style="width: 100%; height: 100%;"></div>
-                    </div>
-                </div>
-
-                <!-- График 2: Магазины -->
-                <div class="card" style="padding: 15px; display: flex; flex-direction: column;">
-                    <h3 style="text-align: center; font-size: 1rem; color: #fff; margin-bottom: 10px;">
-                        ПО КОЛИЧЕСТВУ <span style="color: #aaa;">МАГАЗИНОВ</span> РЯДОМ
-                    </h3>
-                    <div class="chart-container-fix" style="flex: 1;">
-                        <div id="chart-shops-dist" style="width: 100%; height: 100%;"></div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Блок с выводом -->
-            <div class="card" style="padding: 20px; border-left: 6px solid var(--accent); background: rgba(198, 255, 0, 0.05); display: flex; flex-direction: column; justify-content: center;">
-                <h3 style="color: var(--accent); margin-bottom: 10px; text-transform: uppercase;">ВЫВОД</h3>
-                <p style="font-size: 1.1rem; margin-bottom: 5px; font-weight: bold;">
-                   Пятерочек, у которых нет обычных магазинов рядом, крайне мало.
-                </p>
-                <p style="font-size: 0.9rem; color: #ccc; margin-top: 5px;">
-                   Исследовать влияние полного отсутствия конкуренции бессмысленно (выборка мала). <br>
-                   К тому же, "обычные магазины" могут быть любого размера, что вносит шум в данные.
-                </p>
-            </div>
+        <div class="chart-container-fix" style="height: 70vh;">
+            <div id="chart-area-age" style="width: 100%; height: 100%;"></div>
         </div>
     </div>
 
@@ -475,16 +482,16 @@
                             </thead>
                             <tbody>
                                 <tr style="border-bottom: 1px solid #333;">
-                                    <td style="padding: 8px;">Средниe по возрасту</td>
-                                    <td style="text-align: right; padding: 8px; font-weight: bold; color: #fff;">161 020</td>
+                                    <td style="padding: 8px;">Средний по возрасту</td>
+                                    <td style="text-align: right; padding: 8px; font-weight: bold; color: #fff;">34 480</td>
                                 </tr>
                                 <tr style="border-bottom: 1px solid #333;">
-                                    <td style="padding: 8px;">Новыe</td>
-                                    <td style="text-align: right; padding: 8px; font-weight: bold; color: #fff;">75 861</td>
+                                    <td style="padding: 8px;">Новый</td>
+                                    <td style="text-align: right; padding: 8px; font-weight: bold; color: #fff;">21 325</td>
                                 </tr>
                                 <tr style="border-bottom: 1px solid #333;">
-                                    <td style="padding: 8px;">Открыты давно</td>
-                                    <td style="text-align: right; padding: 8px; font-weight: bold; color: #fff;">10 978</td>
+                                    <td style="padding: 8px;">Открыт давно</td>
+                                    <td style="text-align: right; padding: 8px; font-weight: bold; color: #fff;">6 616</td>
                                 </tr>
                             </tbody>
                         </table>
@@ -971,29 +978,38 @@
     <!-- 18. КОМАНДА -->
     <div class="slide" id="teamSlide">
         <h2>18. КОМАНДА</h2>
-        <div class="fill-height" style="justify-content: center;">
-            <div style="display: flex; justify-content: center; gap: 20px; width: 100%;">
-                <div class="card" style="padding: 10px; flex: 1;">
-                    <div class="team-photo-box" style="background-image: url('images/max.jpg');"></div>
-                    <div style="padding: 10px;"><h3>CARRY</h3></div>
+        <div class="fill-height" style="justify-content: center; align-items: center;">
+            
+            <!-- SLOT MACHINE CONTAINER -->
+            <div class="slot-machine-frame">
+                <div class="slot-grid">
+                    <!-- ROW 1 (Random) -->
+                    <div class="slot-cell"><div class="team-photo-box slot-img" style="background-image: url('images/pudge.png');"></div></div>
+                    <div class="slot-cell"><div class="team-photo-box slot-img" style="background-image: url('images/sf.png');"></div></div>
+                    <div class="slot-cell"><div class="team-photo-box slot-img" style="background-image: url('images/tinker.png');"></div></div>
+                    <div class="slot-cell"><div class="team-photo-box slot-img" style="background-image: url('images/viper.png');"></div></div>
+
+                    <!-- ROW 2 (TEAM - Main Row) -->
+                    <div class="slot-cell active-row"><div class="team-photo-box slot-img" style="background-image: url('images/max.jpg');"></div><div class="role-label">CARRY</div></div>
+                    <div class="slot-cell active-row"><div class="team-photo-box slot-img" style="background-image: url('images/knazyv.jpg');"></div><div class="role-label">MID</div></div>
+                    <div class="slot-cell active-row"><div class="team-photo-box slot-img" style="background-image: url('images/tete.jpg');"></div><div class="role-label">SUPPORT</div></div>
+                    <div class="slot-cell active-row"><div class="team-photo-box slot-img" style="background-image: url('images/photo_2025-12-09_11-27-57.jpg');"></div><div class="role-label">HARD SUPP</div></div>
+
+                    <!-- ROW 3 (Random) -->
+                    <div class="slot-cell"><div class="team-photo-box slot-img" style="background-image: url('images/Bounty_Hunter.png');"></div></div>
+                    <div class="slot-cell"><div class="team-photo-box slot-img" style="background-image: url('images/gg_wp.jpg');"></div></div>
+                    <div class="slot-cell"><div class="team-photo-box slot-img" style="background-image: url('images/grahs.jpg');"></div></div>
+                    <div class="slot-cell"><div class="team-photo-box slot-img" style="background-image: url('images/pushko.png');"></div></div>
                 </div>
-                <div class="card" style="padding: 10px; flex: 1;">
-                    <div class="team-photo-box" style="background-image: url('images/knazyv.jpg');"></div>
-                    <div style="padding: 10px;"><h3>MID</h3></div>
-                </div>
-                 <div class="card" style="padding: 10px; flex: 1;">
-                    <div class="team-photo-box" style="background-image: url('images/tete.jpg');"></div>
-                    <div style="padding: 10px;"><h3>SUPPORT</h3></div>
-                </div>
-                <div class="card" style="padding: 10px; flex: 1;">
-                    <div class="team-photo-box" style="background-image: url('images/photo_2025-12-09_11-27-57.jpg');"></div>
-                    <div style="padding: 10px;"><h3>HARD SUPPORT</h3></div>
-                    
-                </div>
+                
+                <!-- DECORATION LIGHTS -->
+                <div class="lights-top"></div>
+                <div class="lights-bottom"></div>
             </div>
             
             <div style="margin-top: 30px; text-align: center;">
                 <button id="casinoBtn" class="casino-btn" onclick="playCasino()">🎰 ДЕПАТЬ 🎰</button>
+                <audio id="casinoSound" src="sound/roulette-play_fyk7stv_.mp3" preload="auto"></audio>
             </div>
         </div>
         <div id="money-rain-container"></div>
@@ -1089,7 +1105,7 @@
     // ==========================================
     let chartSettlements, chartHeatmap, chartRobustness;
     let chartAvgCheck, chartMiniRevenue, chartAgeRevenue;
-    let chartPyatDist, chartShopsDist;
+    let chartAreaAge;
     // Переменная chartScatter удалена, так как заменена на картинку
 
     const ACCENT_COLOR = '#C6FF00'; 
@@ -1473,21 +1489,7 @@
         colors: ['#555555', '#888888', ACCENT_COLOR]
     };
 
-    // ==========================================
-    // ДАННЫЕ ДЛЯ 6 СЛАЙДА (ВЛИЯНИЕ ОКРУЖЕНИЯ)
-    // ==========================================
-    // Данные по выручке (примерно 1e7) в зависимости от кол-ва пятерочек (0-9)
-    const dataPyatRevenue = [5.95, 6.1, 6.15, 5.8, 5.6, 5.0, 5.3, 4.0, 4.7, 2.9]; 
-    const catsPyat = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'];
-
-    // Данные по выручке (примерно 1e7) в зависимости от кол-ва магазинов (0-19)
-    const dataShopRevenue = [
-        5.7, 5.95, 6.0, 6.1, 6.2, 6.15, 6.18, 6.0, 5.95, 5.6, 
-        5.7, 5.5, 5.1, 5.6, 4.8, 5.1, 3.5, 4.5, 5.5, 6.2
-    ];
-    const catsShop = Array.from({length: 20}, (_, i) => i.toString());
-
-    // Настройки для графиков 6 слайда
+    // Настройки для графиков 6 слайда (старые, используются в других местах)
     const optionsDistStatic = {
         ...commonOptions,
         chart: { type: 'bar', height: '100%', background: 'transparent', toolbar: { show: false }, animations: { enabled: true } },
@@ -1495,7 +1497,7 @@
             bar: { 
                 borderRadius: 4, 
                 columnWidth: '70%',
-                dataLabels: { position: 'top' } // убрали цифры сверху для чистоты
+                dataLabels: { position: 'top' } 
             } 
         },
         dataLabels: { enabled: false },
@@ -1508,6 +1510,68 @@
             theme: 'dark', 
             y: { formatter: (val) => (val * 10).toFixed(1) + " млн ₽" } 
         }
+    };
+
+    // ==========================================
+    // ДАННЫЕ ДЛЯ 6 СЛАЙДА (РАСПРЕДЕЛЕНИЕ ПО ПЛОЩАДИ И ВОЗРАСТУ)
+    // ==========================================
+    const optionsAreaAge = {
+        ...commonOptions,
+        chart: { 
+            type: 'bar', 
+            height: '100%', 
+            background: 'transparent', 
+            toolbar: { show: false }, 
+            animations: { enabled: true } 
+        },
+        plotOptions: { 
+            bar: { 
+                horizontal: false,
+                columnWidth: '55%',
+                borderRadius: 4
+            },
+        },
+        dataLabels: { enabled: false },
+        stroke: {
+            show: true,
+            width: 2,
+            colors: ['transparent']
+        },
+        xaxis: {
+            categories: ['Маленький', 'Средний', 'Большой', 'Очень большой'],
+            title: { text: 'Площадь магазина', style: { color: '#888', fontSize: '16px' } },
+            labels: { style: { colors: '#888', fontSize: '14px' } }
+        },
+        yaxis: {
+            title: { text: 'Количество', style: { color: '#888', fontSize: '16px' } },
+            labels: { style: { colors: '#888', fontSize: '14px' } }
+        },
+        fill: {
+            opacity: 1
+        },
+        tooltip: {
+            theme: 'dark',
+            y: {
+                formatter: function (val) {
+                    return val
+                }
+            }
+        },
+        colors: [ACCENT_COLOR, '#ffffff', '#666666'], // Colors for New, Mid, Old
+        series: [
+            {
+                name: 'Новый',
+                data: [459, 952, 415, 32]
+            },
+            {
+                name: 'Средний по возрасту',
+                data: [651, 1418, 699, 106]
+            },
+            {
+                name: 'Открыт давно',
+                data: [41, 133, 257, 121]
+            }
+        ]
     };
     
     // СЛАЙД 3: РАСПРЕДЕЛЕНИЕ СРЕДНЕГО ЧЕКА
@@ -1613,7 +1677,7 @@
             // Максимум чуть больше самого большого значения
             max: 120000000, 
             // УБРАЛИ "Новейшие"
-            categories: ['Новые', 'Средние по возрасту', 'Открыты давно'],
+            categories: ['Новый', 'Средний по возрасту', 'Открыт давно'],
             labels: {
                 style: { colors: '#888', fontSize: '12px' },
                 formatter: (val) => (val / 1000000).toFixed(0) + "M"
@@ -1637,10 +1701,72 @@
         legend: { show: false }
     };
     
+    // СЛАЙД 04.5: BAR CHART CITIES
+    const optionsCitiesBar = {
+        series: [{
+            name: 'Магазинов',
+            data: [1488, 544, 381, 317, 282, 270, 260, 249, 246, 242, 228, 222, 179, 159, 125, 100]
+        }],
+        chart: {
+            type: 'bar',
+            height: '100%',
+            background: 'transparent',
+            toolbar: { show: false },
+            animations: { enabled: true, speed: 800 }
+        },
+        plotOptions: {
+            bar: {
+                horizontal: true,
+                barHeight: '70%',
+                borderRadius: 4,
+                distributed: false 
+            }
+        },
+        colors: ['#C6FF00'],
+        dataLabels: {
+            enabled: true,
+            textAnchor: 'middle',
+            style: { colors: ['#000'], fontSize: '14px', fontWeight: 900 },
+            formatter: function (val, opt) {
+                if (val === 1488) return val + " 🤩";
+                if (val === 228) return val + " 🤓";
+                return val
+            },
+            offsetX: 0,
+        },
+        xaxis: {
+            categories: ['Москва', 'Санкт-Петербург', 'Казань', 'Самара', 'Нижний Новгород', 'Екатеринбург', 'Краснодар', 'Пермь', 'Ростов-на-Дону', 'Воронеж', 'Челябинск', 'Новосибирск', 'Уфа', 'Омск', 'Волгоград', 'Красноярск'],
+            labels: { style: { colors: '#888' } },
+            axisBorder: { show: false },
+            axisTicks: { show: false }
+        },
+        yaxis: {
+            labels: { 
+                style: { colors: '#fff', fontSize: '14px', fontFamily: 'Inter', fontWeight: 600 },
+                maxWidth: 150
+            }
+        },
+        grid: {
+            borderColor: '#333',
+            strokeDashArray: 4,
+            xaxis: { lines: { show: true } },
+            yaxis: { lines: { show: false } },
+            padding: { right: 20, left: 10 }
+        },
+        legend: { show: false },
+        tooltip: { theme: 'dark' }
+    };
+    
     // ==========================================
     // ИНИЦИАЛИЗАЦИЯ
     // ==========================================
     document.addEventListener('DOMContentLoaded', () => {
+        // Рендерим Bar Chart
+        if(document.querySelector("#chart-cities-pie")) {
+            const chartCitiesBar = new ApexCharts(document.querySelector("#chart-cities-pie"), optionsCitiesBar);
+            chartCitiesBar.render();
+        }
+
         // 1. Инит статичных графиков
         if(document.querySelector("#chart-mean-check")) {
             new ApexCharts(document.querySelector("#chart-mean-check"), optionsMeanCheck).render();
@@ -1677,18 +1803,10 @@
             chartRobustness.render();
         }
 
-        // ИНИЦИАЛИЗАЦИЯ ГРАФИКОВ 6 СЛАЙДА (СТАТИКА)
-        if(document.querySelector("#chart-pyat-dist")) {
-            chartPyatDist = new ApexCharts(document.querySelector("#chart-pyat-dist"), {
-                ...optionsDistStatic,
-                series: [{ name: 'Выручка', data: dataPyatRevenue }],
-                xaxis: { 
-                    categories: catsPyat, 
-                    title: { text: 'Кол-во Пятерочек', style: { color: '#666', fontSize: '16px' } },
-                    labels: { style: { colors: '#888', fontSize: '14px' } }
-                }
-            });
-            chartPyatDist.render();
+        // ИНИЦИАЛИЗАЦИЯ ГРАФИКОВ 6 СЛАЙДА (РАСПРЕДЕЛЕНИЕ ПО ПЛОЩАДИ И ВОЗРАСТУ)
+        if(document.querySelector("#chart-area-age")) {
+            chartAreaAge = new ApexCharts(document.querySelector("#chart-area-age"), optionsAreaAge);
+            chartAreaAge.render();
         }
 
         // НОВЫЕ ГРАФИКИ ДЛЯ 7 СЛАЙДА (МЕТРИКИ)
@@ -1754,18 +1872,7 @@
             new ApexCharts(document.querySelector("#chart-shops-dist-new"), optionsShopsDistNew).render();
         }
 
-        if(document.querySelector("#chart-shops-dist")) {
-            chartShopsDist = new ApexCharts(document.querySelector("#chart-shops-dist"), {
-                ...optionsDistStatic,
-                series: [{ name: 'Выручка', data: dataShopRevenue }],
-                xaxis: { 
-                    categories: catsShop,
-                    title: { text: 'Кол-во Магазинов', style: { color: '#666', fontSize: '16px' } },
-                    labels: { style: { colors: '#888', fontSize: '14px' } }
-                }
-            });
-            chartShopsDist.render();
-        }
+
         // SCATTER chart (chartScatter) больше не инициализируется, так как заменен на картинку
 
         // 2. Загрузка данных для Scatter (Слайд 3) удалена
@@ -1846,43 +1953,70 @@
 
     function playCasino() {
         const btn = document.getElementById('casinoBtn');
-        btn.disabled = true; // Prevent spamming during animation
+        btn.disabled = true; 
         
+        // Play Sound
+        const audio = document.getElementById('casinoSound');
+        if (audio) {
+            audio.currentTime = 0;
+            audio.playbackRate = 2.0;
+            audio.play().catch(e => console.log("Audio play failed:", e));
+            setTimeout(() => {
+                audio.pause();
+                audio.currentTime = 0;
+            }, 3000); // 6 seconds at 2x speed = 3 seconds
+        }
+
         // 1. Shake screen
         document.body.classList.add('casino-shake');
         setTimeout(() => document.body.classList.remove('casino-shake'), 500);
 
-        // 2. Determine outcome
-        const boxes = document.querySelectorAll('#teamSlide .team-photo-box');
-        
-        if (casinoClickCount < 3) {
-            // LOSE (Random images)
-            boxes.forEach(box => {
-                const randomImg = teamImages[Math.floor(Math.random() * teamImages.length)];
-                box.style.backgroundImage = `url('${randomImg}')`;
-                animateBox(box);
-            });
-            casinoClickCount++;
-            setTimeout(() => btn.disabled = false, 1000);
-        } else {
-            // WIN (All same images)
-            const winImg = teamImages[Math.floor(Math.random() * teamImages.length)];
-            boxes.forEach(box => {
-                box.style.backgroundImage = `url('${winImg}')`;
-                animateBox(box);
-            });
+        // 2. Start Spinning Animation
+        const cells = document.querySelectorAll('.slot-cell');
+        cells.forEach(cell => {
+            cell.classList.add('spinning');
+            cell.classList.remove('win');
+        });
+
+        // 3. Determine Outcome after delay
+        setTimeout(() => {
+            const boxes = document.querySelectorAll('#teamSlide .team-photo-box');
             
-            // Trigger Win Effects
-            setTimeout(triggerWin, 500);
-            casinoClickCount = 0; // Reset
-            setTimeout(() => btn.disabled = false, 5000);
-        }
+            if (casinoClickCount < 3) {
+                // LOSE: Random images everywhere
+                boxes.forEach(box => {
+                    const randomImg = teamImages[Math.floor(Math.random() * teamImages.length)];
+                    box.style.backgroundImage = `url('${randomImg}')`;
+                });
+                casinoClickCount++;
+                
+                // Stop spinning
+                cells.forEach(cell => cell.classList.remove('spinning'));
+                btn.disabled = false;
+
+            } else {
+                // WIN: All same images (JACKPOT)
+                const winImg = teamImages[Math.floor(Math.random() * teamImages.length)];
+                boxes.forEach(box => {
+                    box.style.backgroundImage = `url('${winImg}')`;
+                });
+                
+                // Stop spinning & Add Win Effect
+                cells.forEach(cell => {
+                    cell.classList.remove('spinning');
+                    cell.classList.add('win');
+                });
+
+                // Trigger Win Effects
+                triggerWin();
+                casinoClickCount = 0; 
+                setTimeout(() => btn.disabled = false, 5000);
+            }
+        }, 3000); // Spin duration
     }
 
     function animateBox(box) {
-        box.classList.remove('drop-in');
-        void box.offsetWidth; // trigger reflow
-        box.classList.add('drop-in');
+        // Deprecated in favor of CSS spin
     }
 
     function triggerWin() {
@@ -1973,8 +2107,7 @@
         // Обновляем анимации по ID слайда, чтобы не зависеть от порядка
         // chartScatter удален из списка обновлений
         if (currentSlideEl.id === 'chartSlideDist') {
-            if (chartPyatDist) chartPyatDist.updateOptions({ chart: { animations: { enabled: true } } });
-            if (chartShopsDist) chartShopsDist.updateOptions({ chart: { animations: { enabled: true } } });
+            if (chartAreaAge) chartAreaAge.updateOptions({ chart: { animations: { enabled: true } } });
         }
         if (currentSlideEl.id === 'chartSlide1') {
             if (chartSettlements) chartSettlements.updateOptions({ chart: { animations: { enabled: true } } });
@@ -2013,8 +2146,20 @@
     }
 
     document.addEventListener('keydown', (e) => {
-        if (e.key === 'ArrowRight' || e.key === 'Space') nextSlide();
-        if (e.key === 'ArrowLeft') prevSlide();
+        const activeSlide = document.querySelector('.slide.active');
+        
+        if (e.code === 'Space') {
+            e.preventDefault();
+            if (activeSlide && activeSlide.id === 'teamSlide') {
+                playCasino();
+            } else {
+                nextSlide();
+            }
+        } else if (e.key === 'ArrowRight') {
+            nextSlide();
+        } else if (e.key === 'ArrowLeft') {
+            prevSlide();
+        }
     });
 
     const teamPhotos = document.querySelectorAll('.team-photo-box');
