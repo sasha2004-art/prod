@@ -14,6 +14,8 @@
     <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.4.1/papaparse.min.js"></script>
+    <script src="js/scatter_data.js"></script>
+    <!-- <script src="js/revenue_scatter_data.js"></script> -->
 
     <style>
         #chart-area-age .apexcharts-legend {
@@ -23,6 +25,50 @@
         }
     </style>
 
+    <style>
+        /* Custom Legend Style for Scatter Plot */
+        #chart-heatmap .apexcharts-legend {
+            background: rgba(0, 0, 0, 0.8) !important;
+            border: 1px solid var(--accent) !important;
+            padding: 10px !important;
+            border-radius: 8px !important;
+            /* Ensure it floats correctly */
+            right: 20px !important;
+            left: auto !important;
+            width: auto !important;
+            bottom: 60px !important;
+            top: auto !important;
+            display: flex !important;
+            flex-direction: column !important;
+            align-items: flex-start !important;
+            text-align: left !important;
+        }
+        #chart-heatmap .apexcharts-legend-marker {
+            margin-right: 10px !important;
+        }
+
+        /* Custom Legend Style for Revenue Chart (Left) */
+        #chart-revenue .apexcharts-legend {
+            background: rgba(0, 0, 0, 0.8) !important;
+            border: 1px solid var(--accent) !important;
+            padding: 10px !important;
+            border-radius: 8px !important;
+            
+            /* Force position and size */
+            position: absolute !important;
+            top: 30px !important;
+            right: 30px !important;
+            left: auto !important;
+            width: max-content !important;
+            
+            display: flex !important;
+            flex-direction: column !important;
+            align-items: flex-start !important;
+        }
+        #chart-revenue .apexcharts-legend-marker {
+            margin-right: 10px !important;
+        }
+    </style>
 </head>
 <body>
 
@@ -227,17 +273,19 @@
     <!-- 06. ВЛИЯНИЕ ПЯТЕРОЧЕК -->
     <div class="slide" id="chartSlide2">
         <h2>06. ВЛИЯНИЕ ПЯТЕРОЧЕК</h2>
-        <p style="font-size: 1.5rem; margin-bottom: 20px; color: #ccc; text-align: center;">Единственное, что X5 контролирует полностью и напрямую, - это количество пятёрочек в округе</p>
+        <div class="card" style="margin-bottom: 20px; padding: 15px; text-align: center;">
+            <p style="font-size: 1.5rem; margin: 0; color: #ccc;">Единственное, что <span style="color: var(--accent); font-weight: bold;">X5</span> контролирует полностью и напрямую, - это количество пятёрочек в округе</p>
+        </div>
         
         <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 30px; height: 65vh;">
-            <!-- Левая колонка: Скриншот графика -->
-            <div style="display: flex; justify-content: center; align-items: center; overflow: hidden;">
-                <img src="images/Screenshot 2025-12-14 at 18-26-16 Scatter Chart.png" alt="Scatter Plot" style="max-width: 100%; max-height: 100%; object-fit: contain;">
+            <!-- Левая колонка: График Выручка vs Пятерочки -->
+            <div id="chart-revenue-container" style="display: flex; justify-content: center; align-items: center; overflow: hidden; border: 1px dashed var(--accent); padding: 10px; border-radius: 8px; position: relative;">
+                <img src="images/первый.png" alt="Revenue Chart" style="max-width: 100%; max-height: 100%; object-fit: contain;">
             </div>
 
             <!-- Правая колонка: Место под второй график -->
-            <div id="chart-heatmap-container" style="display: flex; justify-content: center; align-items: center; border: 2px dashed #444; color: #666; position: relative;">
-                <div id="chart-heatmap" style="width: 100%; height: 100%;"></div>
+            <div id="chart-heatmap-container" style="display: flex; justify-content: center; align-items: center; border: 1px dashed var(--accent); padding: 10px; border-radius: 8px; position: relative;">
+                <img src="images/второй.png" alt="Heatmap Chart" style="max-width: 100%; max-height: 100%; object-fit: contain;">
             </div>
         </div>
     </div>
@@ -355,100 +403,68 @@
                 <!-- Удалено по дате -->
                 <div class="card" style="padding: 20px; flex: 1.4; border-left: 6px solid #ff5555; background: rgba(255, 85, 85, 0.05); display: flex; flex-direction: column; justify-content: center;">
                     <h3 style="color: #ff5555; margin-bottom: 15px; font-size: 1.3rem;">УДАЛЕННЫЕ СТРОКИ ПО ДАТЕ ОТКРЫТИЯ</h3>
-                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px;">
-                        <!-- Мегановый -->
-                        <div style="background: rgba(0,0,0,0.6); padding: 10px; border-radius: 8px; text-align: center;">
-                            <div style="font-size: 1.8rem; font-weight: bold; color: #fff;">176</div>
-                            <div style="font-size: 1.2rem; color: #ccc;">Новейших</div>
-                        </div>
+                    <div style="display: flex; flex-direction: column; gap: 15px;">
                         <!-- Новый -->
-                        <div style="background: rgba(0,0,0,0.6); padding: 10px; border-radius: 8px; text-align: center;">
-                            <div style="font-size: 1.8rem; font-weight: bold; color: #fff;">43</div>
-                            <div style="font-size: 1.2rem; color: #ccc;">Новых</div>
+                        <div style="background: rgba(0,0,0,0.6); padding: 15px; border-radius: 8px; display: flex; justify-content: space-between; align-items: center;">
+                            <div style="font-size: 1.2rem; color: #ccc;">Новый</div>
+                            <div style="font-size: 1.8rem; font-weight: bold; color: #fff;">169</div>
                         </div>
-                        <!-- Средний -->
-                        <div style="background: rgba(0,0,0,0.6); padding: 10px; border-radius: 8px; text-align: center;">
-                            <div style="font-size: 1.8rem; font-weight: bold; color: #fff;">7</div>
-                            <div style="font-size: 1.2rem; color: #ccc;">Средних</div>
+                        <!-- Средний по возрасту -->
+                        <div style="background: rgba(0,0,0,0.6); padding: 15px; border-radius: 8px; display: flex; justify-content: space-between; align-items: center;">
+                            <div style="font-size: 1.2rem; color: #ccc;">Средний по возрасту</div>
+                            <div style="font-size: 1.8rem; font-weight: bold; color: #fff;">10</div>
                         </div>
-                        <!-- Давно -->
-                        <div style="background: rgba(0,0,0,0.6); padding: 10px; border-radius: 8px; text-align: center;">
-                            <div style="font-size: 1.8rem; font-weight: bold; color: #fff;">6</div>
-                            <div style="font-size: 1.2rem; color: #ccc;">Давних</div>
+                        <!-- Открыт давно -->
+                        <div style="background: rgba(0,0,0,0.6); padding: 15px; border-radius: 8px; display: flex; justify-content: space-between; align-items: center;">
+                            <div style="font-size: 1.2rem; color: #ccc;">Открыт давно</div>
+                            <div style="font-size: 1.8rem; font-weight: bold; color: #fff;">4</div>
                         </div>
                     </div>
                 </div>
             </div>
 
-            <!-- ПРАВАЯ КОЛОНКА: Выбросы -->
-            <div class="card" style="padding: 30px; border-left: 6px solid #ff5555; background: rgba(255, 85, 85, 0.05); display: flex; flex-direction: column;">
+            <!-- ПРАВАЯ КОЛОНКА: Очистка -->
+            <div class="card" style="padding: 30px; border-left: 6px solid #ff5555; background: rgba(255, 85, 85, 0.05); display: flex; flex-direction: column; justify-content: center;">
               
-                <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 25px; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 15px;">
-                    <div style="display: flex; align-items: center; gap: 15px;">
-                        <div style="background: #ff5555; color: #fff; width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 900; font-size: 1.2rem;">!</div>
-                        <h3 style="color: #ff5555; margin: 0; font-size: 1.7rem;">ОЧИСТКА ВЫБРОСОВ</h3>
-                    </div>
-                    <div style="text-align: right;">
-                        <span style="font-size: 1.2rem; color: #888;">Метод:</span>
-                        <span style="font-weight: bold; color: #fff; font-size: 1.2rem;">IQR (Межквартильный размах)</span>
-                    </div>
+                <div style="display: flex; align-items: center; gap: 15px; margin-bottom: 30px;">
+                    <div style="background: #ff5555; color: #fff; width: 50px; height: 50px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 900; font-size: 1.5rem;">!</div>
+                    <h3 style="color: #ff5555; margin: 0; font-size: 2rem;">ОЧИСТКА ДАННЫХ</h3>
                 </div>
               
-                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 40px; height: 100%;">
-                  
-                    <!-- Логика очистки (Текст) -->
-                    <div style="display: flex; flex-direction: column; gap: 25px; justify-content: flex-start;">
-                      
-                        <!-- Блок 1: Простые проверки -->
-                        <div>
-                            <div style="margin-bottom: 8px;">
-                                <span class="tag" style="border-color: #555; color: #ccc;">Пятерочки</span>
-                                <span style="color: #fff; font-weight: bold; font-size: 1.4rem;">Выбросов нет.</span>
-                            </div>
-                        </div>
-
-                        <!-- Блок 2: Трафик -->
-                        <div>
-                            <strong style="color: var(--accent); font-size: 1.3rem; display: block; margin-bottom: 8px;">ТРАФИК</strong>
-                            <p style="font-size: 1.4rem; color: #ccc; margin-bottom: 5px;">
-                                Население сильно различается -> <span style="color: #fff;">Верхней границы нет.</span>
-                            </p>
-                            <p style="font-size: 1.4rem; color: #ccc;">
-                                Удаляем только экстремально низкие значения:
-                            </p>
-                            <div class="code-block" style="margin: 10px 0; padding: 10px; font-size: 1.2rem;">Lower = Q1 - <span style="color: var(--accent); font-weight: bold;">3</span> * IQR</div>
-                        </div>
-
-                        <!-- Блок 3: Средний чек -->
-                        <div>
-                            <strong style="color: var(--accent); font-size: 1.3rem; display: block; margin-bottom: 8px;">СРЕДНИЙ ЧЕК</strong>
-                            <p style="font-size: 1.4rem; color: #ccc;">
-                                Меньше зависит от населения. Удаляем строже:
-                            </p>
-                            <div class="code-block" style="margin: 10px 0; padding: 10px; font-size: 1.2rem;">Lower = Q1 - <span style="color: var(--accent); font-weight: bold;">1.5</span> * IQR</div>
-                        </div>
+                <div style="display: flex; flex-direction: column; gap: 25px;">
+                    <h3 style="margin-bottom: 15px; font-size: 1.6rem; color: #fff;">Удаляем экстремально маленькие средние выручки и чеки:</h3>
+                    <div style="overflow-x: auto; margin-bottom: 20px;">
+                        <table style="width: 100%; border-collapse: collapse; font-size: 1.4rem;">
+                            <thead>
+                                <tr style="border-bottom: 1px solid var(--accent);">
+                                    <th style="text-align: left; padding: 10px; color: #aaa; border-right: 1px solid #333;">Критерий</th>
+                                    <th style="text-align: right; padding: 10px; color: #aaa;">Значение</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr style="border-bottom: 1px solid #333;">
+                                    <td style="padding: 12px; color: #ccc; border-right: 1px solid #333;">Средний чек магазина за месяц</td>
+                                    <td style="text-align: right; padding: 12px; font-weight: bold; color: #fff;">&lt; 300 рублей</td>
+                                </tr>
+                                <tr style="border-bottom: 1px solid #333;">
+                                    <td style="padding: 12px; color: #ccc; border-right: 1px solid #333;">Трафик за месяц</td>
+                                    <td style="text-align: right; padding: 12px; font-weight: bold; color: #fff;">&lt; 25.000<br><span style="font-size: 1rem; color: #888;">(меньше 800 человек в день)</span></td>
+                                </tr>
+                            </tbody>
+                        </table>
                     </div>
 
-                    <!-- Результаты (Цифры) -->
-                    <div style="display: flex; flex-direction: column; justify-content: center; gap: 20px; background: rgba(0,0,0,0.2); padding: 20px; border-radius: 10px;">
-                        <h4 style="text-align: center; color: #888; text-transform: uppercase; letter-spacing: 2px;">Итого удалено</h4>
-                      
-                        <!-- Трафик -->
-                        <div style="text-align: center;">
-                            <div style="font-size: 3rem; font-weight: 900; color: #fff; line-height: 1;">59</div>
-                            <div style="color: var(--accent); font-weight: 700; font-size: 1.2rem; margin-top: 5px;">ЗНАЧЕНИЙ ТРАФИКА</div>
-                            <div style="font-size: 1.2rem; color: #666; margin-top: 2px;">(менее 1%)</div>
-                        </div>
-
-                        <div style="height: 1px; background: #444; width: 50%; margin: 0 auto;"></div>
-
-                        <!-- Чек -->
-                        <div style="text-align: center;">
-                            <div style="font-size: 3rem; font-weight: 900; color: #fff; line-height: 1;">229</div>
-                            <div style="color: var(--accent); font-weight: 700; font-size: 1.2rem; margin-top: 5px;">ЗНАЧЕНИЙ СР. ЧЕКА</div>
-                            <div style="font-size: 1.2rem; color: #666; margin-top: 2px;">(менее 1%)</div>
-                        </div>
+                    <div style="background: rgba(0,0,0,0.3); padding: 20px; border-radius: 10px; border: 1px solid #444;">
+                        <p style="font-size: 1.5rem; margin: 0;">
+                            Неподходящих строк для исследования: <span style="color: var(--accent); font-weight: bold;">183</span> из 62421 оставшихся (<span style="color: var(--accent);">&lt; 1%</span>)
+                        </p>
                     </div>
+
+                    <!-- <div style="margin-top: 20px; padding-top: 20px; border-top: 1px solid rgba(255,255,255,0.1);">
+                        <p style="font-size: 1.8rem; font-weight: 900; color: var(--accent); text-align: center; text-transform: uppercase; letter-spacing: 1px;">
+                            Это показывает нам, что датасет - ошибка выжившего
+                        </p>
+                    </div> -->
                 </div>
             </div>
         </div>
@@ -761,51 +777,49 @@
         <div style="display: grid; grid-template-columns: 1.8fr 1fr; gap: 30px; height: 75vh;">
           
             <!-- ЛЕВАЯ КОЛОНКА: ТАБЛИЦА -->
-            <div class="card" style="padding: 20px; display: flex; flex-direction: column; gap: 20px;">
-              
-                <!-- ТАБЛИЦА 2 -->
-                <div style="flex: 0.8; display: flex; flex-direction: column; border-top: 1px solid #333; padding-top: 15px;">
-                    <div style="display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 10px;">
-                        <h3 style="margin: 0;">По дате открытия пятерочки</h3>
-                    </div>
-                    <div style="overflow-x: auto; flex: 1;">
-                        <table style="width: 100%; border-collapse: collapse; font-size: 1.4rem; text-align: center;">
-                            <thead>
-                                <tr style="border-bottom: 2px solid var(--accent);">
-                                    <th style="padding: 8px; text-align: left;">Группа</th>
-                                    <th style="padding: 8px;">Разница средних</th>
-                                    <th style="padding: 8px;">Проценты</th>
-                                    <th style="padding: 8px;">P-value</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr style="border-bottom: 1px solid #333;">
-                                    <td style="padding: 8px; text-align: left; font-weight: bold; color: #fff;">Новейшие</td>
-                                    <td>5.0 M</td>
-                                    <td style="color: var(--accent);">11.80%</td>
-                                    <td>0.00</td>
-                                </tr>
-                                <tr style="border-bottom: 1px solid #333;">
-                                    <td style="padding: 8px; text-align: left; font-weight: bold; color: #fff;">Новые</td>
-                                    <td>1.4 M</td>
-                                    <td style="color: var(--accent);">2.41%</td>
-                                    <td>0.00</td>
-                                </tr>
-                                <tr style="border-bottom: 1px solid #333;">
-                                    <td style="padding: 8px; text-align: left; font-weight: bold; color: #fff;">Средние по возрасту</td>
-                                    <td>0.4 M</td>
-                                    <td style="color: var(--accent);">0.73%</td>
-                                    <td>0.00</td>
-                                </tr>
-                                <tr>
-                                    <td style="padding: 8px; text-align: left; font-weight: bold; color: #fff;">Открыты давно</td>
-                                    <td>16.9 M</td>
-                                    <td style="color: var(--accent);">14.38%</td>
-                                    <td>0.00</td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
+            <div class="card" style="padding: 20px; display: flex; flex-direction: column; gap: 20px; grid-column: 1 / -1;">
+                <div style="overflow-x: auto; flex: 1; display: flex; align-items: center;">
+                    <table style="width: 100%; border-collapse: collapse; font-size: 1.3rem; text-align: center;">
+                        <thead>
+                            <tr style="border-bottom: 2px solid var(--accent);">
+                                <th style="padding: 15px; text-align: left;">Группа</th>
+                                <th style="padding: 15px;">Разница средних<br><span style="font-size: 0.7em; color: #888; font-weight: normal;">(пятерочек нет)</span></th>
+                                <th style="padding: 15px;">Проценты</th>
+                                <th style="padding: 15px;">Разница средних<br><span style="font-size: 0.7em; color: #888; font-weight: normal;">(пятерочки есть)</span></th>
+                                <th style="padding: 15px;">Проценты</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr style="border-bottom: 1px solid #333;">
+                                <td style="padding: 15px; text-align: left; font-weight: bold; color: #fff;">Маленькие</td>
+                                <td>11 008 296</td>
+                                <td style="color: var(--accent);">17.5%</td>
+                                <td>5 934 459</td>
+                                <td style="color: var(--accent);">11.4%</td>
+                            </tr>
+                            <tr style="border-bottom: 1px solid #333;">
+                                <td style="padding: 15px; text-align: left; font-weight: bold; color: #fff;">Средние</td>
+                                <td>114 128 106</td>
+                                <td style="color: var(--accent);">15.8%</td>
+                                <td>-6 008 633</td>
+                                <td style="color: var(--accent);">9.2%</td>
+                            </tr>
+                            <tr style="border-bottom: 1px solid #333;">
+                                <td style="padding: 15px; text-align: left; font-weight: bold; color: #fff;">Большие</td>
+                                <td>19 391 365</td>
+                                <td style="color: var(--accent);">14.5%</td>
+                                <td>13 241 782</td>
+                                <td style="color: var(--accent);">13.4%</td>
+                            </tr>
+                            <tr>
+                                <td style="padding: 15px; text-align: left; font-weight: bold; color: #fff;">Очень большие</td>
+                                <td>22 682 243</td>
+                                <td style="color: var(--accent);">12.0%</td>
+                                <td>22 961 330</td>
+                                <td style="color: var(--accent);">15.7%</td>
+                            </tr>
+                        </tbody>
+                    </table>
                 </div>
             </div>
 
@@ -884,10 +898,10 @@
     <div class="slide">
         <h2>19. ПОЛИСИ</h2>
         <div class="fill-height flex-center">
-            <div class="card" style="width: 100%; height: 70vh; display: flex; flex-direction: column; gap: 20px; padding: 30px;">
+            <div class="card" style="width: 100%; height: 70vh; display: flex; flex-direction: column; gap: 20px; padding: 30px; text-align: left;">
               
                 <!-- 1. Для франшизы (Сети) -->
-                <div style="background: rgba(255,255,255,0.05); padding: 20px; border-radius: 10px; flex: 1; display: flex; align-items: center; border-left: 6px solid var(--accent);">
+                <div style="background: rgba(255,255,255,0.05); padding: 20px 40px; border-radius: 10px; flex: 1; display: flex; align-items: center; border-left: 6px solid var(--accent);">
                     <div>
                         <h3 style="color: var(--accent); margin-bottom: 10px;">ПОЛИСИ ДЛЯ ФРАНШИЗЫ (СЕТИ)</h3>
                         <p style="font-size: 1.4rem; line-height: 1.4; margin: 0;">
@@ -897,7 +911,7 @@
                 </div>
 
                 <!-- 2. Использование информации о каннибализации -->
-                <div style="background: rgba(255,255,255,0.05); padding: 20px; border-radius: 10px; flex: 1; display: flex; align-items: center; border-left: 6px solid #fff;">
+                <div style="background: rgba(255,255,255,0.05); padding: 20px 40px; border-radius: 10px; flex: 1; display: flex; align-items: center; border-left: 6px solid #fff;">
                     <div>
                         <h3 style="color: #fff; margin-bottom: 10px;">ПОЛИСИ ДЛЯ X5</h3>
                         <p style="font-size: 1.4rem; line-height: 1.4; margin: 0;">
@@ -910,7 +924,7 @@
                 </div>
 
                 <!-- 3. Стратегическое планирование -->
-                <div style="background: rgba(255,255,255,0.05); padding: 20px; border-radius: 10px; flex: 1; display: flex; align-items: center; border-left: 6px solid #888;">
+                <div style="background: rgba(255,255,255,0.05); padding: 20px 40px; border-radius: 10px; flex: 1; display: flex; align-items: center; border-left: 6px solid #888;">
                     <div>
                         <h3 style="color: #ccc; margin-bottom: 10px;">СТРАТЕГИЧЕСКОЕ ПЛАНИРОВАНИЕ</h3>
                         <p style="font-size: 1.4rem; line-height: 1.4; margin: 0;">
@@ -1061,7 +1075,7 @@
     // ==========================================
     // ГЛОБАЛЬНЫЕ ПЕРЕМЕННЫЕ ДЛЯ ГРАФИКОВ
     // ==========================================
-    let chartSettlements, chartHeatmap, chartRobustness;
+    let chartSettlements, chartRobustness;
     let chartAvgCheck, chartMiniRevenue, chartAgeRevenue;
     let chartAreaAge;
     // Переменная chartScatter удалена, так как заменена на картинку
@@ -1249,49 +1263,111 @@
         tooltip: { theme: 'dark', y: { formatter: (val) => val + " шт." } }
     };
 
-    // СЛАЙД 5: HEATMAP (КОРРЕЛЯЦИИ)
-    const optionsHeatmap = {
+    // СЛАЙД 6: SCATTER PLOT (Магазины vs Пятерочки)
+    // scatterDataMaga is loaded from js/scatter_data.js
+    const optionsScatterMaga = {
         ...commonOptions,
         series: [
-            { name: 'e-commerce',      data: [1.00, 0.16, 0.06, 0.17, 0.12, 0.05, 0.23] },
-            { name: 'медучреждения',   data: [0.16, 1.00, 0.16, 0.35, 0.34, 0.22, 0.15] },
-            { name: 'школы',           data: [0.06, 0.16, 1.00, 0.12, 0.12, 0.09, 0.13] },
-            { name: 'остановки',       data: [0.17, 0.35, 0.12, 1.00, 0.08, 0.07, 0.19] },
-            { name: 'магазины',        data: [0.12, 0.34, 0.12, 0.08, 1.00, 0.68, -0.13] },
-            { name: 'пятерочки',       data: [0.05, 0.22, 0.09, 0.07, 0.68, 1.00, -0.15] },
-            { name: 'выручка',         data: [0.23, 0.15, 0.13, 0.19, -0.13, -0.15, 1.00] }
+            {
+                name: "Магазины",
+                type: "scatter",
+                data: scatterDataMaga
+            },
+            {
+                name: "Регрессия",
+                type: "line",
+                data: [
+                    [0, 2.86], 
+                    [10, 17.9] 
+                ]
+            }
         ],
-        chart: { type: 'heatmap', height: '100%', background: 'transparent', toolbar: { show: false } },
+        chart: {
+            type: 'line',
+            height: '100%',
+            background: 'transparent',
+            toolbar: { show: false },
+            animations: { enabled: false }
+        },
+        colors: ['rgba(255, 255, 255, 0.6)', '#C6FF00'],
+        grid: {
+            show: true,
+            borderColor: '#333',
+            strokeDashArray: 3,
+            xaxis: { lines: { show: true } },
+            yaxis: { lines: { show: true } }
+        },
         legend: {
-            show: true, position: 'right', offsetY: 0, width: 60,
-            itemMargin: { vertical: 0, horizontal: 0 },
-            markers: { width: 20, height: 25, radius: 0 },
-            fontSize: '18px', labels: { colors: '#888' }
+            show: true,
+            position: 'bottom',
+            horizontalAlign: 'right',
+            floating: true,
+            orientation: 'vertical',
+            offsetY: 0,
+            offsetX: 0,
+            fontSize: '20px',
+            fontFamily: 'Inter, sans-serif',
+            fontWeight: 400,
+            labels: {
+                colors: '#fff',
+                useSeriesColors: false
+            },
+            markers: {
+                width: 12,
+                height: 12,
+                strokeWidth: 0,
+                strokeColor: '#fff',
+                fillColors: undefined,
+                radius: 12,
+                customHTML: undefined,
+                onClick: undefined,
+                offsetX: 0,
+                offsetY: 0
+            },
+            itemMargin: {
+                horizontal: 10,
+                vertical: 5
+            },
+            onItemClick: {
+                toggleDataSeries: true
+            },
+            onItemHover: {
+                highlightDataSeries: true
+            },
         },
-        plotOptions: { 
-            heatmap: { 
-                shadeIntensity: 0.5, radius: 2, useFillColorAsStroke: false,
-                colorScale: { 
-                    ranges: [
-                        { from: -1.0, to: 0.0, color: '#560319', name: '< 0' },
-                        { from: 0.01, to: 0.15, color: '#FF2300', name: '0.1' },
-                        { from: 0.16, to: 0.30, color: '#FF6F00', name: '0.2' },
-                        { from: 0.31, to: 0.45, color: '#FFBA00', name: '0.4' },
-                        { from: 0.46, to: 0.60, color: '#E6FF00', name: '0.6' },
-                        { from: 0.61, to: 0.80, color: '#9bd100', name: '0.8' },
-                        { from: 0.81, to: 1.00, color: '#8fb900', name: '1.0' }
-                    ] 
-                } 
-            } 
+        xaxis: {
+            type: 'numeric',
+            title: { 
+                text: 'Количество пятёрочек', 
+                style: { color: '#888', fontSize: '18px', fontWeight: 'bold', fontFamily: 'Inter, sans-serif' } 
+            },
+            labels: { 
+                style: { colors: '#888', fontSize: '14px', fontFamily: 'Inter, sans-serif' },
+                formatter: (val) => val.toFixed(0)
+            },
+            tickAmount: 10,
+            min: 0,
+            max: 10,
+            axisBorder: { show: true, color: '#555' },
+            axisTicks: { show: true, color: '#555' }
         },
-        dataLabels: { enabled: true, style: { colors: ['#fff'], fontSize: '16px', fontWeight: 'bold' } },
-        xaxis: { 
-            categories: ['e-commerce', 'медучреждения', 'школы', 'остановки', 'магазины', 'пятерочки', 'выручка'],
-            labels: { style: { colors: '#ffffff', fontSize: '16px', fontWeight: 'bold' } }, tooltip: { enabled: false }
+        yaxis: {
+            title: { 
+                text: 'Количество магазинов', 
+                style: { color: '#888', fontSize: '18px', fontWeight: 'bold', fontFamily: 'Inter, sans-serif' } 
+            },
+            labels: { 
+                style: { colors: '#888', fontSize: '14px', fontFamily: 'Inter, sans-serif' },
+                formatter: (val) => val.toFixed(0)
+            }
         },
-        yaxis: { reversed: true, labels: { style: { colors: '#ffffff', fontSize: '16px', fontWeight: 'bold' } } },
-        stroke: { width: 1, colors: ['#000'] }
+        markers: { size: 4, strokeWidth: 0 },
+        stroke: { width: [0, 4] },
+        tooltip: { theme: 'dark' }
     };
+
+    // Data for Revenue Chart
+    
 
     // ==========================================
     // СЛАЙД 14: T-TEST Charts
@@ -1761,6 +1837,7 @@
         chartAgeRevenue = new ApexCharts(document.querySelector("#chart-age-revenue"), optionsAgeRevenue);
         chartAgeRevenue.render();
     }
+        
         if(document.querySelector("#chart-heatmap")) {
             chartHeatmap = new ApexCharts(document.querySelector("#chart-heatmap"), optionsHeatmap);
             chartHeatmap.render();
@@ -2258,9 +2335,6 @@
         if (currentSlideEl.id === 'chartSlideAge' && chartAgeRevenue) {
         chartAgeRevenue.updateOptions({ chart: { animations: { enabled: true } } });
     }
-        if (currentSlideEl.id === 'chartSlide2') {
-            if (chartHeatmap) chartHeatmap.updateOptions({ chart: { animations: { enabled: true } } });
-        }
         if (currentSlideEl.id === 'chartSlide3') {
             if (chartTtest) chartTtest.updateOptions({ chart: { animations: { enabled: true } } });
             if (chartTtest2) chartTtest2.updateOptions({ chart: { animations: { enabled: true } } });
