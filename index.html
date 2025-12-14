@@ -224,12 +224,20 @@
         </div>
     </div>
 
-    <!-- 06. КОРРЕЛЯЦИИ -->
+    <!-- 06. ВЛИЯНИЕ ПЯТЕРОЧЕК -->
     <div class="slide" id="chartSlide2">
-        <h2>06. КОРРЕЛЯЦИИ</h2>
-        <div class="card" style="height: 70vh; padding: 10px; overflow: hidden;">
-            <div class="chart-container-fix">
-                 <div id="chart-heatmap" style="width: 100%; height: 100%;"></div>
+        <h2>06. ВЛИЯНИЕ ПЯТЕРОЧЕК</h2>
+        <p style="font-size: 1.5rem; margin-bottom: 20px; color: #ccc; text-align: center;">Единственное, что X5 контролирует полностью и напрямую, - это количество пятёрочек в округе</p>
+        
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 30px; height: 65vh;">
+            <!-- Левая колонка: Скриншот графика -->
+            <div style="display: flex; justify-content: center; align-items: center; overflow: hidden;">
+                <img src="images/Screenshot 2025-12-14 at 18-26-16 Scatter Chart.png" alt="Scatter Plot" style="max-width: 100%; max-height: 100%; object-fit: contain;">
+            </div>
+
+            <!-- Правая колонка: Место под второй график -->
+            <div id="chart-heatmap-container" style="display: flex; justify-content: center; align-items: center; border: 2px dashed #444; color: #666; position: relative;">
+                <div id="chart-heatmap" style="width: 100%; height: 100%;"></div>
             </div>
         </div>
     </div>
@@ -242,7 +250,7 @@
           
             <!-- ЛЕВЫЙ ГРАФИК: Количество (Распределение) -->
             <div class="card" style="padding: 15px; display: flex; flex-direction: column; overflow: hidden;">
-                <h3 style="text-align: center; margin-bottom: 5px; font-size: 1.4rem; color: #fff;">1. Количество магазинов</h3>
+                <h3 style="text-align: center; margin-bottom: 5px; font-size: 1.2rem; color: var(--accent);">1. Количество магазинов</h3>
                 <div class="chart-container-fix" style="flex: 1;">
                     <div id="chart-area-age" style="width: 100%; height: 100%;"></div>
                 </div>
@@ -250,7 +258,7 @@
 
             <!-- ПРАВЫЙ ГРАФИК: Выручка (Boxplot) -->
             <div class="card" style="padding: 15px; display: flex; flex-direction: column; overflow: hidden;">
-                <h3 style="text-align: center; margin-bottom: 5px; font-size: 1.4rem; color: var(--accent);">2. Разброс выручки (млн ₽)</h3>
+                <h3 style="text-align: center; margin-bottom: 5px; font-size: 1.2rem; color: var(--accent);">2. Выручка по возрасту (млн ₽)</h3>
                 <div class="chart-container-fix" style="flex: 1;">
                     <div id="chart-area-rev-box" style="width: 100%; height: 100%;"></div>
                 </div>
@@ -888,12 +896,15 @@
                     </div>
                 </div>
 
-                <!-- 2. Для франчайзи -->
+                <!-- 2. Использование информации о каннибализации -->
                 <div style="background: rgba(255,255,255,0.05); padding: 20px; border-radius: 10px; flex: 1; display: flex; align-items: center; border-left: 6px solid #fff;">
                     <div>
-                        <h3 style="color: #fff; margin-bottom: 10px;">ПОЛИСИ ДЛЯ ФРАНЧАЙЗИ</h3>
+                        <h3 style="color: #fff; margin-bottom: 10px;">ПОЛИСИ ДЛЯ X5</h3>
                         <p style="font-size: 1.4rem; line-height: 1.4; margin: 0;">
-                            Прописывать в договоре коммерческой концессии территориальную эксклюзивность своего магазина, в пределах которой сеть не откроет новые точки.
+                            X5 может использовать информацию о более резком, чем в среднем, снижении выручки пятёрочки из-за каннибализации как:<br>
+                            <strong>1)</strong> сигнал о необходимости ремонта/редизайна точки<br>
+                            <strong>2)</strong> сигнал о необходимости изменить формат точки (добавить выпечку, работать для доставок)<br><br>
+                            Более резкое снижение выручки, чем в среднем, показывает реальную ценность локации.
                         </p>
                     </div>
                 </div>
@@ -948,6 +959,7 @@
                 <button id="casinoBtn" class="casino-btn" onclick="playCasino()">🎰 ДЕПАТЬ 🎰</button>
                 <audio id="casinoSound" src="sound/roulette-play_fyk7stv_.mp3" preload="auto"></audio>
                 <audio id="jackpotSound" src="sound/djekpot-rd.mp3" preload="auto"></audio>
+                <audio id="winSound" src="sound/3923cb8ada7ca47.mp3" preload="auto"></audio>
             </div>
         </div>
         <div id="money-rain-container"></div>
@@ -1753,6 +1765,8 @@
             chartHeatmap = new ApexCharts(document.querySelector("#chart-heatmap"), optionsHeatmap);
             chartHeatmap.render();
         }
+
+
         if(document.querySelector("#chart-model-perf")) {
             chartModel = new ApexCharts(document.querySelector("#chart-model-perf"), optionsModelPerf);
             chartModel.render();
@@ -1888,11 +1902,9 @@
                     {
                         type: 'boxPlot',
                         data: [
-                            // Очищенные данные из Python
-                            { x: 'Маленький', y: [7.58, 34.25, 43.95, 58.6, 95.14] },
-                            { x: 'Средний', y: [5.13, 41.63, 56.18, 75.75, 126.94] },
-                            { x: 'Большой', y: [8.02, 62.65, 87.16, 120.77, 207.94] },
-                            { x: 'Очень большой', y: [18.71, 109.96, 146.05, 185.65, 299.18] }
+                            { x: 'Новые', y: [5.13, 38.19, 53.48, 74.56, 129.12] },
+                            { x: 'Средние', y: [7.58, 44.11, 61.08, 85.63, 147.89] },
+                            { x: 'Старые', y: [16.56, 70.86, 110.65, 151.44, 272.31] }
                         ]
                     }
                 ],
@@ -1903,28 +1915,33 @@
                     toolbar: { show: false },
                     animations: { enabled: true }
                 },
-                colors: [ACCENT_COLOR], 
+                colors: [ACCENT_COLOR, '#ffffff'], 
+                
+                // === ДОБАВЬТЕ/ИЗМЕНИТЕ ЭТОТ БЛОК ЗДЕСЬ (НА ВЕРХНЕМ УРОВНЕ) ===
+                stroke: {
+                    colors: ['#ffffff'], // <-- ЭТО ДЕЛАЕТ УСИКИ БЕЛЫМИ
+                    width: 2
+                },
+                // ==========================================================
+
                 plotOptions: {
                     boxPlot: {
                         colors: {
-                            upper: '#C6FF00', // Основной кислотный цвет
-                            lower: '#A4D600'  // Чуть темнее для объема
-                        },
-                        stroke: {
-                            colors: [ACCENT_COLOR], // Кислотные усы
-                            width: 3 // Сделали потолще
+                            upper: '#C6FF00', 
+                            lower: '#A4D600'  
                         }
+                        // Отсюда stroke можно убрать, он теперь сверху
                     }
                 },
                 xaxis: {
                     type: 'category',
                     labels: {
-                        style: { colors: '#888', fontSize: '14px', fontWeight: 600 }
+                        style: { colors: '#888', fontSize: '12px', fontWeight: 600 }
                     }
                 },
                 yaxis: {
                     labels: { 
-                        style: { colors: '#fff', fontSize: '16px' },
+                        style: { colors: '#fff', fontSize: '12px' },
                         formatter: (val) => val.toFixed(0) + "M"
                     }
                 },
@@ -1967,7 +1984,10 @@
         'images/sf.png',
         'images/tete.jpg',
         'images/tinker.png',
-        'images/viper.png'
+        'images/viper.png',
+        'images/photo_2020-02-16_19-15-52.jpg',
+        "images/photo_2023-05-30_12-09-39.jpg",
+        "images/photo_2024-09-11_11-11-39.jpg"
     ];
 
     let casinoClickCount = 0;
@@ -2004,16 +2024,36 @@
             const boxes = document.querySelectorAll('#teamSlide .team-photo-box');
             const gridCells = Array.from(boxes); // Should be 12 cells
             
-            let currentGridImages = [];
+            let currentGridImages = new Array(gridCells.length).fill(null);
 
             if (isMaxWin) {
                 // MAX WIN: All same images (JACKPOT)
                 const winImg = teamImages[Math.floor(Math.random() * teamImages.length)];
-                currentGridImages = new Array(gridCells.length).fill(winImg);
+                currentGridImages.fill(winImg);
             } else {
-                // RANDOM
+                // Chance to force a win (e.g. 40%)
+                const forceWin = Math.random() < 0.4;
+
+                if (forceWin) {
+                    // Define winning lines (same as in checkWins)
+                    const lines = [
+                        [0, 1, 2, 3], [4, 5, 6, 7], [8, 9, 10, 11], // Rows
+                        [0, 5, 10], [1, 6, 11], [8, 5, 2], [9, 6, 3], // Diagonals
+                        [0, 5, 10, 11], [3, 6, 9, 8] // Long Diagonals
+                    ];
+                    const randomLine = lines[Math.floor(Math.random() * lines.length)];
+                    const winImg = teamImages[Math.floor(Math.random() * teamImages.length)];
+                    
+                    randomLine.forEach(idx => {
+                        currentGridImages[idx] = winImg;
+                    });
+                }
+
+                // Fill remaining with random
                 for(let i=0; i < gridCells.length; i++) {
-                    currentGridImages.push(teamImages[Math.floor(Math.random() * teamImages.length)]);
+                    if (!currentGridImages[i]) {
+                        currentGridImages[i] = teamImages[Math.floor(Math.random() * teamImages.length)];
+                    }
                 }
             }
 
@@ -2096,11 +2136,19 @@
     }
 
     function triggerWin(amount, isMaxWin) {
-        // 0. Play Jackpot Sound
-        const jackpotAudio = document.getElementById('jackpotSound');
-        if (jackpotAudio) {
-            jackpotAudio.currentTime = 0; 
-            jackpotAudio.play().catch(e => console.log("Jackpot audio play failed:", e));
+        // 0. Play Sound
+        if (isMaxWin) {
+            const jackpotAudio = document.getElementById('jackpotSound');
+            if (jackpotAudio) {
+                jackpotAudio.currentTime = 0; 
+                jackpotAudio.play().catch(e => console.log("Jackpot audio play failed:", e));
+            }
+        } else {
+            const winAudio = document.getElementById('winSound');
+            if (winAudio) {
+                winAudio.currentTime = 0;
+                winAudio.play().catch(e => console.log("Win audio play failed:", e));
+            }
         }
 
         // 1. Show Message
@@ -2210,8 +2258,8 @@
         if (currentSlideEl.id === 'chartSlideAge' && chartAgeRevenue) {
         chartAgeRevenue.updateOptions({ chart: { animations: { enabled: true } } });
     }
-        if (currentSlideEl.id === 'chartSlide2' && chartHeatmap) {
-            chartHeatmap.updateOptions({ chart: { animations: { enabled: true } } });
+        if (currentSlideEl.id === 'chartSlide2') {
+            if (chartHeatmap) chartHeatmap.updateOptions({ chart: { animations: { enabled: true } } });
         }
         if (currentSlideEl.id === 'chartSlide3') {
             if (chartTtest) chartTtest.updateOptions({ chart: { animations: { enabled: true } } });

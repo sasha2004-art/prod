@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Scatter Chart</title>
+    <link rel="stylesheet" href="style-spirit.css">
+    <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.4.1/papaparse.min.js"></script>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #080808; /* Fallback if css doesn't load */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            overflow: hidden;
+        }
+        #chart-container {
+            width: 90vh;
+            height: 90vh;
+            max-width: 140vw;
+            max-height: 90vw;
+        }
+        /* Стилизация легенды */
+        .apexcharts-legend {
+            background: rgba(0, 0, 0, 0.85) !important;
+            border: 2px solid #C6FF00 !important;
+            padding: 10px 20px !important;
+            border-radius: 8px !important;
+            box-shadow: 0 0 20px rgba(0,0,0,0.5);
+            
+            /* Force position and size */
+            position: absolute !important;
+            top: 30px !important;
+            right: 30px !important;
+            left: auto !important;
+            width: max-content !important;
+            
+            display: flex !important;
+            flex-direction: column !important;
+            align-items: flex-start !important;
+        }
+        .apexcharts-legend-marker {
+            margin-right: 15px !important;
+        }
+    </style>
+</head>
+<body>
+
+    <div id="chart-container"></div>
+
+    <script>
+        const ACCENT_COLOR = '#C6FF00'; 
+        
+        document.addEventListener('DOMContentLoaded', () => {
+            Papa.parse("datadatarass.csv", {
+                download: true,
+                header: true,
+                dynamicTyping: true,
+                complete: function(results) {
+                    const scatterData = results.data
+                        .filter(row => row['пятерочки'] != null && row['выручка'] != null)
+                        .map(row => ({
+                            x: row['пятерочки'],
+                            y: row['выручка']
+                        }));
+
+                    const avgRevenueData = [
+                        { x: 0, y: 7.796764e+07 },
+                        { x: 1, y: 7.413198e+07 },
+                        { x: 2, y: 7.040959e+07 },
+                        { x: 3, y: 6.498818e+07 },
+                        { x: 4, y: 6.137593e+07 },
+                        { x: 5, y: 5.260683e+07 },
+                        { x: 6, y: 5.690544e+07 },
+                        { x: 7, y: 3.994706e+07 },
+                        { x: 8, y: 5.320636e+07 }
+                    ];
+
+                    const options = {
+                        series: [
+                            {
+                                name: 'Магазины',
+                                type: 'scatter',
+                                data: scatterData
+                            },
+                            {
+                                name: 'Средняя выручка',
+                                type: 'line',
+                                data: avgRevenueData
+                            }
+                        ],
+                        chart: {
+                            height: '100%',
+                            type: 'line',
+                            background: 'transparent',
+                            toolbar: { show: false },
+                            animations: { enabled: false },
+                            fontFamily: 'Inter, sans-serif'
+                        },
+                        theme: { mode: 'dark' },
+                        stroke: {
+                            width: [0, 5],
+                            curve: 'smooth'
+                        },
+                        fill: {
+                            type: 'solid',
+                            opacity: [0.6, 1]
+                        },
+                        markers: {
+                            size: [2, 4], // Точки минимального размера
+                            strokeWidth: 0
+                        },
+                        colors: ['rgba(255, 255, 255, 0.3)', ACCENT_COLOR],
+                        grid: {
+                            borderColor: '#333',
+                            strokeDashArray: 4
+                        },
+                        xaxis: {
+                            type: 'numeric',
+                            title: { 
+                                text: 'Количество пятёрочек', 
+                                style: { color: '#888', fontSize: '24px', fontWeight: 600 } // Шрифт больше
+                            },
+                            labels: { 
+                                style: { colors: '#888', fontSize: '20px' }, // Шрифт больше
+                                formatter: (val) => val.toFixed(0) // Целые числа
+                            },
+                            tickAmount: 8,
+                            min: 0,
+                            max: 8
+                        },
+                        yaxis: {
+                            title: { 
+                                text: 'Выручка', 
+                                style: { color: '#888', fontSize: '24px', fontWeight: 600 }, // Шрифт больше
+                                offsetX: -20
+                            },
+                            labels: { 
+                                style: { colors: '#888', fontSize: '20px' }, // Шрифт больше
+                                formatter: (val) => (val / 1000000).toFixed(0) + 'M'
+                            }
+                        },
+                        tooltip: {
+                            enabled: false
+                        },
+                        legend: {
+                            show: true,
+                            position: 'top',
+                            horizontalAlign: 'right',
+                            floating: true,
+                            offsetY: 20,
+                            offsetX: -20,
+                            fontSize: '24px',
+                            labels: { colors: '#fff' },
+                            itemMargin: { horizontal: 0, vertical: 5 },
+                            orientation: 'vertical'
+                        }
+                    };
+
+                    const chart = new ApexCharts(document.querySelector("#chart-container"), options);
+                    chart.render();
+                }
+            });
+        });
+    </script>
+</body>
+</html>
