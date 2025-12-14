@@ -969,7 +969,7 @@
     </div>
 
     <!-- 18. КОМАНДА -->
-    <div class="slide">
+    <div class="slide" id="teamSlide">
         <h2>18. КОМАНДА</h2>
         <div class="fill-height" style="justify-content: center;">
             <div style="display: flex; justify-content: center; gap: 20px; width: 100%;">
@@ -991,6 +991,15 @@
                     
                 </div>
             </div>
+            
+            <div style="margin-top: 30px; text-align: center;">
+                <button id="casinoBtn" class="casino-btn" onclick="playCasino()">🎰 ДЕПАТЬ 🎰</button>
+            </div>
+        </div>
+        <div id="money-rain-container"></div>
+        <div id="win-message" style="display:none; position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); font-size: 5rem; color: #FFD700; font-weight: 900; text-shadow: 0 0 30px #FF0000; z-index: 1000; font-family: 'Monument Extended', sans-serif; text-align: center;">
+            JACKPOT!<br>
+            <span style="font-size: 3rem; color: #fff;">+1,000,000 $</span>
         </div>
     </div>
 
@@ -1812,6 +1821,116 @@
     });
 
     // ==========================================
+    // CASINO MODE LOGIC
+    // ==========================================
+    let casinoInterval = null;
+    const teamImages = [
+        'images/max.jpg',
+        'images/knazyv.jpg',
+        'images/tete.jpg',
+        'images/photo_2025-12-09_11-27-57.jpg',
+        'images/photo_2025-12-09_11-27-21.jpg',
+        'images/photo_2025-12-12_16-32-37.jpg',
+        'images/pudge.png',
+        'images/sf.png',
+        'images/tinker.png',
+        'images/viper.png',
+        'images/Bounty_Hunter.png',
+        'images/gg_wp.jpg',
+        'images/grahs.jpg',
+        'images/green_egg.jpg',
+        'images/pushko.png'
+    ];
+
+    let casinoClickCount = 0;
+
+    function playCasino() {
+        const btn = document.getElementById('casinoBtn');
+        btn.disabled = true; // Prevent spamming during animation
+        
+        // 1. Shake screen
+        document.body.classList.add('casino-shake');
+        setTimeout(() => document.body.classList.remove('casino-shake'), 500);
+
+        // 2. Determine outcome
+        const boxes = document.querySelectorAll('#teamSlide .team-photo-box');
+        
+        if (casinoClickCount < 3) {
+            // LOSE (Random images)
+            boxes.forEach(box => {
+                const randomImg = teamImages[Math.floor(Math.random() * teamImages.length)];
+                box.style.backgroundImage = `url('${randomImg}')`;
+                animateBox(box);
+            });
+            casinoClickCount++;
+            setTimeout(() => btn.disabled = false, 1000);
+        } else {
+            // WIN (All same images)
+            const winImg = teamImages[Math.floor(Math.random() * teamImages.length)];
+            boxes.forEach(box => {
+                box.style.backgroundImage = `url('${winImg}')`;
+                animateBox(box);
+            });
+            
+            // Trigger Win Effects
+            setTimeout(triggerWin, 500);
+            casinoClickCount = 0; // Reset
+            setTimeout(() => btn.disabled = false, 5000);
+        }
+    }
+
+    function animateBox(box) {
+        box.classList.remove('drop-in');
+        void box.offsetWidth; // trigger reflow
+        box.classList.add('drop-in');
+    }
+
+    function triggerWin() {
+        // 1. Show Message
+        const msg = document.getElementById('win-message');
+        msg.style.display = 'block';
+        
+        // 2. Explosion
+        const explosion = document.getElementById('resurrection-explosion');
+        if (explosion) {
+            explosion.style.display = 'block';
+            explosion.classList.add('explode-anim');
+            setTimeout(() => {
+                explosion.style.display = 'none';
+                explosion.classList.remove('explode-anim');
+            }, 1000);
+        }
+
+        // 3. Money Rain
+        startMoneyRain();
+
+        // Hide message after some time
+        setTimeout(() => {
+            msg.style.display = 'none';
+        }, 4000);
+    }
+
+    function startMoneyRain() {
+        const container = document.getElementById('money-rain-container');
+        for (let i = 0; i < 100; i++) {
+            const money = document.createElement('div');
+            money.classList.add('money');
+            money.innerText = Math.random() > 0.5 ? '💵' : '💰';
+            money.style.left = Math.random() * 100 + 'vw';
+            money.style.animationDuration = (Math.random() * 2 + 2) + 's';
+            money.style.fontSize = (Math.random() * 2 + 1) + 'rem';
+            container.appendChild(money);
+
+            // Remove after animation
+            setTimeout(() => money.remove(), 4000);
+        }
+    }
+
+    function stopCasinoMode() {
+        document.body.classList.remove('casino-shake');
+    }
+
+    // ==========================================
     // ЛОГИКА СЛАЙДЕРА
     // ==========================================
     let currentSlide = 0;
@@ -1826,6 +1945,11 @@
     }
 
     function showSlide(index) {
+        if (index < 0) index = 0;
+        if (index >= slides.length) index = slides.length - 1;
+        
+        currentSlide = index;
+
         // Показываем счетчик на всех слайдах кроме титульника (0) и финальных (на ваше усмотрение)
         // Если хотите скрыть на последнем, используйте: if (index === 0 || index >= slides.length - 1)
         if (index === 0 || index >= 19) slideCounter.style.display = 'none';
