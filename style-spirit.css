@@ -60,10 +60,10 @@ body {
     position: relative;
 }
 
-/* ================= TYPOGRAPHY (Уменьшаем отступы для экономии места) ================= */
+/* ================= TYPOGRAPHY (Обновленные размеры) ================= */
 h1 { 
     font-family: var(--font-head); 
-    font-size: 3rem; /* Чуть меньше */
+    font-size: 3.2rem; /* Чуть увеличили */
     line-height: 1; 
     font-weight: 900; 
     text-transform: uppercase; 
@@ -73,39 +73,37 @@ h1 {
 
 h2 { 
     font-family: var(--font-head); 
-    font-size: 1.8rem; /* Чуть компактнее */
+    font-size: 2rem; /* Было 1.8rem */
     font-weight: 900; 
     text-transform: uppercase; 
     margin-bottom: 20px; 
     border-left: 6px solid var(--accent); 
     padding-left: 20px; 
     display: inline-block; 
-    /* Важно: H2 не должен сжиматься */
     flex-shrink: 0; 
 }
 
 h3 { 
-    font-size: 1.5rem; 
-    margin-bottom: 8px; 
+    font-size: 1.6rem; /* Было 1.5rem */
+    margin-bottom: 10px; 
 }
 
 p, li { 
-    font-size: 1.25rem; 
-    line-height: 1.4; /* Более плотный текст */
-    margin-bottom: 8px; 
+    font-size: 1.4rem; /* ОСНОВНОЕ ИЗМЕНЕНИЕ (Было 1.25rem) */
+    line-height: 1.4; /* Более плотный текст для читаемости */
+    margin-bottom: 12px; 
 }
 
-ul { margin-bottom: 10px; }
+ul { margin-bottom: 15px; }
 
 /* ================= LAYOUT & SLIDES ================= */
-/* Обновляем класс .slide */
 .slide {
     position: absolute;
     top: 0; left: 0; width: 100%; height: 100%;
     display: flex;
     flex-direction: column;
     justify-content: center; /* Центрируем контент по вертикали */
-    padding: 60px 80px 100px 80px;      /* Вернули отступы */
+    padding: 60px 80px 100px 80px;
     opacity: 0;
     visibility: hidden;
     transform: translateY(10px);
@@ -120,10 +118,9 @@ ul { margin-bottom: 10px; }
     z-index: 2;
 }
 
-/* Класс для контейнера, который должен занять всё оставшееся место */
 .fill-height {
     flex: 1;
-    min-height: 0; /* Магия CSS: позволяет контенту сжиматься, если не влезает */
+    min-height: 0; 
     width: 100%;
     display: flex;
     flex-direction: column;
@@ -131,29 +128,25 @@ ul { margin-bottom: 10px; }
 
 .flex-center { display: flex; justify-content: center; align-items: center; text-align: center; height: 100%; }
 
-/* Обновляем Grid системы - чтобы не растягивались на весь экран */
 .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: start; }
 .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; align-items: start; }
 
-/* ! ВАЖНО: Добавляем новый класс специально для слайдов с ГРАФИКАМИ */
-/* Это лечит баг с зумом */
 .chart-container-fix {
-    flex: 1;             /* Занимать всё доступное место */
+    flex: 1;             
     width: 100%;
-    min-height: 0;       /* Критично для Flexbox + Charts */
-    overflow: hidden;    /* Обрезает график при зуме, предотвращая рекурсию */
+    min-height: 0;       
+    overflow: hidden;   
     display: flex;
     flex-direction: column;
 }
 
 /* ================= CARDS & UI ================= */
-/* Обновляем класс .card - убираем принудительную высоту */
 .card {
     background: var(--bg-card);
     border: 1px solid var(--border);
     padding: 25px;
     position: relative;
-    height: auto; /* Блок теперь по размеру контента */
+    height: auto; 
     display: flex;
     flex-direction: column;
     transition: all 0.3s ease;
@@ -171,7 +164,7 @@ ul { margin-bottom: 10px; }
 
 .big-stat { 
     font-family: var(--font-head); 
-    font-size: 3rem; 
+    font-size: 3.5rem; /* Увеличили */
     font-weight: 900; 
     color: var(--accent); 
     display: block; 
@@ -179,13 +172,13 @@ ul { margin-bottom: 10px; }
     margin-bottom: 10px; 
     text-shadow: 0 0 15px rgba(198, 255, 0, 0.2);
 }
-.stat-label { font-size: 1.25rem; text-transform: uppercase; letter-spacing: 1px; color: var(--text-muted); font-weight: 700; }
+.stat-label { font-size: 1.4rem; text-transform: uppercase; letter-spacing: 1px; color: var(--text-muted); font-weight: 700; }
 
 .tag { 
     display: inline-block; 
     padding: 5px 10px; 
     border: 1px solid var(--accent); 
-    font-size: 1.25rem; 
+    font-size: 1.4rem; 
     font-weight: 700; 
     margin-right: 5px; 
     margin-bottom: 5px; 
@@ -201,33 +194,25 @@ ul { margin-bottom: 10px; }
     border-left: 4px solid var(--accent);
     padding: 20px;
     font-family: 'Courier New', monospace;
-    font-size: 1.1rem;
+    font-size: 1.3rem; /* Увеличено */
     color: #ccc;
     overflow-x: auto;
     white-space: pre;
     margin: 20px 0;
     box-shadow: 0 0 20px rgba(0,0,0,0.3);
 }
-.keyword { color: var(--accent); text-shadow: 0 0 5px rgba(198, 255, 0, 0.4); } 
-.string { color: #fff; } 
-.func { color: #fff; text-decoration: underline var(--accent); } 
-.comment { color: #555; font-style: italic; }
 
 /* --- NAVIGATION --- */
 .slide-counter { 
     position: fixed; bottom: 30px; left: 40px; 
-    font-weight: 900; font-size: 1.2rem; z-index: 20; 
+    font-weight: 900; font-size: 1.4rem; z-index: 20; 
     background: rgba(0,0,0,0.8); padding: 5px 15px; 
     border-left: 2px solid var(--accent);
 }
-.controls { position: fixed; bottom: 0; left: 0; width: 100%; height: 80px; display: flex; justify-content: flex-end; align-items: center; padding-right: 40px; z-index: 20; pointer-events: none; }
-.btn-group { pointer-events: auto; display: flex; gap: 20px; background: rgba(20, 20, 20, 0.95); padding: 10px 20px; border-radius: 30px; border: 1px solid #333; }
-.btn { background: transparent; border: none; color: var(--text-main); font-family: var(--font-head); font-weight: 900; font-size: 1.5rem; cursor: pointer; padding: 0 10px; transition: 0.3s; }
-.btn:hover { color: var(--accent); text-shadow: 0 0 10px var(--accent); }
 
 /* --- WATERMARK --- */
 .watermark-container { position: fixed; top: 30px; right: 40px; display: flex; align-items: center; gap: 15px; opacity: 0.8; z-index: 10; }
-.watermark-text { font-family: var(--font-head); font-weight: 900; border: 2px solid #fff; padding: 5px 12px; font-size: 1.1rem; }
+.watermark-text { font-family: var(--font-head); font-weight: 900; border: 2px solid #fff; padding: 5px 12px; font-size: 1.2rem; }
 .logo-watermark-img { width: 40px; }
 
 /* --- IMAGES PLACEHOLDERS --- */
@@ -241,19 +226,16 @@ ul { margin-bottom: 10px; }
     border: 1px solid #444;
     filter: grayscale(0%); 
     position: relative;
-    overflow: visible; /* Changed to visible to allow wings to stick out */
+    overflow: visible; 
     transition: filter 0.5s, border-color 0.5s, transform 0.5s, box-shadow 0.5s;
 }
 
 /* --- STATES --- */
-
 /* STATE 1: DEAD */
 .team-photo-box.dead {
     filter: grayscale(100%);
     border-color: #333;
 }
-
-/* Ribbon (Only visible when dead) */
 .team-photo-box.dead::before {
     content: '';
     position: absolute;
@@ -268,8 +250,6 @@ ul { margin-bottom: 10px; }
     pointer-events: none;
     animation: fadeIn 0.5s forwards;
 }
-
-/* Candle (Only visible when dead) */
 .team-photo-box.dead::after {
     content: '🕯️';
     font-size: 6rem;
@@ -291,8 +271,6 @@ ul { margin-bottom: 10px; }
     transform: scale(1.05);
     z-index: 10;
 }
-
-/* Left Wing (Левое крыло) */
 .team-photo-box.resurrected::before {
     content: '';
     position: absolute;
@@ -300,18 +278,15 @@ ul { margin-bottom: 10px; }
     left: -50px;
     width: 70px;
     height: 100px;
-    /* Поменяли форму на "правую" зеркально */
     background: linear-gradient(to bottom right, #fff, #ddd);
     border-radius: 100% 0 20% 50%; 
     transform-origin: bottom right;
-    transform: rotate(20deg); /* Повернули, чтобы росло от плеча */
+    transform: rotate(20deg); 
     z-index: -1;
     animation: wingFlapLeft 0.8s infinite alternate ease-in-out;
     filter: drop-shadow(0 0 15px #fff);
     border: 1px solid #fff;
 }
-
-/* Right Wing (Правое крыло) */
 .team-photo-box.resurrected::after {
     content: '';
     position: absolute;
@@ -319,11 +294,10 @@ ul { margin-bottom: 10px; }
     right: -50px;
     width: 70px;
     height: 100px;
-    /* Поменяли форму на "левую" зеркально */
     background: linear-gradient(to bottom left, #fff, #ddd);
     border-radius: 0 100% 50% 20%;
     transform-origin: bottom left;
-    transform: rotate(-20deg); /* Повернули, чтобы росло от плеча */
+    transform: rotate(-20deg); 
     z-index: -1;
     animation: wingFlapRight 0.8s infinite alternate ease-in-out;
     filter: drop-shadow(0 0 15px #fff);
@@ -331,7 +305,6 @@ ul { margin-bottom: 10px; }
 }
 
 @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
-
 @keyframes wingFlapLeft {
     from { transform: rotate(20deg); }
     to { transform: rotate(0deg) translateY(-5px); }
@@ -348,7 +321,6 @@ ul { margin-bottom: 10px; }
     left: 0;
     width: 100vw;
     height: 100vh;
-    /* Fire gradient: White -> Yellow -> Orange -> Red -> Transparent */
     background: radial-gradient(circle, 
         rgba(255, 255, 255, 1) 0%, 
         rgba(255, 255, 0, 1) 15%, 
@@ -360,158 +332,16 @@ ul { margin-bottom: 10px; }
     pointer-events: none;
     opacity: 0;
     transform: scale(0);
-    mix-blend-mode: screen; /* Makes the fire look more intense over dark backgrounds */
+    mix-blend-mode: screen; 
 }
-
 .explode-anim {
     animation: explosion 1s cubic-bezier(0.1, 0.9, 0.2, 1) forwards;
 }
-
 @keyframes explosion {
-    0% { 
-        opacity: 1; 
-        transform: scale(0); 
-    }
-    20% {
-        opacity: 1;
-        transform: scale(1.2);
-    }
-    50% {
-        opacity: 0.8;
-        transform: scale(1.8);
-        filter: blur(5px);
-    }
-    100% { 
-        opacity: 0; 
-        transform: scale(2.5); 
-        filter: blur(20px);
-    }
-}
-
-/* Remove old hover effects */
-.team-photo-box:hover { 
-    /* No default hover effect, handled by JS */
-}
-
-
-/* ================= TECH DEMO STYLES ================= */
-
-/* 3D FLIP CARD */
-.flip-card {
-    background-color: transparent;
-    width: 300px;
-    height: 400px;
-    perspective: 1000px;
-}
-.flip-card-inner {
-    position: relative;
-    width: 100%;
-    height: 100%;
-    text-align: center;
-    transition: transform 0.8s;
-    transform-style: preserve-3d;
-}
-.flip-card:hover .flip-card-inner {
-    transform: rotateY(180deg);
-}
-.flip-card-front, .flip-card-back {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    -webkit-backface-visibility: hidden;
-    backface-visibility: hidden;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    border: 1px solid var(--border);
-}
-.flip-card-front {
-    background-color: var(--bg-card);
-}
-.flip-card-back {
-    background-color: var(--accent);
-    color: #000;
-    transform: rotateY(180deg);
-}
-
-/* TYPEWRITER */
-.typewriter h1 {
-    overflow: hidden;
-    border-right: .15em solid var(--accent);
-    white-space: nowrap;
-    margin: 0 auto;
-    letter-spacing: .15em;
-    animation: 
-        typing 3.5s steps(40, end),
-        blink-caret .75s step-end infinite;
-}
-@keyframes typing { from { width: 0 } to { width: 100% } }
-@keyframes blink-caret { from, to { border-color: transparent } 50% { border-color: var(--accent); } }
-
-/* GLASSMORPHISM */
-.glass-panel {
-    background: rgba(255, 255, 255, 0.05);
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    border-radius: 15px;
-    padding: 40px;
-    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
-}
-
-/* GRADIENT TEXT */
-.gradient-text {
-    background: linear-gradient(45deg, var(--accent), #fff, var(--accent));
-    background-size: 200% auto;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    animation: shine 3s linear infinite;
-}
-@keyframes shine { to { background-position: 200% center; } }
-
-/* LOADERS */
-.loader {
-    border: 8px solid #333;
-    border-top: 8px solid var(--accent);
-    border-radius: 50%;
-    width: 60px;
-    height: 60px;
-    animation: spin 1s linear infinite;
-}
-@keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
-
-.loader-bars {
-    display: inline-block;
-    position: relative;
-    width: 80px;
-    height: 80px;
-}
-.loader-bars div {
-    display: inline-block;
-    position: absolute;
-    left: 8px;
-    width: 16px;
-    background: var(--accent);
-    animation: loader-bars 1.2s cubic-bezier(0, 0.5, 0.5, 1) infinite;
-}
-.loader-bars div:nth-child(1) { left: 8px; animation-delay: -0.24s; }
-.loader-bars div:nth-child(2) { left: 32px; animation-delay: -0.12s; }
-.loader-bars div:nth-child(3) { left: 56px; animation-delay: 0; }
-@keyframes loader-bars {
-    0% { top: 8px; height: 64px; }
-    50%, 100% { top: 24px; height: 32px; }
-}
-
-/* ================= MOBILE ADAPTATION ================= */
-@media (max-width: 768px) {
-    body { background-size: 25px 25px; }
-    .slide { padding: 30px 20px 100px 20px; }
-    h1 { font-size: 2.2rem; }
-    h2 { font-size: 1.5rem; border-left-width: 4px; margin-bottom: 20px; }
-    .grid-2, .grid-3, .grid-4, .grid-5 { display: flex; flex-direction: column; gap: 20px; }
-    .watermark-text { display: none; }
-    .controls { justify-content: center; padding-right: 0; padding-bottom: 20px; }
+    0% { opacity: 1; transform: scale(0); }
+    20% { opacity: 1; transform: scale(1.2); }
+    50% { opacity: 0.8; transform: scale(1.8); filter: blur(5px); }
+    100% { opacity: 0; transform: scale(2.5); filter: blur(20px); }
 }
 
 /* ================= PRINT SETTINGS ================= */
@@ -523,7 +353,6 @@ ul { margin-bottom: 10px; }
         -webkit-print-color-adjust: exact; 
         print-color-adjust: exact;
     }
-
     .slide {
         position: relative !important;
         opacity: 1 !important;
@@ -540,22 +369,8 @@ ul { margin-bottom: 10px; }
         margin: 0 !important;
         padding-top: 40px !important; 
     }
-    
-    .controls, 
-    .slide-counter, 
-    .watermark-container { 
-        display: none !important; 
-    }
-
-    * {
-        text-shadow: none !important;
-        box-shadow: none !important;
-    }
-    
-    .apexcharts-canvas {
-        width: 100% !important;
-        height: 100% !important;
-    }
+    .controls, .slide-counter, .watermark-container { display: none !important; }
+    .apexcharts-canvas { width: 100% !important; height: 100% !important; }
 }
 
 /* ================= CASINO MODE ================= */
@@ -572,22 +387,8 @@ ul { margin-bottom: 10px; }
     90% { transform: translate(0, 0); }
     100% { transform: translate(0, 0); }
 }
+.casino-shake { animation: casinoShake 0.5s ease-in-out; }
 
-.casino-shake {
-    animation: casinoShake 0.5s ease-in-out;
-}
-
-@keyframes dropIn {
-    0% { transform: translateY(-200%); opacity: 0; }
-    70% { transform: translateY(20px); opacity: 1; }
-    100% { transform: translateY(0); opacity: 1; }
-}
-
-.drop-in {
-    animation: dropIn 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-}
-
-/* CASINO BUTTON */
 .casino-btn {
     background: linear-gradient(45deg, #ff0000, #ffaa00);
     border: 4px solid #fff;
@@ -602,22 +403,14 @@ ul { margin-bottom: 10px; }
     border-radius: 50px;
     animation: pulseBtn 1s infinite alternate;
 }
-
-.casino-btn:hover {
-    transform: scale(1.1);
-    box-shadow: 0 0 40px #ffaa00;
-}
-
-.casino-btn:active {
-    transform: scale(0.95);
-}
+.casino-btn:hover { transform: scale(1.1); box-shadow: 0 0 40px #ffaa00; }
+.casino-btn:active { transform: scale(0.95); }
 
 @keyframes pulseBtn {
     from { box-shadow: 0 0 20px #ff0000; }
     to { box-shadow: 0 0 40px #ffaa00, 0 0 10px #fff; }
 }
 
-/* MONEY RAIN */
 .money {
     position: fixed;
     top: -50px;
@@ -626,10 +419,7 @@ ul { margin-bottom: 10px; }
     z-index: 999;
     color: #85bb65;
 }
-
-@keyframes fall {
-    to { transform: translateY(110vh) rotate(360deg); }
-}
+@keyframes fall { to { transform: translateY(110vh) rotate(360deg); } }
 
 /* SLOT MACHINE GRID */
 .slot-machine-frame {
@@ -643,7 +433,6 @@ ul { margin-bottom: 10px; }
     max-width: 1000px;
     margin: 0 auto;
 }
-
 .slot-grid {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
@@ -654,7 +443,6 @@ ul { margin-bottom: 10px; }
     border-radius: 10px;
     border: 2px solid #444;
 }
-
 .slot-cell {
     background: #222;
     border: 2px solid #555;
@@ -667,12 +455,10 @@ ul { margin-bottom: 10px; }
     justify-content: center;
     align-items: center;
 }
-
 .slot-cell.active-row {
     border-color: var(--accent);
     box-shadow: 0 0 15px rgba(198, 255, 0, 0.2);
 }
-
 .slot-img {
     width: 85%;
     height: 85%;
@@ -681,7 +467,6 @@ ul { margin-bottom: 10px; }
     transition: filter 0.1s;
     border-radius: 8px;
 }
-
 .role-label {
     position: absolute;
     bottom: 0;
@@ -695,31 +480,21 @@ ul { margin-bottom: 10px; }
     z-index: 2;
 }
 
-/* SPIN ANIMATION */
 @keyframes spinBlur {
     0% { transform: translateY(0); filter: blur(0); }
     25% { transform: translateY(150%); filter: blur(5px); }
     25.001% { transform: translateY(-150%); filter: blur(5px); }
     100% { transform: translateY(0); filter: blur(0); }
 }
+.spinning .slot-img { animation: spinBlur 0.1s linear infinite; }
 
-.spinning .slot-img {
-    animation: spinBlur 0.1s linear infinite;
-}
-
-/* WIN ANIMATION */
 @keyframes winPulse {
     0% { transform: scale(1); box-shadow: 0 0 10px #FFD700; border-color: #FFD700; }
     50% { transform: scale(1.05); box-shadow: 0 0 30px #FFD700, inset 0 0 20px #FFD700; border-color: #fff; }
     100% { transform: scale(1); box-shadow: 0 0 10px #FFD700; border-color: #FFD700; }
 }
+.slot-cell.win { animation: winPulse 0.8s infinite; z-index: 10; }
 
-.slot-cell.win {
-    animation: winPulse 0.8s infinite;
-    z-index: 10;
-}
-
-/* LIGHTS */
 .lights-top, .lights-bottom {
     position: absolute;
     left: 0; width: 100%; height: 10px;
@@ -728,8 +503,4 @@ ul { margin-bottom: 10px; }
 }
 .lights-top { top: -10px; border-radius: 10px 10px 0 0; }
 .lights-bottom { bottom: -10px; border-radius: 0 0 10px 10px; }
-
-@keyframes lightsMove {
-    from { background-position: 0 0; }
-    to { background-position: 40px 0; }
-}
+@keyframes lightsMove { from { background-position: 0 0; } to { background-position: 40px 0; } }
