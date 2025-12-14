@@ -15,6 +15,14 @@
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.4.1/papaparse.min.js"></script>
 
+    <style>
+        #chart-area-age .apexcharts-legend {
+            background: transparent !important;
+            border: none !important;
+            box-shadow: none !important;
+        }
+    </style>
+
 </head>
 <body>
 
@@ -177,9 +185,9 @@
         </div>
     </div>
 
-    <!-- 04.5. ПОЧЕМУ МИЛЛИОННИКИ -->
+    <!-- 05. ФОКУСИРОВКА ВЫБОРКИ -->
     <div class="slide">
-        <h2>04.5. ФОКУСИРОВКА ВЫБОРКИ</h2>
+        <h2>05. ФОКУСИРОВКА ВЫБОРКИ</h2>
         <div style="display: grid; grid-template-columns: 0.8fr 1.2fr; gap: 40px; height: 70vh;">
             <div style="display: flex; flex-direction: column; justify-content: center;">                
                 <div class="card" style="padding: 25px; margin-bottom: 20px; border-left: 4px solid var(--accent);">
@@ -219,9 +227,9 @@
         </div>
     </div>
 
-    <!-- 05. КОРРЕЛЯЦИИ -->
+    <!-- 06. КОРРЕЛЯЦИИ -->
     <div class="slide" id="chartSlide2">
-        <h2>05. КОРРЕЛЯЦИИ</h2>
+        <h2>06. КОРРЕЛЯЦИИ</h2>
         <div class="card" style="height: 70vh; padding: 10px; overflow: hidden;">
             <div class="chart-container-fix">
                  <div id="chart-heatmap" style="width: 100%; height: 100%;"></div>
@@ -229,18 +237,18 @@
         </div>
     </div>
 
-    <!-- 06. РАСПРЕДЕЛЕНИЕ (СТАТИЧНЫЕ ДАННЫЕ) -->
+    <!-- 07. РАСПРЕДЕЛЕНИЕ ПО ПЛОЩАДИ И ВОЗРАСТУ -->
     <div class="slide" id="chartSlideDist">
-        <h2>06. РАСПРЕДЕЛЕНИЕ ПО ПЛОЩАДИ И ВОЗРАСТУ</h2>
+        <h2>07. РАСПРЕДЕЛЕНИЕ ПО ПЛОЩАДИ И ВОЗРАСТУ</h2>
         
-        <div class="chart-container-fix" style="height: 70vh;">
+        <div class="chart-container-fix" style="height: 40vh;">
             <div id="chart-area-age" style="width: 100%; height: 100%;"></div>
         </div>
     </div>
 
-    <!-- 07. НОВЫЕ ПЕРЕМЕННЫЕ: МЕТРИКИ (БЫВШИЙ 6 СЛАЙД, НО БЫЛ ДУБЛЬ ЦИФРЫ) -->
+    <!-- 08. ВВОД НОВОЙ БИНАРНОЙ ПЕРЕМЕННОЙ -->
     <div class="slide" id="slide-metrics">
-        <h2>07. ВВОД НОВОЙ БИНАРНОЙ ПЕРЕМЕННОЙ</h2>
+        <h2>08. ВВОД НОВОЙ БИНАРНОЙ ПЕРЕМЕННОЙ</h2>
         
         <div style="display: grid; grid-template-columns: 1.5fr 1fr; gap: 30px; height: 70vh;">
             
@@ -267,7 +275,7 @@
                     <p>
                         Графики показывают, что магазинов с > 2 пятерочками рядом достаточно мало, их тяжелее сравнивать.
                         <br>
-                        Поэтому переходим к бинарной переменной.
+                        Поэтому переходим к бинарной переменной (выборка: миллионники).
                     </p>
                 </div>
 
@@ -278,15 +286,15 @@
                         <!-- 0: Без Пятерочек -->
                         <div style="background: rgba(255,255,255,0.05); padding: 15px; border-radius: 8px; border-left: 4px solid #888;">
                             <div style="font-size: 1rem; color: #aaa; margin-bottom: 5px;">Без Пятерочек</div>
-                            <div style="font-size: 2.2rem; font-weight: 900; color: #fff;">121 509</div>
-                            <div style="font-size: 0.9rem; color: #666;">~47%</div>
+                            <div style="font-size: 2.2rem; font-weight: 900; color: #fff;">1 332</div>
+                            <div style="font-size: 0.9rem; color: #666;">~26.5%</div>
                         </div>
 
                         <!-- 1: С Пятерочками -->
                         <div style="background: rgba(255,255,255,0.05); padding: 15px; border-radius: 8px; border-left: 4px solid var(--accent);">
                             <div style="font-size: 1rem; color: #aaa; margin-bottom: 5px;">С Пятерочками</div>
-                            <div style="font-size: 2.2rem; font-weight: 900; color: #fff;">134 982</div>
-                            <div style="font-size: 0.9rem; color: #666;">~53%</div>
+                            <div style="font-size: 2.2rem; font-weight: 900; color: #fff;">3 699</div>
+                            <div style="font-size: 0.9rem; color: #666;">~73.5%</div>
                         </div>
                     </div>
                 </div>
@@ -296,9 +304,9 @@
     </div>
     
 
-    <!-- 08. ИССЛЕДОВАТЕЛЬСКИЙ ВОПРОС -->
+    <!-- 09. ИССЛЕДОВАТЕЛЬСКИЙ ВОПРОС -->
     <div class="slide">
-        <h2>08. ИССЛЕДОВАТЕЛЬСКИЙ ВОПРОС</h2>
+        <h2>09. ИССЛЕДОВАТЕЛЬСКИЙ ВОПРОС</h2>
         <div class="card flex-center" style="flex: 1;">
             <h1 style="font-size: 2.5rem; text-align: center;">
                 Как соседство с <span style="color: #ea1f41;">пятерочками</span> влияет на <span style="color: var(--accent);">выручку</span>?
@@ -306,9 +314,9 @@
         </div>
     </div>
 
-    <!-- 09. ОБРАБОТКА ДАННЫХ -->
+    <!-- 10. ОБРАБОТКА ДАННЫХ -->
     <div class="slide">
-        <h2>09. ОБРАБОТКА ДАННЫХ</h2>
+        <h2>10. ОБРАБОТКА ДАННЫХ</h2>
         
         <div style="display: grid; grid-template-columns: 1fr 2.5fr; gap: 30px; height: 70vh;">
             
@@ -429,9 +437,9 @@
         </div>
     </div>
 
-    <!-- 10. ВЫРУЧКА ПО ДАТАМ ОТКРЫТИЯ (ОБНОВЛЕННЫЙ) -->
+    <!-- 11. ВЫРУЧКА ПО ДАТАМ ОТКРЫТИЯ -->
     <div class="slide" id="chartSlideAge">
-        <h2>10. ВЫРУЧКА ПО ДАТАМ ОТКРЫТИЯ</h2>
+        <h2>11. ВЫРУЧКА ПО ДАТАМ ОТКРЫТИЯ</h2>
         
         <div style="display: grid; grid-template-columns: 3.5fr 1fr; gap: 30px; height: 70vh;">
             
@@ -501,9 +509,9 @@
         </div>
     </div>
 
-    <!-- 11. ГИПОТЕЗА -->
+    <!-- 12. ГИПОТЕЗА -->
     <div class="slide">
-        <h2>11. ГИПОТЕЗА</h2>
+        <h2>12. ГИПОТЕЗА</h2>
         <div class="fill-height flex-center">
             <div class="card" style="padding: 50px; border: 2px solid var(--accent); text-align: center; max-width: 900px; background: rgba(198, 255, 0, 0.02);">
                <h1 style="font-size: 2.5rem; line-height: 1.4; text-transform: none; text-shadow: none;">
@@ -513,9 +521,9 @@
         </div>
     </div>
 
-    <!-- 12. МЕХАНИЗМ -->
+    <!-- 13. МЕХАНИЗМ -->
     <div class="slide">
-        <h2>12. МЕХАНИЗМ</h2>
+        <h2>13. МЕХАНИЗМ</h2>
         <div class="fill-height" style="display: flex; flex-direction: column; justify-content: center; gap: 15px;">
             <div class="card flex-center" style="padding: 20px; border-color: var(--accent);">
                 <h3 style="color: var(--accent); margin: 0; font-size: 1.3rem;">СОВРЕМЕННОЕ ОБОРУДОВАНИЕ И ДИЗАЙН</h3>
@@ -550,9 +558,9 @@
         </div>
     </div>
 
-    <!-- 13. АЛЬТЕРНАТИВНЫЙ МЕХАНИЗМ -->
+    <!-- 14. АЛЬТЕРНАТИВНЫЙ МЕХАНИЗМ -->
     <div class="slide">
-        <h2>13. АЛЬТЕРНАТИВНЫЙ МЕХАНИЗМ</h2>
+        <h2>14. АЛЬТЕРНАТИВНЫЙ МЕХАНИЗМ</h2>
         <div class="fill-height" style="display: flex; flex-direction: column; justify-content: center; gap: 15px;">
             
             <!-- 1. Неполнота информации -->
@@ -584,9 +592,9 @@
         </div>
     </div>
 
-    <!-- 13.1 АНАЛОГИЧНЫЕ ИССЛЕДОВАНИЯ -->
+    <!-- 15. МИРОВОЙ ОПЫТ (КОНТЕКСТ) -->
     <div class="slide">
-        <h2>13.1. МИРОВОЙ ОПЫТ (КОНТЕКСТ)</h2>
+        <h2>15. МИРОВОЙ ОПЫТ (КОНТЕКСТ)</h2>
         <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 30px; height: 70vh;">
             
             <!-- Левая часть: Кейсы -->
@@ -636,9 +644,9 @@
         </div>
     </div>
 
-    <!-- 14. МАТ МОДЕЛЬ (ОБНОВЛЕННЫЙ: 2 ГРАФИКА) -->
+    <!-- 16. МАТ-МОДЕЛЬ -->
     <div class="slide" id="chartSlide3">
-        <h2>14. МАТ-МОДЕЛЬ</h2>
+        <h2>16. МАТ-МОДЕЛЬ</h2>
         
         <div style="display: grid; grid-template-columns: 500px 1fr; gap: 30px; height: 75vh;">
             
@@ -731,9 +739,9 @@
         </div>
     </div>
 
-    <!-- 15. УСТОЙЧИВОСТЬ И НОВЫЕ ПЕРЕМЕННЫЕ (ОБЪЕДИНЕННЫЙ) -->
+    <!-- 17. ПРОВЕРКА НА УСТОЙЧИВОСТЬ -->
     <div class="slide" id="chartSlide4">
-        <h2>15. ПРОВЕРКА НА УСТОЙЧИВОСТЬ</h2>
+        <h2>17. ПРОВЕРКА НА УСТОЙЧИВОСТЬ</h2>
         
         <div style="display: grid; grid-template-columns: 1.8fr 1fr; gap: 30px; height: 75vh;">
             
@@ -741,7 +749,7 @@
             <div class="card" style="padding: 20px; display: flex; flex-direction: column; gap: 20px;">
                 
                 <!-- ТАБЛИЦА 1 -->
-                <div style="flex: 1; display: flex; flex-direction: column;">
+                <!-- <div style="flex: 1; display: flex; flex-direction: column;">
                     <h3 style="margin-bottom: 10px;">По типам населенных пунктов</h3>
                     <div style="overflow-x: auto; flex: 1;">
                         <table style="width: 100%; border-collapse: collapse; font-size: 0.9rem; text-align: center;">
@@ -814,7 +822,7 @@
                             </tbody>
                         </table>
                     </div>
-                </div>
+                </div> -->
 
                 <!-- ТАБЛИЦА 2 -->
                 <div style="flex: 0.8; display: flex; flex-direction: column; border-top: 1px solid #333; padding-top: 15px;">
@@ -863,9 +871,7 @@
             </div>
 
             <!-- ПРАВАЯ КОЛОНКА: ОБЪЯСНЕНИЯ ПЕРЕМЕННЫХ -->
-            <div style="display: flex; flex-direction: column; gap: 20px;">
-                
-                <!-- 1. Классификация (Легенда к таблице) -->
+            <!-- <div style="display: flex; flex-direction: column; gap: 20px;">
                 <div class="card" style="padding: 20px; flex: 1; display: flex; flex-direction: column;">
                     <h3 style="color: #fff; margin-bottom: 15px; font-size: 1rem;">Классификация</h3>
                     <div style="display: flex; flex-direction: column; gap: 10px; flex: 1; justify-content: space-evenly;">
@@ -899,12 +905,12 @@
                     </div>
                 </div>
 
-            </div>
+            </div> -->
         </div>
     </div>
-    <!-- 16. Выводы и Ограничения -->
+    <!-- 18. ВЫВОДЫ -->
     <div class="slide">
-        <h2>16. ВЫВОДЫ</h2>
+        <h2>18. ВЫВОДЫ</h2>
         <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 20px; height: 70vh;">
             <!-- Вывод -->
             <div class="card" style="padding: 30px; display: flex; flex-direction: column; justify-content: center;">
@@ -935,9 +941,9 @@
         </div>
     </div>
 
-    <!-- 17. ПОЛИСИ -->
+    <!-- 19. ПОЛИСИ -->
     <div class="slide">
-        <h2>17. ПОЛИСИ</h2>
+        <h2>19. ПОЛИСИ</h2>
         <div class="fill-height flex-center">
             <div class="card" style="width: 100%; height: 70vh; display: flex; flex-direction: column; gap: 20px; padding: 30px;">
                 
@@ -975,9 +981,9 @@
         </div>
     </div>
 
-    <!-- 18. КОМАНДА -->
+    <!-- 20. КОМАНДА -->
     <div class="slide" id="teamSlide">
-        <h2>18. КОМАНДА</h2>
+        <h2>20. КОМАНДА</h2>
         <div class="fill-height" style="justify-content: center; align-items: center;">
             
             <!-- SLOT MACHINE CONTAINER -->
@@ -1010,6 +1016,7 @@
             <div style="margin-top: 30px; text-align: center;">
                 <button id="casinoBtn" class="casino-btn" onclick="playCasino()">🎰 ДЕПАТЬ 🎰</button>
                 <audio id="casinoSound" src="sound/roulette-play_fyk7stv_.mp3" preload="auto"></audio>
+                <audio id="jackpotSound" src="sound/djekpot-rd.mp3" preload="auto"></audio>
             </div>
         </div>
         <div id="money-rain-container"></div>
@@ -1028,6 +1035,14 @@
             <div style="margin-top: 40px;">
                 <img src="images/Team_Spirit_new_em.svg" alt="TS Logo" style="filter: brightness(0) invert(1); width: 150px; opacity: 0.6;">
             </div>
+        </div>
+    </div>
+
+    <!-- НОВЫЙ СЛАЙД С ФОТО -->
+    <div class="slide">
+        <h2>Влияние пятерочек</h2>
+        <div class="fill-height flex-center">
+            <img src="images/photo_2025-12-14_14-53-28.jpg" alt="Photo" style="max-width: 80%; max-height: 70vh; border-radius: 15px; box-shadow: 0 0 20px rgba(0,0,0,0.5);">
         </div>
     </div>
 
@@ -1295,13 +1310,13 @@
     const optionsHeatmap = {
         ...commonOptions,
         series: [
-            { name: 'e-commerce',      data: [1.00, 0.23, 0.11, 0.22, 0.23, 0.17, 0.22] },
-            { name: 'медучреждения',   data: [0.23, 1.00, 0.22, 0.37, 0.43, 0.34, 0.15] },
-            { name: 'школы',           data: [0.11, 0.22, 1.00, 0.19, 0.24, 0.20, 0.08] },
-            { name: 'остановки',       data: [0.22, 0.37, 0.19, 1.00, 0.27, 0.26, 0.20] },
-            { name: 'магазины',        data: [0.23, 0.43, 0.24, 0.27, 1.00, 0.72, -0.01] },
-            { name: 'пятерочки',       data: [0.17, 0.34, 0.20, 0.26, 0.72, 1.00, -0.02] },
-            { name: 'выручка',         data: [0.22, 0.15, 0.08, 0.20, -0.01, -0.02, 1.00] }
+            { name: 'e-commerce',      data: [1.00, 0.16, 0.06, 0.17, 0.12, 0.05, 0.23] },
+            { name: 'медучреждения',   data: [0.16, 1.00, 0.16, 0.35, 0.34, 0.22, 0.15] },
+            { name: 'школы',           data: [0.06, 0.16, 1.00, 0.12, 0.12, 0.09, 0.13] },
+            { name: 'остановки',       data: [0.17, 0.35, 0.12, 1.00, 0.08, 0.07, 0.19] },
+            { name: 'магазины',        data: [0.12, 0.34, 0.12, 0.08, 1.00, 0.68, -0.13] },
+            { name: 'пятерочки',       data: [0.05, 0.22, 0.09, 0.07, 0.68, 1.00, -0.15] },
+            { name: 'выручка',         data: [0.23, 0.15, 0.13, 0.19, -0.13, -0.15, 1.00] }
         ],
         chart: { type: 'heatmap', height: '100%', background: 'transparent', toolbar: { show: false } },
         legend: {
@@ -1526,7 +1541,7 @@
         },
         plotOptions: { 
             bar: { 
-                horizontal: false,
+                horizontal: true,
                 columnWidth: '55%',
                 borderRadius: 4
             },
@@ -1539,11 +1554,11 @@
         },
         xaxis: {
             categories: ['Маленький', 'Средний', 'Большой', 'Очень большой'],
-            title: { text: 'Площадь магазина', style: { color: '#888', fontSize: '16px' } },
+            title: { text: 'Количество', style: { color: '#888', fontSize: '16px' } },
             labels: { style: { colors: '#888', fontSize: '14px' } }
         },
         yaxis: {
-            title: { text: 'Количество', style: { color: '#888', fontSize: '16px' } },
+            title: { text: 'Площадь магазина', style: { color: '#888', fontSize: '16px' } },
             labels: { style: { colors: '#888', fontSize: '14px' } }
         },
         fill: {
@@ -1555,6 +1570,19 @@
                 formatter: function (val) {
                     return val
                 }
+            }
+        },
+        legend: {
+            position: 'top',
+            horizontalAlign: 'right',
+            floating: true,
+            offsetY: 10,
+            offsetX: -10,
+            fontSize: '14px',
+            fontWeight: 600,
+            itemMargin: {
+                horizontal: 10,
+                vertical: 5
             }
         },
         colors: [ACCENT_COLOR, '#ffffff', '#666666'], // Colors for New, Mid, Old
@@ -1633,13 +1661,13 @@
         series: [
             {
                 name: 'Нет Пятерочек (0)',
-                // Убрали одно значение, оставили 3 (примерные данные, или возьми точные из Python)
-                data: [56971440, 59587900, 108841900] 
+                // Данные из графика: Новые (64.7M), Средние (76.9M), Старые (134.8M)
+                data: [64700000, 76900000, 134800000] 
             },
             {
                 name: 'Есть Пятерочки (1)',
-                // Убрали одно значение, оставили 3
-                data: [55598870, 59154170, 94511800]
+                // Данные из графика: Новые (59.7M), Средние (67.4M), Старые (110.2M)
+                data: [59700000, 67400000, 110200000]
             }
         ],
         chart: {
@@ -1674,8 +1702,8 @@
         },
         stroke: { show: true, width: 1, colors: ['#000'] },
         xaxis: {
-            // Максимум чуть больше самого большого значения
-            max: 120000000, 
+            // Максимум чуть больше самого большого значения (134.8M)
+            max: 150000000, 
             // УБРАЛИ "Новейшие"
             categories: ['Новый', 'Средний по возрасту', 'Открыт давно'],
             labels: {
@@ -1810,24 +1838,24 @@
         }
 
         // НОВЫЕ ГРАФИКИ ДЛЯ 7 СЛАЙДА (МЕТРИКИ)
-        if(document.querySelector("#chart-pyat-dist-new")) {
+         if(document.querySelector("#chart-pyat-dist-new")) {
             const optionsPyatDistNew = {
                 ...optionsDistStatic,
                 plotOptions: { 
                     bar: { 
                         borderRadius: 2, 
-                        borderRadiusApplication: 'end', // Fix for small values sinking
+                        borderRadiusApplication: 'end',
                         columnWidth: '70%',
                         dataLabels: { position: 'top' } 
                     } 
                 },
-                series: [{ name: 'Кол-во магазинов', data: [10319, 5998, 3157, 1441, 566, 187, 49, 20, 4, 1] }],
+                // Данные из Python (миллионники)
+                series: [{ name: 'Кол-во магазинов', data: [1332, 1510, 1085, 622, 316, 110, 39, 14, 3] }],
                 xaxis: { 
-                    categories: ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'],
+                    categories: ['0', '1', '2', '3', '4', '5', '6', '7', '8'],
                     title: { text: 'Кол-во Пятерочек рядом', style: { color: '#666', fontSize: '14px' } },
                     labels: { style: { colors: '#888', fontSize: '12px' } }
                 },
-                // === ИСПРАВЛЕНИЕ: ПЕРЕОПРЕДЕЛЯЕМ ФОРМАТ (ШТУКИ ВМЕСТО ВАЛЮТЫ) ===
                 yaxis: { 
                     min: 0,
                     labels: { style: { colors: '#888', fontSize: '12px' }, formatter: (val) => val }
@@ -1847,18 +1875,18 @@
                 plotOptions: { 
                     bar: { 
                         borderRadius: 2, 
-                        borderRadiusApplication: 'end', // Fix for small values sinking
+                        borderRadiusApplication: 'end',
                         columnWidth: '70%',
                         dataLabels: { position: 'top' } 
                     } 
                 },
-                series: [{ name: 'Кол-во магазинов', data: [2780, 3138, 2839, 2619, 2348, 2083, 1706, 1375, 992, 759, 451, 278, 170, 110, 55, 23, 8, 4, 1, 3] }],
+                // Данные из Python (миллионники)
+                series: [{ name: 'Кол-во магазинов', data: [211, 313, 483, 595, 651, 605, 551, 513, 396, 280, 180, 96, 64, 54, 20, 9, 3, 3, 1, 3] }],
                 xaxis: { 
                     categories: ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12', '13', '14', '15', '16', '17', '18', '19'],
                     title: { text: 'Кол-во Магазинов рядом', style: { color: '#666', fontSize: '14px' } },
                     labels: { style: { colors: '#888', fontSize: '12px' } }
                 },
-                // === ИСПРАВЛЕНИЕ: ПЕРЕОПРЕДЕЛЯЕМ ФОРМАТ (ШТУКИ ВМЕСТО ВАЛЮТЫ) ===
                 yaxis: { 
                     min: 0,
                     labels: { style: { colors: '#888', fontSize: '12px' }, formatter: (val) => val }
@@ -2020,6 +2048,13 @@
     }
 
     function triggerWin() {
+        // 0. Play Jackpot Sound
+        const jackpotAudio = document.getElementById('jackpotSound');
+        if (jackpotAudio) {
+            jackpotAudio.currentTime = 5; // Start from 5th second
+            jackpotAudio.play().catch(e => console.log("Jackpot audio play failed:", e));
+        }
+
         // 1. Show Message
         const msg = document.getElementById('win-message');
         msg.style.display = 'block';
