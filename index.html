@@ -173,67 +173,9 @@
         </div>
     </div>
 
-    <!-- 03. РАСПРЕДЕЛЕНИЕ СРЕДНЕГО ЧЕКА И ТРАФИКА -->
-    <div class="slide" id="chartSlideMeanCheck">
-        <h2>03. РАСПРЕДЕЛЕНИЕ: ЧЕК И ТРАФИК</h2>
-        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; height: 70vh;">
-            <div class="card" style="padding: 10px; overflow: hidden; display: flex; flex-direction: column;">
-                <h3 style="text-align: center; margin-bottom: 10px;">Средний чек</h3>
-                <div class="chart-container-fix" style="flex: 1;">
-                     <div id="chart-mean-check" style="width: 100%; height: 100%;"></div>
-                </div>
-            </div>
-            <div class="card" style="padding: 10px; overflow: hidden; display: flex; flex-direction: column;">
-                <h3 style="text-align: center; margin-bottom: 10px;">Трафик</h3>
-                <div class="chart-container-fix" style="flex: 1;">
-                     <div id="chart-mean-traf" style="width: 100%; height: 100%;"></div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- 04. SCATTER PLOT (ОБНОВЛЕННЫЙ СЛАЙД - КАРТИНКА) -->
-    <div class="slide" id="chartSlideScatter">
-        <h2>04. ВВОД ПЕРЕМЕННОЙ: ВЫРУЧКА</h2>
-      
-        <!-- 1. Задали общую высоту 70vh для выравнивания низа -->
-        <div style="display: grid; grid-template-columns: 1fr 300px; gap: 30px; height: 70vh;">
-          
-            <!-- Левая часть: Картинка графика -->
-            <!-- 2. Добавили height: 100%, чтобы карточка занимала всю высоту ячейки -->
-            <div class="card" style="padding: 0px; overflow: hidden; display: flex; flex-direction: column; justify-content: center; align-items: center; background: #000; height: 100%;">
-                <div class="chart-container-fix" style="width: 100%; height: 100%; display: flex; justify-content: center; align-items: center;">
-                    <img src="images/grahs.jpg" alt="График зависимости" style="max-width: 100%; max-height: 100%; object-fit: contain; border-radius: 4px;">
-                </div>
-            </div>
-
-            <!-- Правая часть: Описание -->
-            <!-- 3. Добавили height: 100%, чтобы контейнер колонки был во всю высоту -->
-            <div style="display: flex; flex-direction: column; gap: 20px; height: 100%;">
-              
-                <div class="card">
-                    <h3 style="color: var(--accent);">Предпосылка</h3>
-                    <p>Практически каждый посетитель совершает покупку.</p>
-                </div>
-              
-                <!-- 4. Добавили flex: 1, чтобы эта карточка растянулась и заполнила пустоту -->
-                <div class="card" style="border: 2px solid var(--accent); background: rgba(198, 255, 0, 0.05); flex: 1; display: flex; flex-direction: column; justify-content: center;">
-                    <h3>ФОРМУЛА</h3>
-                    <div style="font-size: 1.8rem; font-weight: 900; margin: 15px 0;">
-                        ВЫРУЧКА = <br>
-                        <span style="color: var(--accent);">ТРАФИК</span> × ЧЕК
-                    </div>
-                    <p style="font-size: 1.3rem; opacity: 0.7;">
-                        Обе переменные модифицированы составителями датасета.
-                    </p>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- 05. ФОКУСИРОВКА ВЫБОРКИ -->
+    <!-- 03. ФОКУСИРОВКА ВЫБОРКИ -->
     <div class="slide">
-        <h2>05. ФОКУСИРОВКА ВЫБОРКИ</h2>
+        <h2>03. ФОКУСИРОВКА ВЫБОРКИ</h2>
         <div style="display: grid; grid-template-columns: 0.8fr 1.2fr; gap: 40px; height: 70vh;">
             <div style="display: flex; flex-direction: column; justify-content: center;">              
                 <div class="card" style="padding: 25px; margin-bottom: 20px; border-left: 4px solid var(--accent);">
@@ -265,6 +207,64 @@
                     <div class="chart-container-fix">
                         <div id="chart-cities-pie" style="width: 100%; height: 100%;"></div>
                     </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 04. РАСПРЕДЕЛЕНИЕ СРЕДНЕГО ЧЕКА И ТРАФИКА -->
+    <div class="slide" id="chartSlideMeanCheck">
+        <h2>04. РАСПРЕДЕЛЕНИЕ: ЧЕК И ТРАФИК</h2>
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; height: 70vh;">
+            <div class="card" style="padding: 10px; overflow: hidden; display: flex; flex-direction: column;">
+                <h3 style="text-align: center; margin-bottom: 10px;">Средний чек</h3>
+                <div class="chart-container-fix" style="flex: 1;">
+                     <div id="chart-mean-check" style="width: 100%; height: 100%;"></div>
+                </div>
+            </div>
+            <div class="card" style="padding: 10px; overflow: hidden; display: flex; flex-direction: column;">
+                <h3 style="text-align: center; margin-bottom: 10px;">Трафик</h3>
+                <div class="chart-container-fix" style="flex: 1;">
+                     <div id="chart-mean-traf" style="width: 100%; height: 100%;"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 05. SCATTER PLOT (ОБНОВЛЕННЫЙ СЛАЙД - КАРТИНКА) -->
+    <div class="slide" id="chartSlideScatter">
+        <h2>05. ВВОД ПЕРЕМЕННОЙ: ВЫРУЧКА</h2>
+      
+        <!-- 1. Задали общую высоту 70vh для выравнивания низа -->
+        <div style="display: grid; grid-template-columns: 1fr 300px; gap: 30px; height: 70vh;">
+          
+            <!-- Левая часть: Картинка графика -->
+            <!-- 2. Добавили height: 100%, чтобы карточка занимала всю высоту ячейки -->
+            <div class="card" style="padding: 0px; overflow: hidden; display: flex; flex-direction: column; justify-content: center; align-items: center; background: #000; height: 100%;">
+                <div class="chart-container-fix" style="width: 100%; height: 100%; display: flex; justify-content: center; align-items: center;">
+                    <img src="images/image_2025-12-14_21-38-47.png" alt="График зависимости" style="max-width: 100%; max-height: 100%; object-fit: contain; border-radius: 4px;">
+                </div>
+            </div>
+
+            <!-- Правая часть: Описание -->
+            <!-- 3. Добавили height: 100%, чтобы контейнер колонки был во всю высоту -->
+            <div style="display: flex; flex-direction: column; gap: 20px; height: 100%;">
+              
+                <div class="card">
+                    <h3 style="color: var(--accent);">Предпосылка</h3>
+                    <p>Практически каждый посетитель совершает покупку.</p>
+                </div>
+              
+                <!-- 4. Добавили flex: 1, чтобы эта карточка растянулась и заполнила пустоту -->
+                <div class="card" style="border: 2px solid var(--accent); background: rgba(198, 255, 0, 0.05); flex: 1; display: flex; flex-direction: column; justify-content: center;">
+                    <h3>ФОРМУЛА</h3>
+                    <div style="font-size: 1.8rem; font-weight: 900; margin: 15px 0;">
+                        ВЫРУЧКА = <br>
+                        <span style="color: var(--accent);">ТРАФИК</span> × ЧЕК
+                    </div>
+                    <p style="font-size: 1.3rem; opacity: 0.7;">
+                        Обе переменные модифицированы составителями датасета.
+                    </p>
                 </div>
             </div>
         </div>
@@ -774,45 +774,46 @@
     <div class="slide" id="chartSlide4">
         <h2>17. ПРОВЕРКА НА УСТОЙЧИВОСТЬ</h2>
       
-        <div style="display: grid; grid-template-columns: 1.8fr 1fr; gap: 30px; height: 75vh;">
+        <div style="display: grid; grid-template-columns: 1.8fr 1fr; gap: 30px; height: 70vh;">
           
-            <!-- ЛЕВАЯ КОЛОНКА: ТАБЛИЦА -->
-            <div class="card" style="padding: 20px; display: flex; flex-direction: column; gap: 20px; grid-column: 1 / -1;">
+            <!-- ЛЕВАЯ КОЛОНКА: ТАБЛИЦА 1 -->
+            <div class="card" style="padding: 20px; display: flex; flex-direction: column; gap: 20px;">
+                <h3 style="color: #fff; margin-bottom: 10px; font-size: 1.2rem;">Разбивка по размеру населенного пункта</h3>
                 <div style="overflow-x: auto; flex: 1; display: flex; align-items: center;">
-                    <table style="width: 100%; border-collapse: collapse; font-size: 1.3rem; text-align: center;">
+                    <table style="width: 100%; border-collapse: collapse; font-size: 1.1rem; text-align: center;">
                         <thead>
                             <tr style="border-bottom: 2px solid var(--accent);">
-                                <th style="padding: 15px; text-align: left;">Группа</th>
-                                <th style="padding: 15px;">Разница средних<br><span style="font-size: 0.7em; color: #888; font-weight: normal;">(пятерочек нет)</span></th>
-                                <th style="padding: 15px;">Проценты</th>
-                                <th style="padding: 15px;">Разница средних<br><span style="font-size: 0.7em; color: #888; font-weight: normal;">(пятерочки есть)</span></th>
-                                <th style="padding: 15px;">Проценты</th>
+                                <th style="padding: 10px; text-align: left;">Группа</th>
+                                <th style="padding: 10px;">Разница средних<br><span style="font-size: 0.7em; color: #888; font-weight: normal;">(пятерочек нет)</span></th>
+                                <th style="padding: 10px;">Проценты</th>
+                                <th style="padding: 10px;">Разница средних<br><span style="font-size: 0.7em; color: #888; font-weight: normal;">(пятерочки есть)</span></th>
+                                <th style="padding: 10px;">Проценты</th>
                             </tr>
                         </thead>
                         <tbody>
                             <tr style="border-bottom: 1px solid #333;">
-                                <td style="padding: 15px; text-align: left; font-weight: bold; color: #fff;">Маленькие</td>
+                                <td style="padding: 10px; text-align: left; font-weight: bold; color: #fff;">Маленькие</td>
                                 <td>11 008 296</td>
                                 <td style="color: var(--accent);">17.5%</td>
                                 <td>5 934 459</td>
                                 <td style="color: var(--accent);">11.4%</td>
                             </tr>
                             <tr style="border-bottom: 1px solid #333;">
-                                <td style="padding: 15px; text-align: left; font-weight: bold; color: #fff;">Средние</td>
+                                <td style="padding: 10px; text-align: left; font-weight: bold; color: #fff;">Средние</td>
                                 <td>114 128 106</td>
                                 <td style="color: var(--accent);">15.8%</td>
                                 <td>-6 008 633</td>
                                 <td style="color: var(--accent);">9.2%</td>
                             </tr>
                             <tr style="border-bottom: 1px solid #333;">
-                                <td style="padding: 15px; text-align: left; font-weight: bold; color: #fff;">Большие</td>
+                                <td style="padding: 10px; text-align: left; font-weight: bold; color: #fff;">Большие</td>
                                 <td>19 391 365</td>
                                 <td style="color: var(--accent);">14.5%</td>
                                 <td>13 241 782</td>
                                 <td style="color: var(--accent);">13.4%</td>
                             </tr>
                             <tr>
-                                <td style="padding: 15px; text-align: left; font-weight: bold; color: #fff;">Очень большие</td>
+                                <td style="padding: 10px; text-align: left; font-weight: bold; color: #fff;">Очень большие</td>
                                 <td>22 682 243</td>
                                 <td style="color: var(--accent);">12.0%</td>
                                 <td>22 961 330</td>
@@ -823,42 +824,42 @@
                 </div>
             </div>
 
-            <!-- ПРАВАЯ КОЛОНКА: ОБЪЯСНЕНИЯ ПЕРЕМЕННЫХ -->
-            <!-- <div style="display: flex; flex-direction: column; gap: 20px;">
-                <div class="card" style="padding: 20px; flex: 1; display: flex; flex-direction: column;">
-                    <h3 style="color: #fff; margin-bottom: 15px; font-size: 1.2rem;">Классификация</h3>
-                    <div style="display: flex; flex-direction: column; gap: 10px; flex: 1; justify-content: space-evenly;">
-                        <div style="background: rgba(255,255,255,0.05); padding: 15px; border-radius: 4px; display: flex; align-items: center; justify-content: space-between;">
-                            <div style="color: #fff; font-weight: bold; font-size: 1.1rem;">МАЛЫЙ</div>
-                            <div style="font-size: 1.1rem; color: #888;">0-50 тыс.</div>
-                        </div>
-                        <div style="background: rgba(255,255,255,0.05); padding: 15px; border-radius: 4px; display: flex; align-items: center; justify-content: space-between;">
-                            <div style="color: #fff; font-weight: bold; font-size: 1.1rem;">СРЕДНИЙ</div>
-                            <div style="font-size: 1.1rem; color: #888;">50-100 тыс.</div>
-                        </div>
-                        <div style="background: rgba(255,255,255,0.05); padding: 15px; border-radius: 4px; display: flex; align-items: center; justify-content: space-between;">
-                            <div style="color: #fff; font-weight: bold; font-size: 1.1rem;">БОЛЬШОЙ</div>
-                            <div style="font-size: 1.1rem; color: #888;">100-250 тыс.</div>
-                        </div>
-                        <div style="background: rgba(255,255,255,0.05); padding: 15px; border-radius: 4px; display: flex; align-items: center; justify-content: space-between;">
-                            <div style="color: #fff; font-weight: bold; font-size: 1.1rem;">КРУПНЫЙ</div>
-                            <div style="font-size: 1.1rem; color: #888;">250-500 тыс.</div>
-                        </div>
-                        <div style="background: rgba(255,255,255,0.05); padding: 15px; border-radius: 4px; display: flex; align-items: center; justify-content: space-between;">
-                            <div style="color: #fff; font-weight: bold; font-size: 1.1rem;">КРУПНЕЙШИЙ</div>
-                            <div style="font-size: 1.1rem; color: #888;">0.5 - 1 млн</div>
-                        </div>
-                        <div style="background: rgba(255,255,255,0.05); padding: 15px; border-radius: 4px; display: flex; align-items: center; justify-content: space-between;">
-                            <div style="color: #fff; font-weight: bold; font-size: 1.1rem;">МИЛЛИОННИК</div>
-                            <div style="font-size: 1.1rem; color: #888;">> 1 млн</div>
-                        </div>
-                    </div>
-                    <div style="margin-top: 15px; font-size: 1.1rem; color: #666; font-style: italic; text-align: center;">
-                        * Классификация по Т.В. Малеевой («Инженерно-экономические основы градостроительства»)
-                    </div>
+            <!-- ПРАВАЯ КОЛОНКА: ТАБЛИЦА 2 -->
+            <div class="card" style="padding: 20px; display: flex; flex-direction: column; gap: 20px;">
+                <h3 style="color: #fff; margin-bottom: 10px; font-size: 1.2rem;">Разбивка по времени открытия</h3>
+                <div style="overflow-x: auto; flex: 1; display: flex; align-items: center;">
+                    <table style="width: 100%; border-collapse: collapse; font-size: 1.1rem; text-align: center;">
+                        <thead>
+                            <tr style="border-bottom: 2px solid var(--accent);">
+                                <th style="padding: 10px; text-align: left;">Группа</th>
+                                <th style="padding: 10px;">Разница средних<br><span style="font-size: 0.7em; color: #888; font-weight: normal;">(нет vs есть 5-ки)</span></th>
+                                <th style="padding: 10px;">Проценты</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr style="border-bottom: 1px solid #333;">
+                                <td style="padding: 10px; text-align: left; font-weight: bold; color: #fff;">Открыты давно</td>
+                                <td>24 594 197</td>
+                                <td style="color: var(--accent);">18.3%</td>
+                            </tr>
+                            <tr style="border-bottom: 1px solid #333;">
+                                <td style="padding: 10px; text-align: left; font-weight: bold; color: #fff;">Средние по возрасту</td>
+                                <td>9 518 445.34</td>
+                                <td style="color: var(--accent);">12.7%</td>
+                            </tr>
+                            <tr>
+                                <td style="padding: 10px; text-align: left; font-weight: bold; color: #fff;">Новые</td>
+                                <td>4 924 972</td>
+                                <td style="color: var(--accent);">7.6%</td>
+                            </tr>
+                        </tbody>
+                    </table>
                 </div>
+            </div>
+        </div>
 
-            </div> -->
+        <div style="margin-top: 15px; text-align: center; color: #888; font-style: italic; font-size: 1.1rem;">
+            * Все проверки были статсзначимы с учетом поправки Бонферонни
         </div>
     </div>
     <!-- 18. ВЫВОДЫ -->
@@ -937,51 +938,58 @@
         </div>
     </div>
 
-    <!-- 20. КОМАНДА -->
-    <div class="slide" id="teamSlide">
-        <h2>20. КОМАНДА</h2>
-        <div class="fill-height" style="justify-content: center; align-items: center;">
-          
-            <!-- SLOT MACHINE CONTAINER -->
-            <div class="slot-machine-frame">
-                <div class="slot-grid">
-                    <!-- ROW 1 (Random) -->
-                    <div class="slot-cell"><div class="team-photo-box slot-img" style="background-image: url('images/pudge.png');"></div></div>
-                    <div class="slot-cell"><div class="team-photo-box slot-img" style="background-image: url('images/sf.png');"></div></div>
-                    <div class="slot-cell"><div class="team-photo-box slot-img" style="background-image: url('images/tinker.png');"></div></div>
-                    <div class="slot-cell"><div class="team-photo-box slot-img" style="background-image: url('images/viper.png');"></div></div>
+<!-- 20. КОМАНДА (CASINO SLIDE) -->
+<div class="slide" id="teamSlide">
+    <h2>20. КОМАНДА</h2>
+    <div class="fill-height" style="justify-content: center; align-items: center; position: relative; z-index: 5;">
+      
+        <!-- SLOT MACHINE CONTAINER -->
+        <div class="slot-machine-frame">
+            <div class="slot-grid">
+                <!-- ROW 1 (Random) -->
+                <div class="slot-cell"><div class="team-photo-box slot-img" style="background-image: url('images/pudge.png');"></div></div>
+                <div class="slot-cell"><div class="team-photo-box slot-img" style="background-image: url('images/sf.png');"></div></div>
+                <div class="slot-cell"><div class="team-photo-box slot-img" style="background-image: url('images/tinker.png');"></div></div>
+                <div class="slot-cell"><div class="team-photo-box slot-img" style="background-image: url('images/viper.png');"></div></div>
 
-                    <!-- ROW 2 (TEAM - Main Row) -->
-                    <div class="slot-cell active-row"><div class="team-photo-box slot-img" style="background-image: url('images/max.jpg');"></div><div class="role-label">CARRY</div></div>
-                    <div class="slot-cell active-row"><div class="team-photo-box slot-img" style="background-image: url('images/knazyv.jpg');"></div><div class="role-label">MID</div></div>
-                    <div class="slot-cell active-row"><div class="team-photo-box slot-img" style="background-image: url('images/tete.jpg');"></div><div class="role-label">SUPPORT</div></div>
-                    <div class="slot-cell active-row"><div class="team-photo-box slot-img" style="background-image: url('images/photo_2025-12-09_11-27-57.jpg');"></div><div class="role-label">HARD SUPP</div></div>
+                <!-- ROW 2 (TEAM - Main Row - Active) -->
+                <div class="slot-cell active-row"><div class="team-photo-box slot-img" style="background-image: url('images/max.jpg');"></div><div class="role-label">CARRY</div></div>
+                <div class="slot-cell active-row"><div class="team-photo-box slot-img" style="background-image: url('images/knazyv.jpg');"></div><div class="role-label">MID</div></div>
+                <div class="slot-cell active-row"><div class="team-photo-box slot-img" style="background-image: url('images/tete.jpg');"></div><div class="role-label">SUPPORT</div></div>
+                <div class="slot-cell active-row"><div class="team-photo-box slot-img" style="background-image: url('images/photo_2025-12-09_11-27-57.jpg');"></div><div class="role-label">HARD SUPP</div></div>
 
-                    <!-- ROW 3 (Random) -->
-                    <div class="slot-cell"><div class="team-photo-box slot-img" style="background-image: url('images/Bounty_Hunter.png');"></div></div>
-                    <div class="slot-cell"><div class="team-photo-box slot-img" style="background-image: url('images/gg_wp.jpg');"></div></div>
-                    <div class="slot-cell"><div class="team-photo-box slot-img" style="background-image: url('images/grahs.jpg');"></div></div>
-                    <div class="slot-cell"><div class="team-photo-box slot-img" style="background-image: url('images/pushko.png');"></div></div>
-                </div>
-              
-                <!-- DECORATION LIGHTS -->
-                <div class="lights-top"></div>
-                <div class="lights-bottom"></div>
+                <!-- ROW 3 (Random) -->
+                <div class="slot-cell"><div class="team-photo-box slot-img" style="background-image: url('images/Bounty_Hunter.png');"></div></div>
+                <div class="slot-cell"><div class="team-photo-box slot-img" style="background-image: url('images/gg_wp.jpg');"></div></div>
+                <div class="slot-cell"><div class="team-photo-box slot-img" style="background-image: url('images/grahs.jpg');"></div></div>
+                <div class="slot-cell"><div class="team-photo-box slot-img" style="background-image: url('images/pushko.png');"></div></div>
             </div>
           
-            <div style="margin-top: 30px; text-align: center;">
-                <button id="casinoBtn" class="casino-btn" onclick="playCasino()">🎰 ДЕПАТЬ 🎰</button>
-                <audio id="casinoSound" src="sound/roulette-play_fyk7stv_.mp3" preload="auto"></audio>
-                <audio id="jackpotSound" src="sound/djekpot-rd.mp3" preload="auto"></audio>
-                <audio id="winSound" src="sound/3923cb8ada7ca47.mp3" preload="auto"></audio>
-            </div>
+            <!-- DECORATION LIGHTS -->
+            <div class="lights-top"></div>
+            <div class="lights-bottom"></div>
         </div>
-        <div id="money-rain-container"></div>
-        <div id="win-message" style="display:none; position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); font-size: 5rem; color: #FFD700; font-weight: 900; text-shadow: 0 0 30px #FF0000; z-index: 1000; font-family: 'Monument Extended', sans-serif; text-align: center;">
-            JACKPOT!<br>
-            <span style="font-size: 3rem; color: #fff;">+1,000,000 $</span>
+      
+        <!-- CONTROLS -->
+        <div style="margin-top: 30px; text-align: center;">
+            <button id="casinoBtn" class="casino-btn" onclick="playCasino()">🎰 ДЕПАТЬ 🎰</button>
+            
+            <!-- ЗВУКИ (Убедись, что файлы лежат в папке sound/) -->
+            <audio id="casinoSound" src="sound/roulette-play_fyk7stv_.mp3" preload="auto"></audio>
+            <audio id="jackpotSound" src="sound/djekpot-rd.mp3" preload="auto"></audio>
+            <audio id="winSound" src="sound/3923cb8ada7ca47.mp3" preload="auto"></audio>
         </div>
     </div>
+
+    <!-- OVERLAYS FOR EFFECTS -->
+    <div id="money-rain-container"></div>
+    
+    <!-- WIN MESSAGE -->
+    <div id="win-message" style="display:none; position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); font-size: 5rem; color: #FFD700; font-weight: 900; text-shadow: 0 0 30px #FF0000; z-index: 2000; font-family: 'Monument Extended', sans-serif; text-align: center; pointer-events: none;">
+        JACKPOT!<br>
+        <span style="font-size: 3rem; color: #fff;">+1,000,000 $</span>
+    </div>
+</div>
 
     <!-- ФИНАЛ -->
     <div class="slide flex-center">
@@ -1002,6 +1010,38 @@
             <img src="images/photo_2025-12-14_14-53-28.jpg" alt="Photo" style="max-width: 80%; max-height: 70vh; border-radius: 15px; box-shadow: 0 0 20px rgba(0,0,0,0.5);">
         </div>
     </div>
+        
+<!-- 24. ПОДОБНЫЕ ИССЛЕДОВАНИЯ (АКАДЕМИЧЕСКАЯ БАЗА) -->
+    <div class="slide">
+        <h2>Подобные исследования</h2>
+        <div class="fill-height" style="display: flex; flex-direction: column; justify-content: center; gap: 30px;">
+            
+            <!-- Исследование 1 -->
+            <div class="card" style="padding: 30px; border-left: 6px solid var(--accent); background: rgba(198, 255, 0, 0.05);">
+                <div style="font-size: 1.2rem; color: #888; margin-bottom: 5px; font-family: 'Courier New', monospace;">Pancras, Sriram & Kumar (2012)</div>
+                <h3 style="color: #fff; margin-bottom: 15px; font-size: 1.8rem;">Retail Expansion and Cannibalization Effects</h3>
+                <p style="font-size: 1.4rem; color: #ddd; line-height: 1.5;">
+                    Авторы математически моделируют компромисс между захватом рынка и каннибализацией собственных продаж.
+                    <br><br>
+                    <span style="color: var(--accent); font-weight: bold;">Суть:</span> Подтверждают, что при уплотнении сети «старые» магазины неизбежно теряют выручку. Однако, если потеря выручки старого магазина меньше, чем выручка нового, — стратегия считается успешной.
+                </p>
+            </div>
+
+            <!-- Исследование 2 -->
+            <div class="card" style="padding: 30px; border-left: 6px solid #fff;">
+                <div style="font-size: 1.2rem; color: #888; margin-bottom: 5px; font-family: 'Courier New', monospace;">Barrie R. Nault, Mohammad S. Rahman</div>
+                <h3 style="color: #fff; margin-bottom: 15px; font-size: 1.8rem;">Proximity to a Traditional Physical Store: Cannibalization and Complementarity</h3>
+                <p style="font-size: 1.4rem; color: #ddd; line-height: 1.5;">
+                    Рассматривают двойственный эффект близости магазинов: <span style="color: #fff; border-bottom: 1px dashed #fff;">Синергия</span> (создание торгового хаба) vs <span style="color: #ff5555; border-bottom: 1px dashed #ff5555;">Каннибализация</span>.
+                    <br><br>
+                    <span style="color: var(--accent); font-weight: bold;">Суть:</span> Для товаров повседневного спроса (продуктовый ритейл) эффект каннибализации при близком расположении значительно превосходит эффект синергии, особенно для устоявшихся точек с сформированной базой клиентов.
+                </p>
+            </div>
+
+        </div>
+    </div>
+
+  
 
     <!-- ПРИЛОЖЕНИЕ: ГРАФИКИ -->
     <div class="slide">
@@ -1622,13 +1662,13 @@
     };
   
     // СЛАЙД 3: РАСПРЕДЕЛЕНИЕ СРЕДНЕГО ЧЕКА
-    const checkCats = Array.from({length: 100}, (_, i) => (156 + i * (3912 - 156) / 100).toFixed(0));
+    const checkCats = ["0", "50", "100", "150", "200", "250", "300", "350", "400", "450", "500", "550", "600", "650", "700", "750", "800", "850", "900", "950", "1000", "1050", "1100", "1150", "1200", "1250", "1300", "1350", "1400", "1450", "1500", "1550", "1600", "1650", "1700", "1750", "1800", "1850", "1900", "1950", "2000", "2050", "2100", "2150", "2200", "2250", "2300", "2350", "2400", "2450"];
     const optionsMeanCheck = {
         ...commonOptions,
         chart: { type: 'bar', height: '100%', background: 'transparent', toolbar: { show: false }, animations: { enabled: false } },
         plotOptions: { bar: { borderRadius: 0, columnWidth: '100%', dataLabels: { position: 'top' } } },
         dataLabels: { enabled: false },
-        series: [{ name: 'Кол-во чеков', data: [107, 95, 100, 106, 175, 243, 469, 922, 1809, 3457, 5605, 7848, 10312, 12382, 13640, 14674, 15377, 15208, 14553, 14246, 13229, 11974, 10762, 9859, 8962, 8036, 7205, 6569, 5844, 5114, 4463, 3966, 3636, 3070, 2797, 2361, 2115, 1926, 1773, 1574, 1321, 1119, 966, 857, 786, 648, 596, 527, 468, 386, 380, 285, 248, 210, 182, 164, 110, 101, 88, 69, 63, 55, 47, 47, 32, 25, 23, 18, 18, 17, 6, 4, 8, 8, 8, 4, 2, 7, 4, 6, 2, 2, 1, 1, 2, 1, 1, 0, 0, 1, 0, 2, 0, 0, 0, 0, 1, 0, 0, 1] }],
+        series: [{ name: 'Кол-во чеков', data: [2, 2, 3, 4, 6, 5, 2, 8, 18, 42, 68, 131, 221, 286, 305, 332, 392, 379, 346, 317, 261, 287, 202, 240, 199, 138, 139, 120, 111, 100, 88, 76, 71, 59, 41, 45, 47, 33, 35, 20, 22, 20, 10, 16, 9, 6, 5, 4, 2, 3, 1, 5] }],
         xaxis: {
             categories: checkCats,
             title: { text: 'Средний чек', style: { color: '#666', fontSize: '18px' } },
@@ -1653,13 +1693,13 @@
     };
 
     // СЛАЙД 3: РАСПРЕДЕЛЕНИЕ ТРАФИКА
-    const trafCats = Array.from({length: 100}, (_, i) => ((6270 + i * (153105 - 6270) / 100)/1000).toFixed(1) + 'k');
+    const trafCats = ["0.0k", "2.8k", "5.6k", "8.4k", "11.2k", "14.0k", "16.8k", "19.6k", "22.4k", "25.2k", "28.0k", "30.8k", "33.6k", "36.4k", "39.2k", "42.0k", "44.8k", "47.6k", "50.4k", "53.2k", "56.0k", "58.8k", "61.6k", "64.4k", "67.2k", "70.0k", "72.8k", "75.6k", "78.4k", "81.2k", "84.0k", "86.8k", "89.6k", "92.4k", "95.2k", "98.0k", "100.8k", "103.6k", "106.4k", "109.2k", "112.0k", "114.8k", "117.6k", "120.4k", "123.2k", "126.0k", "128.8k", "131.6k", "134.4k", "137.2k"];
     const optionsMeanTraf = {
         ...commonOptions,
         chart: { type: 'bar', height: '100%', background: 'transparent', toolbar: { show: false }, animations: { enabled: false } },
         plotOptions: { bar: { borderRadius: 0, columnWidth: '100%', dataLabels: { position: 'top' } } },
         dataLabels: { enabled: false },
-        series: [{ name: 'Кол-во магазинов', data: [5, 10, 29, 58, 55, 56, 50, 63, 38, 41, 59, 67, 66, 84, 109, 135, 242, 434, 636, 979, 1475, 2276, 3225, 4369, 5828, 7118, 8732, 10079, 11359, 12661, 13435, 13712, 13865, 13733, 12903, 11943, 11011, 10118, 9209, 8346, 7339, 6638, 5892, 5377, 4787, 4306, 3901, 3595, 3060, 2788, 2567, 2352, 2034, 1826, 1640, 1455, 1200, 1041, 846, 742, 684, 525, 518, 427, 383, 306, 266, 216, 169, 156, 144, 131, 114, 88, 48, 67, 57, 42, 43, 22, 17, 15, 5, 6, 7, 9, 5, 4, 2, 3, 0, 2, 4, 1, 1, 1, 0, 1, 2, 1] }],
+        series: [{ name: 'Кол-во магазинов', data: [2, 0, 1, 3, 3, 3, 2, 3, 1, 2, 1, 4, 4, 2, 8, 9, 33, 34, 86, 116, 181, 230, 274, 311, 371, 354, 316, 356, 345, 294, 233, 218, 209, 183, 167, 137, 143, 127, 95, 71, 72, 50, 53, 39, 28, 22, 20, 11, 15, 13, 8, 5, 7, 4, 1, 2, 0, 0, 1, 1] }],
         xaxis: {
             categories: trafCats,
             title: { text: 'Трафик', style: { color: '#666', fontSize: '18px' } },
@@ -2034,20 +2074,15 @@
     });
 
     // ==========================================
-    // CASINO MODE LOGIC
+    // CASINO LOGIC (FULL)
     // ==========================================
-    let casinoInterval = null;
+    
+    let casinoClickCount = 0;
     const teamImages = [
-        'images/268-2686311_invoker-guide-header-invoker-dota-2-png.png',
-        'images/360_F_539868016_KGhGqlksoagPh8XJDTBIzSJn55pxa4VO.jpg',
+        'images/первый.jpg',
         'images/ab67616d00001e0290d227750619710fa3fb7241.jpg',
-        'images/Bounty_Hunter.png',
-        'images/Cosmetic_icon_Legacy_of_the_Awakened.webp',
         'images/db112ad479a169c8f5f1465418636ee5.1000x1000x1.png',
-        'images/doki.png',
         'images/gg_wp.jpg',
-        'images/green_egg.jpg',
-        'images/images.jpg',
         'images/knazyv.jpg',
         'images/max.jpg',
         'images/penis.jpg',
@@ -2067,57 +2102,77 @@
         "images/photo_2024-09-11_11-11-39.jpg"
     ];
 
-    let casinoClickCount = 0;
-
     function playCasino() {
         const btn = document.getElementById('casinoBtn');
         if(btn) btn.disabled = true; 
         
         casinoClickCount++;
-        // Every 10th spin is a MAX WIN
-        const isMaxWin = (casinoClickCount % 10 === 0);
+        // Каждый 10-й спин — гарантированный MAX WIN
+        const isMaxWin = (casinoClickCount % 5 === 0);
 
-        // Play Sound
+        // 1. Play Sound
         const audio = document.getElementById('casinoSound');
         if (audio) {
             audio.currentTime = 0;
-            audio.playbackRate = 1.5;
+            audio.volume = 0.5;
+            audio.playbackRate = 1.1; // Чуть быстрее для драйва
             audio.play().catch(e => console.log("Audio play failed:", e));
         }
 
-        // 1. Shake screen
+        // 2. Shake screen (Start)
         document.body.classList.add('casino-shake');
         setTimeout(() => document.body.classList.remove('casino-shake'), 500);
 
-        // 2. Start Spinning Animation
+        // 3. Start Spinning Animation & Image Swapping
         const cells = document.querySelectorAll('.slot-cell');
+        const photoBoxes = document.querySelectorAll('#teamSlide .team-photo-box');
+        
         cells.forEach(cell => {
             cell.classList.add('spinning');
             cell.classList.remove('win');
         });
 
-        // 3. Determine Outcome after delay
+        // --- NEW: Rapidly change images during spin ---
+        const spinInterval = setInterval(() => {
+            photoBoxes.forEach(box => {
+                const randomImg = teamImages[Math.floor(Math.random() * teamImages.length)];
+                box.style.backgroundImage = `url('${randomImg}')`;
+            });
+        }, 100); // Change every 100ms
+        // ----------------------------------------------
+
+        // 4. Determine Outcome (Logic)
         setTimeout(() => {
-            const boxes = document.querySelectorAll('#teamSlide .team-photo-box');
-            const gridCells = Array.from(boxes); // Should be 12 cells
-            
+            clearInterval(spinInterval); // Stop random swapping
+
+            const gridCells = Array.from(photoBoxes); // 12 cells
             let currentGridImages = new Array(gridCells.length).fill(null);
 
             if (isMaxWin) {
-                // MAX WIN: All same images (JACKPOT)
+                // MAX WIN: Все картинки одинаковые
                 const winImg = teamImages[Math.floor(Math.random() * teamImages.length)];
                 currentGridImages.fill(winImg);
             } else {
-                // Chance to force a win (e.g. 40%)
-                const forceWin = Math.random() < 0.4;
+                // Обычный спин: 40% шанс на выигрышную линию
+                const forceWin = Math.random() < 0.4; 
 
                 if (forceWin) {
-                    // Define winning lines (same as in checkWins)
+                    // --- UPDATED: Include ALL winning patterns for generation ---
                     const lines = [
-                        [0, 1, 2, 3], [4, 5, 6, 7], [8, 9, 10, 11], // Rows
-                        [0, 5, 10], [1, 6, 11], [8, 5, 2], [9, 6, 3], // Diagonals
-                        [0, 5, 10, 11], [3, 6, 9, 8] // Long Diagonals
+                        // Rows
+                        [0, 1, 2, 3], [4, 5, 6, 7], [8, 9, 10, 11], 
+                        // Diagonals
+                        [0, 5, 10], [1, 6, 11], [8, 5, 2], [9, 6, 3], 
+                        // Long Diagonals
+                        [0, 5, 10, 11], [3, 6, 9, 8],
+                        // Zig-Zags (Snake)
+                        [0, 5, 2, 7], [4, 9, 6, 11], [4, 1, 6, 3], [8, 5, 10, 7],
+                        // Columns (Verticals)
+                        [0, 4, 8], [1, 5, 9], [2, 6, 10], [3, 7, 11],
+                        // Corners
+                        [0, 3, 8, 11]
                     ];
+                    // ------------------------------------------------------------
                     const randomLine = lines[Math.floor(Math.random() * lines.length)];
                     const winImg = teamImages[Math.floor(Math.random() * teamImages.length)];
                     
@@ -2126,7 +2181,7 @@
                     });
                 }
 
-                // Fill remaining with random
+                // Заполняем остальные случайными
                 for(let i=0; i < gridCells.length; i++) {
                     if (!currentGridImages[i]) {
                         currentGridImages[i] = teamImages[Math.floor(Math.random() * teamImages.length)];
@@ -2134,72 +2189,67 @@
                 }
             }
 
-            // Apply images
+            // 5. Apply images & Stop Spin
             gridCells.forEach((box, index) => {
                 if(currentGridImages[index]) {
                     box.style.backgroundImage = `url('${currentGridImages[index]}')`;
                 }
             });
 
-            // Stop spinning
             cells.forEach(cell => cell.classList.remove('spinning'));
             if(audio) {
                 audio.pause();
                 audio.currentTime = 0;
             }
 
-            // Check Wins
+            // 6. Check Wins
             const winResult = checkWins(currentGridImages);
             
-            if (winResult.totalWin > 0) {
-                // Highlight winning cells
+            // При Max Win мы игнорируем обычный подсчет и триггерим спец. эффект
+            if (isMaxWin) {
+                // Подсвечиваем ВСЕ ячейки
+                cells.forEach(cell => cell.classList.add('win'));
+                triggerWin(1000000, true);
+            } else if (winResult.totalWin > 0) {
+                // Подсвечиваем только выигрышные
                 winResult.winningIndices.forEach(idx => {
                     if(cells[idx]) cells[idx].classList.add('win');
                 });
-
-                triggerWin(winResult.totalWin, isMaxWin);
+                triggerWin(winResult.totalWin, false);
             }
 
             if(btn) btn.disabled = false;
 
-        }, 2000); // Spin duration
+        }, 2000); // Крутим 1 секунду
     }
 
     function checkWins(gridImages) {
-        // Grid 3x4:
-        // 0  1  2  3
-        // 4  5  6  7
-        // 8  9  10 11
-        
-        // Define winning lines (indices)
+        // Линии для проверки (ряды + диагонали + зигзаги + вертикали)
         const lines = [
-            [0, 1, 2, 3],   // Row 1
-            [4, 5, 6, 7],   // Row 2
-            [8, 9, 10, 11], // Row 3
-            [0, 5, 10],     // Diag TopLeft -> BotRight (short)
-            [1, 6, 11],     // Diag TopLeft -> BotRight (shifted)
-            [8, 5, 2],      // Diag BotLeft -> TopRight (short)
-            [9, 6, 3],      // Diag BotLeft -> TopRight (shifted)
-            [0, 5, 10, 11], // Custom Diag Long
-            [3, 6, 9, 8]    // Custom Diag Long
+            // Rows
+            [0, 1, 2, 3], [4, 5, 6, 7], [8, 9, 10, 11], 
+            // Diagonals
+            [0, 5, 10], [1, 6, 11], [8, 5, 2], [9, 6, 3], 
+            // Long Diagonals
+            [0, 5, 10, 11], [3, 6, 9, 8],
+            // Zig-Zags (Snake)
+            [0, 5, 2, 7], [4, 9, 6, 11], [4, 1, 6, 3], [8, 5, 10, 7],
+            // Columns (Verticals)
+            [0, 4, 8], [1, 5, 9], [2, 6, 10], [3, 7, 11],
+            // Corners
+            [0, 3, 8, 11]
         ];
 
         let totalWin = 0;
         let winningIndices = new Set();
 
         lines.forEach(line => {
-            // Get images for this line
             const lineImgs = line.map(idx => gridImages[idx]);
-            
-            // Check if all match the first one
             if (lineImgs.length > 0) {
                 const first = lineImgs[0];
                 const allMatch = lineImgs.every(img => img === first);
-
                 if (allMatch) {
-                    // Win!
-                    // Calculate score: base 50 * length (not too much)
-                    totalWin += 50 * line.length;
+                    totalWin += 100 * line.length;
                     line.forEach(idx => winningIndices.add(idx));
                 }
             }
@@ -2208,37 +2258,47 @@
         return { totalWin, winningIndices: Array.from(winningIndices) };
     }
 
-    function animateBox(box) {
-        // Deprecated in favor of CSS spin
-    }
-
     function triggerWin(amount, isMaxWin) {
-        // 0. Play Sound
+        // 1. Audio
         if (isMaxWin) {
             const jackpotAudio = document.getElementById('jackpotSound');
             if (jackpotAudio) {
                 jackpotAudio.currentTime = 0; 
-                jackpotAudio.play().catch(e => console.log("Jackpot audio play failed:", e));
+                jackpotAudio.play().catch(e => console.log("Jackpot audio error:", e));
             }
+            // Включаем RGB-вечеринку
+            document.body.classList.add('body-max-win');
+            document.querySelector('.slot-machine-frame').classList.add('frame-max-win');
         } else {
             const winAudio = document.getElementById('winSound');
             if (winAudio) {
                 winAudio.currentTime = 0;
-                winAudio.play().catch(e => console.log("Win audio play failed:", e));
+                winAudio.play().catch(e => console.log("Win audio error:", e));
             }
         }
 
-        // 1. Show Message
+        // 2. Message & Visuals
         const msg = document.getElementById('win-message');
         if(msg) {
             msg.style.display = 'block';
+            
             if (isMaxWin) {
-                msg.innerHTML = `JACKPOT!<br><span style="font-size: 3rem; color: #fff;">MAX WIN!</span>`;
+                msg.classList.add('text-max-win');
+                
+                // Random amount from 1k to 100 Trillion
+                const minWin = 1000;
+                const maxWin = 100000000000000; 
+                const finalAmount = Math.floor(Math.random() * (maxWin - minWin + 1)) + minWin;
+                
+                // Animate Counter over 12 seconds
+                animateJackpotCounter(msg, finalAmount, 12000);
+                
             } else {
+                msg.classList.remove('text-max-win');
                 msg.innerHTML = `WIN!<br><span style="font-size: 3rem; color: #fff;">+${amount} $</span>`;
             }
-            
-            // 2. Explosion
+
+            // Explosion
             const explosion = document.getElementById('resurrection-explosion');
             if (explosion) {
                 explosion.style.display = 'block';
@@ -2246,38 +2306,77 @@
                 setTimeout(() => {
                     explosion.style.display = 'none';
                     explosion.classList.remove('explode-anim');
-                }, 1000);
+                }, isMaxWin ? 5000 : 1000);
             }
 
-            // 3. Money Rain
-            startMoneyRain();
+            // Money Rain (500 шт если МаксВин, 50 если обычный)
+            startMoneyRain(isMaxWin ? 500 : 50, isMaxWin);
 
-            // Hide message after some time
+            // Cleanup Timer
             setTimeout(() => {
                 msg.style.display = 'none';
-            }, 4000);
+                msg.classList.remove('text-max-win');
+                
+                // Выключаем эффекты Max Win
+                document.body.classList.remove('body-max-win');
+                const frame = document.querySelector('.slot-machine-frame');
+                if(frame) frame.classList.remove('frame-max-win');
+                
+            }, isMaxWin ? 12000 : 3500); 
         }
     }
 
-    function startMoneyRain() {
+    function animateJackpotCounter(element, targetValue, duration) {
+        let startTimestamp = null;
+        const step = (timestamp) => {
+            if (!startTimestamp) startTimestamp = timestamp;
+            const progress = Math.min((timestamp - startTimestamp) / duration, 1);
+            
+            // Linear progression
+            const current = Math.floor(progress * targetValue);
+            const formatted = current.toLocaleString('ru-RU'); 
+            
+            element.innerHTML = `JACKPOT!<br><span style="font-size: 3rem; color: #fff;">+${formatted} $</span>`;
+
+            if (progress < 1 && element.style.display !== 'none') {
+                window.requestAnimationFrame(step);
+            } else if (progress >= 1) {
+                 element.innerHTML = `JACKPOT!<br><span style="font-size: 3rem; color: #fff;">+${targetValue.toLocaleString('ru-RU')} $</span>`;
+            }
+        };
+        window.requestAnimationFrame(step);
+    }
+
+    function startMoneyRain(count = 50, isGold = false) {
         const container = document.getElementById('money-rain-container');
         if(!container) return;
-        for (let i = 0; i < 50; i++) {
+
+        for (let i = 0; i < count; i++) {
             const money = document.createElement('div');
             money.classList.add('money');
-            money.innerText = Math.random() > 0.5 ? '💵' : '💰';
+
+            if (isGold) {
+                money.classList.add('gold');
+                const emojis = ['💎', '👑', '💰', '🤑', '🏆'];
+                money.innerText = emojis[Math.floor(Math.random() * emojis.length)];
+            } else {
+                money.innerText = Math.random() > 0.5 ? '💵' : '💰';
+            }
+
+            // Random position and animation speed
             money.style.left = Math.random() * 100 + 'vw';
-            money.style.animationDuration = (Math.random() * 2 + 2) + 's';
-            money.style.fontSize = (Math.random() * 2 + 1) + 'rem';
+            const duration = isGold ? (Math.random() * 1 + 1) : (Math.random() * 2 + 2);
+            money.style.animationDuration = duration + 's';
+            
+            // Random size
+            const size = isGold ? (Math.random() * 4 + 3) : (Math.random() * 2 + 1);
+            money.style.fontSize = size + 'rem';
+
             container.appendChild(money);
 
-            // Remove after animation
-            setTimeout(() => money.remove(), 4000);
+            // Clean up DOM
+            setTimeout(() => money.remove(), duration * 1000);
         }
-    }
-
-    function stopCasinoMode() {
-        document.body.classList.remove('casino-shake');
     }
 
     // ==========================================
@@ -2360,7 +2459,6 @@
 
     document.addEventListener('keydown', (e) => {
         const activeSlide = document.querySelector('.slide.active');
-      
         if (e.code === 'Space') {
             e.preventDefault();
             if (activeSlide && activeSlide.id === 'teamSlide') {

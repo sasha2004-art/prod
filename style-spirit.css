@@ -421,7 +421,9 @@ ul { margin-bottom: 15px; }
 }
 @keyframes fall { to { transform: translateY(110vh) rotate(360deg); } }
 
-/* SLOT MACHINE GRID */
+/* ================= CASINO STYLE ================= */
+
+/* 1. SLOT MACHINE FRAME */
 .slot-machine-frame {
     background: #111;
     border: 8px solid #333;
@@ -432,7 +434,10 @@ ul { margin-bottom: 15px; }
     width: 100%;
     max-width: 1000px;
     margin: 0 auto;
+    transition: all 0.3s ease;
 }
+
+/* 2. GRID */
 .slot-grid {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
@@ -443,6 +448,8 @@ ul { margin-bottom: 15px; }
     border-radius: 10px;
     border: 2px solid #444;
 }
+
+/* 3. CELLS & IMAGES */
 .slot-cell {
     background: #222;
     border: 2px solid #555;
@@ -454,19 +461,24 @@ ul { margin-bottom: 15px; }
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    transition: border-color 0.2s;
 }
+
 .slot-cell.active-row {
-    border-color: var(--accent);
+    border-color: var(--accent); /* Зеленая рамка для центрального ряда */
     box-shadow: 0 0 15px rgba(198, 255, 0, 0.2);
 }
+
 .slot-img {
     width: 85%;
     height: 85%;
     background-size: cover;
     background-position: center;
-    transition: filter 0.1s;
     border-radius: 8px;
+    border: none; /* Убираем бордер из общих стилей фото */
+    filter: none;
 }
+
 .role-label {
     position: absolute;
     bottom: 0;
@@ -480,6 +492,31 @@ ul { margin-bottom: 15px; }
     z-index: 2;
 }
 
+/* 4. BUTTON */
+.casino-btn {
+    background: linear-gradient(45deg, #ff0000, #ffaa00);
+    border: 4px solid #fff;
+    color: #fff;
+    font-family: 'Monument Extended', sans-serif;
+    font-size: 2rem;
+    padding: 15px 40px;
+    cursor: pointer;
+    text-transform: uppercase;
+    box-shadow: 0 0 20px #ff0000;
+    transition: all 0.2s;
+    border-radius: 50px;
+    animation: pulseBtn 1s infinite alternate;
+}
+.casino-btn:hover { transform: scale(1.1); box-shadow: 0 0 40px #ffaa00; }
+.casino-btn:active { transform: scale(0.95); }
+.casino-btn:disabled { filter: grayscale(1); transform: scale(1); cursor: not-allowed; }
+
+@keyframes pulseBtn {
+    from { box-shadow: 0 0 20px #ff0000; }
+    to { box-shadow: 0 0 40px #ffaa00, 0 0 10px #fff; }
+}
+
+/* 5. SPINNING ANIMATION (Blur) */
 @keyframes spinBlur {
     0% { transform: translateY(0); filter: blur(0); }
     25% { transform: translateY(150%); filter: blur(5px); }
@@ -488,19 +525,96 @@ ul { margin-bottom: 15px; }
 }
 .spinning .slot-img { animation: spinBlur 0.1s linear infinite; }
 
+/* 6. WIN ANIMATION (Cell Pulse) */
 @keyframes winPulse {
     0% { transform: scale(1); box-shadow: 0 0 10px #FFD700; border-color: #FFD700; }
     50% { transform: scale(1.05); box-shadow: 0 0 30px #FFD700, inset 0 0 20px #FFD700; border-color: #fff; }
     100% { transform: scale(1); box-shadow: 0 0 10px #FFD700; border-color: #FFD700; }
 }
-.slot-cell.win { animation: winPulse 0.8s infinite; z-index: 10; }
+.slot-cell.win { animation: winPulse 0.8s infinite; z-index: 10; border-color: #FFD700 !important; }
 
+/* 7. DECORATIVE LIGHTS */
 .lights-top, .lights-bottom {
-    position: absolute;
-    left: 0; width: 100%; height: 10px;
+    position: absolute; left: 0; width: 100%; height: 10px;
     background: repeating-linear-gradient(90deg, #f00 0, #f00 10px, #333 10px, #333 20px);
     animation: lightsMove 1s linear infinite;
 }
 .lights-top { top: -10px; border-radius: 10px 10px 0 0; }
 .lights-bottom { bottom: -10px; border-radius: 0 0 10px 10px; }
 @keyframes lightsMove { from { background-position: 0 0; } to { background-position: 40px 0; } }
+
+/* 8. SCREEN SHAKE (Start) */
+@keyframes casinoShake {
+    0% { transform: translate(0, 0); }
+    25% { transform: translate(-5px, 5px); }
+    50% { transform: translate(5px, -5px); }
+    75% { transform: translate(-5px, -5px); }
+    100% { transform: translate(0, 0); }
+}
+.casino-shake { animation: casinoShake 0.5s ease-in-out; }
+
+/* 9. MONEY RAIN */
+.money {
+    position: fixed;
+    top: -100px;
+    font-size: 2rem;
+    animation: fall linear forwards;
+    z-index: 1500;
+    pointer-events: none;
+}
+@keyframes fall { to { transform: translateY(120vh) rotate(360deg); } }
+
+/* ================= MAX WIN / JACKPOT ANIMATIONS ================= */
+
+/* Психоделический фон (RGB Party) */
+@keyframes rgb-party {
+    0% { filter: hue-rotate(0deg) contrast(1.2) saturate(1.5); }
+    50% { filter: hue-rotate(180deg) contrast(1.5) saturate(2); }
+    100% { filter: hue-rotate(360deg) contrast(1.2) saturate(1.5); }
+}
+
+/* Радужная обводка слота */
+@keyframes rainbow-border {
+    0% { border-color: #ff0000; box-shadow: 0 0 50px #ff0000; }
+    20% { border-color: #ffff00; box-shadow: 0 0 80px #ffff00; }
+    40% { border-color: #00ff00; box-shadow: 0 0 50px #00ff00; }
+    60% { border-color: #00ffff; box-shadow: 0 0 80px #00ffff; }
+    80% { border-color: #0000ff; box-shadow: 0 0 50px #0000ff; }
+    100% { border-color: #ff00ff; box-shadow: 0 0 80px #ff00ff; }
+}
+
+/* Жесткая тряска текста */
+@keyframes violent-shake {
+    0% { transform: translate(-50%, -50%) scale(1) rotate(0deg); }
+    25% { transform: translate(calc(-50% - 10px), calc(-50% + 10px)) scale(1.2) rotate(-5deg); }
+    50% { transform: translate(calc(-50% + 10px), calc(-50% - 10px)) scale(1.2) rotate(5deg); }
+    75% { transform: translate(calc(-50% - 10px), calc(-50% - 10px)) scale(1.2) rotate(-5deg); }
+    100% { transform: translate(-50%, -50%) scale(1) rotate(0deg); }
+}
+
+/* Классы для активации в JS */
+.body-max-win {
+    animation: rgb-party 0.5s infinite linear;
+    overflow: hidden !important;
+}
+
+.frame-max-win {
+    animation: rainbow-border 0.2s infinite linear !important;
+    background: #000 !important;
+    z-index: 1000 !important;
+}
+
+.text-max-win {
+    animation: violent-shake 0.3s infinite ease-in-out !important;
+    font-size: 7rem !important;
+    color: #fff !important;
+    text-shadow: 5px 5px 0px #ff0000, -5px -5px 0px #0000ff !important;
+    white-space: nowrap;
+}
+
+/* Стиль золотых элементов дождя */
+.money.gold {
+    z-index: 2000;
+    text-shadow: 0 0 20px gold;
+    filter: drop-shadow(0 0 10px rgba(255, 215, 0, 0.8));
+}
