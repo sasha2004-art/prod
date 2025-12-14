@@ -618,3 +618,91 @@ ul { margin-bottom: 15px; }
     text-shadow: 0 0 20px gold;
     filter: drop-shadow(0 0 10px rgba(255, 215, 0, 0.8));
 }
+
+/* ================= GAME HUB LAYOUT ================= */
+
+/* Сетка: Игровое поле занимает остаток, Меню фикс 280px */
+.game-hub-layout {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    gap: 30px;
+}
+
+.game-stage {
+    flex: 1;
+    position: relative;
+    height: 100%;
+    /* border: 1px dashed #333;  для отладки */
+}
+
+.game-mode {
+    width: 100%;
+    height: 100%;
+    animation: fadeInMode 0.5s ease;
+}
+
+@keyframes fadeInMode {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* SIDEBAR MENU */
+.game-menu-sidebar {
+    width: 280px;
+    background: rgba(0, 0, 0, 0.6);
+    border: 1px solid #333;
+    border-radius: 15px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    backdrop-filter: blur(10px);
+}
+
+.game-select-btn {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    background: transparent;
+    border: 1px solid #444;
+    color: #888;
+    padding: 15px;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-align: left;
+    font-family: 'Monument Extended', sans-serif; /* Или Inter */
+}
+
+.game-select-btn:hover {
+    background: rgba(255, 255, 255, 0.05);
+    border-color: #666;
+    color: #fff;
+    transform: translateX(-5px);
+}
+
+.game-select-btn.active {
+    background: rgba(198, 255, 0, 0.1); /* Прозрачный зеленый */
+    border-color: var(--accent);
+    color: #fff;
+    box-shadow: 0 0 15px rgba(198, 255, 0, 0.1);
+}
+
+.game-select-btn .g-icon {
+    font-size: 1.8rem;
+}
+
+.game-select-btn .g-text {
+    font-size: 1.1rem; /* Чуть меньше для длинных названий */
+    font-weight: 700;
+    text-transform: uppercase;
+}
+
+/* Адаптация для слот-машины внутри контейнера */
+.slot-machine-frame {
+    /* Максимальная ширина, чтобы влезала в новый layout */
+    max-width: 100%; 
+    max-height: 75vh; /* Ограничение по высоте */
+    overflow: hidden;
+}

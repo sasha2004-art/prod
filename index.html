@@ -13,6 +13,9 @@
     <!-- Подключаем библиотеку для графиков -->
     <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
 
+    <!-- Библиотека физики для Angry Birds -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/matter-js/0.19.0/matter.min.js"></script>
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.4.1/papaparse.min.js"></script>
     <script src="js/scatter_data.js"></script>
     <!-- <script src="js/revenue_scatter_data.js"></script> -->
@@ -109,7 +112,7 @@
 
    <!-- 02. СТРУКТУРА ДАТАСЕТА -->
     <div class="slide">
-        <h2>02. Структура данных</h2>
+        <h2>Структура данных</h2>
         <!-- 1. Задали фиксированную высоту сетке (70vh) и убрали align-items: start -->
         <div style="display: grid; grid-template-columns: 1.2fr 0.8fr; gap: 30px; height: 70vh;">
           
@@ -152,7 +155,7 @@
                     <ul style="list-style: none; padding: 0; margin-top: 15px; font-size: 1.4rem;">
                         <li style="margin-bottom: 12px;">• Средний чек</li>
                         <li style="margin-bottom: 12px;">• Трафик</li>
-                        <li style="margin-bottom: 12px;">• Инфраструктура</li>
+                        <li style="margin-bottom: 12px;">• Инфраструктура <span style="color: var(--accent);">*</span></li>
                         <li>• Население</li>
                     </ul>
                     <p style="margin-top: 15px; font-size: 1.3rem; color: #888;">
@@ -175,30 +178,34 @@
 
     <!-- 03. ФОКУСИРОВКА ВЫБОРКИ -->
     <div class="slide">
-        <h2>03. ФОКУСИРОВКА ВЫБОРКИ</h2>
-        <div style="display: grid; grid-template-columns: 0.8fr 1.2fr; gap: 40px; height: 70vh;">
+        <h2>ФОКУСИРОВКА ВЫБОРКИ</h2>
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 40px; height: 70vh;">
             <div style="display: flex; flex-direction: column; justify-content: center;">              
                 <div class="card" style="padding: 25px; margin-bottom: 20px; border-left: 4px solid var(--accent);">
-                    <h3 style="color: var(--accent); margin-bottom: 10px;">ПРОБЛЕМА МАЛЫХ ГОРОДОВ</h3>
-                    <p>Мало магазинов, следовательно в них идут не по предпочтениям, а из-за отсутствия альтернатив.</p>
+                    <h3 style="color: var(--accent); margin-bottom: 10px; font-size: 1.8rem;">ПРОБЛЕМА МАЛЫХ ГОРОДОВ</h3>
+                    <p style="font-size: 1.4rem;">Мало магазинов, следовательно в них идут не по предпочтениям, а из-за отсутствия альтернатив.</p>
                 </div>
 
                 <div style="margin-left: 20px;">
-                    <h3 style="margin-bottom: 15px;">ПОЧЕМУ <span style="color: var(--accent);">МИЛЛИОННИКИ?</span></h3>
+                    <h3 style="margin-bottom: 15px; font-size: 1.6rem;">ПОЧЕМУ <span style="color: var(--accent);">МИЛЛИОННИКИ?</span></h3>
                     <ul style="list-style: none; padding: 0;">
-                        <li style="margin-bottom: 15px; font-size: 1.4rem; display: flex; align-items: center;">
-                            <span style="color: var(--accent); font-size: 1.6rem; margin-right: 15px;">✓</span> 
+                        <li style="margin-bottom: 15px; font-size: 1.6rem; display: flex; align-items: center;">
+                            <span style="color: var(--accent); font-size: 1.8rem; margin-right: 15px;">✓</span> 
                             Структурная однородность среды
                         </li>
-                        <li style="margin-bottom: 15px; font-size: 1.4rem; display: flex; align-items: center;">
-                            <span style="color: var(--accent); font-size: 1.6rem; margin-right: 15px;">✓</span> 
+                        <li style="margin-bottom: 15px; font-size: 1.6rem; display: flex; align-items: center;">
+                            <span style="color: var(--accent); font-size: 1.8rem; margin-right: 15px;">✓</span> 
                             Высокая плотность данных
                         </li>
-                        <li style="margin-bottom: 15px; font-size: 1.4rem; display: flex; align-items: center;">
-                            <span style="color: var(--accent); font-size: 1.6rem; margin-right: 15px;">✓</span> 
+                        <li style="margin-bottom: 15px; font-size: 1.6rem; display: flex; align-items: center;">
+                            <span style="color: var(--accent); font-size: 1.8rem; margin-right: 15px;">✓</span> 
                             Высокая конкуренция между магазинами
                         </li>
                     </ul>
+                </div>
+
+                <div class="card" style="margin-top: 20px; padding: 15px; border-left: 4px solid var(--accent); background: rgba(198, 255, 0, 0.05);">
+                    <p style="font-size: 1.4rem; margin: 0;">Из 256 тыс. строк осталось 62 тыс.</p>
                 </div>
             </div>
 
@@ -214,7 +221,7 @@
 
     <!-- 04. РАСПРЕДЕЛЕНИЕ СРЕДНЕГО ЧЕКА И ТРАФИКА -->
     <div class="slide" id="chartSlideMeanCheck">
-        <h2>04. РАСПРЕДЕЛЕНИЕ: ЧЕК И ТРАФИК</h2>
+        <h2>РАСПРЕДЕЛЕНИЕ: ЧЕК И ТРАФИК</h2>
         <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; height: 70vh;">
             <div class="card" style="padding: 10px; overflow: hidden; display: flex; flex-direction: column;">
                 <h3 style="text-align: center; margin-bottom: 10px;">Средний чек</h3>
@@ -233,7 +240,7 @@
 
     <!-- 05. SCATTER PLOT (ОБНОВЛЕННЫЙ СЛАЙД - КАРТИНКА) -->
     <div class="slide" id="chartSlideScatter">
-        <h2>05. ВВОД ПЕРЕМЕННОЙ: ВЫРУЧКА</h2>
+        <h2>ВВОД ПЕРЕМЕННОЙ: ВЫРУЧКА</h2>
       
         <!-- 1. Задали общую высоту 70vh для выравнивания низа -->
         <div style="display: grid; grid-template-columns: 1fr 300px; gap: 30px; height: 70vh;">
@@ -250,17 +257,12 @@
             <!-- 3. Добавили height: 100%, чтобы контейнер колонки был во всю высоту -->
             <div style="display: flex; flex-direction: column; gap: 20px; height: 100%;">
               
-                <div class="card">
-                    <h3 style="color: var(--accent);">Предпосылка</h3>
-                    <p>Практически каждый посетитель совершает покупку.</p>
-                </div>
-              
                 <!-- 4. Добавили flex: 1, чтобы эта карточка растянулась и заполнила пустоту -->
                 <div class="card" style="border: 2px solid var(--accent); background: rgba(198, 255, 0, 0.05); flex: 1; display: flex; flex-direction: column; justify-content: center;">
                     <h3>ФОРМУЛА</h3>
                     <div style="font-size: 1.8rem; font-weight: 900; margin: 15px 0;">
                         ВЫРУЧКА = <br>
-                        <span style="color: var(--accent);">ТРАФИК</span> × ЧЕК
+                        <span style="color: var(--accent);">ТРАФИК</span> × СРЕДНИЙ ЧЕК
                     </div>
                     <p style="font-size: 1.3rem; opacity: 0.7;">
                         Обе переменные модифицированы составителями датасета.
@@ -272,9 +274,9 @@
 
     <!-- 06. ВЛИЯНИЕ ПЯТЕРОЧЕК -->
     <div class="slide" id="chartSlide2">
-        <h2>06. ВЛИЯНИЕ ПЯТЕРОЧЕК</h2>
+        <h2>ВЛИЯНИЕ ПЯТЕРОЧЕК</h2>
         <div class="card" style="margin-bottom: 20px; padding: 15px; text-align: center;">
-            <p style="font-size: 1.5rem; margin: 0; color: #ccc;">Единственное, что <span style="color: var(--accent); font-weight: bold;">X5</span> контролирует полностью и напрямую, - это количество пятёрочек в округе</p>
+            <p style="font-size: 1.5rem; margin: 0; color: #ccc;">Единственное, что <span style="color: var(--accent); font-weight: bold;">X5</span> контролирует из инфраструктуры в датасете полностью и напрямую, - это количество пятёрочек в округе</p>
         </div>
         
         <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 30px; height: 65vh;">
@@ -292,7 +294,7 @@
 
     <!-- 07. СТРУКТУРА: ПЛОЩАДЬ И ВЫРУЧКА -->
     <div class="slide" id="chartSlideDist">
-        <h2>07. СТРУКТУРА МАГАЗИНОВ И ВЫРУЧКА</h2>
+        <h2>СТРУКТУРА МАГАЗИНОВ И ВЫРУЧКА</h2>
       
         <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 30px; height: 70vh;">
           
@@ -317,7 +319,7 @@
 
     <!-- 08. ВВОД НОВОЙ БИНАРНОЙ ПЕРЕМЕННОЙ -->
     <div class="slide" id="slide-metrics">
-        <h2>08. ВВОД НОВОЙ БИНАРНОЙ ПЕРЕМЕННОЙ</h2>
+        <h2>ВВОД НОВОЙ БИНАРНОЙ ПЕРЕМЕННОЙ</h2>
       
         <div style="display: grid; grid-template-columns: 1.5fr 1fr; gap: 30px; height: 70vh;">
           
@@ -342,26 +344,24 @@
                 <div class="card" style="padding: 20px;">
                     <h3 style="color: var(--accent); margin-bottom: 10px;">Почему бинарная?</h3>
                     <p>
-                        Графики показывают, что магазинов с > 2 пятерочками рядом достаточно мало, их тяжелее сравнивать.
-                        <br>
-                        Поэтому переходим к бинарной переменной (выборка: миллионники).
+                        Оценить эффект наличия/отсутствия пятерочек информативнее, чем эффект количества.
                     </p>
                 </div>
 
                  <div class="card" style="padding: 20px; flex: 1; display: flex; flex-direction: column; justify-content: center;">
-                    <h3 style="margin-bottom: 20px; text-align: center;">Новая переменная: «наличие_пятерочек»</h3>
+                    <h3 style="margin-bottom: 20px; text-align: center;">Новая переменная: наличие пятерочек рядом</h3>
                   
                     <div style="display: flex; flex-direction: column; gap: 30px;">
                         <!-- 0: Без Пятерочек -->
                         <div style="background: rgba(255,255,255,0.05); padding: 15px; border-radius: 8px; border-left: 4px solid #888;">
-                            <div style="font-size: 1.3rem; color: #aaa; margin-bottom: 5px;">Без Пятерочек</div>
+                            <div style="font-size: 1.3rem; color: #aaa; margin-bottom: 5px;">Без пятерочек рядом (радиус 500м)</div>
                             <div style="font-size: 2.2rem; font-weight: 900; color: #fff;">1 332</div>
                             <div style="font-size: 1.2rem; color: #666;">~26.5%</div>
                         </div>
 
                         <!-- 1: С Пятерочками -->
                         <div style="background: rgba(255,255,255,0.05); padding: 15px; border-radius: 8px; border-left: 4px solid var(--accent);">
-                            <div style="font-size: 1.3rem; color: #aaa; margin-bottom: 5px;">С Пятерочками</div>
+                            <div style="font-size: 1.3rem; color: #aaa; margin-bottom: 5px;">С пятерочками рядом (радиус 500м)</div>
                             <div style="font-size: 2.2rem; font-weight: 900; color: #fff;">3 699</div>
                             <div style="font-size: 1.2rem; color: #666;">~73.5%</div>
                         </div>
@@ -375,7 +375,7 @@
 
     <!-- 09. ИССЛЕДОВАТЕЛЬСКИЙ ВОПРОС -->
     <div class="slide">
-        <h2>09. ИССЛЕДОВАТЕЛЬСКИЙ ВОПРОС</h2>
+        <h2>ИССЛЕДОВАТЕЛЬСКИЙ ВОПРОС</h2>
         <div class="card flex-center" style="flex: 1;">
             <h1 style="font-size: 2.8rem; text-align: center;">
                 Как соседство с <span style="color: #ea1f41;">пятерочками</span> влияет на <span style="color: var(--accent);">выручку</span>?
@@ -385,11 +385,56 @@
 
     <!-- 10. ОБРАБОТКА ДАННЫХ -->
     <div class="slide">
-        <h2>10. ОБРАБОТКА ДАННЫХ</h2>
+        <h2>ОБРАБОТКА ДАННЫХ</h2>
       
-        <div style="display: grid; grid-template-columns: 1fr 2.5fr; gap: 30px; height: 70vh;">
+        <div style="display: grid; grid-template-columns: 2.5fr 1fr; gap: 30px; height: 70vh;">
           
-            <!-- ЛЕВАЯ КОЛОНКА: Пропуски и Удаленные по дате -->
+            <!-- ЛЕВАЯ КОЛОНКА: Очистка -->
+            <div class="card" style="padding: 30px; border-left: 6px solid #ff5555; background: rgba(255, 85, 85, 0.05); display: flex; flex-direction: column; justify-content: center;">
+              
+                <div style="display: flex; align-items: center; gap: 15px; margin-bottom: 30px;">
+                    <div style="background: #ff5555; color: #fff; width: 50px; height: 50px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 900; font-size: 1.5rem;">!</div>
+                    <h3 style="color: #ff5555; margin: 0; font-size: 2rem;">ОЧИСТКА ДАННЫХ</h3>
+                </div>
+              
+                <div style="display: flex; flex-direction: column; gap: 25px;">
+                    <h3 style="margin-bottom: 15px; font-size: 1.6rem; color: #fff;">Удаляем экстремально маленькие средние выручки и чеки:</h3>
+                    <div style="overflow-x: auto; margin-bottom: 20px;">
+                        <table style="width: 100%; border-collapse: collapse; font-size: 1.4rem;">
+                            <thead>
+                                <tr style="border-bottom: 1px solid var(--accent);">
+                                    <th style="text-align: left; padding: 10px; color: #aaa; border-right: 1px solid #333;">Критерий</th>
+                                    <th style="text-align: right; padding: 10px; color: #aaa;">Пороговое значение</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr style="border-bottom: 1px solid #333;">
+                                    <td style="padding: 12px; color: #ccc; border-right: 1px solid #333;">Средний чек магазина за месяц</td>
+                                    <td style="text-align: right; padding: 12px; font-weight: bold; color: #fff;">300 рублей</td>
+                                </tr>
+                                <tr style="border-bottom: 1px solid #333;">
+                                    <td style="padding: 12px; color: #ccc; border-right: 1px solid #333;">Трафик за месяц</td>
+                                    <td style="text-align: right; padding: 12px; font-weight: bold; color: #fff;">25.000 человек<br><span style="font-size: 1rem; color: #888;">(меньше 800 в день)</span></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div style="background: rgba(0,0,0,0.3); padding: 20px; border-radius: 10px; border: 1px solid #444;">
+                        <p style="font-size: 1.5rem; margin: 0;">
+                            Неподходящих строк для исследования: <span style="color: var(--accent); font-weight: bold;">183</span> из 62 тыс. оставшихся <br>(<span style="color: var(--accent);">&lt; 1%</span>)
+                        </p>
+                    </div>
+
+                    <!-- <div style="margin-top: 20px; padding-top: 20px; border-top: 1px solid rgba(255,255,255,0.1);">
+                        <p style="font-size: 1.8rem; font-weight: 900; color: var(--accent); text-align: center; text-transform: uppercase; letter-spacing: 1px;">
+                            Это показывает нам, что датасет - ошибка выжившего
+                        </p>
+                    </div> -->
+                </div>
+            </div>
+
+            <!-- ПРАВАЯ КОЛОНКА: Пропуски и Удаленные по дате -->
             <div style="display: flex; flex-direction: column; gap: 20px;">
                 <!-- Пропуски -->
                 <div class="card" style="padding: 20px; flex: 0.6; display: flex; flex-direction: column; justify-content: center; border-left: 6px solid var(--accent); background: rgba(198, 255, 0, 0.05);">
@@ -422,57 +467,12 @@
                     </div>
                 </div>
             </div>
-
-            <!-- ПРАВАЯ КОЛОНКА: Очистка -->
-            <div class="card" style="padding: 30px; border-left: 6px solid #ff5555; background: rgba(255, 85, 85, 0.05); display: flex; flex-direction: column; justify-content: center;">
-              
-                <div style="display: flex; align-items: center; gap: 15px; margin-bottom: 30px;">
-                    <div style="background: #ff5555; color: #fff; width: 50px; height: 50px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 900; font-size: 1.5rem;">!</div>
-                    <h3 style="color: #ff5555; margin: 0; font-size: 2rem;">ОЧИСТКА ДАННЫХ</h3>
-                </div>
-              
-                <div style="display: flex; flex-direction: column; gap: 25px;">
-                    <h3 style="margin-bottom: 15px; font-size: 1.6rem; color: #fff;">Удаляем экстремально маленькие средние выручки и чеки:</h3>
-                    <div style="overflow-x: auto; margin-bottom: 20px;">
-                        <table style="width: 100%; border-collapse: collapse; font-size: 1.4rem;">
-                            <thead>
-                                <tr style="border-bottom: 1px solid var(--accent);">
-                                    <th style="text-align: left; padding: 10px; color: #aaa; border-right: 1px solid #333;">Критерий</th>
-                                    <th style="text-align: right; padding: 10px; color: #aaa;">Значение</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr style="border-bottom: 1px solid #333;">
-                                    <td style="padding: 12px; color: #ccc; border-right: 1px solid #333;">Средний чек магазина за месяц</td>
-                                    <td style="text-align: right; padding: 12px; font-weight: bold; color: #fff;">&lt; 300 рублей</td>
-                                </tr>
-                                <tr style="border-bottom: 1px solid #333;">
-                                    <td style="padding: 12px; color: #ccc; border-right: 1px solid #333;">Трафик за месяц</td>
-                                    <td style="text-align: right; padding: 12px; font-weight: bold; color: #fff;">&lt; 25.000<br><span style="font-size: 1rem; color: #888;">(меньше 800 человек в день)</span></td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-
-                    <div style="background: rgba(0,0,0,0.3); padding: 20px; border-radius: 10px; border: 1px solid #444;">
-                        <p style="font-size: 1.5rem; margin: 0;">
-                            Неподходящих строк для исследования: <span style="color: var(--accent); font-weight: bold;">183</span> из 62421 оставшихся (<span style="color: var(--accent);">&lt; 1%</span>)
-                        </p>
-                    </div>
-
-                    <!-- <div style="margin-top: 20px; padding-top: 20px; border-top: 1px solid rgba(255,255,255,0.1);">
-                        <p style="font-size: 1.8rem; font-weight: 900; color: var(--accent); text-align: center; text-transform: uppercase; letter-spacing: 1px;">
-                            Это показывает нам, что датасет - ошибка выжившего
-                        </p>
-                    </div> -->
-                </div>
-            </div>
         </div>
     </div>
 
     <!-- 11. ВЫРУЧКА ПО ДАТАМ ОТКРЫТИЯ -->
     <div class="slide" id="chartSlideAge">
-        <h2>11. ВЫРУЧКА ПО ДАТАМ ОТКРЫТИЯ</h2>
+        <h2>СРЕДНЯЯ ВЫРУЧКА ПО ДАТАМ ОТКРЫТИЯ</h2>
       
         <div style="display: grid; grid-template-columns: 3.5fr 1fr; gap: 30px; height: 70vh;">
           
@@ -493,14 +493,14 @@
                   
                     <div style="display: flex; flex-direction: column; gap: 15px;">
                         <div style="display: flex; align-items: center; gap: 10px;">
-                            <div style="width: 24px; height: 24px; background: #C6FF00; border-radius: 4px; box-shadow: 0 0 10px rgba(198, 255, 0, 0.4);"></div>
+                            <div style="width: 24px; height: 24px; background: #ffffff; border-radius: 4px; box-shadow: 0 0 10px rgba(198, 255, 0, 0.4);"></div>
                             <div>
                                 <div style="font-size: 1.3rem; color: #888;">НЕТ ПЯТЕРОЧЕК</div>
                             </div>
                         </div>
 
                         <div style="display: flex; align-items: center; gap: 10px;">
-                            <div style="width: 24px; height: 24px; background: #ffffff; border-radius: 4px; border: 1px solid #999;"></div>
+                            <div style="width: 24px; height: 24px; background: #C6FF00; border-radius: 4px; border: 1px solid #999;"></div>
                              <div>
                                 <div style="font-size: 1.3rem; color: #888;">ЕСТЬ ПЯТЕРОЧКИ</div>
                             </div>
@@ -542,11 +542,11 @@
 
     <!-- 12. ГИПОТЕЗА -->
     <div class="slide">
-        <h2>12. ГИПОТЕЗА</h2>
+        <h2>ГИПОТЕЗА</h2>
         <div class="fill-height flex-center">
             <div class="card" style="padding: 50px; border: 2px solid var(--accent); text-align: center; max-width: 900px; background: rgba(198, 255, 0, 0.02);">
                <h1 style="font-size: 3rem; line-height: 1.4; text-transform: none; text-shadow: none;">
-    Соседство с другими точками бьет по <span style="color: var(--accent);">выручке</span> старых пятёрочек <span style="color: var(--accent);">сильнее всего</span>
+    Соседство с другими магазинами сети бьет по выручке <span style="color: #ea1f41;">старых</span> пятёрочек <span style="color: var(--accent);">сильнее всего</span>
                 </h1>
             </div>
         </div>
@@ -554,7 +554,7 @@
 
     <!-- 13. МЕХАНИЗМ -->
     <div class="slide">
-        <h2>13. МЕХАНИЗМ</h2>
+        <h2>МЕХАНИЗМ</h2>
         <div class="fill-height" style="display: flex; flex-direction: column; justify-content: center; gap: 15px;">
             <div class="card flex-center" style="padding: 20px; border-color: var(--accent);">
                 <h3 style="color: var(--accent); margin: 0; font-size: 1.7rem;">СОВРЕМЕННОЕ ОБОРУДОВАНИЕ И ДИЗАЙН</h3>
@@ -591,7 +591,7 @@
 
     <!-- 14. АЛЬТЕРНАТИВНЫЙ МЕХАНИЗМ -->
     <div class="slide">
-        <h2>14. АЛЬТЕРНАТИВНЫЙ МЕХАНИЗМ</h2>
+        <h2>АЛЬТЕРНАТИВНЫЙ МЕХАНИЗМ</h2>
         <div class="fill-height" style="display: flex; flex-direction: column; justify-content: center; gap: 15px;">
           
             <!-- 1. Неполнота информации -->
@@ -625,16 +625,16 @@
 
     <!-- 15. МИРОВОЙ ОПЫТ (КОНТЕКСТ) -->
     <div class="slide">
-        <h2>15. МИРОВОЙ ОПЫТ (КОНТЕКСТ)</h2>
-        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 30px; height: 70vh;">
+        <h2>МИРОВОЙ ОПЫТ (КОНТЕКСТ)</h2>
+        <div style="display: grid; grid-template-columns: 1fr; gap: 30px; height: 50vh;">
           
             <!-- Левая часть: Кейсы -->
-            <div style="display: flex; flex-direction: column; gap: 20px;">
+            <div style="display: flex; flex-wrap: column; gap: 20px;">
               
                 <!-- STARBUCKS -->
                 <div class="card" style="padding: 25px; border-left: 4px solid #00704A; flex: 1; display: flex; flex-direction: column;">
                     <h3 style="color: #fff; margin-bottom: 10px;">Кейс Starbucks</h3>
-                    <p style="font-size: 1.4rem; color: #ccc;">
+                    <p style="font-size: 1.8rem; color: #ccc;">
                         В 2017 году аналитики выявили, что на каждую точку приходилось <span style="color: var(--accent);">почти 4 других кофейни</span> бренда в радиусе 1 мили. Это привело к падению трафика в старых точках.
                     </p>
                     <!-- Источник -->
@@ -646,7 +646,7 @@
                 <!-- SUBWAY -->
                 <div class="card" style="padding: 25px; border-left: 4px solid #FFC72C; flex: 1; display: flex; flex-direction: column;">
                     <h3 style="color: #fff; margin-bottom: 10px;">Кейс Subway</h3>
-                    <p style="font-size: 1.4rem; color: #ccc;">
+                    <p style="font-size: 1.8rem; color: #ccc;">
                         Бесконтрольное открытие франшиз рядом друг с другом вызвало «каннибализацию» прибыли. Сеть закрыла более 7 600 точек с 2015 года.
                     </p>
                     <!-- Источник -->
@@ -677,7 +677,7 @@
 
     <!-- 16. МАТ-МОДЕЛЬ -->
     <div class="slide" id="chartSlide3">
-        <h2>16. МАТ-МОДЕЛЬ</h2>
+        <h2>МАТ-МОДЕЛЬ</h2>
       
         <div style="display: grid; grid-template-columns: 500px 1fr; gap: 30px; height: 75vh;">
           
@@ -704,17 +704,17 @@
 
                 <!-- Блок статистики (Численные) -->
                 <div class="card" style="padding: 20px; flex: 1; display: flex; flex-direction: column; justify-content: center;">
-                    <h3 style="margin-bottom: 15px; text-align: left;">Результаты (млн ₽)</h3>
+                    <h3 style="margin-bottom: 15px; text-align: left;">Разницы средних (млн ₽)</h3>
                   
                     <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
                         <div>
-                            <div style="font-size: 1.1rem; color: #888; text-transform: uppercase; margin-bottom: 5px;">Разница (Старые)</div>
+                            <div style="font-size: 1.1rem; color: #888; text-transform: uppercase; margin-bottom: 5px;">Старые</div>
                             <div style="font-size: 1.7rem; color: #ff5555; font-weight: 900;">-24.6 МЛН ₽</div>
                             <div style="color: #888; font-size: 1.1rem;">(p < 0.001)</div>
                         </div>
 
                         <div>
-                            <div style="font-size: 1.1rem; color: #888; text-transform: uppercase; margin-bottom: 5px;">Разница (остальные)</div>
+                            <div style="font-size: 1.1rem; color: #888; text-transform: uppercase; margin-bottom: 5px;">остальные</div>
                             <div style="font-size: 1.7rem; color: #fff; font-weight: 900;">-6.8 МЛН ₽</div>
                             <div style="color: #888; font-size: 1.1rem;">(p < 0.001)</div>
                         </div>
@@ -723,16 +723,16 @@
 
                 <!-- Блок статистики (Проценты) -->
                 <div class="card" style="padding: 20px; flex: 1; display: flex; flex-direction: column; justify-content: center;">
-                    <h3 style="margin-bottom: 15px; text-align: left;">Результаты (%)</h3>
+                    <h3 style="margin-bottom: 15px; text-align: left;">Разницы средних(%)</h3>
                   
                     <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
                         <div>
-                            <div style="font-size: 1.1rem; color: #888; text-transform: uppercase; margin-bottom: 5px;">Разница (Старые)</div>
+                            <div style="font-size: 1.1rem; color: #888; text-transform: uppercase; margin-bottom: 5px;">Старые</div>
                             <div style="font-size: 1.7rem; color: #ff5555; font-weight: 900;">18.3%</div>
                         </div>
 
                         <div>
-                            <div style="font-size: 1.1rem; color: #888; text-transform: uppercase; margin-bottom: 5px;">Разница (остальные)</div>
+                            <div style="font-size: 1.1rem; color: #888; text-transform: uppercase; margin-bottom: 5px;">Остальные</div>
                             <div style="font-size: 1.7rem; color: #fff; font-weight: 900;">9.5%</div>
                         </div>
                     </div>
@@ -772,7 +772,7 @@
 
     <!-- 17. ПРОВЕРКА НА УСТОЙЧИВОСТЬ -->
     <div class="slide" id="chartSlide4">
-        <h2>17. ПРОВЕРКА НА УСТОЙЧИВОСТЬ</h2>
+        <h2>ПРОВЕРКА НА УСТОЙЧИВОСТЬ</h2>
         
         <div style="display: grid; grid-template-columns: 1.2fr 1fr; gap: 20px; height: 80vh;">
             
@@ -873,8 +873,8 @@
     </div>
     <!-- 18. ВЫВОДЫ -->
     <div class="slide">
-        <h2>18. ВЫВОДЫ</h2>
-        <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 20px; height: 70vh;">
+        <h2>ВЫВОДЫ</h2>
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; height: 70vh;">
             <!-- Вывод -->
             <div class="card" style="padding: 30px; display: flex; flex-direction: column; justify-content: center;">
                 <h3 style="color: var(--accent); margin-bottom: 20px; font-size: 2rem;">Вывод</h3>
@@ -883,22 +883,22 @@
                 </p>
             </div>
             <!-- Устойчивость -->
-            <div class="card" style="padding: 30px; display: flex; flex-direction: column; justify-content: center;">
+            <!-- <div class="card" style="padding: 30px; display: flex; flex-direction: column; justify-content: center;">
                 <h3 style="color: var(--accent); margin-bottom: 20px; font-size: 2rem;">Устойчивость</h3>
                  <p style="font-size: 1.4rem; line-height: 1.4;">
                     При проверке на устойчивость выявлено влияние по категории населения
                 </p>
-            </div>
+            </div> -->
             <!-- Ограничения -->
             <div class="card" style="padding: 30px; background: rgba(255, 85, 85, 0.05); border-color: #ff5555; display: flex; flex-direction: column; justify-content: center;">
                 <div style="display: flex; align-items: center; gap: 15px; margin-bottom: 20px; border-bottom: 1px solid rgba(255, 85, 85, 0.3); padding-bottom: 15px;">
                     <h3 style="margin: 0; color: #ff5555; font-size: 2rem;">ОГРАНИЧЕНИЯ</h3>
                 </div>
                 <ul style="font-size: 1.4rem; list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 15px;">
-                    <li><strong style="color: #ff5555;">• Ошибка выжившего:</strong> большинство старых неэффективных точек уже закрыты</li>
-                    <li><strong style="color: #ff5555;">• Датасет:</strong> Нет данных о расходах, данные о население некорректны </li>
+                    <li><strong style="color: #ff5555;">• Ошибка выжившего:</strong> Большинство старых неэффективных точек уже закрыты.</li>
+                    <li><strong style="color: #ff5555;">• Датасет:</strong> Нет данных о расходах, данные о население некорректны.</li>
                     <li><strong style="color: #ff5555;">• География:</strong> Нет точных координат для использования реального расстояния.</li>
-                    <!-- <li><strong style="color: #ff5555;">• Внешние факторы:</strong> Не учтены изменения в инфраструктуре, транспортной доступности и демографические сдвиги.</li> -->
+                    <li><strong style="color: #ff5555;">• Статика панельных данных:</strong> данные инфраструктуры не меняются в течение года.</li>
                 </ul>
             </div>
         </div>
@@ -906,7 +906,7 @@
 
     <!-- 19. ПОЛИСИ -->
     <div class="slide">
-        <h2>19. ПОЛИСИ</h2>
+        <h2>Policy Implication</h2>
         <div class="fill-height flex-center">
             <div class="card" style="width: 100%; height: 70vh; display: grid; grid-template-columns: 1fr 1fr; grid-template-rows: 1fr 1fr; gap: 20px; padding: 30px; text-align: left;">
               
@@ -915,7 +915,7 @@
                     <div>
                         <h3 style="color: var(--accent); margin-bottom: 10px;">ПОЛИТИКА ФРАНШИЗЫ</h3>
                         <p style="font-size: 1.4rem; line-height: 1.4; margin: 0;">
-                            Открывать вторую точку рядом - может быть выгодно. Общая прибыль сети растет, даже если доходы первой немного упадут.
+                            Открывать вторую точку рядом может быть выгодно. Общая прибыль сети растет, даже если доходы первой немного упадут.
                         </p>
                     </div>
                 </div>
@@ -931,11 +931,11 @@
                 </div>
 
                 <!-- 3. ПОЛИТИКА ДЛЯ X5 -->
-                <div style="background: rgba(255,255,255,0.05); padding: 20px 40px; border-radius: 10px; display: flex; align-items: center; border-left: 6px solid #fff;">
+                <div style="background: rgba(255,255,255,0.05); padding: 20px 40px; border-radius: 10px; display: flex; align-items: center; border-left: 6px solid var(--accent);">
                     <div>
-                        <h3 style="color: #fff; margin-bottom: 10px;">ПОЛИТИКА ДЛЯ X5</h3>
+                        <h3 style="margin-bottom: 10px;">ПОЛИТИКА ДЛЯ <span style="color: var(--accent);">X5</span></h3>
                         <p style="font-size: 1.4rem; line-height: 1.4; margin: 0;">
-                            Если старая точка сильно просела из-за новой - это сигнал. Точке нужен ремонт, пекарня или доставка, чтобы вернуть клиентов.
+                            Если старая точка сильно просела из-за соседней, то это может быть сигналом о необходимости уменьшить издержки магазина<br>
                         </p>
                     </div>
                 </div>
@@ -954,57 +954,110 @@
         </div>
     </div>
 
-<!-- 20. КОМАНДА (CASINO SLIDE) -->
+<!-- 20. КОМАНДА (GAME HUB) -->
 <div class="slide" id="teamSlide">
-    <h2>20. КОМАНДА</h2>
-    <div class="fill-height" style="justify-content: center; align-items: center; position: relative; z-index: 5;">
-      
-        <!-- SLOT MACHINE CONTAINER -->
-        <div class="slot-machine-frame">
-            <div class="slot-grid">
-                <!-- ROW 1 (Random) -->
-                <div class="slot-cell"><div class="team-photo-box slot-img" style="background-image: url('images/pudge.png');"></div></div>
-                <div class="slot-cell"><div class="team-photo-box slot-img" style="background-image: url('images/sf.png');"></div></div>
-                <div class="slot-cell"><div class="team-photo-box slot-img" style="background-image: url('images/tinker.png');"></div></div>
-                <div class="slot-cell"><div class="team-photo-box slot-img" style="background-image: url('images/viper.png');"></div></div>
-
-                <!-- ROW 2 (TEAM - Main Row - Active) -->
-                <div class="slot-cell active-row"><div class="team-photo-box slot-img" style="background-image: url('images/max.jpg');"></div><div class="role-label">CARRY</div></div>
-                <div class="slot-cell active-row"><div class="team-photo-box slot-img" style="background-image: url('images/knazyv.jpg');"></div><div class="role-label">MID</div></div>
-                <div class="slot-cell active-row"><div class="team-photo-box slot-img" style="background-image: url('images/tete.jpg');"></div><div class="role-label">SUPPORT</div></div>
-                <div class="slot-cell active-row"><div class="team-photo-box slot-img" style="background-image: url('images/photo_2025-12-09_11-27-57.jpg');"></div><div class="role-label">HARD SUPP</div></div>
-
-                <!-- ROW 3 (Random) -->
-                <div class="slot-cell"><div class="team-photo-box slot-img" style="background-image: url('images/Bounty_Hunter.png');"></div></div>
-                <div class="slot-cell"><div class="team-photo-box slot-img" style="background-image: url('images/gg_wp.jpg');"></div></div>
-                <div class="slot-cell"><div class="team-photo-box slot-img" style="background-image: url('images/grahs.jpg');"></div></div>
-                <div class="slot-cell"><div class="team-photo-box slot-img" style="background-image: url('images/pushko.png');"></div></div>
-            </div>
-          
-            <!-- DECORATION LIGHTS -->
-            <div class="lights-top"></div>
-            <div class="lights-bottom"></div>
-        </div>
-      
-        <!-- CONTROLS -->
-        <div style="margin-top: 30px; text-align: center;">
-            <button id="casinoBtn" class="casino-btn" onclick="playCasino()">🎰 ДЕПАТЬ 🎰</button>
-            
-            <!-- ЗВУКИ (Убедись, что файлы лежат в папке sound/) -->
-            <audio id="casinoSound" src="sound/roulette-play_fyk7stv_.mp3" preload="auto"></audio>
-            <audio id="jackpotSound" src="sound/djekpot-rd.mp3" preload="auto"></audio>
-            <audio id="winSound" src="sound/3923cb8ada7ca47.mp3" preload="auto"></audio>
-        </div>
-    </div>
-
-    <!-- OVERLAYS FOR EFFECTS -->
-    <div id="money-rain-container"></div>
+    <h2>КОМАНДА</h2>
     
-    <!-- WIN MESSAGE -->
-    <div id="win-message" style="display:none; position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); font-size: 5rem; color: #FFD700; font-weight: 900; text-shadow: 0 0 30px #FF0000; z-index: 2000; font-family: 'Monument Extended', sans-serif; text-align: center; pointer-events: none;">
-        JACKPOT!<br>
-        <span style="font-size: 3rem; color: #fff;">+1,000,000 $</span>
+    <!-- Контейнер: Слева Игра, Справа Меню -->
+    <div class="game-hub-layout">
+        
+        <!-- ЛЕВАЯ ЧАСТЬ: ИГРОВАЯ ЗОНА -->
+        <div class="game-stage">
+            
+            <!-- 1. РЕЖИМ: КАЗИК (По умолчанию видим) -->
+            <div id="mode-casino" class="game-mode active">
+                <div class="fill-height" style="justify-content: center; align-items: center; position: relative; z-index: 5;">
+                    <!-- SLOT MACHINE CONTAINER -->
+                    <div class="slot-machine-frame">
+                        <div class="slot-grid">
+                            <!-- ROW 1 -->
+                            <div class="slot-cell"><div class="team-photo-box slot-img" style="background-image: url('images/pudge.png');"></div></div>
+                            <div class="slot-cell"><div class="team-photo-box slot-img" style="background-image: url('images/sf.png');"></div></div>
+                            <div class="slot-cell"><div class="team-photo-box slot-img" style="background-image: url('images/tinker.png');"></div></div>
+                            <div class="slot-cell"><div class="team-photo-box slot-img" style="background-image: url('images/viper.png');"></div></div>
+                            <!-- ROW 2 (TEAM) -->
+                            <div class="slot-cell active-row"><div class="team-photo-box slot-img" style="background-image: url('images/max.jpg');"></div><div class="role-label">CARRY</div></div>
+                            <div class="slot-cell active-row"><div class="team-photo-box slot-img" style="background-image: url('images/knazyv.jpg');"></div><div class="role-label">MID</div></div>
+                            <div class="slot-cell active-row"><div class="team-photo-box slot-img" style="background-image: url('images/tete.jpg');"></div><div class="role-label">SUPPORT</div></div>
+                            <div class="slot-cell active-row"><div class="team-photo-box slot-img" style="background-image: url('images/photo_2025-12-09_11-27-57.jpg');"></div><div class="role-label">HARD SUPP</div></div>
+                            <!-- ROW 3 -->
+                            <div class="slot-cell"><div class="team-photo-box slot-img" style="background-image: url('images/Bounty_Hunter.png');"></div></div>
+                            <div class="slot-cell"><div class="team-photo-box slot-img" style="background-image: url('images/gg_wp.jpg');"></div></div>
+                            <div class="slot-cell"><div class="team-photo-box slot-img" style="background-image: url('images/grahs.jpg');"></div></div>
+                            <div class="slot-cell"><div class="team-photo-box slot-img" style="background-image: url('images/pushko.png');"></div></div>
+                        </div>
+                        <div class="lights-top"></div>
+                        <div class="lights-bottom"></div>
+                    </div>
+                    
+                    <div style="margin-top: 30px; text-align: center;">
+                        <button id="casinoBtn" class="casino-btn" onclick="playCasino()">🎰 ДЕПАТЬ 🎰</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 2. РЕЖИМ: АНГРИ БЕРТС -->
+            <div id="mode-birds" class="game-mode" style="display: none; position: relative;">
+                <div id="birds-container" style="width: 100%; height: 100%; overflow: hidden;"></div>
+                
+                <!-- Интерфейс -->
+                <div style="position: absolute; top: 20px; left: 20px; z-index: 10; display: flex; gap: 10px;">
+                    <button onclick="initBirds()" class="casino-btn" style="font-size: 0.8rem; padding: 10px 15px;">🔄 RESTART GAME</button>
+                    <div id="level-indicator" style="background: rgba(0,0,0,0.7); color: #C6FF00; padding: 10px; border-radius: 5px; font-weight: bold; font-family: 'Monument Extended', sans-serif;">
+                        LEVEL 1
+                    </div>
+                </div>
+                
+                <!-- Сообщение о победе / Следующий уровень -->
+                <div id="birds-msg" style="display: none; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); text-align: center; z-index: 20;">
+                    <h1 style="font-size: 3rem; color: #C6FF00; text-shadow: 0 0 20px #000; margin-bottom: 20px;">CLEARED!</h1>
+                    <button id="next-level-btn" onclick="nextLevel()" class="casino-btn" style="font-size: 1.2rem;">NEXT LEVEL ➡</button>
+                </div>
+            </div>
+
+            <!-- 3. РЕЖИМ: ЗОБМИ И ОФОЩИ (Заглушка) -->
+            <div id="mode-zombies" class="game-mode" style="display: none;">
+                <div class="card flex-center" style="height: 100%; border: 4px dashed #C6FF00; background: rgba(198, 255, 0, 0.1);">
+                    <div>
+                        <h1 style="font-size: 4rem; margin-bottom: 20px;">🧟‍♂️ ЗОБМИ И ОФОЩИ</h1>
+                        <p style="font-size: 2rem;">Planting Peas...</p>
+                        <p style="color: #666;">(Code coming soon)</p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- ПРАВАЯ ЧАСТЬ: МЕНЮ ВЫБОРА -->
+        <div class="game-menu-sidebar">
+            <h3 style="text-align: center; margin-bottom: 20px; color: #fff; border-bottom: 1px solid #333; padding-bottom: 10px;">ВЫБОР РЕЖИМА</h3>
+            
+            <button class="game-select-btn active" onclick="switchGameMode('casino', this)">
+                <span class="g-icon">🎰</span>
+                <span class="g-text">казик</span>
+            </button>
+
+            <button class="game-select-btn" onclick="switchGameMode('birds', this)">
+                <span class="g-icon">🐦</span>
+                <span class="g-text">ангри бертс</span>
+            </button>
+
+            <button class="game-select-btn" onclick="switchGameMode('zombies', this)">
+                <span class="g-icon">🧟</span>
+                <span class="g-text">зобми и офощи</span>
+            </button>
+        </div>
+
     </div>
+
+    <!-- Общие элементы для эффектов (оставляем в корне слайда или body) -->
+    <div id="money-rain-container"></div>
+    <div id="win-message" style="display:none; position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); z-index: 2000; text-align: center; pointer-events: none;"></div>
+    
+    <!-- AUDIO -->
+    <audio id="casinoSound" src="sound/roulette-play_fyk7stv_.mp3" preload="auto"></audio>
+    <audio id="jackpotSound" src="sound/djekpot-rd.mp3" preload="auto"></audio>
+    <audio id="winSound" src="sound/3923cb8ada7ca47.mp3" preload="auto"></audio>
 </div>
 
     <!-- ФИНАЛ -->
@@ -1495,12 +1548,17 @@
             tooltip: { enabled: false }
         },
         yaxis: {
+            title: {
+                text: 'Средняя выручка в месяц',
+                style: { color: '#fff', fontSize: '16px' }
+            },
             labels: {
                 style: { colors: '#888', fontSize: '16px' },
                 formatter: (val) => val.toFixed(0) + "M"
             },
-            min: 90, 
-            max: 150
+            min: 60, 
+            max: 150,
+            tickAmount: 7
         },
         tooltip: {
             theme: 'dark',
@@ -1543,13 +1601,17 @@
             tooltip: { enabled: false }
         },
         yaxis: {
+            title: {
+                text: 'Средняя выручка в месяц',
+                style: { color: '#fff', fontSize: '16px' }
+            },
             labels: {
                 style: { colors: '#888', fontSize: '16px' },
                 formatter: (val) => val.toFixed(1) + "M"
             },
             // Задаем узкий диапазон, чтобы было видно разницу
             min: 60, 
-            max: 75,
+            max: 150,
             tickAmount: 5
         },
         tooltip: {
@@ -1564,6 +1626,11 @@
     if(document.querySelector("#chart-ttest")) {
         chartTtest = new ApexCharts(document.querySelector("#chart-ttest"), optionsTtest);
         chartTtest.render();
+    }
+
+    if(document.querySelector("#chart-ttest2")) {
+        chartTtest2 = new ApexCharts(document.querySelector("#chart-ttest2"), optionsTtest2);
+        chartTtest2.render();
     }
 
 
@@ -1592,10 +1659,11 @@
         stroke: { curve: 'straight', width: 4 },
         xaxis: { 
             categories: ['1', '2', '3', '4', '5'],
-            title: { text: 'Мало данных о 6 магазинах', style: { color: '#888', fontSize: '20px' } },
+            title: { text: 'Количество магазинов', style: { color: '#fff', fontSize: '16px' } },
             labels: { style: { fontSize: '20px', colors: '#888' } }
         },
         yaxis: {
+            title: { text: 'Разница в процентах', style: { color: '#fff', fontSize: '16px' } },
             labels: { formatter: (val) => val.toFixed(0) + "%", style: { fontSize: '20px', colors: '#888' } }
         },
         legend: {
@@ -1716,7 +1784,7 @@
         series: [{ name: 'Кол-во чеков', data: [2, 2, 3, 4, 6, 5, 2, 8, 18, 42, 68, 131, 221, 286, 305, 332, 392, 379, 346, 317, 261, 287, 202, 240, 199, 138, 139, 120, 111, 100, 88, 76, 71, 59, 41, 45, 47, 33, 35, 20, 22, 20, 10, 16, 9, 6, 5, 4, 2, 3, 1, 5] }],
         xaxis: {
             categories: checkCats,
-            title: { text: 'Средний чек', style: { color: '#666', fontSize: '18px' } },
+            title: { text: '', style: { color: '#666', fontSize: '18px' } },
             labels: { 
                 show: true, 
                 style: { colors: '#888', fontSize: '12px' }, 
@@ -1747,7 +1815,7 @@
         series: [{ name: 'Кол-во магазинов', data: [2, 0, 1, 3, 3, 3, 2, 3, 1, 2, 1, 4, 4, 2, 8, 9, 33, 34, 86, 116, 181, 230, 274, 311, 371, 354, 316, 356, 345, 294, 233, 218, 209, 183, 167, 137, 143, 127, 95, 71, 72, 50, 53, 39, 28, 22, 20, 11, 15, 13, 8, 5, 7, 4, 1, 2, 0, 0, 1, 1] }],
         xaxis: {
             categories: trafCats,
-            title: { text: 'Трафик', style: { color: '#666', fontSize: '18px' } },
+            title: { text: '', style: { color: '#666', fontSize: '18px' } },
             labels: { show: true, style: { colors: '#888', fontSize: '12px' }, rotate: -45 },
             tickAmount: 10,
             tooltip: { enabled: false }
@@ -1789,7 +1857,7 @@
                 borderRadius: 2
             }
         },
-        colors: ['#C6FF00', '#ffffff'], 
+        colors: ['#ffffff', '#C6FF00'], 
       
         dataLabels: {
             enabled: true,
@@ -1837,7 +1905,7 @@
     const optionsCitiesBar = {
         series: [{
             name: 'Магазинов',
-            data: [1488, 544, 381, 317, 282, 270, 260, 249, 246, 242, 228, 222, 179, 159, 125, 100]
+            data: [1481, 544, 381, 317, 282, 270, 260, 249, 246, 242, 227, 222, 179, 159, 125, 100]
         }],
         chart: {
             type: 'bar',
@@ -1958,12 +2026,12 @@
                 series: [{ name: 'Кол-во магазинов', data: [1332, 1510, 1085, 622, 316, 110, 39, 14, 3] }],
                 xaxis: { 
                     categories: ['0', '1', '2', '3', '4', '5', '6', '7', '8'],
-                    title: { text: 'Кол-во Пятерочек рядом', style: { color: '#666', fontSize: '14px' } },
-                    labels: { style: { colors: '#888', fontSize: '12px' } }
+                    title: { text: 'Кол-во Пятерочек рядом', style: { color: '#666', fontSize: '17px' } },
+                    labels: { style: { colors: '#888', fontSize: '15px' } }
                 },
                 yaxis: { 
                     min: 0,
-                    labels: { style: { colors: '#888', fontSize: '12px' }, formatter: (val) => val }
+                    labels: { style: { colors: '#888', fontSize: '15px' }, formatter: (val) => val }
                 },
                 tooltip: { 
                     theme: 'dark', 
@@ -1989,12 +2057,12 @@
                 series: [{ name: 'Кол-во магазинов', data: [211, 313, 483, 595, 651, 605, 551, 513, 396, 280, 180, 96, 64, 54, 20, 9, 3, 3, 1, 3] }],
                 xaxis: { 
                     categories: ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12', '13', '14', '15', '16', '17', '18', '19'],
-                    title: { text: 'Кол-во Магазинов рядом', style: { color: '#666', fontSize: '14px' } },
-                    labels: { style: { colors: '#888', fontSize: '12px' } }
+                    title: { text: 'Кол-во Магазинов рядом', style: { color: '#666', fontSize: '17px' } },
+                    labels: { style: { colors: '#888', fontSize: '15px' } }
                 },
                 yaxis: { 
                     min: 0,
-                    labels: { style: { colors: '#888', fontSize: '12px' }, formatter: (val) => val }
+                    labels: { style: { colors: '#888', fontSize: '15px' }, formatter: (val) => val }
                 },
                 tooltip: { 
                     theme: 'dark', 
@@ -2112,7 +2180,7 @@
         }
 
         // АВТОМАТИЧЕСКОЕ ОПРЕДЕЛЕНИЕ ОБЩЕГО ЧИСЛА СЛАЙДОВ
-        totalSlidesEl.innerText = 21;
+        totalSlidesEl.innerText = 25;
         showSlide(currentSlide);
     });
 
@@ -2120,299 +2188,7 @@
     // CASINO LOGIC (FULL)
     // ==========================================
     
-    let casinoClickCount = 0;
-    const teamImages = [
-        'images/gg_wp.jpg',
-        'images/knazyv.jpg',
-        'images/max.jpg',
-        'images/penis.jpg',
-        'images/photo_2025-10-09_21-09-55.jpg',
-        'images/photo_2025-12-09_11-27-21.jpg',
-        'images/photo_2025-12-09_11-27-57.jpg',
-        'images/photo_2025-12-12_16-32-37.jpg',
-        'images/photo_2025-12-14_14-53-28.jpg',
-        'images/tete.jpg',
-        'images/photo_2020-02-16_19-15-52.jpg',
-        "images/photo_2023-05-30_12-09-39.jpg",
-        "images/photo_2024-09-11_11-11-39.jpg"
-    ];
-
-    function playCasino() {
-        const btn = document.getElementById('casinoBtn');
-        if(btn) btn.disabled = true; 
-        
-        casinoClickCount++;
-        // Каждый 10-й спин — гарантированный MAX WIN
-        const isMaxWin = (casinoClickCount % 5 === 0);
-
-        // 1. Play Sound
-        const audio = document.getElementById('casinoSound');
-        if (audio) {
-            audio.currentTime = 0;
-            audio.volume = 0.5;
-            audio.playbackRate = 1.1; // Чуть быстрее для драйва
-            audio.play().catch(e => console.log("Audio play failed:", e));
-        }
-
-        // 2. Shake screen (Start)
-        document.body.classList.add('casino-shake');
-        setTimeout(() => document.body.classList.remove('casino-shake'), 500);
-
-        // 3. Start Spinning Animation & Image Swapping
-        const cells = document.querySelectorAll('.slot-cell');
-        const photoBoxes = document.querySelectorAll('#teamSlide .team-photo-box');
-        
-        cells.forEach(cell => {
-            cell.classList.add('spinning');
-            cell.classList.remove('win');
-        });
-
-        // --- NEW: Rapidly change images during spin ---
-        const spinInterval = setInterval(() => {
-            photoBoxes.forEach(box => {
-                const randomImg = teamImages[Math.floor(Math.random() * teamImages.length)];
-                box.style.backgroundImage = `url('${randomImg}')`;
-            });
-        }, 100); // Change every 100ms
-        // ----------------------------------------------
-
-        // 4. Determine Outcome (Logic)
-        setTimeout(() => {
-            clearInterval(spinInterval); // Stop random swapping
-
-            const gridCells = Array.from(photoBoxes); // 12 cells
-            let currentGridImages = new Array(gridCells.length).fill(null);
-
-            if (isMaxWin) {
-                // MAX WIN: Все картинки одинаковые
-                const winImg = teamImages[Math.floor(Math.random() * teamImages.length)];
-                currentGridImages.fill(winImg);
-            } else {
-                // Обычный спин: 40% шанс на выигрышную линию
-                const forceWin = Math.random() < 0.4; 
-
-                if (forceWin) {
-                    // --- UPDATED: Include ALL winning patterns for generation ---
-                    const lines = [
-                        // Rows
-                        [0, 1, 2, 3], [4, 5, 6, 7], [8, 9, 10, 11], 
-                        // Diagonals
-                        [0, 5, 10], [1, 6, 11], [8, 5, 2], [9, 6, 3], 
-                        // Long Diagonals
-                        [0, 5, 10, 11], [3, 6, 9, 8],
-                        // Zig-Zags (Snake)
-                        [0, 5, 2, 7], [4, 9, 6, 11], [4, 1, 6, 3], [8, 5, 10, 7],
-                        // Columns (Verticals)
-                        [0, 4, 8], [1, 5, 9], [2, 6, 10], [3, 7, 11],
-                        // Corners
-                        [0, 3, 8, 11]
-                    ];
-                    // ------------------------------------------------------------
-                    const randomLine = lines[Math.floor(Math.random() * lines.length)];
-                    const winImg = teamImages[Math.floor(Math.random() * teamImages.length)];
-                    
-                    randomLine.forEach(idx => {
-                        currentGridImages[idx] = winImg;
-                    });
-                }
-
-                // Заполняем остальные случайными
-                for(let i=0; i < gridCells.length; i++) {
-                    if (!currentGridImages[i]) {
-                        currentGridImages[i] = teamImages[Math.floor(Math.random() * teamImages.length)];
-                    }
-                }
-            }
-
-            // 5. Apply images & Stop Spin
-            gridCells.forEach((box, index) => {
-                if(currentGridImages[index]) {
-                    box.style.backgroundImage = `url('${currentGridImages[index]}')`;
-                }
-            });
-
-            cells.forEach(cell => cell.classList.remove('spinning'));
-            if(audio) {
-                audio.pause();
-                audio.currentTime = 0;
-            }
-
-            // 6. Check Wins
-            const winResult = checkWins(currentGridImages);
-            
-            // При Max Win мы игнорируем обычный подсчет и триггерим спец. эффект
-            if (isMaxWin) {
-                // Подсвечиваем ВСЕ ячейки
-                cells.forEach(cell => cell.classList.add('win'));
-                triggerWin(1000000, true);
-            } else if (winResult.totalWin > 0) {
-                // Подсвечиваем только выигрышные
-                winResult.winningIndices.forEach(idx => {
-                    if(cells[idx]) cells[idx].classList.add('win');
-                });
-                triggerWin(winResult.totalWin, false);
-            }
-
-            if(btn) btn.disabled = false;
-
-        }, 2000); // Крутим 1 секунду
-    }
-
-    function checkWins(gridImages) {
-        // Линии для проверки (ряды + диагонали + зигзаги + вертикали)
-        const lines = [
-            // Rows
-            [0, 1, 2, 3], [4, 5, 6, 7], [8, 9, 10, 11], 
-            // Diagonals
-            [0, 5, 10], [1, 6, 11], [8, 5, 2], [9, 6, 3], 
-            // Long Diagonals
-            [0, 5, 10, 11], [3, 6, 9, 8],
-            // Zig-Zags (Snake)
-            [0, 5, 2, 7], [4, 9, 6, 11], [4, 1, 6, 3], [8, 5, 10, 7],
-            // Columns (Verticals)
-            [0, 4, 8], [1, 5, 9], [2, 6, 10], [3, 7, 11],
-            // Corners
-            [0, 3, 8, 11]
-        ];
-
-        let totalWin = 0;
-        let winningIndices = new Set();
-
-        lines.forEach(line => {
-            const lineImgs = line.map(idx => gridImages[idx]);
-            if (lineImgs.length > 0) {
-                const first = lineImgs[0];
-                const allMatch = lineImgs.every(img => img === first);
-                if (allMatch) {
-                    totalWin += 100 * line.length;
-                    line.forEach(idx => winningIndices.add(idx));
-                }
-            }
-        });
-
-        return { totalWin, winningIndices: Array.from(winningIndices) };
-    }
-
-    function triggerWin(amount, isMaxWin) {
-        // 1. Audio
-        if (isMaxWin) {
-            const jackpotAudio = document.getElementById('jackpotSound');
-            if (jackpotAudio) {
-                jackpotAudio.currentTime = 0; 
-                jackpotAudio.play().catch(e => console.log("Jackpot audio error:", e));
-            }
-            // Включаем RGB-вечеринку
-            document.body.classList.add('body-max-win');
-            document.querySelector('.slot-machine-frame').classList.add('frame-max-win');
-        } else {
-            const winAudio = document.getElementById('winSound');
-            if (winAudio) {
-                winAudio.currentTime = 0;
-                winAudio.play().catch(e => console.log("Win audio error:", e));
-            }
-        }
-
-        // 2. Message & Visuals
-        const msg = document.getElementById('win-message');
-        if(msg) {
-            msg.style.display = 'block';
-            
-            if (isMaxWin) {
-                msg.classList.add('text-max-win');
-                
-                // Random amount from 1k to 100 Trillion
-                const minWin = 1000;
-                const maxWin = 100000000000000; 
-                const finalAmount = Math.floor(Math.random() * (maxWin - minWin + 1)) + minWin;
-                
-                // Animate Counter over 12 seconds
-                animateJackpotCounter(msg, finalAmount, 12000);
-                
-            } else {
-                msg.classList.remove('text-max-win');
-                msg.innerHTML = `WIN!<br><span style="font-size: 3rem; color: #fff;">+${amount} $</span>`;
-            }
-
-            // Explosion
-            const explosion = document.getElementById('resurrection-explosion');
-            if (explosion) {
-                explosion.style.display = 'block';
-                explosion.classList.add('explode-anim');
-                setTimeout(() => {
-                    explosion.style.display = 'none';
-                    explosion.classList.remove('explode-anim');
-                }, isMaxWin ? 5000 : 1000);
-            }
-
-            // Money Rain (500 шт если МаксВин, 50 если обычный)
-            startMoneyRain(isMaxWin ? 500 : 50, isMaxWin);
-
-            // Cleanup Timer
-            setTimeout(() => {
-                msg.style.display = 'none';
-                msg.classList.remove('text-max-win');
-                
-                // Выключаем эффекты Max Win
-                document.body.classList.remove('body-max-win');
-                const frame = document.querySelector('.slot-machine-frame');
-                if(frame) frame.classList.remove('frame-max-win');
-                
-            }, isMaxWin ? 12000 : 3500); 
-        }
-    }
-
-    function animateJackpotCounter(element, targetValue, duration) {
-        let startTimestamp = null;
-        const step = (timestamp) => {
-            if (!startTimestamp) startTimestamp = timestamp;
-            const progress = Math.min((timestamp - startTimestamp) / duration, 1);
-            
-            // Linear progression
-            const current = Math.floor(progress * targetValue);
-            const formatted = current.toLocaleString('ru-RU'); 
-            
-            element.innerHTML = `JACKPOT!<br><span style="font-size: 3rem; color: #fff;">+${formatted} $</span>`;
-
-            if (progress < 1 && element.style.display !== 'none') {
-                window.requestAnimationFrame(step);
-            } else if (progress >= 1) {
-                 element.innerHTML = `JACKPOT!<br><span style="font-size: 3rem; color: #fff;">+${targetValue.toLocaleString('ru-RU')} $</span>`;
-            }
-        };
-        window.requestAnimationFrame(step);
-    }
-
-    function startMoneyRain(count = 50, isGold = false) {
-        const container = document.getElementById('money-rain-container');
-        if(!container) return;
-
-        for (let i = 0; i < count; i++) {
-            const money = document.createElement('div');
-            money.classList.add('money');
-
-            if (isGold) {
-                money.classList.add('gold');
-                const emojis = ['💎', '👑', '💰', '🤑', '🏆'];
-                money.innerText = emojis[Math.floor(Math.random() * emojis.length)];
-            } else {
-                money.innerText = Math.random() > 0.5 ? '💵' : '💰';
-            }
-
-            // Random position and animation speed
-            money.style.left = Math.random() * 100 + 'vw';
-            const duration = isGold ? (Math.random() * 1 + 1) : (Math.random() * 2 + 2);
-            money.style.animationDuration = duration + 's';
-            
-            // Random size
-            const size = isGold ? (Math.random() * 4 + 3) : (Math.random() * 2 + 1);
-            money.style.fontSize = size + 'rem';
-
-            container.appendChild(money);
-
-            // Clean up DOM
-            setTimeout(() => money.remove(), duration * 1000);
-        }
-    }
+    // Код казино перенесен в js/game_casino.js
 
     // ==========================================
     // ЛОГИКА СЛАЙДЕРА
@@ -2533,6 +2309,42 @@
             explosionOverlay.classList.remove('explode-anim');
         }, 800);
     }
+
+    // Функция переключения режимов игры
+    function switchGameMode(modeName, btnElement) {
+        // 1. Скрываем все игровые блоки
+        document.querySelectorAll('.game-mode').forEach(el => {
+            el.style.display = 'none';
+            el.classList.remove('active');
+        });
+
+        // 2. Убираем активный класс у кнопок
+        document.querySelectorAll('.game-select-btn').forEach(btn => {
+            btn.classList.remove('active');
+        });
+
+        // 3. Показываем нужный блок
+        const target = document.getElementById(`mode-${modeName}`);
+        if(target) {
+            target.style.display = 'block';
+            // Небольшой таймаут для анимации fade-in, если нужно
+            setTimeout(() => target.classList.add('active'), 10);
+        }
+
+        // 4. Подсвечиваем нажатую кнопку
+        if(btnElement) {
+            btnElement.classList.add('active');
+        }
+
+        // Здесь можно вызывать функции инициализации игр, если они требуют рестарта
+        // if (modeName === 'birds') initBirds();
+        // if (modeName === 'zombies') initZombies();
+    }
 </script>
+
+    <!-- Логика игр -->
+    <script src="js/game_casino.js"></script>
+    <script src="js/game_birds.js"></script>
+    <script src="js/game_zombies.js"></script>
 </body>
 </html>
