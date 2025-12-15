@@ -249,20 +249,91 @@
         </div>
     </div>
 
-    <!-- 04. РАСПРЕДЕЛЕНИЕ СРЕДНЕГО ЧЕКА И ТРАФИКА -->
+    <!-- 04. СТАТИСТИКА: СРЕДНИЙ ЧЕК И ТРАФИК (ОБНОВЛЕННЫЙ) -->
     <div class="slide" id="chartSlideMeanCheck">
-        <h2>РАСПРЕДЕЛЕНИЕ: CРЕДНИЙ ЧЕК И ТРАФИК ЗА МЕСЯЦ</h2>
-        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; height: 70vh;">
-            <div class="card" style="padding: 10px; overflow: hidden; display: flex; flex-direction: column;">
-                <h3 style="text-align: center; margin-bottom: 10px;">Средний чек</h3>
-                <div class="chart-container-fix" style="flex: 1;">
-                     <div id="chart-mean-check" style="width: 100%; height: 100%;"></div>
+        <h2>СТАТИСТИКА: СРЕДНИЙ ЧЕК И ТРАФИК</h2>
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 40px; height: 70vh;">
+            
+            <!-- ЛЕВАЯ КОЛОНКА: СРЕДНИЙ ЧЕК -->
+            <div class="card" style="padding: 30px; display: flex; flex-direction: column; border-left: 6px solid var(--accent); background: rgba(198, 255, 0, 0.05);">
+                <div style="margin-bottom: 25px; border-bottom: 1px solid rgba(198, 255, 0, 0.3); padding-bottom: 15px;">
+                    <h3 style="margin: 0; font-size: 2.2rem; color: #fff;">Средний чек</h3>
+                    <span style="font-size: 1.2rem; color: #888;">рублей за визит</span>
+                </div>
+
+                <div style="display: flex; flex-direction: column; gap: 15px; font-size: 1.6rem;">
+                    
+                    <!-- MEAN -->
+                    <div style="display: flex; justify-content: space-between; align-items: center; background: rgba(0,0,0,0.3); padding: 15px; border-radius: 8px;">
+                        <span style="color: #aaa;">Среднее</span>
+                        <span style="color: var(--accent); font-weight: 900; font-size: 2rem;">1 026 ₽</span>
+                    </div>
+
+                    <!-- MEDIAN -->
+                    <div style="display: flex; justify-content: space-between; align-items: center; padding: 10px 15px; border-bottom: 1px solid #333;">
+                        <span style="color: #aaa;">Медиана</span>
+                        <span style="color: #fff; font-weight: bold;">953 ₽</span>
+                    </div>
+
+                    <!-- STD -->
+                    <div style="display: flex; justify-content: space-between; align-items: center; padding: 10px 15px; border-bottom: 1px solid #333;">
+                        <span style="color: #888;">Стандартное отклонение</span>
+                        <span style="color: #ddd;">358 ₽</span>
+                    </div>
+                    <div style="display: flex; justify-content: space-between; align-items: center; padding: 10px 15px; border-bottom: 1px solid #333;">
+                        <span style="color: #888;">Минимум</span>
+                        <span style="color: #ddd;">0 ₽</span>
+                    </div>
+
+                    <div style="display: flex; justify-content: space-between; align-items: center; padding: 10px 15px; border-bottom: 1px solid #333;">
+                        <span style="color: #888;">Максимум</span>
+                        <span style="color: #ddd;">3600 ₽</span>
+                    </div>
+
+
+                    
+
                 </div>
             </div>
-            <div class="card" style="padding: 10px; overflow: hidden; display: flex; flex-direction: column;">
-                <h3 style="text-align: center; margin-bottom: 10px;">Трафик</h3>
-                <div class="chart-container-fix" style="flex: 1;">
-                     <div id="chart-mean-traf" style="width: 100%; height: 100%;"></div>
+
+            <!-- ПРАВАЯ КОЛОНКА: ТРАФИК -->
+            <div class="card" style="padding: 30px; display: flex; flex-direction: column; border-left: 6px solid #fff;">
+                <div style="margin-bottom: 25px; border-bottom: 1px solid rgba(255, 255, 255, 0.3); padding-bottom: 15px;">
+                    <h3 style="margin: 0; font-size: 2.2rem; color: #fff;">Трафик</h3>
+                    <span style="font-size: 1.2rem; color: #888;">человек в месяц</span>
+                </div>
+
+                <div style="display: flex; flex-direction: column; gap: 15px; font-size: 1.6rem;">
+                    
+                    <!-- MEAN -->
+                    <div style="display: flex; justify-content: space-between; align-items: center; background: rgba(0,0,0,0.3); padding: 15px; border-radius: 8px;">
+                        <span style="color: #aaa;">Среднее</span>
+                        <span style="color: #fff; font-weight: 900; font-size: 2rem;">65 782</span>
+                    </div>
+
+                    <!-- MEDIAN -->
+                    <div style="display: flex; justify-content: space-between; align-items: center; padding: 10px 15px; border-bottom: 1px solid #333;">
+                        <span style="color: #aaa;">Медиана</span>
+                        <span style="color: #fff; font-weight: bold;">63 483</span>
+                    </div>
+
+                    <!-- STD -->
+                    <div style="display: flex; justify-content: space-between; align-items: center; padding: 10px 15px; border-bottom: 1px solid #333;">
+                        <span style="color: #888;">Стандартное отклонение</span>
+                        <span style="color: #ddd;">15 313</span>
+                    </div>
+                    <div style="display: flex; justify-content: space-between; align-items: center; padding: 10px 15px; border-bottom: 1px solid #333;">
+                        <span style="color: #888;">Минимум</span>
+                        <span style="color: #ddd;">250</span>
+                    </div>
+                    <div style="display: flex; justify-content: space-between; align-items: center; padding: 10px 15px; border-bottom: 1px solid #333;">
+                        <span style="color: #888;">Максимум</span>
+                        <span style="color: #ddd;">146 139</span>
+                    </div>
+
+                    <!-- MIN / MAX как таблица -->
+                
+
                 </div>
             </div>
         </div>
@@ -305,20 +376,73 @@
     <!-- 06. ВЛИЯНИЕ ПЯТЕРОЧЕК -->
     <div class="slide" id="chartSlide2">
         <h2>ВЛИЯНИЕ ПЯТЕРОЧЕК</h2>
+        
         <div class="card" style="margin-bottom: 20px; padding: 15px; text-align: center;">
-            <p style="font-size: 1.5rem; margin: 0; color: #ccc;">Единственное, что <span style="color: var(--accent); font-weight: bold;">X5</span> контролирует из инфраструктуры в датасете полностью и напрямую, - это количество пятёрочек в округе</p>
+            <p style="font-size: 1.5rem; margin: 0; color: #ccc;">
+                Единственное, что <span style="color: var(--accent); font-weight: bold;">X5</span> контролирует из инфраструктуры в датасете полностью и напрямую, - это количество пятёрочек в округе
+            </p>
         </div>
         
+        <!-- Сетка с фиксированной высотой 65vh -->
         <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 30px; height: 65vh;">
-            <!-- Левая колонка: График Выручка vs Пятерочки -->
-            <div id="chart-revenue-container" style="display: flex; justify-content: center; align-items: center; overflow: hidden; border: 1px dashed var(--accent); padding: 10px; border-radius: 8px; position: relative;">
+            
+            <!-- ЛЕВАЯ КОЛОНКА: Вектор корреляций (Таблица) -->
+            <!-- Убрали лишние обертки, оставили одну карточку на всю высоту -->
+            <div class="card" style="padding: 0; overflow: hidden; display: flex; flex-direction: column; height: 100%; width: 100%; border: 1px dashed #555;">
+                
+                <!-- Заголовок таблицы -->
+                <div style="padding: 20px 25px; border-bottom: 1px solid #333; background: rgba(255,255,255,0.02); flex-shrink: 0;">
+                    <h3 style="margin: 0; color: #fff; font-size: 1.6rem;">Корреляция с Выручкой</h3>
+                    <div style="font-size: 1.2rem; color: #666; margin-top: 5px;">Факторы инфраструктуры</div>
+                </div>
+
+                <!-- Тело таблицы (растягивается на всю оставшуюся высоту) -->
+                <div style="flex: 1; display: flex; flex-direction: column; width: 100%; justify-content: space-between;">
+                    
+                    <!-- ПОЗИТИВНЫЕ -->
+                    <div style="flex: 1; display: flex; align-items: center; justify-content: space-between; padding: 0 25px; border-bottom: 1px solid #222;">
+                        <span style="color: #ccc; font-size: 1.4rem;">E-commerce</span>
+                        <span style="color: #ccc; font-weight: bold; font-size: 1.4rem;">0.23</span>
+                    </div>
+
+                    <!-- НЕЙТРАЛЬНЫЕ -->
+                    <div style="flex: 1; display: flex; align-items: center; justify-content: space-between; padding: 0 25px; border-bottom: 1px solid #222;">
+                        <span style="color: #999; font-size: 1.3rem;">Остановки</span>
+                        <span style="color: #999; font-size: 1.3rem;">0.19</span>
+                    </div>
+                    <div style="flex: 1; display: flex; align-items: center; justify-content: space-between; padding: 0 25px; border-bottom: 1px solid #222;">
+                        <span style="color: #888; font-size: 1.3rem;">Домохозяйства</span>
+                        <span style="color: #888; font-size: 1.3rem;">0.17</span>
+                    </div>
+                    <div style="flex: 1; display: flex; align-items: center; justify-content: space-between; padding: 0 25px; border-bottom: 1px solid #222;">
+                        <span style="color: #777; font-size: 1.3rem;">Медучреждения</span>
+                        <span style="color: #777; font-size: 1.3rem;">0.15</span>
+                    </div>
+                    <div style="flex: 1; display: flex; align-items: center; justify-content: space-between; padding: 0 25px; border-bottom: 1px solid #222;">
+                        <span style="color: #666; font-size: 1.3rem;">Школы</span>
+                        <span style="color: #666; font-size: 1.3rem;">0.13</span>
+                    </div>
+
+                    <!-- ОТРИЦАТЕЛЬНЫЕ -->
+                    <div style="flex: 1; display: flex; align-items: center; justify-content: space-between; padding: 0 25px; border-bottom: 1px solid #222; background: rgba(255, 85, 85, 0.05);">
+                        <span style="color: #ffaaaa; font-size: 1.3rem;">Другие магазины</span>
+                        <span style="color: #ff5555; font-weight: bold; font-size: 1.3rem;">-0.13</span>
+                    </div>
+                    
+                    <!-- TARGET (Увеличенный вес) -->
+                    <div style="flex: 1.4; display: flex; align-items: center; justify-content: space-between; padding: 0 25px; background: rgba(255, 85, 85, 0.15); border-left: 6px solid #ff5555;">
+                        <span style="color: #fff; font-weight: bold; font-size: 1.5rem;">Пятерочки рядом</span>
+                        <span style="color: #ff5555; font-weight: 900; font-size: 1.8rem;">-0.15</span>
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- ПРАВАЯ КОЛОНКА: График (Картинка) -->
+            <div id="chart-revenue-container" style="display: flex; justify-content: center; align-items: center; overflow: hidden; border: 1px dashed var(--accent); padding: 10px; border-radius: 8px; position: relative; height: 100%;">
                 <img src="images/первый.png" alt="Revenue Chart" style="max-width: 100%; max-height: 100%; object-fit: contain;">
             </div>
 
-            <!-- Правая колонка: Место под второй график -->
-            <div id="chart-heatmap-container" style="display: flex; justify-content: center; align-items: center; border: 1px dashed var(--accent); padding: 10px; border-radius: 8px; position: relative;">
-                <img src="images/второй.png" alt="Heatmap Chart" style="max-width: 100%; max-height: 100%; object-fit: contain;">
-            </div>
         </div>
     </div>
 
@@ -361,12 +485,12 @@
                         <div id="chart-pyat-dist-new" style="width: 100%; height: 100%;"></div>
                     </div>
                 </div>
-                <div class="card" style="flex: 1; display: flex; flex-direction: column; overflow: hidden;">
+                <!-- <div class="card" style="flex: 1; display: flex; flex-direction: column; overflow: hidden;">
                     <h4 style="margin-bottom: 5px; text-align: center;">Распределение по кол-ву магазинов</h4>
                     <div class="chart-container-fix" style="flex: 1;">
                         <div id="chart-shops-dist-new" style="width: 100%; height: 100%;"></div>
                     </div>
-                </div>
+                </div> -->
             </div>
 
             <!-- Right Column: Explanation + Binary Stats -->
@@ -446,7 +570,7 @@
                                 <tr>
                                     <td style="padding: 15px; color: #ccc; border-right: 1px solid rgba(255, 85, 85, 0.2);">Трафик за месяц</td>
                                      <td style="text-align: left; padding: 15px; font-weight: bold; color: #fff;">
-                                        20.000 человек<br>
+                                        20тыс. человек<br>
                                         <span style="font-size: 1rem; color: #999; font-weight: normal;">(меньше 700 в день)</span>
                                     </td>
                                 </tr>
@@ -679,7 +803,7 @@
                 <div class="card" style="padding: 25px; border-left: 4px solid #00704A; flex: 1; display: flex; flex-direction: column;">
                     <h3 style="color: #fff; margin-bottom: 10px; font-size: 1.8rem;">Кейс Starbucks</h3>
                     <p style="font-size: 1.7rem; color: #ccc;">
-                        В 2017 году аналитики выявили, что на каждую точку приходилось <span style="color: var(--accent);">почти 4 других кофейни</span> бренда в радиусе 1 мили. Это привело к падению трафика в старых точках.
+                        На каждую точку приходилось <span style="color: var(--accent);">множество кофеен</span> бренда. Это привело к огромному падению трафика в старых точках.
                     </p>
                     <!-- Источник -->
                     <div style="margin-top: auto; padding-top: 10px; border-top: 1px solid rgba(255,255,255,0.1); font-size: 1.2rem; color: #666; font-style: italic;">
@@ -957,7 +1081,7 @@
                         <div class="card" style="padding: 12px 15px;">Очень большие пятёрочки несут большие издержки</div>
                         <div style="text-align: center; color: var(--accent); font-size: 2rem; margin: 0;">↓</div>
                         <div class="card" style="padding: 12px 15px;">При их неэффективности сеть понесёт сильные убытки</div>
-                        <div style="text-align: center; color: var(--accent); font-size: 2rem; margin: 0;">↓</div>
+                        <!-- <div style="text-align: center; color: var(--accent); font-size: 2rem; margin: 0;">↓</div> -->
                         <div class="card" style="padding: 12px 15px;">В данных только эффективные старые очень большие пятёрочки</div>
                     </div>
                 </div>
@@ -976,7 +1100,7 @@
                 </div>
                 <ul style="font-size: 1.4rem; list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 15px;">
                     <li><strong style="color: #ff5555;">• Ошибка выжившего:</strong> Большинство старых неэффективных точек уже закрыты.</li>
-                    <li><strong style="color: #ff5555;">• Датасет:</strong> Нет данных о расходах, данные о населении некорректны.</li>
+                    <li><strong style="color: #ff5555;">• Датасет:</strong> Нет данных о расходах, данные о населении недостаточно точны.</li>
                     <li><strong style="color: #ff5555;">• География:</strong> Нет точных координат для использования реального расстояния.</li>
                     <li><strong style="color: #ff5555;">• Статика в панельных данных:</strong> данные инфраструктуры не меняются в течение года.</li>
                 </ul>
@@ -1011,24 +1135,24 @@
                 </div>
 
                 <!-- 3. ПОЛИТИКА ДЛЯ X5 -->
-                <div style="background: rgba(255,255,255,0.05); padding: 20px 40px; border-radius: 10px; display: flex; align-items: center; border-left: 6px solid #C6FF00;">
+                <div style="grid-column: span 2; background: rgba(255,255,255,0.05); padding: 20px 40px; border-radius: 10px; display: flex; align-items: center; border-left: 6px solid #C6FF00; width: 60%; justify-self: center;">
                     <div>
                         <h3 style="margin-bottom: 10px;"><span style="color: var(--accent);">ПОЛИТИКА ДЛЯ X5</span></h3>
-                        <p style="font-size: 1.4rem; line-height: 1.4; margin: 0;">
-                            Если старая точка сильно просела из-за соседней, то это может быть сигналом о необходимости уменьшить издержки магазина<br>
+                        <p style="font-size: 1.4rem; line-height: 1.4; margin: 0; ">
+                            Если выручка старой точки снизилась из-за соседней, то это может быть сигналом о необходимости уменьшить издержки магазина<br>
                         </p>
                     </div>
                 </div>
 
                 <!-- 4. СТРАТЕГИЯ -->
-                <div style="background: rgba(255,255,255,0.05); padding: 20px 40px; border-radius: 10px; display: flex; align-items: center; border-left: 6px solid #888;">
+                <!-- <div style="background: rgba(255,255,255,0.05); padding: 20px 40px; border-radius: 10px; display: flex; align-items: center; border-left: 6px solid #888;">
                     <div>
                         <h3 style="color: #ccc; margin-bottom: 10px;">СТРАТЕГИЯ</h3>
                         <p style="font-size: 1.4rem; line-height: 1.4; margin: 0;">
-                            Делаем как <strong style="color: #f4c63e;">McDonald's</strong>: ставим новые точки так, чтобы они не «убивали» продажи в старых. Строгий контроль дистанции.
+                            Гипотеза подтверждает, что клиенты менее лояльны к старым пятёрочкам -> их можно использовать как ранний индикатор. <br> Новая политика вредит -> старые упадут первыми. <br> Политика работает -> старые быстрее покажут рост.
                         </p>
                     </div>
-                </div>
+                </div> -->
 
             </div>
         </div>
@@ -1162,7 +1286,12 @@
            Скорее всего, конкурентное давление присутствует в обеих группах (и там где есть соседи, и там где их нет). Поэтому при сравнении средних этот внешний шум взаимоуничтожается, и мы видим чистый эффект именно от соседства с "своими" магазинами
         </div>
     </div>
-
+    <div class="slide">
+        <!-- <h2>Распределение масчтаба</h2> -->
+        <div class="fill-height flex-center">
+            <img src="images/Podval1.jpg" alt="Photo" style="max-width: 80%; max-height: 70vh; border-radius: 15px; box-shadow: 0 0 20px rgba(0,0,0,0.5);">
+        </div>
+    </div>
     <!-- НОВЫЙ СЛАЙД С ФОТО -->
     <div class="slide">
         <h2>Влияние пятерочек</h2>
