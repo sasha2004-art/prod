@@ -3,10 +3,13 @@ import os
 # Имя выходного файла
 OUTPUT_FILE = 'project_code_dump.txt'
 
-# Список файлов, которые НУЖНО включить (только они попадут в отчет)
+# Список файлов, которые НУЖНО включить (указывайте пути относительно корня запуска скрипта)
 TARGET_FILES = {
     'index.html', 
-    'style-spirit.css'
+    'style-spirit.css',
+    'js/game_birds.js',
+    'js/game_casino.js',
+    'js/game_zombies.js'
 }
 
 # Папки, которые можно вообще не открывать (для ускорения)
@@ -17,18 +20,15 @@ def generate_tree(startpath):
     tree_str = f"{os.path.basename(os.path.abspath(startpath))}/\n"
     
     for root, dirs, files in os.walk(startpath):
-        # Фильтрация игнорируемых папок
         dirs[:] = [d for d in dirs if d not in IGNORE_DIRS]
         
         level = root.replace(startpath, '').count(os.sep)
         indent = '│   ' * (level)
-        subindent = '├── '
         
         if root != startpath:
             tree_str += f"{indent[:-4]}├── {os.path.basename(root)}/\n"
             
         for i, f in enumerate(files):
-            # Визуальное оформление
             connector = '└── ' if i == len(files) - 1 and not dirs else '├── '
             if root != startpath:
                  tree_str += f"{indent}{connector}{f}\n"
@@ -41,7 +41,7 @@ def main():
     current_dir = os.getcwd()
     
     with open(OUTPUT_FILE, 'w', encoding='utf-8') as outfile:
-        # 1. Записываем дерево проекта (для контекста, где лежат файлы)
+        # 1. Дерево
         outfile.write("="*50 + "\n")
         outfile.write("PROJECT TREE STRUCTURE\n")
         outfile.write("="*50 + "\n\n")
@@ -50,39 +50,41 @@ def main():
         outfile.write("FILE CONTENTS\n")
         outfile.write("="*50 + "\n\n")
 
-        # 2. Проходим по файлам и записываем содержимое ТОЛЬКО целевых файлов
         found_files_count = 0
         
+        # 2. Обход файлов
         for root, dirs, files in os.walk(current_dir):
-            # Убираем ненужные папки из обхода
             dirs[:] = [d for d in dirs if d not in IGNORE_DIRS]
 
             for file in files:
-                # ПРОВЕРКА: Если имя файла в нашем списке целевых файлов
-                if file in TARGET_FILES:
-                    file_path = os.path.join(root, file)
+                # Получаем полный путь к файлу
+                full_path = os.path.join(root, file)
+                
+                # Получаем путь относительно папки запуска (например: "js/game_birds.js")
+                rel_path = os.path.relpath(full_path, current_dir)
+                
+                # ВАЖНО: Нормализуем слеши. Windows использует '\', а в списке TARGET_FILES указаны '/'.
+                # Приводим всё к прямым слешам для сравнения.
+                rel_path_normalized = rel_path.replace('\\', '/')
+
+                # ПРОВЕРКА: Сравниваем нормализованный относительный путь
+                if rel_path_normalized in TARGET_FILES:
                     
                     try:
-                        with open(file_path, 'r', encoding='utf-8') as f:
+                        with open(full_path, 'r', encoding='utf-8') as f:
                             content = f.read()
                             
-                        # Красивый разделитель
-                        relative_path = os.path.relpath(file_path, current_dir)
-                        outfile.write(f"\n{'='*20} START OF FILE: {relative_path} {'='*20}\n")
+                        outfile.write(f"\n{'='*20} START OF FILE: {rel_path_normalized} {'='*20}\n")
                         outfile.write(content)
-                        outfile.write(f"\n{'='*20} END OF FILE: {relative_path} {'='*20}\n\n")
+                        outfile.write(f"\n{'='*20} END OF FILE: {rel_path_normalized} {'='*20}\n\n")
                         
-                        print(f"[+] Записан: {relative_path}")
+                        print(f"[+] Записан: {rel_path_normalized}")
                         found_files_count += 1
                         
                     except UnicodeDecodeError:
-                        print(f"[-] Ошибка кодировки: {file}")
+                        print(f"[-] Ошибка кодировки: {rel_path_normalized}")
                     except Exception as e:
-                        print(f"[-] Ошибка чтения {file}: {e}")
-                else:
-                    # Можно раскомментировать, если нужно видеть, что пропускается
-                    # print(f"[.] Пропущен: {file}")
-                    pass
+                        print(f"[-] Ошибка чтения {rel_path_normalized}: {e}")
 
     print(f"\nГотово! Обработано файлов: {found_files_count}.")
     print(f"Всё сохранено в файл: {OUTPUT_FILE}")
