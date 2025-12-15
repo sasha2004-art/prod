@@ -10,8 +10,9 @@ const Z_ASSETS = {
     
     // Environment
     house:      'images/X5_Tech.svg',
+    mower:      'images/knazyv.jpg',
     bullet:     '#C6FF00', // Acid green bullet
-    lawnColor:  ['#0d2b0d', '#133a13'], // Dark checkerboard
+    lawnColor:  ['#7CFC00', '#32CD32'], // Lighter, more vibrant grass (Lawn Green / Lime Green)
     
     // Zombies
     zombieNormal: { img: 'images/magnite_logo.png', hp: 100, speed: 0.3, dmg: 0.5 },
@@ -85,7 +86,7 @@ function preloadZAssets(callback) {
     let loaded = 0;
     const sources = [
         Z_ASSETS.peashooter.img, Z_ASSETS.sunflower.img, Z_ASSETS.wallnut.img, Z_ASSETS.doomshroom.img,
-        Z_ASSETS.house, Z_ASSETS.zombieNormal.img, Z_ASSETS.zombieCone.img, Z_ASSETS.zombieGarg.img
+        Z_ASSETS.house, Z_ASSETS.mower, Z_ASSETS.zombieNormal.img, Z_ASSETS.zombieCone.img, Z_ASSETS.zombieGarg.img
     ];
 
     sources.forEach(src => {
@@ -101,6 +102,10 @@ function preloadZAssets(callback) {
 
 // === LEVEL LOGIC ===
 
+let zMowers = [];
+let zZombiesToSpawn = 0;
+let zLevelCleared = false;
+
 function startZLevel(lvl) {
     zLevel = lvl;
     zPlants = [];
@@ -110,14 +115,23 @@ function startZLevel(lvl) {
     zSun = 150; // Starting sun
     zFrame = 0;
     zGameOver = false;
+    zLevelCleared = false;
 
     // Config based on Level
     if (lvl === 1) {
         GRID_ROWS = 3;
         GRID_OFFSET_Y = 180; // Center vertically
+        zZombiesToSpawn = 10;
     } else {
         GRID_ROWS = 5;
         GRID_OFFSET_Y = 100;
+        zZombiesToSpawn = 25;
+    }
+
+    // Init Mowers
+    zMowers = [];
+    for(let r=0; r<GRID_ROWS; r++) {
+        zMowers.push({ row: r, x: GRID_OFFSET_X - 60, active: false });
     }
 }
 
@@ -137,6 +151,12 @@ function updateZ() {
     spawnZombiesLogic();
     spawnSkySun();
 
+    // Level Clear Check
+    if (zZombiesToSpawn <= 0 && zZombies.length === 0 && !zLevelCleared) {
+        zLevelCleared = true;
+        setTimeout(() => startZLevel(zLevel + 1), 4000);
+    }
+
     // 2. Plants Logic
     zPlants.forEach((p, pi) => {
         // Shooting
@@ -152,10 +172,35 @@ function updateZ() {
             zSuns.push({ x: p.x, y: p.y, val: 25, life: 300, vy: -1 });
         }
         
-        // Doom-shroom explosion logic (Immediate)
+        // Doom-shroom explosion logic (Timer)
         if (p.type === 'bomb') {
-            triggerExplosion(p);
-            zPlants.splice(pi, 1);
+            if (!p.timer) p.timer = 90; // 1.5 sec at 60fps
+            p.timer--;
+            if (p.timer <= 0) {
+                triggerExplosion(p);
+                zPlants.splice(pi, 1);
+            }
+        }
+    });
+
+    // Mowers Logic
+    zMowers.forEach((m, mi) => {
+        if (m.active) {
+            m.x += 8; // Fast speed
+            // Kill zombies in row
+            zZombies.forEach(z => {
+                if (z.row === m.row && Math.abs(z.x - m.x) < 50) {
+                    z.hp = -999; // Instant kill
+                }
+            });
+            // Remove if off screen
+            if (m.x > zCanvas.width) {
+                // Mark as gone? Or just keep moving off screen
+            }
+        } else {
+            // Check trigger
+            let triggerZ = zZombies.find(z => z.row === m.row && z.x < m.x + 40);
+            if (triggerZ) m.active = true;
         }
     });
 
@@ -221,12 +266,15 @@ function updateZ() {
 // === LOGIC HELPERS ===
 
 function spawnZombiesLogic() {
+    if (zZombiesToSpawn <= 0) return;
+
     // Wave logic
     let rate = 300; 
     if (zFrame > 2000) rate = 150;
     if (zFrame > 4000) rate = 100;
 
     if (zFrame % rate === 0) {
+        zZombiesToSpawn--;
         let row = Math.floor(Math.random() * GRID_ROWS);
         let typeRand = Math.random();
         
@@ -322,7 +370,7 @@ function handleInput(e, isClick) {
 
     // Gameplay: Place Plant
     if (isClick && zSelectedCard) {
-        // Convert mouse to grid
+        // Convert mouse to grid (Standard PvZ 2D)
         let col = Math.floor((mx - GRID_OFFSET_X) / CELL_W);
         let row = Math.floor((my - GRID_OFFSET_Y) / CELL_H);
 
@@ -339,7 +387,8 @@ function handleInput(e, isClick) {
                     hp: zSelectedCard.hp,
                     dmg: zSelectedCard.dmg,
                     rate: zSelectedCard.rate,
-                    img: zSelectedCard.img
+                    img: zSelectedCard.img,
+                    timer: (zSelectedCard.type === 'bomb') ? 90 : 0 // Init timer for bomb
                 });
                 zSun -= zSelectedCard.cost;
                 zSelectedCard = null;
@@ -367,59 +416,165 @@ function drawZ() {
     zCtx.fillStyle = '#222';
     zCtx.fillRect(0, 0, zCanvas.width, zCanvas.height);
 
-    // 1. Draw Grid (Lawn)
+    // 1. Draw Grid (Checkerboard Lawn)
     for (let r = 0; r < GRID_ROWS; r++) {
         for (let c = 0; c < GRID_COLS; c++) {
-            zCtx.fillStyle = (r + c) % 2 === 0 ? Z_ASSETS.lawnColor[0] : Z_ASSETS.lawnColor[1];
+            // Checkerboard pattern: (row + col) % 2
+            // Use slightly different shades of green
+            let isDark = (r + c) % 2 === 1;
+            zCtx.fillStyle = isDark ? '#00a800' : '#00c400'; // Classic PvZ greens
             zCtx.fillRect(GRID_OFFSET_X + c * CELL_W, GRID_OFFSET_Y + r * CELL_H, CELL_W, CELL_H);
+            
+            // Subtle border for depth
+            zCtx.strokeStyle = 'rgba(0,0,0,0.1)';
+            zCtx.strokeRect(GRID_OFFSET_X + c * CELL_W, GRID_OFFSET_Y + r * CELL_H, CELL_W, CELL_H);
         }
     }
 
-    // 2. House (X5 Life Line)
+    // 2. House / Mowers Area
+    // Draw a "safe zone" to the left
+    zCtx.fillStyle = '#3a2418'; // Dirt path color
+    zCtx.fillRect(0, GRID_OFFSET_Y, GRID_OFFSET_X, GRID_ROWS * CELL_H);
+    
     let hImg = zImages[Z_ASSETS.house];
     if (hImg) {
-        zCtx.drawImage(hImg, 10, GRID_OFFSET_Y, 120, GRID_ROWS * CELL_H);
+        // Draw the "House" logo rotated -90 degrees
+        zCtx.save();
+        // Center of the house area
+        let hCx = 60; 
+        let hCy = GRID_OFFSET_Y + (GRID_ROWS * CELL_H) / 2;
+        zCtx.translate(hCx, hCy);
+        zCtx.rotate(-Math.PI / 2);
+        zCtx.drawImage(hImg, -150, -60, 300, 120);
+        zCtx.restore();
     }
 
-    // 3. Plants
-    zPlants.forEach(p => {
-        let img = zImages[p.img];
-        if (img) zCtx.drawImage(img, p.x, p.y, 70, 70);
-        // HP bar for wallnut
-        if (p.type === 'wall' && p.hp < 1000) {
-            zCtx.fillStyle = 'red';
-            zCtx.fillRect(p.x, p.y - 5, 70 * (p.hp/1000), 4);
+    // Draw "Lawn Mowers"
+    let mowerImg = zImages[Z_ASSETS.mower];
+    zMowers.forEach(m => {
+        if (mowerImg) {
+            zCtx.drawImage(mowerImg, m.x, GRID_OFFSET_Y + m.row * CELL_H + 10, 70, 70);
+        } else {
+            // Simple Mower Graphic (Fallback)
+            zCtx.fillStyle = '#ff0000';
+            zCtx.fillRect(m.x, GRID_OFFSET_Y + m.row * CELL_H + 20, 40, 40);
+            
+            // Wheels
+            zCtx.fillStyle = '#000';
+            zCtx.beginPath(); zCtx.arc(m.x + 10, GRID_OFFSET_Y + m.row * CELL_H + 60, 10, 0, Math.PI*2); zCtx.fill();
+            zCtx.beginPath(); zCtx.arc(m.x + 30, GRID_OFFSET_Y + m.row * CELL_H + 60, 10, 0, Math.PI*2); zCtx.fill();
+            
+            // Handle
+            zCtx.strokeStyle = '#ccc';
+            zCtx.lineWidth = 3;
+            zCtx.beginPath();
+            zCtx.moveTo(m.x, GRID_OFFSET_Y + m.row * CELL_H + 40);
+            zCtx.lineTo(m.x - 20, GRID_OFFSET_Y + m.row * CELL_H + 10);
+            zCtx.stroke();
         }
     });
 
-    // 4. Zombies
-    zZombies.forEach(z => {
-        let img = zImages[z.img];
-        let w = z.w || 80;
-        let h = z.h || 80;
-        if (img) zCtx.drawImage(img, z.x, z.y - 10, w, h);
-    });
+    // 3. Entities (Sorted by depth: Row by Row)
+    for (let r = 0; r < GRID_ROWS; r++) {
+        // Draw Plants in this row
+        let rowPlants = zPlants.filter(p => p.row === r).sort((a, b) => a.col - b.col);
+        rowPlants.forEach(p => {
+            let img = zImages[p.img];
+            let cx = GRID_OFFSET_X + p.col * CELL_W + CELL_W/2;
+            let cy = GRID_OFFSET_Y + p.row * CELL_H + CELL_H/2;
+            
+            // Shadow
+            zCtx.fillStyle = 'rgba(0,0,0,0.3)';
+            zCtx.beginPath();
+            zCtx.ellipse(cx, cy + 30, 25, 10, 0, 0, Math.PI * 2);
+            zCtx.fill();
 
-    // 5. Bullets
-    zCtx.fillStyle = Z_ASSETS.bullet;
-    zBullets.forEach(b => {
-        zCtx.beginPath();
-        zCtx.arc(b.x, b.y, 8, 0, Math.PI * 2);
-        zCtx.fill();
-    });
+            if (p.type === 'bomb') {
+                // Doom-shroom Animation
+                let scale = 1;
+                let filter = 'none';
+                
+                if (p.timer) {
+                    // Grow
+                    scale = 1 + (90 - p.timer) / 90 * 0.3; 
+                    // Blink White
+                    if (Math.floor(zFrame / 5) % 2 === 0) {
+                        zCtx.globalCompositeOperation = 'source-over'; // Normal
+                        filter = 'brightness(200%)'; // Bright
+                    }
+                }
+                
+                zCtx.save();
+                zCtx.translate(cx, cy);
+                zCtx.scale(scale, scale);
+                if (filter !== 'none') zCtx.filter = filter;
+                
+                if (img) zCtx.drawImage(img, -35, -40, 70, 70);
+                
+                zCtx.restore();
+                zCtx.filter = 'none'; // Reset
+            } else {
+                if (img) {
+                    zCtx.drawImage(img, cx - 35, cy - 40, 70, 70);
+                }
+            }
 
-    // 6. Suns
+            if (p.type === 'wall' && p.hp < 1000) {
+                zCtx.fillStyle = 'red';
+                zCtx.fillRect(cx - 35, cy - 50, 70 * (p.hp/1000), 4);
+            }
+        });
+
+        // Draw Zombies in this row
+        let rowZombies = zZombies.filter(z => z.row === r);
+        rowZombies.forEach(z => {
+            let img = zImages[z.img];
+            let w = z.w || 80;
+            let h = z.h || 80;
+            
+            // Shadow
+            zCtx.fillStyle = 'rgba(0,0,0,0.3)';
+            zCtx.beginPath();
+            zCtx.ellipse(z.x + w/2, z.y + h - 5, 30, 10, 0, 0, Math.PI * 2);
+            zCtx.fill();
+
+            if (img) zCtx.drawImage(img, z.x, z.y - 20, w, h);
+        });
+
+        // Draw Bullets in this row
+        let rowBullets = zBullets.filter(b => b.row === r);
+        zCtx.fillStyle = Z_ASSETS.bullet;
+        rowBullets.forEach(b => {
+            zCtx.beginPath();
+            zCtx.arc(b.x, b.y, 10, 0, Math.PI * 2);
+            zCtx.fill();
+            // Shine
+            zCtx.fillStyle = '#fff';
+            zCtx.beginPath();
+            zCtx.arc(b.x - 3, b.y - 3, 3, 0, Math.PI * 2);
+            zCtx.fill();
+            zCtx.fillStyle = Z_ASSETS.bullet;
+        });
+    }
+
+    // 6. Suns (Screen Space)
     zSuns.forEach(s => {
+        // Glow
+        zCtx.shadowBlur = 15;
+        zCtx.shadowColor = '#ffeb3b';
+        
         zCtx.fillStyle = '#ffe100';
-        zCtx.strokeStyle = '#d48900';
-        zCtx.lineWidth = 2;
+        zCtx.strokeStyle = '#ff9800';
+        zCtx.lineWidth = 3;
         zCtx.beginPath();
-        zCtx.arc(s.x, s.y, 20, 0, Math.PI * 2);
+        zCtx.arc(s.x, s.y, 25, 0, Math.PI * 2);
         zCtx.fill();
         zCtx.stroke();
+        
+        zCtx.shadowBlur = 0; // Reset
     });
 
-    // 7. Explosion Particles (Doom shroom)
+    // 7. Explosion Particles
     zParticles.forEach(p => {
         zCtx.fillStyle = 'rgba(255, 0, 255, 0.5)';
         zCtx.beginPath();
@@ -434,68 +589,108 @@ function drawZ() {
 
     // 9. Game Over / Win
     if (zGameOver) {
-        zCtx.fillStyle = 'rgba(0,0,0,0.8)';
+        zCtx.fillStyle = 'rgba(0,0,0,0.85)';
         zCtx.fillRect(0, 0, zCanvas.width, zCanvas.height);
-        zCtx.fillStyle = '#C6FF00'; // Accent color
-        zCtx.font = '900 60px "Monument Extended", sans-serif';
+        zCtx.fillStyle = '#C6FF00'; 
+        zCtx.font = '900 60px "Segoe UI", sans-serif';
         zCtx.textAlign = 'center';
         zCtx.fillText('ZOMBIES ATE YOUR', zCanvas.width/2, zCanvas.height/2 - 40);
         zCtx.fillText('ANALYTICS', zCanvas.width/2, zCanvas.height/2 + 40);
-        zCtx.font = '20px Inter';
+        zCtx.font = '20px "Segoe UI"';
         zCtx.fillText('Click to restart', zCanvas.width/2, zCanvas.height/2 + 90);
     }
 }
 
 function drawUI() {
-    // Top Bar Background
-    zCtx.fillStyle = 'rgba(0,0,0,0.6)';
+    // Top Bar Background (Wood texture style)
+    zCtx.fillStyle = '#654321'; // Dark wood
     zCtx.fillRect(0, 0, zCanvas.width, 90);
+    
+    // Wood grain effect (simple lines)
+    zCtx.strokeStyle = '#503010';
+    zCtx.lineWidth = 2;
+    for(let i=0; i<10; i++) {
+        let y = i * 9;
+        zCtx.beginPath();
+        zCtx.moveTo(0, y);
+        zCtx.lineTo(zCanvas.width, y);
+        zCtx.stroke();
+    }
 
-    // Sun Counter
+    // Sun Counter Box
+    zCtx.fillStyle = '#3e2723'; // Darker wood for inset
+    zCtx.fillRect(10, 10, 100, 70);
+    zCtx.strokeStyle = '#8d6e63';
+    zCtx.strokeRect(10, 10, 100, 70);
+
+    // Sun Icon
     zCtx.fillStyle = '#ffe100';
-    zCtx.font = 'bold 24px Inter';
-    zCtx.textAlign = 'left';
-    zCtx.fillText(`SUN: ${zSun}`, 20, 50);
+    zCtx.beginPath();
+    zCtx.arc(35, 45, 18, 0, Math.PI * 2);
+    zCtx.fill();
+    zCtx.strokeStyle = '#ff9800';
+    zCtx.lineWidth = 2;
+    zCtx.stroke();
 
-    // Cards
+    // Sun Text
+    zCtx.fillStyle = '#fff';
+    zCtx.font = 'bold 24px "Segoe UI", sans-serif';
+    zCtx.textAlign = 'center';
+    zCtx.fillText(zSun, 80, 53);
+
+    // Cards Area
     const cards = getAvailableCards();
     cards.forEach((card, i) => {
-        let x = 150 + i * 85;
-        let y = 10;
+        let x = 130 + i * 90; // Spacing
+        let y = 5;
+        let w = 80;
+        let h = 80;
         
-        // Card BG
-        zCtx.fillStyle = (zSun >= card.cost) ? '#444' : '#222';
-        if (zSelectedCard && zSelectedCard.name === card.name) zCtx.fillStyle = '#666';
-        zCtx.fillRect(x, y, 75, 70);
-        zCtx.strokeStyle = '#C6FF00';
-        zCtx.lineWidth = 1;
-        zCtx.strokeRect(x, y, 75, 70);
+        // Card Background (Seed Packet)
+        zCtx.fillStyle = (zSun >= card.cost) ? '#f0f0d0' : '#a0a090'; // Beige or Grayed out
+        if (zSelectedCard && zSelectedCard.name === card.name) zCtx.fillStyle = '#fffacd'; // Highlight
+        
+        zCtx.fillRect(x, y, w, h);
+        
+        // Card Border
+        zCtx.strokeStyle = '#2e7d32'; // Green border
+        zCtx.lineWidth = 3;
+        zCtx.strokeRect(x, y, w, h);
 
-        // Icon
+        // Plant Image
         let img = zImages[card.img];
-        if (img) zCtx.drawImage(img, x + 10, y + 10, 55, 55);
+        if (img) zCtx.drawImage(img, x + 15, y + 15, 50, 50);
 
-        // Cost
-        zCtx.fillStyle = '#fff';
-        zCtx.font = 'bold 14px Inter';
-        zCtx.fillText(card.cost, x + 5, y + 65);
+        // Cost Badge
+        zCtx.fillStyle = '#ffe100';
+        zCtx.fillRect(x + w - 30, y + h - 20, 28, 18);
+        zCtx.fillStyle = '#000';
+        zCtx.font = 'bold 12px sans-serif';
+        zCtx.textAlign = 'center';
+        zCtx.fillText(card.cost, x + w - 16, y + h - 6);
     });
 
+    // Menu Button (Placeholder)
+    zCtx.fillStyle = '#8d6e63';
+    zCtx.fillRect(zCanvas.width - 110, 10, 100, 40);
+    zCtx.fillStyle = '#3e2723';
+    zCtx.font = 'bold 16px sans-serif';
+    zCtx.textAlign = 'center';
+    zCtx.fillText("MENU", zCanvas.width - 60, 35);
+
     // Level Info
-    zCtx.fillStyle = '#888';
-    zCtx.font = '16px Inter';
-    zCtx.fillText(`LEVEL ${zLevel}`, zCanvas.width - 100, 50);
+    zCtx.fillStyle = '#ccc';
+    zCtx.font = '14px sans-serif';
+    zCtx.fillText(`LEVEL ${zLevel}`, zCanvas.width - 60, 70);
 
     if (zLevel === 1 && zGameOver) {
-        // Simple click to reset logic inside handleInput or here?
-        // For simplicity, click anywhere resets if gameover
         if (zMouse.down) initZombies(); 
     }
     
-    // Level 2 Transition (Simple logic: Survive X frames)
+    // Level 2 Transition
     if (zLevel === 1 && zFrame > 3500 && !zGameOver) {
         zCtx.fillStyle = '#C6FF00';
-        zCtx.font = '40px "Monument Extended"';
+        zCtx.font = '40px "Segoe UI"';
         zCtx.textAlign = 'center';
         zCtx.fillText("LEVEL CLEARED!", zCanvas.width/2, zCanvas.height/2);
         setTimeout(() => startZLevel(2), 2000);

@@ -32,8 +32,8 @@ const BIRD_TYPES = [
     { type: 'red',    img: 'images/knazyv.jpg',                 radius: 25, density: 0.002 },     
     { type: 'blue',   img: 'images/max.jpg',                    radius: 20, density: 0.0015 },      
     { type: 'yellow', img: 'images/photo_2023-05-30_12-09-39.jpg', radius: 25, density: 0.002 }, 
-    { type: 'white',  img: 'images/photo_2025-12-09_11-27-57.jpg', radius: 30, density: 0.0025 }, 
-    { type: 'black',  img: 'images/photo_2024-09-11_11-11-39.jpg', radius: 35, density: 0.003 }  
+    { type: 'white',  img: 'images/photo_2024-09-11_11-11-39.jpg', radius: 30, density: 0.0025 }, 
+    { type: 'black',  img: 'images/photo_2025-12-09_11-27-57.jpg', radius: 35, density: 0.003 }  
 ];
 
 const ENEMY_IMG = 'images/magnite_logo.png';

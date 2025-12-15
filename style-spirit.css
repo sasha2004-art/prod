@@ -440,8 +440,8 @@ ul { margin-bottom: 15px; }
 /* 2. GRID */
 .slot-grid {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    grid-template-rows: repeat(3, 1fr);
+    grid-template-columns: repeat(6, 155px);
+    grid-template-rows: repeat(3, 150px);
     gap: 10px;
     background: #000;
     padding: 10px;
