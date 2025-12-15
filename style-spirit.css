@@ -706,3 +706,27 @@ ul { margin-bottom: 15px; }
     max-height: 75vh; /* Ограничение по высоте */
     overflow: hidden;
 }
+
+/* Custom Legend Style for Robustness Chart (Slide 17) */
+#chart-robustness .apexcharts-legend {
+    background: rgba(0, 0, 0, 0.8) !important;
+    border: 1px solid var(--accent) !important;
+    padding: 10px !important;
+    border-radius: 8px !important;
+    
+    /* Force position and size */
+    position: absolute !important;
+    bottom: auto !important;
+    right: auto !important;
+    left: 80px !important;
+    top: 50px !important;
+    width: max-content !important;  
+    
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    text-align: left !important;
+}
+#chart-robustness .apexcharts-legend-marker {
+    margin-right: 10px !important;
+}
