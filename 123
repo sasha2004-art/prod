@@ -1,0 +1,22 @@
+<div style="flex: 1; display: flex; align-items: center; justify-content: space-between; padding: 0 25px; border-bottom: 1px solid #222;">
+                        <span style="color: #ccc; font-size: 1.3rem;">E-commerce</span>
+                        <span style="color: #ccc; font-size: 1.3rem;">0.23</span>
+                    </div>
+
+                    <!-- НЕЙТРАЛЬНЫЕ -->
+                    <div style="flex: 1; display: flex; align-items: center; justify-content: space-between; padding: 0 25px; border-bottom: 1px solid #222;">
+                        <span style="color: #ccc; font-size: 1.3rem;">Остановки</span>
+                        <span style="color: #ccc; font-size: 1.3rem;">0.19</span>
+                    </div>
+                    <div style="flex: 1; display: flex; align-items: center; justify-content: space-between; padding: 0 25px; border-bottom: 1px solid #222;">
+                        <span style="color: #ccc; font-size: 1.3rem;">Домохозяйства</span>
+                        <span style="color: #ccc; font-size: 1.3rem;">0.17</span>
+                    </div>
+                    <div style="flex: 1; display: flex; align-items: center; justify-content: space-between; padding: 0 25px; border-bottom: 1px solid #222;">
+                        <span style="color: #ccc; font-size: 1.3rem;">Медучреждения</span>
+                        <span style="color: #ccc; font-size: 1.3rem;">0.15</span>
+                    </div>
+                    <div style="flex: 1; display: flex; align-items: center; justify-content: space-between; padding: 0 25px; border-bottom: 1px solid #222;">
+                        <span style="color: #ccc; font-size: 1.3rem;">Школы</span>
+                        <span style="color: #ccc; font-size: 1.3rem;">0.13</span>
+                    </div>
