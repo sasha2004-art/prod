@@ -1362,7 +1362,8 @@
         },
         colors: [ACCENT_COLOR, '#aeea00', '#96d000', '#7cb300'],
         xaxis: { 
-            categories: ['Открыт давно', 'Средний возраст', 'Недавно открытый', 'Новый'], 
+            categories: ['Открыт давно', 'Средний возраст', 'Недавно открытый', 'Новый'],
+            title: { text: 'Средняя выручка за месяц', style: { color: '#888', fontSize: '16px', fontWeight: 'bold' } },
             labels: { 
                 style: { colors: '#888', fontSize: '14px' },
             },
@@ -2037,6 +2038,7 @@
             max: 150000000, 
             // УБРАЛИ "Новейшие"
             categories: ['Новый', 'Средние', 'Открыт давно'],
+            title: { text: 'Средняя выручка за месяц, ₽', style: { color: '#888', fontSize: '17px', fontWeight: 'bold' } },
             labels: {
                 style: { colors: '#888', fontSize: '16px' },
                 formatter: (val) => (val / 1000000).toFixed(0) + "M"
