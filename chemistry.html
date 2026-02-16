@@ -481,74 +481,7 @@
         background: #1a0033 !important;
       } /* Фиолетовый фон */
 
-      /* Слайд 9: Vantablack */
-      .vanta-container {
-        width: 300px;
-        height: 300px;
-        background: #050505;
-        border-radius: 50%;
-        position: relative;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        overflow: hidden;
-        margin: 0 auto;
-        box-shadow: 0 0 50px rgba(0, 0, 0, 1);
-        cursor: none;
-      }
-      .vanta-textured-bg {
-        position: absolute;
-        top: 0; left: 0; width: 100%; height: 100%;
-        background-image: url('https://www.transparenttextures.com/patterns/carbon-fibre.png');
-        opacity: 0.3;
-        z-index: 1;
-        mix-blend-mode: overlay;
-      }
-      .flashlight {
-        position: absolute;
-        top: 0; left: 0; width: 100%; height: 100%;
-        background: radial-gradient(circle at var(--mask-x) var(--mask-y), rgba(255,255,255,0.4) 0%, transparent 150px);
-        pointer-events: none;
-        z-index: 9; /* Ниже черной дыры, но выше фона */
-      }
-      .flying-obj {
-        width: 40px;
-        height: 40px;
-        background: var(--accent);
-        position: absolute;
-        animation: orbit 4s linear infinite;
-        z-index: 5;
-        border-radius: 50%;
-        box-shadow: 0 0 20px var(--accent);
-      }
-      .vanta-hole {
-        position: absolute;
-        width: 180px;
-        height: 180px;
-        background: #000; /* Истинный черный */
-        border-radius: 50%;
-        z-index: 10;
-        box-shadow: 0 0 10px rgba(0,0,0,0.5);
-      }
-      .vanta-hole::after {
-        content: "VANTABLACK";
-        position: absolute;
-        top: 50%; left: 50%;
-        transform: translate(-50%, -50%);
-        font-size: 0.8rem;
-        color: #111;
-        font-weight: 900;
-        letter-spacing: 2px;
-      }
-      @keyframes orbit {
-        0% { transform: translate(-140px, 0); z-index: 5; }
-        49% { z-index: 5; }
-        50% { transform: translate(140px, 0); z-index: 15; }
-        99% { z-index: 15; }
-        100% { transform: translate(-140px, 0); z-index: 5; }
-      }
-
-      /* Слайд 11: Таблица */
+      /* Слайд 9: Таблица */
       .pt-grid {
         display: grid;
         grid-template-columns: repeat(4, 1fr);
@@ -638,7 +571,7 @@
       >
         <h3 style="margin-bottom: 20px">Школьный проект</h3>
         <h1 class="title-text" id="main-title">
-          Химия<br />Невидимый Художник
+          Химия в искусстве
         </h1>
         <p>
           Используй <span style="color: var(--accent)">СТРЕЛКИ</span> для навигации
@@ -950,43 +883,23 @@
       </div>
     </div>
 
-    <!-- SLIDE 9: VANTABLACK -->
+    <!-- SLIDE 9: TABLE -->
     <div class="slide" id="slide-9">
-      <h2>Vantablack</h2>
-      <p>Самый черный материал. Поглощает 99.965% света.</p>
-      <div class="card vanta-card" style="text-align: center; overflow: hidden;">
-        <div class="flashlight" id="vanta-torch"></div>
-        <div class="vanta-container">
-          <div class="vanta-textured-bg"></div>
-          <div class="flying-obj"></div>
-          <div class="vanta-hole"></div>
-        </div>
-        <p style="margin-top: 20px; position: relative; z-index: 20;">
-          Посвети фонариком (мышка) на поверхность.
-        </p>
-        <p style="color: var(--accent); position: relative; z-index: 20;">
-          Обычные материалы бликуют, Vantablack — поглощает свет полностью.
-        </p>
-      </div>
-    </div>
-
-    <!-- SLIDE 11: TABLE -->
-    <div class="slide" id="slide-11">
       <h2>Итоги: Химическая палитра</h2>
       <div class="pt-grid">
         <div class="element el-ag"><strong>Ag</strong><span>Кинопленка</span></div>
         <div class="element el-pb"><strong>Pb</strong><span>Белила</span></div>
         <div class="element el-sr"><strong>Sr</strong><span>Салют (Red)</span></div>
         <div class="element el-fe"><strong>Fe</strong><span>Кровь</span></div>
-        <div class="element el-c"><strong>C</strong><span>Vantablack</span></div>
+        <div class="element el-c"><strong>C</strong><span>Углерод</span></div>
         <div class="element el-ba"><strong>Ba</strong><span>Салют (Green)</span></div>
         <div class="element el-au"><strong>Au</strong><span>Позолота</span></div>
         <div class="element el-h"><strong>H</strong><span>Реставрация</span></div>
       </div>
     </div>
 
-    <!-- SLIDE 12: FINAL -->
-    <div class="slide" id="slide-12">
+    <!-- SLIDE 10: FINAL -->
+    <div class="slide" id="slide-10">
       <div
         class="flex-center"
         style="
@@ -1037,8 +950,8 @@
         });
         counter.innerText = (currentSlide + 1).toString().padStart(2, "0");
 
-        // Автоматический запуск финала для 12-го слайда
-        if (slides[currentSlide].id === "slide-12") {
+        // Автоматический запуск финала для 10-го слайда
+        if (slides[currentSlide].id === "slide-10") {
           setTimeout(() => {
             triggerFinalAnimation();
           }, 2000);
@@ -1206,18 +1119,6 @@
           ctx.beginPath();
           ctx.arc(x, y, 30, 0, Math.PI * 2);
           ctx.fill();
-        });
-      }
-
-      // Слайд 9: Интерактив Vantablack
-      const vantaCard = document.querySelector(".vanta-card");
-      if (vantaCard) {
-        vantaCard.addEventListener("mousemove", (e) => {
-          const rect = vantaCard.getBoundingClientRect();
-          const x = (e.clientX - rect.left);
-          const y = (e.clientY - rect.top);
-          vantaCard.style.setProperty("--mask-x", x + "px");
-          vantaCard.style.setProperty("--mask-y", y + "px");
         });
       }
 
